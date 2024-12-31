@@ -10,14 +10,14 @@
 </head>
 <body class="light">
 	<?php // Hidden Popups.
-	include("overlay.php");
+	include("../overlay.php");
 	include("login_popup.php");
 	include("signup_popup.php");
 	include("forgot_password_popup.php");
 	?>
 	<div class="flex h-screen flex-col items-center justify-between">
 		<?php // Body.
-		include("../header.php");
+		include("header.php");
 		include("body.php");
 		include("../footer.php");
 		?>

@@ -1,82 +1,79 @@
-const backgroundOverlay = document.querySelector("#overlay");
+// ---- DOM Elements --------------------------------------------------------------------------------------------------------------------------------
+const elements = {
+  themeIcon: document.querySelector("#theme-icon"),
+  loginPopup: document.querySelector("#login-popup"),
+  signupPopup: document.querySelector("#signup-popup"),
+  backgroundOverlay: document.querySelector("#overlay"),
+  showLoginButton: document.querySelector("#show-login-button"),
+  showSignupButton: document.querySelector("#show-signup-button"),
+  themeSwitchButton: document.querySelector("#theme-switch-button"),
+  loginSignupButton: document.querySelector("#login-signup-button"),
+  forgotPasswordPopup: document.querySelector("#reset-password-popup"),
+  closeLoginPopupSVG: document.querySelector("#close-login-popup-svg"),
+  resetPasswordButton: document.querySelector("#reset-password-button"),
+  closeSignupPopupSVG: document.querySelector("#close-signup-popup-svg"),
+  closeForgotPasswordPopupSVG: document.querySelector("#close-reset-password-popup-svg")
+};
 
-const themeSwitchButton = document.querySelector("#theme-switch-button");
+// ---- Utility Functions ---------------------------------------------------------------------------------------------------------------------------
+const addClass = (element, ...classes) => element.classList.add(...classes);
+const removeClass = (element, ...classes) => element.classList.remove(...classes);
+const toggleClass = (element, ...classes) => element.classList.toggle(...classes);
+const replaceClass = (element, oldClass, newClass) => element.classList.replace(oldClass, newClass);
 
-const themeIcon = document.querySelector("#theme-icon");
-
-const loginPopup = document.querySelector("#login-popup");
-const signupPopup = document.querySelector("#signup-popup");
-const resetPasswordPopup = document.querySelector("#reset-password-popup");
-
-const loginSignupButton = document.querySelector("#login-signup-button");
-
-const closeLoginPopupSVG = document.querySelector("#close-login-popup-svg");
-const closeSignupPopupSVG = document.querySelector("#close-signup-popup-svg");
-const closeResetPasswordPopupSVG = document.querySelector("#close-reset-password-popup-svg");
-
-const showLoginButton = document.querySelector("#show-login-button");
-const showSignupButton = document.querySelector("#show-signup-button");
-
-const resetPasswordButton = document.querySelector("#reset-password-button");
-
-themeSwitchButton.addEventListener("click", () => {
-  if (document.body.classList.contains("light")) themeIcon.src = "../../assets/light-icon.png";
-  else themeIcon.src = "../../assets/dark-icon.png";
-
-  document.body.classList.toggle("light");
-  document.body.classList.toggle("dark");
+// ---- Switch Theme --------------------------------------------------------------------------------------------------------------------------------
+elements.themeSwitchButton.addEventListener("click", () => {
+  elements.themeIcon.src = document.body.classList.contains("light") ? "../../assets/light-icon.png" : "../../assets/dark-icon.png";
+  toggleClass(document.body, "light", "dark");
 });
 
-loginSignupButton.addEventListener("click", () => {
-  backgroundOverlay.classList.toggle("hidden");
-
-  loginPopup.classList.toggle("hidden");
-  loginPopup.classList.toggle("flex");
+// ---- Show Login/Signup Popup ---------------------------------------------------------------------------------------------------------------------
+elements.loginSignupButton.addEventListener("click", () => {
+  toggleClass(elements.backgroundOverlay, "hidden");
+  toggleClass(elements.loginPopup, "hidden", "flex");
 });
 
-closeSignupPopupSVG.addEventListener("click", () => {
-  signupPopup.classList.remove("flex");
-  signupPopup.classList.add("hidden");
-  backgroundOverlay.classList.add("hidden");
+// ---- Close Popups --------------------------------------------------------------------------------------------------------------------------------
+elements.closeSignupPopupSVG.addEventListener("click", () => {
+  addClass(elements.signupPopup, "hidden");
+  removeClass(elements.signupPopup, "flex");
+  addClass(elements.backgroundOverlay, "hidden");
 });
 
-closeLoginPopupSVG.addEventListener("click", () => {
-  loginPopup.classList.remove("flex");
-  loginPopup.classList.add("hidden");
-
-  backgroundOverlay.classList.add("hidden");
+elements.closeLoginPopupSVG.addEventListener("click", () => {
+  addClass(elements.loginPopup, "hidden");
+  removeClass(elements.loginPopup, "flex");
+  addClass(elements.backgroundOverlay, "hidden");
 });
 
-closeResetPasswordPopupSVG.addEventListener("click", () => {
-  resetPasswordPopup.classList.remove("flex");
-  resetPasswordPopup.classList.add("hidden");
-
-  loginPopup.classList.replace("z-9", "z-20");
-
-  closeLoginPopupSVG.classList.remove("pointer-events-none");
+elements.closeForgotPasswordPopupSVG.addEventListener("click", () => {
+  addClass(elements.forgotPasswordPopup, "hidden");
+  removeClass(elements.forgotPasswordPopup, "flex");
+  replaceClass(elements.loginPopup, "z-9", "z-20");
+  removeClass(elements.closeLoginPopupSVG, "pointer-events-none");
 });
 
-showLoginButton.addEventListener("click", () => {
-  signupPopup.classList.remove("flex");
-  signupPopup.classList.add("hidden");
-
-  loginPopup.classList.remove("hidden");
-  loginPopup.classList.add("flex");
+// ---- Toggle Between Login and Signup Popups ------------------------------------------------------------------------------------------------------
+elements.showLoginButton.addEventListener("click", () => {
+  addClass(elements.signupPopup, "hidden");
+  removeClass(elements.signupPopup, "flex");
+  removeClass(elements.loginPopup, "hidden");
+  addClass(elements.loginPopup, "flex");
 });
 
-showSignupButton.addEventListener("click", () => {
-  loginPopup.classList.remove("flex");
-  loginPopup.classList.add("hidden");
-
-  signupPopup.classList.add("flex");
-  signupPopup.classList.remove("hidden");
+elements.showSignupButton.addEventListener("click", () => {
+  addClass(elements.loginPopup, "hidden");
+  removeClass(elements.loginPopup, "flex");
+  addClass(elements.signupPopup, "flex");
+  removeClass(elements.signupPopup, "hidden");
 });
 
-resetPasswordButton.addEventListener("click", () => {
-  resetPasswordPopup.classList.add("flex");
-  resetPasswordPopup.classList.remove("hidden");
-
-  loginPopup.classList.replace("z-20", "z-9");
-
-  closeLoginPopupSVG.classList.add("pointer-events-none");
+// ---- Reset Password Popup ------------------------------------------------------------------------------------------------------------------------
+elements.resetPasswordButton.addEventListener("click", () => {
+  addClass(elements.forgotPasswordPopup, "flex");
+  removeClass(elements.forgotPasswordPopup, "hidden");
+  replaceClass(elements.loginPopup, "z-20", "z-9");
+  addClass(elements.closeLoginPopupSVG, "pointer-events-none");
 });
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------

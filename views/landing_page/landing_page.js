@@ -1,79 +1,69 @@
-// ---- DOM Elements --------------------------------------------------------------------------------------------------------------------------------
+// DOM.
 const elements = {
+  overlay: document.querySelector("#overlay"),
   themeIcon: document.querySelector("#theme-icon"),
   loginPopup: document.querySelector("#login-popup"),
   signupPopup: document.querySelector("#signup-popup"),
-  backgroundOverlay: document.querySelector("#overlay"),
   showLoginButton: document.querySelector("#show-login-button"),
+  closeLoginSvg: document.querySelector("#close-login-popup-svg"),
   showSignupButton: document.querySelector("#show-signup-button"),
   themeSwitchButton: document.querySelector("#theme-switch-button"),
   loginSignupButton: document.querySelector("#login-signup-button"),
-  forgotPasswordPopup: document.querySelector("#reset-password-popup"),
-  closeLoginPopupSVG: document.querySelector("#close-login-popup-svg"),
+  closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
-  closeSignupPopupSVG: document.querySelector("#close-signup-popup-svg"),
-  closeForgotPasswordPopupSVG: document.querySelector("#close-reset-password-popup-svg")
+  forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
+  closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg")
 };
 
-// ---- Utility Functions ---------------------------------------------------------------------------------------------------------------------------
-const addClass = (element, ...classes) => element.classList.add(...classes);
-const removeClass = (element, ...classes) => element.classList.remove(...classes);
-const toggleClass = (element, ...classes) => element.classList.toggle(...classes);
-const replaceClass = (element, oldClass, newClass) => element.classList.replace(oldClass, newClass);
+// Utility Functions.
+const toggleVisibility = (element, show) => {
+  element.classList.toggle("hidden", !show);
+  element.classList.toggle("flex", show);
+};
 
-// ---- Switch Theme --------------------------------------------------------------------------------------------------------------------------------
+const switchPopup = (popupToShow, popupToHide) => {
+  toggleVisibility(popupToHide, false);
+  toggleVisibility(popupToShow, true);
+};
+
+// Event Handlers.
 elements.themeSwitchButton.addEventListener("click", () => {
-  elements.themeIcon.src = document.body.classList.contains("light") ? "../../assets/light-icon.png" : "../../assets/dark-icon.png";
-  toggleClass(document.body, "light", "dark");
+  const isLight = document.body.classList.toggle("light");
+  document.body.classList.toggle("dark", !isLight);
+  elements.themeIcon.src = isLight ? "../../assets/dark-icon.png" : "../../assets/light-icon.png";
 });
 
-// ---- Show Login/Signup Popup ---------------------------------------------------------------------------------------------------------------------
 elements.loginSignupButton.addEventListener("click", () => {
-  toggleClass(elements.backgroundOverlay, "hidden");
-  toggleClass(elements.loginPopup, "hidden", "flex");
+  toggleVisibility(elements.overlay, true);
+  toggleVisibility(elements.loginPopup, true);
 });
 
-// ---- Close Popups --------------------------------------------------------------------------------------------------------------------------------
-elements.closeSignupPopupSVG.addEventListener("click", () => {
-  addClass(elements.signupPopup, "hidden");
-  removeClass(elements.signupPopup, "flex");
-  addClass(elements.backgroundOverlay, "hidden");
+elements.closeSignupSvg.addEventListener("click", () => {
+  toggleVisibility(elements.overlay, false);
+  toggleVisibility(elements.signupPopup, false);
 });
 
-elements.closeLoginPopupSVG.addEventListener("click", () => {
-  addClass(elements.loginPopup, "hidden");
-  removeClass(elements.loginPopup, "flex");
-  addClass(elements.backgroundOverlay, "hidden");
+elements.closeLoginSvg.addEventListener("click", () => {
+  toggleVisibility(elements.overlay, false);
+  toggleVisibility(elements.loginPopup, false);
 });
 
-elements.closeForgotPasswordPopupSVG.addEventListener("click", () => {
-  addClass(elements.forgotPasswordPopup, "hidden");
-  removeClass(elements.forgotPasswordPopup, "flex");
-  replaceClass(elements.loginPopup, "z-9", "z-20");
-  removeClass(elements.closeLoginPopupSVG, "pointer-events-none");
+elements.closeForgotPasswordSvg.addEventListener("click", () => {
+  toggleVisibility(elements.forgotPasswordPopup, false);
+  elements.loginPopup.classList.replace("z-9", "z-20");
+  elements.closeLoginSvg.classList.remove("pointer-events-none");
 });
 
-// ---- Toggle Between Login and Signup Popups ------------------------------------------------------------------------------------------------------
 elements.showLoginButton.addEventListener("click", () => {
-  addClass(elements.signupPopup, "hidden");
-  removeClass(elements.signupPopup, "flex");
-  removeClass(elements.loginPopup, "hidden");
-  addClass(elements.loginPopup, "flex");
+  switchPopup(elements.loginPopup, elements.signupPopup);
 });
 
 elements.showSignupButton.addEventListener("click", () => {
-  addClass(elements.loginPopup, "hidden");
-  removeClass(elements.loginPopup, "flex");
-  addClass(elements.signupPopup, "flex");
-  removeClass(elements.signupPopup, "hidden");
+  switchPopup(elements.signupPopup, elements.loginPopup);
 });
 
-// ---- Reset Password Popup ------------------------------------------------------------------------------------------------------------------------
 elements.resetPasswordButton.addEventListener("click", () => {
-  addClass(elements.forgotPasswordPopup, "flex");
-  removeClass(elements.forgotPasswordPopup, "hidden");
-  replaceClass(elements.loginPopup, "z-20", "z-9");
-  addClass(elements.closeLoginPopupSVG, "pointer-events-none");
+  toggleVisibility(elements.forgotPasswordPopup, true);
+  elements.loginPopup.classList.replace("z-20", "z-9");
+  elements.closeLoginSvg.classList.add("pointer-events-none");
 });
-
-// --------------------------------------------------------------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 		  content="width=device-width, initial-scale=1.0">
 	<title>Bite Builder</title>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<?php include("../global/styles.php"); ?>
+	<?php include("../global/tailwind.php"); ?>
 </head>
 <body class="light">
 	<?php // Hidden Popups.

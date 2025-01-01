@@ -6,7 +6,10 @@
 		  content="width=device-width, initial-scale=1.0">
 	<title>Bite Builder | Landing</title>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<?php include("../global/styles.php"); ?>
+	<?php include("../global/tailwind.php"); ?>
+	<link rel="stylesheet"
+		  type="text/css"
+		  href="../global/theme_switch_button.css">
 </head>
 <body class="light">
 	<?php // Hidden Popups.

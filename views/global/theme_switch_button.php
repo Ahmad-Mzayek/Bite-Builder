@@ -1,7 +1,7 @@
 <label id="theme-switch-button">
-    <input id="input"
+    <input id="theme-switch-input"
            type="checkbox"
-           checked="darkTheme"/>
+           checked="lightTheme"/>
     <div class="slider round">
         <div class="sun-moon">
             <svg id="moon-dot-1"

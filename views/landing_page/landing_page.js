@@ -25,16 +25,10 @@ const switchPopup = (popupToShow, popupToHide) => {
   toggleVisibility(popupToShow, true);
 };
 
-// Set Initial Theme to Light Mode.
-document.body.classList.add("light");
-document.body.classList.remove("dark");
-elements.themeSwitchButton.checked = false;
-
 // Event Handlers.
-elements.themeSwitchButton.addEventListener("change", () => {
-  const isLight = elements.themeSwitchButton.checked;
-  document.body.classList.toggle("light", !isLight);
-  document.body.classList.toggle("dark", isLight);
+elements.themeSwitchButton.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  document.body.classList.toggle("light", isDark);
 });
 
 elements.loginSignupButton.addEventListener("click", () => {

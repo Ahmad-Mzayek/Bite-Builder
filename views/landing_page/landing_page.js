@@ -28,7 +28,7 @@ const switchPopup = (popupToShow, popupToHide) => {
 // Event Handlers.
 elements.themeSwitchButton.addEventListener("click", () => {
   const isDark = document.body.classList.toggle("dark");
-  document.body.classList.toggle("light", isDark);
+  document.body.classList.toggle("light", !isDark);
 });
 
 elements.loginSignupButton.addEventListener("click", () => {

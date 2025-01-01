@@ -6,6 +6,12 @@
     body {
       background-color: var(--primary);
     }
+    .light {
+      --primary: #ffffff;
+    }
+    .dark {
+      --primary: #000000;
+    }
     h1 {
       @apply font-extrabold text-xl md:text-2xl lg:text-3xl
     }

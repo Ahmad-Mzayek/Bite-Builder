@@ -1,7 +1,6 @@
 // DOM.
 const elements = {
   overlay: document.querySelector("#overlay"),
-  themeIcon: document.querySelector("#theme-icon"),
   loginPopup: document.querySelector("#login-popup"),
   signupPopup: document.querySelector("#signup-popup"),
   showLoginButton: document.querySelector("#show-login-button"),
@@ -26,11 +25,16 @@ const switchPopup = (popupToShow, popupToHide) => {
   toggleVisibility(popupToShow, true);
 };
 
+// Set Initial Theme to Light Mode.
+document.body.classList.add("light");
+document.body.classList.remove("dark");
+elements.themeSwitchButton.checked = false;
+
 // Event Handlers.
-elements.themeSwitchButton.addEventListener("click", () => {
-  const isLight = document.body.classList.toggle("light");
-  document.body.classList.toggle("dark", !isLight);
-  elements.themeIcon.src = isLight ? "../../assets/dark-icon.png" : "../../assets/light-icon.png";
+elements.themeSwitchButton.addEventListener("change", () => {
+  const isLight = elements.themeSwitchButton.checked;
+  document.body.classList.toggle("light", !isLight);
+  document.body.classList.toggle("dark", isLight);
 });
 
 elements.loginSignupButton.addEventListener("click", () => {

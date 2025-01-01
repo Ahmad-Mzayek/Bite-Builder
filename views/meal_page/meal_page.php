@@ -6,15 +6,15 @@
 		  content="width=device-width, initial-scale=1.0">
 	<title>Bite Builder</title>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<?php include("../styles.php"); ?>
+	<?php include("../global/tailwind.php"); ?>
 </head>
 <body class="light">
 	<?php // Hidden Popups.
-	include("../overlay.php");
+	include("../global/overlay.php");
 	?>
     <?php // Body.
-    include("header.php");
-    include("../footer.php");
+    include("meal_page_header.php");
+    include("../global/footer.php");
     ?>
 	<script src="meal_page.js"></script>
 </body>

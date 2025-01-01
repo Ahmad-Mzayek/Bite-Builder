@@ -1,7 +1,6 @@
 // DOM.
 const elements = {
   overlay: document.querySelector("#overlay"),
-  themeIcon: document.querySelector("#theme-icon"),
   loginPopup: document.querySelector("#login-popup"),
   signupPopup: document.querySelector("#signup-popup"),
   showLoginButton: document.querySelector("#show-login-button"),
@@ -28,9 +27,8 @@ const switchPopup = (popupToShow, popupToHide) => {
 
 // Event Handlers.
 elements.themeSwitchButton.addEventListener("click", () => {
-  const isLight = document.body.classList.toggle("light");
-  document.body.classList.toggle("dark", !isLight);
-  elements.themeIcon.src = isLight ? "../../assets/dark-icon.png" : "../../assets/light-icon.png";
+  const isDark = document.body.classList.toggle("dark");
+  document.body.classList.toggle("light", !isDark);
 });
 
 elements.loginSignupButton.addEventListener("click", () => {

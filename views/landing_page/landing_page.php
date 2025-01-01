@@ -22,6 +22,6 @@
 		include("../global/footer.php");
 		?>
 	</div>
-	<script src="../../controllers/LandingPage.js"></script>
+	<script src="landing_page.js"></script>
 </body>
 </html>

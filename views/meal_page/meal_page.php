@@ -16,6 +16,6 @@
     include("meal_page_header.php");
     include("../global/footer.php");
     ?>
-	<script src="../../controllers/MealPage.js"></script>
+	<script src="meal_page.js"></script>
 </body>
 </html>

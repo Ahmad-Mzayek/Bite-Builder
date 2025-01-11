@@ -11,8 +11,11 @@ const elements = {
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
-  closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg")
+  closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
 };
+
+// UI Theme Switcher Variable.
+let themeSwitch = true;
 
 // Utility Functions.
 const toggleVisibility = (element, show) => {
@@ -27,8 +30,12 @@ const switchPopup = (popupToShow, popupToHide) => {
 
 // Event Handlers.
 elements.themeSwitchButton.addEventListener("click", () => {
-  const isDark = document.body.classList.toggle("dark");
-  document.body.classList.toggle("light", !isDark);
+  themeSwitch = !themeSwitch;
+  if (themeSwitch) {
+    const isDark = document.body.classList.toggle("dark");
+    document.body.classList.toggle("light", !isDark);
+    console.log(document.body.classList);
+  }
 });
 
 elements.loginSignupButton.addEventListener("click", () => {

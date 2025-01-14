@@ -1,5 +1,5 @@
 <div id="login-popup"
-     class="hidden flex-col w-1/4 items-center justify-between fixed  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6 bg-gray-200">
+     class="hidden flex-col w-3/12 min-w-[25rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6 bg-gray-200">
     <h1 class="font-bold pb-4">
         Log In
     </h1>
@@ -12,14 +12,14 @@
         <path fill="currentColor"
               d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275t.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z" />
     </svg>
-    <form action=""
-          method="post"
-          class="flex w-full h-48 flex-col items-center justify-between">
-        <input type="email"
-               name="email"
-               placeholder="Email"
+    <form id="login-form"
+          class="flex w-full flex-col items-center space-y-2">
+          <div id="login-error-container" class="hidden w-full p-2 bg-red-500 text-white font-bold"></div>
+        <input type="text"
+               name="login"
+               placeholder="Login"
                required
-               autocomplete="email">
+               autocomplete="name">
         <input type="password"
                name="password"
                placeholder="Password"

@@ -1,6 +1,8 @@
 // DOM.
 const elements = {
   overlay: document.querySelector("#overlay"),
+  loginForm: document.querySelector("#login-form"),
+  signupForm: document.querySelector("#signup-form"),
   loginPopup: document.querySelector("#login-popup"),
   signupPopup: document.querySelector("#signup-popup"),
   showLoginButton: document.querySelector("#show-login-button"),
@@ -11,6 +13,8 @@ const elements = {
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
+  loginErrorContainer: document.querySelector("#login-error-container"),
+  signupErrorContainer: document.querySelector("#signup-error-container"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
 };
 
@@ -34,7 +38,6 @@ elements.themeSwitchButton.addEventListener("click", () => {
   if (themeSwitch) {
     const isDark = document.body.classList.toggle("dark");
     document.body.classList.toggle("light", !isDark);
-    console.log(document.body.classList);
   }
 });
 
@@ -71,4 +74,56 @@ elements.resetPasswordButton.addEventListener("click", () => {
   toggleVisibility(elements.forgotPasswordPopup, true);
   elements.loginPopup.classList.replace("z-20", "z-9");
   elements.closeLoginSvg.classList.add("pointer-events-none");
+});
+
+elements.loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const loginFormData = new FormData(event.target);
+
+  try {
+    const response = await fetch("../../controllers/login_controller.php", {
+      method: "POST",
+      body: loginFormData,
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      toggleVisibility(elements.loginErrorContainer, false);
+      alert(result.message);
+      window.location.href = "../meal_page/meal_page.php";
+    } else {
+      elements.loginErrorContainer.innerHTML = result.message;
+      toggleVisibility(elements.loginErrorContainer, true);
+    }
+  } catch (error) {
+    console.error("Network server error: " + error);
+  }
+});
+
+elements.signupForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const signupFormData = new FormData(event.target);
+
+  try {
+    const response = await fetch("../../controllers/signup_controller.php", {
+      method: "POST",
+      body: signupFormData,
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      toggleVisibility(elements.signupErrorContainer, false);
+      alert(result.message);
+      window.location.href = "../meal_page/meal_page.php";
+    } else {
+      elements.signupErrorContainer.innerHTML = result.message;
+      toggleVisibility(elements.signupErrorContainer, true);
+    }
+  } catch (error) {
+    console.error("Network server error: " + error);
+  }
 });

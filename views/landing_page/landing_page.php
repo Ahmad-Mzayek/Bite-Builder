@@ -25,6 +25,6 @@
 		include("../global/footer.php");
 		?>
 	</div>
-	<script src="landing_page.js"></script>
+	<script defer src="landing_page.js"></script>
 </body>
 </html>

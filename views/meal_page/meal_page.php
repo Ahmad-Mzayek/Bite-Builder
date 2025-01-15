@@ -7,6 +7,9 @@
 	<title>Bite Builder</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<?php include("../global/tailwind.php"); ?>
+	<link rel="stylesheet"
+		  type="text/css"
+		  href="../global/theme_switch_button.css">
 </head>
 <body class="light">
 	<?php // Hidden Popups.

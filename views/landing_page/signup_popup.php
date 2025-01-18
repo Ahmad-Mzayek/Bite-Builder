@@ -22,6 +22,7 @@
 			   placeholder="Username"
 			   required
 			   autocomplete="username"
+			   minlength="8"
 			   maxlength="32">
 		<input type="email"
 			   name="email_input"
@@ -33,11 +34,13 @@
 			   name="password_input"
 			   placeholder="Password"
 			   required
+			   minlength="8"
 			   maxlength="64">
 		<input type="password"
 			   name="confirm_password_input"
 			   placeholder="Confirm Password"
 			   required
+			   minlength="8"
 			   maxlength="64">
 		<input type="submit"
 			   value="SIGNUP">

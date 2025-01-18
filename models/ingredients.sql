@@ -1,12 +1,3 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     10/01/2025 8:12:30 PM                        */
-/*==============================================================*/
-
-
-/*==============================================================*/
-/* Table: Ingredients                                           */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS Ingredients
 (
    id   INT         NOT NULL,
@@ -18,4 +9,3 @@ CREATE TABLE IF NOT EXISTS Ingredients
 );
 
 CREATE INDEX IDX_INGREDIENTS_TYPE ON Ingredients (type);
-

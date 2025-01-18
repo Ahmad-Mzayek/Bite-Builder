@@ -14,25 +14,34 @@
 	</svg>
 	<form id="signup-form"
 		  class="flex w-full flex-col items-center space-y-2">
-          <div id="signup-error-container" class="hidden w-full p-2 bg-red-500 text-white font-bold"></div>
+          <div id="signup-error-container"
+		  	   class="hidden w-full p-2 bg-red-500 text-white font-bold">
+		  </div>
 		<input type="text"
-			   name="name"
-			   placeholder="Name"
+			   name="username_input"
+			   placeholder="Username"
 			   required
-			   autocomplete="name">
+			   autocomplete="username"
+			   minlength="8"
+			   maxlength="32">
 		<input type="email"
-			   name="email"
-			   placeholder="Email"
+			   name="email_input"
+			   placeholder="Email Address"
 			   required
-			   autocomplete="email">
+			   autocomplete="email"
+			   maxlength="64">
 		<input type="password"
-			   name="password"
+			   name="password_input"
 			   placeholder="Password"
-			   required>
+			   required
+			   minlength="8"
+			   maxlength="64">
 		<input type="password"
-			   name="confirm_password"
+			   name="confirm_password_input"
 			   placeholder="Confirm Password"
-			   required>
+			   required
+			   minlength="8"
+			   maxlength="64">
 		<input type="submit"
 			   value="SIGNUP">
 	</form>

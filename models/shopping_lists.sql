@@ -1,12 +1,3 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     10/01/2025 8:12:30 PM                        */
-/*==============================================================*/
-
-
-/*==============================================================*/
-/* Table: Shopping_Lists                                        */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS Shopping_Lists
 (
    user_id       INT NOT NULL,
@@ -18,4 +9,3 @@ CREATE TABLE IF NOT EXISTS Shopping_Lists
 );
 
 CREATE INDEX IDX_SHOPPING_LISTS_INGREDIENT_ID ON Shopping_Lists (ingredient_id);
-

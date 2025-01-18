@@ -1,6 +1,3 @@
-/*==============================================================*/
-/* Table: Meal_Ingredients                                      */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS Meal_Ingredients
 (
    meal_id       INT NOT NULL,

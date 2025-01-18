@@ -78,17 +78,13 @@ elements.resetPasswordButton.addEventListener("click", () => {
 
 elements.loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   const loginFormData = new FormData(event.target);
-
   try {
-    const response = await fetch("../../controllers/login_controller.php", {
+    const response = await fetch("../../controllers/login_controller/login_controller_main.php", {
       method: "POST",
-      body: loginFormData,
+      body: loginFormData
     });
-
     const result = await response.json();
-
     if (result.status === "success") {
       toggleVisibility(elements.loginErrorContainer, false);
       alert(result.message);
@@ -104,21 +100,17 @@ elements.loginForm.addEventListener("submit", async (event) => {
 
 elements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   const signupFormData = new FormData(event.target);
-
   try {
-    const response = await fetch("../../controllers/signup_controller.php", {
+    const response = await fetch("../../controllers/signup_controller/signup_controller_main.php", {
       method: "POST",
-      body: signupFormData,
+      body: signupFormData
     });
-
     const result = await response.json();
-
     if (result.status === "success") {
       toggleVisibility(elements.signupErrorContainer, false);
       alert(result.message);
-      window.location.href = "../meal_page/meal_page.php";
+      window.location.href = "landing_page.php";
     } else {
       elements.signupErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.signupErrorContainer, true);

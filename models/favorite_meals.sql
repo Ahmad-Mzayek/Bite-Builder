@@ -1,6 +1,3 @@
-/*==============================================================*/
-/* Table: Favorite_Meals                                        */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS Favorite_Meals
 (
    user_id INT NOT NULL,

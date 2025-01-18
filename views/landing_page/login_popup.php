@@ -14,17 +14,21 @@
     </svg>
     <form id="login-form"
           class="flex w-full flex-col items-center space-y-2">
-          <div id="login-error-container" class="hidden w-full p-2 bg-red-500 text-white font-bold"></div>
+          <div id="login-error-container"
+               class="hidden w-full p-2 bg-red-500 text-white font-bold">
+          </div>
         <input type="text"
-               name="login"
+               name="login_input"
                placeholder="Login"
                required
-               autocomplete="name">
+               autocomplete="email"
+               maxlength="64">
         <input type="password"
-               name="password"
+               name="password_input"
                placeholder="Password"
                required
-               autocomplete="current-password">
+               autocomplete="current-password"
+               maxlength="64">
         <input type="submit"
                value="LOGIN">
     </form>

@@ -1,8 +1,3 @@
-/*==============================================================*/
-/* Table: USERS                                                 */
-/*==============================================================*/
-
-
 CREATE TABLE IF NOT EXISTS Users
 (
    id                    INT AUTO_INCREMENT NOT NULL,
@@ -14,4 +9,3 @@ CREATE TABLE IF NOT EXISTS Users
    username_last_updated DATETIME           NOT NULL,
    CONSTRAINT USERS_PK PRIMARY KEY (id)
 );
-

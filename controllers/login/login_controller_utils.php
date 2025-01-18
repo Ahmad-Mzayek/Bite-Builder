@@ -14,10 +14,10 @@ function fetch_input() : array // ----------------------------------------------
 {
     if ($_SERVER["REQUEST_METHOD"] !== "POST")
         throw new Exception("Invalid request method.");
-    if (!isset($_POST["login"], $_POST["password"]))
-        throw new Exception("Malformed request: Missing login or password.");
-    $login_input = trim($_POST["login"]);
-    $password_input = trim($_POST["password"]);
+    $login_input = trim($_POST["login_input"]);
+    $password_input = trim($_POST["password_input"]);
+    if (!isset($login_input, $password_input))
+        throw new Exception("Malformed request: Missing credentials.");
     if (empty($login_input) || empty($password_input))
         throw new Exception("Credentials cannot be blank!");
     if (strlen($login_input) > 255 || strlen($password_input) > 255)

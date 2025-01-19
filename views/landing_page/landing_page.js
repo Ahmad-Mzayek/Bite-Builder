@@ -95,14 +95,13 @@ elements.loginForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.loginErrorContainer, true);
     }
   } catch (error) {
-    console.error("Network server error: " + error);
+    console.error("Internal server error: " + error);
   }
 });
 
 elements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
-
   try {
     const response = await fetch("../../controllers/signup_controller/signup_controller_main.php", {
       method: "POST",
@@ -110,9 +109,9 @@ elements.signupForm.addEventListener("submit", async (event) => {
     });
     const result = await response.json();
     if (result.status === "success") {
-      toggleVisibility(elements.signupErrorContainer, false);
       alert(result.message);
-      window.location.href = "landing_page.php";
+      toggleVisibility(elements.signupErrorContainer, false);
+      switchPopup(elements.loginPopup, elements.signupPopup);
     } else {
       elements.signupErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.signupErrorContainer, true);

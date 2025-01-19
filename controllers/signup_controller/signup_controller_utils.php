@@ -43,6 +43,7 @@ function validate_username(string $username_input) : void // -------------------
         throw new Exception("Database query preparation failed: " . $database_connection->error);
     $statement->bind_param("s", $username_input);
     execute_statement($statement);
+    $statement->store_result();
     if ($statement->num_rows > 0)
     {
         $statement->close();
@@ -60,6 +61,7 @@ function validate_email(string $email_input) : void // -------------------------
         throw new Exception("Database query preparation failed: " . $database_connection->error);
     $statement->bind_param("s", $email_input);
     execute_statement($statement);
+    $statement->store_result();
     if ($statement->num_rows > 0)
     {
         $statement->close();
@@ -93,6 +95,7 @@ function insert_user_info(string $username_input, string $email_input, string $h
     $current_date_time = date("Y-m-d H:i:s");
     $statement->bind_param("ssss", $username_input, $email_input, $hashed_password, $current_date_time);
     execute_statement($statement);
+    $statement->store_result();
     $statement->close();
 }
 ?>

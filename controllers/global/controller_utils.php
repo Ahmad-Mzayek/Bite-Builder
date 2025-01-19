@@ -21,6 +21,5 @@ function send_response(string $status, string $message) : void // --------------
 {
     $response = ["status" => $status, "message" => $message];
     echo json_encode($response);
-    exit;
 }
 ?>

@@ -82,9 +82,10 @@ elements.loginForm.addEventListener("submit", async (event) => {
   try {
     const response = await fetch("../../controllers/login_controller/login_controller_main.php", {
       method: "POST",
-      body: loginFormData
+      body: loginFormData,
     });
     const result = await response.json();
+    window.location;
     if (result.status === "success") {
       toggleVisibility(elements.loginErrorContainer, false);
       alert(result.message);
@@ -101,10 +102,11 @@ elements.loginForm.addEventListener("submit", async (event) => {
 elements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
+
   try {
     const response = await fetch("../../controllers/signup_controller/signup_controller_main.php", {
       method: "POST",
-      body: signupFormData
+      body: signupFormData,
     });
     const result = await response.json();
     if (result.status === "success") {
@@ -116,6 +118,6 @@ elements.signupForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.signupErrorContainer, true);
     }
   } catch (error) {
-    console.error("Network server error: " + error);
+    console.error("Internal server error: " + error.message);
   }
 });

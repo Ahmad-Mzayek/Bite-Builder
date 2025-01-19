@@ -1,4 +1,5 @@
 <?php
+include("../global/controller_utils.php");
 include("../../models/DatabaseConnectionSingleton.php");
 
 define("EMAIL_PATTERN", "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/");
@@ -11,13 +12,9 @@ function handle_signup() : void // ---------------------------------------------
     validate_username($username_input);
     validate_email($email_input);
     $hashed_password = validate_password($password_input);
-    $current_date_time = date("Y-m-d H:i:s");
-    $query = "INSERT INTO Users (username, email, hashed_password, username_last_updated) VALUES (?, ?, ?, ?)";
+    insert_user_info($username_input, $email_input, $hashed_password);
     global $database_connection;
-    $statement = $database_connection->prepare($query);
-    $statement->bind_param("ssss", $username_input, $email_input, $hashed_password, $current_date_time);
-    if (!$statement->execute())
-        throw new Exception("Unable to register user.");
+    $database_connection->close();
 }
 
 function fetch_input() : array // ---------------------------------------------------------------------------------------------
@@ -28,43 +25,51 @@ function fetch_input() : array // ----------------------------------------------
     $username_input = $_POST["username_input"];
     $password_input = $_POST["password_input"];
     $confirm_password_input = $_POST["confirm_password_input"];
-    if (!isset($email_input, $username_input, $password_input, $confirm_password_input))
-        throw new Exception("Malformed request: Missing credentials.");
+    if (empty($email_input) || empty($username_input) || empty($password_input) || empty($confirm_password_input))
+        throw new Exception("Credentials cannot be blank.");
     if (!preg_match(EMAIL_PATTERN, $email_input))
-        throw new Exception("Invalid email format!");
+        throw new Exception("Invalid email format.");
     if ($password_input != $confirm_password_input)
-        throw new Exception("Please make sure your passwords match.");
+        throw new Exception("Passwords do not match.");
     return array($username_input, $email_input, $password_input);
 }
 
 function validate_username(string $username_input) : void // ------------------------------------------------------------------
 {
     global $database_connection;
-    $query = "SELECT * FROM Users WHERE username = ?";
+    $query = "SELECT * FROM users WHERE username = ?";
     $statement = $database_connection->prepare($query);
+    if (!$statement)
+        throw new Exception("Database query preparation failed: " . $database_connection->error);
     $statement->bind_param("s", $username_input);
-    $statement->execute();
-    $statement->store_result();
+    execute_statement($statement);
     if ($statement->num_rows > 0)
-        throw new Exception("Username already exists!");
+    {
+        $statement->close();
+        throw new Exception("Username already exists.");
+    }
+    $statement->close();
 }
 
 function validate_email(string $email_input) : void // ------------------------------------------------------------------------
 {
     global $database_connection;
-    $query = "SELECT * FROM Users WHERE email = ?";
+    $query = "SELECT * FROM users WHERE email = ?";
     $statement = $database_connection->prepare($query);
+    if (!$statement)
+        throw new Exception("Database query preparation failed: " . $database_connection->error);
     $statement->bind_param("s", $email_input);
-    $statement->execute();
-    $statement->store_result();
+    execute_statement($statement);
     if ($statement->num_rows > 0)
-        throw new Exception("Email already exists!");
+    {
+        $statement->close();
+        throw new Exception("Email already exists.");
+    }
+    $statement->close();
 }
 
 function validate_password(string $password_input) : string // ----------------------------------------------------------------
 {
-    if (strlen($password_input) < 8 || strlen($password_input) > 64)
-        throw new Exception("Password must be between 8 and 64 characters long.");
     if (!preg_match("/[A-Z]/", $password_input))
         throw new Exception("Password must contain at least one uppercase letter.");
     if (!preg_match("/[a-z]/", $password_input))
@@ -78,8 +83,16 @@ function validate_password(string $password_input) : string // -----------------
     return hash("sha256", $password_input);
 }
 
-function send_response(string $status, string $message) : void // -------------------------------------------------------------
+function insert_user_info(string $username_input, string $email_input, string $hashed_password) : void // ---------------------
 {
-    echo json_encode(["status" => $status, "message" => $message]);
+    $query = "INSERT INTO users (username, email, hashed_password, username_last_updated) VALUES (?, ?, ?, ?)";
+    global $database_connection;
+    $statement = $database_connection->prepare($query);
+    if (!$statement)
+        throw new Exception("Database query preparation failed: " . $database_connection->error);
+    $current_date_time = date("Y-m-d H:i:s");
+    $statement->bind_param("ssss", $username_input, $email_input, $hashed_password, $current_date_time);
+    execute_statement($statement);
+    $statement->close();
 }
 ?>

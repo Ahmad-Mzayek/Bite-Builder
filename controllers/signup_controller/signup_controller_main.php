@@ -10,6 +10,6 @@ try
 }
 catch (Exception $exception)
 {
-    send_response('error', $exception->getMessage());
+    send_response("error", $exception->getMessage());
 }
 ?>

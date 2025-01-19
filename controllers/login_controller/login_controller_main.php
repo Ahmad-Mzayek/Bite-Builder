@@ -1,4 +1,4 @@
-<?php // Main.
+<?php
 include("login_controller_utils.php");
 
 header("Content-Type: application/json");
@@ -11,6 +11,6 @@ try
 }
 catch (Exception $exception)
 {
-    send_response('error', $exception->getMessage());
+    send_response("error", $exception->getMessage());
 }
 ?>

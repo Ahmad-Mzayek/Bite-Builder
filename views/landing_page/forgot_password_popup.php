@@ -22,7 +22,8 @@
 			   name="password_reset_email"
 			   placeholder="Email"
 			   required
-			   autocomplete="email">
+			   autocomplete="email"
+			   maxlength="64">
 		<input class="self-end p-2 mt-8"
 			   type="submit"
 			   value="SUBMIT">

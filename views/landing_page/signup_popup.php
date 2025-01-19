@@ -40,7 +40,6 @@
 			   name="confirm_password_input"
 			   placeholder="Confirm Password"
 			   required
-			   minlength="8"
 			   maxlength="64">
 		<input type="submit"
 			   value="SIGNUP">

@@ -1,8 +1,8 @@
 <?php
-define("DB_USER", "");
-define("DB_PASS", "");
+define("DB_USER", "amir");
+define("DB_PASS", "1234");
 define("DB_URL", "127.0.0.1");
-define("DB_NAME", "bite_builder");
+define("DB_NAME", "test2");
 
 class DatabaseConnectionSingleton
 {
@@ -37,8 +37,8 @@ class DatabaseConnectionSingleton
         return $this->connection ? mysqli_ping($this->connection) : false;
     }
 
-    private function __clone() : void {} // -----------------------------------------------------------------------------------
+    public function __clone() : void {} // -----------------------------------------------------------------------------------
 
-    private function __wakeup() : void {} // ----------------------------------------------------------------------------------
+    public function __wakeup() : void {} // ----------------------------------------------------------------------------------
 }
 ?>

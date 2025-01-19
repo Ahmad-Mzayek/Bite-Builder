@@ -11,7 +11,7 @@
 		  type="text/css"
 		  href="../global/theme_switch_button.css">
 </head>
-<body class="light">
+<body class="dark">
 	<?php // Hidden Popups.
 	include("../global/overlay.php");
 	include("login_popup.php");

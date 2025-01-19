@@ -1,4 +1,5 @@
 <?php
+include("../global/controller_utils.php");
 include("../../models/DatabaseConnectionSingleton.php");
 
 define("EMAIL_PATTERN", "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/");
@@ -93,20 +94,5 @@ function insert_user_info(string $username_input, string $email_input, string $h
     $statement->bind_param("ssss", $username_input, $email_input, $hashed_password, $current_date_time);
     execute_statement($statement);
     $statement->close();
-}
-
-function execute_statement(mysqli_stmt $statement) : void // ------------------------------------------------------------------
-{
-    if (!$statement->execute())
-    {
-        $error_message = "Database query execution failed: " . $statement->error;
-        $statement->close();
-        throw new Exception($error_message);
-    }
-}
-
-function send_response(string $status, string $message) : void // -------------------------------------------------------------
-{
-    echo json_encode(["status" => $status, "message" => $message]);
 }
 ?>

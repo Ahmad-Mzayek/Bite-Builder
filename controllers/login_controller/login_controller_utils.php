@@ -1,4 +1,5 @@
 <?php
+include("../global/controller_utils.php");
 include("../../models/DatabaseConnectionSingleton.php");
 
 function handle_login() : string // -------------------------------------------------------------------------------------------
@@ -42,28 +43,5 @@ function fetch_user_info(string $login_input) : ?array // ----------------------
 function validate_password(string $password_input, string $hashed_password) : bool // -----------------------------------------
 {
     return hash("sha256", $password_input) === $hashed_password;
-}
-
-function execute_statement(mysqli_stmt $statement) : void // ------------------------------------------------------------------
-{
-    if (!$statement->execute())
-    {
-        $error_message = "Database query execution failed: " . $statement->error;
-        $statement->close();
-        throw new Exception($error_message);
-    }
-}
-
-function start_user_session(string $username) : void // -----------------------------------------------------------------------
-{
-    session_start();
-    session_regenerate_id(true);
-    $_SESSION["username"] = $username;
-    $_SESSION["user_logged_in"] = true;
-}
-
-function send_response(string $status, string $message) : void // -------------------------------------------------------------
-{
-    echo json_encode(["status" => $status, "message" => $message]);
 }
 ?>

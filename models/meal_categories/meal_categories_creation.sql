@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EMPTY meal_categories
+CREATE TABLE IF NOT EXISTS meal_categories
 (
     id      INT             NOT NULL    AUTO_INCREMENT,
     name    VARCHAR(32)     NOT NULL,

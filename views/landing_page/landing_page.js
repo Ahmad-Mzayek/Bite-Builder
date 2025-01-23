@@ -104,14 +104,13 @@ elements.loginForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.loginErrorContainer, true);
     }
   } catch (error) {
-    console.error("Internal server error: " + error.message);
+    console.error("Internal server error: " + error);
   }
 });
 
 elements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
-
   try {
     const response = await fetch("../../controllers/signup_controller/signup_controller_main.php", {
       method: "POST",
@@ -119,6 +118,7 @@ elements.signupForm.addEventListener("submit", async (event) => {
     });
     const result = await response.json();
     if (result.status === "success") {
+      alert(result.message);
       toggleVisibility(elements.signupErrorContainer, false);
       switchElements(elements.loginPopup, elements.signupPopup);
       toggleVisibility(elements.signupSuccessContainer, true);

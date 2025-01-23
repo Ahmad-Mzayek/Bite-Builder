@@ -1,9 +1,10 @@
 <?php
 header("Content-Type: application/json");
 
+include("signup_controller_utils.php");
+
 try
 {
-    include("signup_controller_utils.php");
     handle_signup();
     send_response("success", "Signup successful!");
 }

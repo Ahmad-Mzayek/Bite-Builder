@@ -1,0 +1,1 @@
+-- Individual unique indexes for username, email, phone_number --

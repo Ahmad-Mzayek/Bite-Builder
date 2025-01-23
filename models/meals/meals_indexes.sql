@@ -1,0 +1,1 @@
+-- Probably composite index on all columns of type "BOOLEAN" --

@@ -1,10 +1,10 @@
 <?php
 header("Content-Type: application/json");
 
+include("login_controller_utils.php");
 
 try
 {
-    include("login_controller_utils.php");
     $username = handle_login();
     start_user_session($username);
     send_response("success", "Login successful!");

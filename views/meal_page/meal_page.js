@@ -1,0 +1,1 @@
+// The Inventor of Javascript should be tortured and killed.

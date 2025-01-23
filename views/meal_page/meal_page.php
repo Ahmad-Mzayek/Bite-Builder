@@ -12,11 +12,17 @@
 		  href="../global/theme_switch_button.css">
 </head>
 <body class="light">
-	<?php // Hidden Popups.
+	<?php
 	include("../global/overlay.php");
-	?>
-    <?php // Body.
     include("meal_page_header.php");
+	?>
+	<div> <!-- Add CSS: LinearLayout with 2 columns, orientation: horizontal  -->
+		<?php
+		include("meal_page_body.php");	// CSS: layout_weight = 3.
+		include("shopping_list.php");	// CSS: layout_weight = 1.
+		?>
+	</div>
+	<?php
     include("../global/footer.php");
     ?>
 	<script src="meal_page.js"></script>

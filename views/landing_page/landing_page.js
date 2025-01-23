@@ -11,10 +11,15 @@ const elements = {
   themeSwitchButton: document.querySelector("#theme-switch-button"),
   loginSignupButton: document.querySelector("#login-signup-button"),
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
+  showPasswordIcon: document.querySelectorAll(".show-password-icon"),
+  passwordInput: document.querySelectorAll(".password-input"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
   loginErrorContainer: document.querySelector("#login-error-container"),
   signupErrorContainer: document.querySelector("#signup-error-container"),
+  showPasswordIconTrue: document.querySelectorAll(".show-password-icon-true"),
+  signupSuccessContainer: document.querySelector("#signup-success-container"),
+  showPasswordIconFalse: document.querySelectorAll(".show-password-icon-false"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
 };
 
@@ -27,7 +32,7 @@ const toggleVisibility = (element, show) => {
   element.classList.toggle("flex", show);
 };
 
-const switchPopup = (popupToShow, popupToHide) => {
+const switchElements = (popupToShow, popupToHide) => {
   toggleVisibility(popupToHide, false);
   toggleVisibility(popupToShow, true);
 };
@@ -63,11 +68,11 @@ elements.closeForgotPasswordSvg.addEventListener("click", () => {
 });
 
 elements.showLoginButton.addEventListener("click", () => {
-  switchPopup(elements.loginPopup, elements.signupPopup);
+  switchElements(elements.loginPopup, elements.signupPopup);
 });
 
 elements.showSignupButton.addEventListener("click", () => {
-  switchPopup(elements.signupPopup, elements.loginPopup);
+  switchElements(elements.signupPopup, elements.loginPopup);
 });
 
 elements.resetPasswordButton.addEventListener("click", () => {
@@ -95,7 +100,7 @@ elements.loginForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.loginErrorContainer, true);
     }
   } catch (error) {
-    console.error("Network server error: " + error);
+    console.error("Internal server error: " + error.message);
   }
 });
 
@@ -111,8 +116,8 @@ elements.signupForm.addEventListener("submit", async (event) => {
     const result = await response.json();
     if (result.status === "success") {
       toggleVisibility(elements.signupErrorContainer, false);
-      alert(result.message);
-      window.location.href = "landing_page.php";
+      switchElements(elements.loginPopup, elements.signupPopup);
+      toggleVisibility(elements.signupSuccessContainer, true);
     } else {
       elements.signupErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.signupErrorContainer, true);
@@ -120,4 +125,19 @@ elements.signupForm.addEventListener("submit", async (event) => {
   } catch (error) {
     console.error("Internal server error: " + error.message);
   }
+});
+
+elements.showPasswordIcon.forEach((icon) => {
+  icon.addEventListener("click", () => {
+    if (elements.showPasswordIconTrue.classList.contains("flex")) {
+      switchElements(elements.showPasswordIconFalse, elements.showPasswordIconTrue);
+    } else {
+      switchElements(elements.showPasswordIconTrue, elements.showPasswordIconFalse);
+    }
+    elements.passwordInput.forEach((input) => {
+      input.getAttribute("type") === "password"
+        ? input.setAttribute("type", "text")
+        : input.setAttribute("type", "password");
+    });
+  });
 });

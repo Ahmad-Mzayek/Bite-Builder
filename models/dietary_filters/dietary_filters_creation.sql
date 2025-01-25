@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS dietary_filters
     is_high_protein     BOOLEAN     NOT NULL    DEFAULT FALSE,
     is_keto_friendly	BOOLEAN     NOT NULL    DEFAULT FALSE,
 
-    CONSTRAINT primary_key_dietary_filters PRIMARY KEY (is_user_diet, id)
+    CONSTRAINT primary_key_dietary_filters PRIMARY KEY (id)
 );

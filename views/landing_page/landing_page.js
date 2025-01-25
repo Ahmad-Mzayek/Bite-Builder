@@ -11,11 +11,20 @@ const elements = {
   themeSwitchButton: document.querySelector("#theme-switch-button"),
   loginSignupButton: document.querySelector("#login-signup-button"),
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
+  showPasswordIcons: document.querySelectorAll(".show-password-icon"),
+  passwordInputs: document.querySelectorAll(".password-input"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
   loginErrorContainer: document.querySelector("#login-error-container"),
   signupErrorContainer: document.querySelector("#signup-error-container"),
+  confirmPasswordInputs: document.querySelectorAll(".confirm-password-input"),
+  showPasswordIconsTrue: document.querySelectorAll(".show-password-icon-true"),
+  signupSuccessContainer: document.querySelector("#signup-success-container"),
+  showPasswordIconsFalse: document.querySelectorAll(".show-password-icon-false"),
+  showConfirmPasswordIcons: document.querySelectorAll(".show-confirm-password-icon"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
+  showConfirmPasswordIconsTrue: document.querySelectorAll(".show-confirm-password-icon-true"),
+  showConfirmPasswordIconsFalse: document.querySelectorAll(".show-confirm-password-icon-false"),
 };
 
 // UI Theme Switcher Variable.
@@ -27,7 +36,7 @@ const toggleVisibility = (element, show) => {
   element.classList.toggle("flex", show);
 };
 
-const switchPopup = (popupToShow, popupToHide) => {
+const switchElements = (popupToShow, popupToHide) => {
   toggleVisibility(popupToHide, false);
   toggleVisibility(popupToShow, true);
 };
@@ -63,11 +72,11 @@ elements.closeForgotPasswordSvg.addEventListener("click", () => {
 });
 
 elements.showLoginButton.addEventListener("click", () => {
-  switchPopup(elements.loginPopup, elements.signupPopup);
+  switchElements(elements.loginPopup, elements.signupPopup);
 });
 
 elements.showSignupButton.addEventListener("click", () => {
-  switchPopup(elements.signupPopup, elements.loginPopup);
+  switchElements(elements.signupPopup, elements.loginPopup);
 });
 
 elements.resetPasswordButton.addEventListener("click", () => {
@@ -95,7 +104,7 @@ elements.loginForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.loginErrorContainer, true);
     }
   } catch (error) {
-    console.error("Internal server error: " + error);
+    console.error("Internal server error: " + error.message);
   }
 });
 
@@ -109,9 +118,8 @@ elements.signupForm.addEventListener("submit", async (event) => {
     });
     const result = await response.json();
     if (result.status === "success") {
-      alert(result.message);
-      toggleVisibility(elements.signupErrorContainer, false);
-      switchPopup(elements.loginPopup, elements.signupPopup);
+      switchElements(elements.signupSuccessContainer, elements.signupErrorContainer);
+      switchElements(elements.loginPopup, elements.signupPopup);
     } else {
       elements.signupErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.signupErrorContainer, true);
@@ -119,4 +127,93 @@ elements.signupForm.addEventListener("submit", async (event) => {
   } catch (error) {
     console.error("Internal server error: " + error.message);
   }
+});
+
+elements.showPasswordIcons.forEach((icon) => {
+  icon.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (elements.showPasswordIconsTrue[0].classList.contains("flex")) {
+      switchElements(elements.showPasswordIconsFalse[0], elements.showPasswordIconsTrue[0]);
+      switchElements(elements.showPasswordIconsFalse[1], elements.showPasswordIconsTrue[1]);
+    } else {
+      switchElements(elements.showPasswordIconsTrue[0], elements.showPasswordIconsFalse[0]);
+      switchElements(elements.showPasswordIconsTrue[1], elements.showPasswordIconsFalse[1]);
+    }
+
+    elements.passwordInputs.forEach((input) => {
+      input.getAttribute("type") === "password"
+        ? input.setAttribute("type", "text")
+        : input.setAttribute("type", "password");
+    });
+  });
+});
+
+elements.showConfirmPasswordIcons.forEach((icon) => {
+  icon.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (elements.showConfirmPasswordIconsTrue[0].classList.contains("flex")) {
+      switchElements(
+        elements.showConfirmPasswordIconsFalse[0],
+        elements.showConfirmPasswordIconsTrue[0]
+      );
+    } else {
+      switchElements(
+        elements.showConfirmPasswordIconsTrue[0],
+        elements.showConfirmPasswordIconsFalse[0]
+      );
+    }
+    elements.confirmPasswordInputs.forEach((input) => {
+      input.getAttribute("type") === "password"
+        ? input.setAttribute("type", "text")
+        : input.setAttribute("type", "password");
+    });
+  });
+});
+
+elements.passwordInputs.forEach((input) => {
+  input.addEventListener("focusin", () => {
+    input.getAttribute("type") == "password"
+      ? elements.showPasswordIconsTrue.forEach((icon) => {
+          toggleVisibility(icon, true);
+        })
+      : elements.showPasswordIconsFalse.forEach((icon) => {
+          toggleVisibility(icon, true);
+        });
+  });
+
+  input.addEventListener("blur", (event) => {
+    input.getAttribute("type") == "password"
+      ? elements.showPasswordIconsTrue.forEach((icon) => {
+          toggleVisibility(icon, false);
+        })
+      : elements.showPasswordIconsFalse.forEach((icon) => {
+          toggleVisibility(icon, false);
+        });
+  });
+});
+
+elements.confirmPasswordInputs.forEach((input) => {
+  input.addEventListener("focusin", () => {
+    input.getAttribute("type") == "password"
+      ? elements.showConfirmPasswordIconsTrue.forEach((icon) => {
+          toggleVisibility(icon, true);
+        })
+      : elements.showConfirmPasswordIconsFalse.forEach((icon) => {
+          toggleVisibility(icon, true);
+        });
+  });
+
+  input.addEventListener("blur", (event) => {
+    input.getAttribute("type") == "password"
+      ? elements.showConfirmPasswordIconsTrue.forEach((icon) => {
+          toggleVisibility(icon, false);
+        })
+      : elements.showConfirmPasswordIconsFalse.forEach((icon) => {
+          toggleVisibility(icon, false);
+        });
+  });
 });

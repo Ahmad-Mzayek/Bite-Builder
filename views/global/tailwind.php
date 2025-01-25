@@ -32,5 +32,15 @@
     input[type="submit"] {
       @apply bg-blue-800 text-white px-6 py-4 text-nowrap transition hover:bg-blue-900 cursor-pointer rounded-lg text-lg md:text-xl lg:text-xl tracking-[.1rem]
     }
+
+    svg {
+      fill: blue;
+      opacity: 0.25;
+      transition: all 0.3s ease-in-out;
+    }
+
+    svg:hover {
+      opacity: 1;
+    }
   }
 </style>

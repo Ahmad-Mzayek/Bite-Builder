@@ -1,6 +1,5 @@
 CREATE TABLE IF NOT EXISTS dietary_filters
 (
-    is_user_diet        BOOLEAN     NOT NULL,
     id                  INT         NOT NULL    AUTO_INCREMENT,
     is_halal		    BOOLEAN     NOT NULL    DEFAULT FALSE,
     is_organic			BOOLEAN     NOT NULL    DEFAULT FALSE,

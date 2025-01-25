@@ -104,7 +104,7 @@ elements.loginForm.addEventListener("submit", async (event) => {
       toggleVisibility(elements.loginErrorContainer, true);
     }
   } catch (error) {
-    console.error("Internal server error: " + error);
+    console.error("Internal server error: " + error.message);
   }
 });
 
@@ -151,7 +151,7 @@ elements.showPasswordIcon.forEach((icon) => {
 });
 
 elements.showConfirmPasswordIcon.forEach((icon) => {
-  icon.addEventListener("click", () => {
+  icon.addEventListener("click", (event) => {
     event.stopPropagation();
 
     if (elements.showConfirmPasswordIconTrue[0].classList.contains("flex")) {
@@ -170,5 +170,55 @@ elements.showConfirmPasswordIcon.forEach((icon) => {
         ? input.setAttribute("type", "text")
         : input.setAttribute("type", "password");
     });
+  });
+});
+
+elements.passwordInput.forEach((input) => {
+  input.addEventListener("focusin", () => {
+    input.getAttribute("type") == "password"
+      ? elements.showPasswordIconTrue.forEach((icon) => {
+          toggleVisibility(icon, true);
+        })
+      : elements.showPasswordIconFalse.forEach((icon) => {
+          toggleVisibility(icon, true);
+        });
+  });
+
+  input.addEventListener("focusout", (event) => {
+    if (event.relatedTarget && event.relatedTarget.classList.contains("show-password-icon")) return;
+    setTimeout(() => {
+      input.getAttribute("type") == "password"
+        ? elements.showPasswordIconTrue.forEach((icon) => {
+            toggleVisibility(icon, false);
+          })
+        : elements.showPasswordIconFalse.forEach((icon) => {
+            toggleVisibility(icon, false);
+          });
+    }, 120);
+  });
+});
+
+elements.confirmPasswordInput.forEach((input) => {
+  input.addEventListener("focusin", () => {
+    input.getAttribute("type") == "password"
+      ? elements.showConfirmPasswordIconTrue.forEach((icon) => {
+          toggleVisibility(icon, true);
+        })
+      : elements.showConfirmPasswordIconFalse.forEach((icon) => {
+          toggleVisibility(icon, true);
+        });
+  });
+
+  input.addEventListener("focusout", (event) => {
+    if (event.relatedTarget && event.relatedTarget.classList.contains("show-password-icon")) return;
+    setTimeout(() => {
+      input.getAttribute("type") == "password"
+        ? elements.showConfirmPasswordIconTrue.forEach((icon) => {
+            toggleVisibility(icon, false);
+          })
+        : elements.showConfirmPasswordIconFalse.forEach((icon) => {
+            toggleVisibility(icon, false);
+          });
+    }, 120);
   });
 });

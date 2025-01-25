@@ -1,11 +1,10 @@
 CREATE TABLE IF NOT EXISTS ingredients
 (
-   id                   INT            NOT NULL    AUTO_INCREMENT,
-   type_id              INT            NOT NULL,
-   measurement_unit_id  INT,
    name                 VARCHAR(32)    NOT NULL    UNIQUE,
+   type                 VARCHAR(32)    NOT NULL,
+   measurement_unit     VARCHAR(32),
 
-   CONSTRAINT primary_key_ingredients PRIMARY KEY (id),
-   CONSTRAINT foreign_key_ingredients_type_id FOREIGN KEY (type_id) REFERENCES ingredient_types(id),
-   CONSTRAINT foreign_key_ingredients_measurement_unit_id FOREIGN KEY (measurement_unit_id) REFERENCES measurement_units(id)
+   CONSTRAINT primary_key_ingredients PRIMARY KEY (name),
+   CONSTRAINT foreign_key_ingredients_type FOREIGN KEY (type) REFERENCES ingredient_types(name),
+   CONSTRAINT foreign_key_ingredients_measurement_unit FOREIGN KEY (measurement_unit) REFERENCES measurement_units(name_singular)
 );

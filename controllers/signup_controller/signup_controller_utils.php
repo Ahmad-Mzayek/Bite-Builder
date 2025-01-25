@@ -82,6 +82,8 @@ function validate_and_hash_password(string $password_input) : string // --------
 
 function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // -------------
 {
+    // Should insert a row into "dietary_filters" first, then get the id, then insert user row based on the id.
+    // To be done on Sunday, January 26th, 2025, in the morning.
     $query = "INSERT INTO users(username, email_address, hashed_password, username_last_updated) VALUES (?, ?, ?, ?)";
     global $database_connection;
     $statement = $database_connection->prepare($query);

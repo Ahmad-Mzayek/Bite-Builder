@@ -1,0 +1,18 @@
+INSERT INTO ingredient_types(name) VALUES
+("Nuts"),
+("Fats"),
+("Herbs"),
+("Dairy"),
+("Seeds"),
+("Baked"),
+("Meats"),
+("Grains"),
+("Spices"),
+("Fruits"),
+("Legumes"),
+("Seafood"),
+("Mushrooms"),
+("Beverages"),
+("Vegetables"),
+("Condiments"),
+("Sweeteners");

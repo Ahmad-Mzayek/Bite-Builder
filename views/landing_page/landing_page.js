@@ -77,6 +77,7 @@ elements.showLoginButton.addEventListener("click", () => {
 
 elements.showSignupButton.addEventListener("click", () => {
   switchElements(elements.signupPopup, elements.loginPopup);
+  toggleVisibility(elements.loginErrorContainer, false);
 });
 
 elements.resetPasswordButton.addEventListener("click", () => {

@@ -11,20 +11,20 @@ const elements = {
   themeSwitchButton: document.querySelector("#theme-switch-button"),
   loginSignupButton: document.querySelector("#login-signup-button"),
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
-  showPasswordIcon: document.querySelectorAll(".show-password-icon"),
-  passwordInput: document.querySelectorAll(".password-input"),
+  showPasswordIcons: document.querySelectorAll(".show-password-icon"),
+  passwordInputs: document.querySelectorAll(".password-input"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
   loginErrorContainer: document.querySelector("#login-error-container"),
   signupErrorContainer: document.querySelector("#signup-error-container"),
-  confirmPasswordInput: document.querySelectorAll(".confirm-password-input"),
-  showPasswordIconTrue: document.querySelectorAll(".show-password-icon-true"),
+  confirmPasswordInputs: document.querySelectorAll(".confirm-password-input"),
+  showPasswordIconsTrue: document.querySelectorAll(".show-password-icon-true"),
   signupSuccessContainer: document.querySelector("#signup-success-container"),
-  showPasswordIconFalse: document.querySelectorAll(".show-password-icon-false"),
-  showConfirmPasswordIcon: document.querySelectorAll(".show-confirm-password-icon"),
+  showPasswordIconsFalse: document.querySelectorAll(".show-password-icon-false"),
+  showConfirmPasswordIcons: document.querySelectorAll(".show-confirm-password-icon"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
-  showConfirmPasswordIconTrue: document.querySelectorAll(".show-confirm-password-icon-true"),
-  showConfirmPasswordIconFalse: document.querySelectorAll(".show-confirm-password-icon-false"),
+  showConfirmPasswordIconsTrue: document.querySelectorAll(".show-confirm-password-icon-true"),
+  showConfirmPasswordIconsFalse: document.querySelectorAll(".show-confirm-password-icon-false"),
 };
 
 // UI Theme Switcher Variable.
@@ -118,10 +118,8 @@ elements.signupForm.addEventListener("submit", async (event) => {
     });
     const result = await response.json();
     if (result.status === "success") {
-      alert(result.message);
-      toggleVisibility(elements.signupErrorContainer, false);
+      switchElements(elements.signupSuccessContainer, elements.signupErrorContainer);
       switchElements(elements.loginPopup, elements.signupPopup);
-      toggleVisibility(elements.signupSuccessContainer, true);
     } else {
       elements.signupErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.signupErrorContainer, true);
@@ -131,18 +129,20 @@ elements.signupForm.addEventListener("submit", async (event) => {
   }
 });
 
-elements.showPasswordIcon.forEach((icon) => {
-  icon.addEventListener("click", () => {
+elements.showPasswordIcons.forEach((icon) => {
+  icon.addEventListener("pointerdown", (event) => {
+    event.preventDefault()
     event.stopPropagation();
-
-    if (elements.showPasswordIconTrue[0].classList.contains("flex")) {
-      switchElements(elements.showPasswordIconFalse[0], elements.showPasswordIconTrue[0]);
-      switchElements(elements.showPasswordIconFalse[1], elements.showPasswordIconTrue[1]);
+    
+    if (elements.showPasswordIconsTrue[0].classList.contains("flex")) {
+      switchElements(elements.showPasswordIconsFalse[0], elements.showPasswordIconsTrue[0]);
+      switchElements(elements.showPasswordIconsFalse[1], elements.showPasswordIconsTrue[1]);
     } else {
-      switchElements(elements.showPasswordIconTrue[0], elements.showPasswordIconFalse[0]);
-      switchElements(elements.showPasswordIconTrue[1], elements.showPasswordIconFalse[1]);
+      switchElements(elements.showPasswordIconsTrue[0], elements.showPasswordIconsFalse[0]);
+      switchElements(elements.showPasswordIconsTrue[1], elements.showPasswordIconsFalse[1]);
     }
-    elements.passwordInput.forEach((input) => {
+
+    elements.passwordInputs.forEach((input) => {
       input.getAttribute("type") === "password"
         ? input.setAttribute("type", "text")
         : input.setAttribute("type", "password");
@@ -150,22 +150,23 @@ elements.showPasswordIcon.forEach((icon) => {
   });
 });
 
-elements.showConfirmPasswordIcon.forEach((icon) => {
-  icon.addEventListener("click", (event) => {
+elements.showConfirmPasswordIcons.forEach((icon) => {
+  icon.addEventListener("pointerdown", (event) => {
+    event.preventDefault()
     event.stopPropagation();
-
-    if (elements.showConfirmPasswordIconTrue[0].classList.contains("flex")) {
+    
+    if (elements.showConfirmPasswordIconsTrue[0].classList.contains("flex")) {
       switchElements(
-        elements.showConfirmPasswordIconFalse[0],
-        elements.showConfirmPasswordIconTrue[0]
+        elements.showConfirmPasswordIconsFalse[0],
+        elements.showConfirmPasswordIconsTrue[0]
       );
     } else {
       switchElements(
-        elements.showConfirmPasswordIconTrue[0],
-        elements.showConfirmPasswordIconFalse[0]
+        elements.showConfirmPasswordIconsTrue[0],
+        elements.showConfirmPasswordIconsFalse[0]
       );
     }
-    elements.confirmPasswordInput.forEach((input) => {
+    elements.confirmPasswordInputs.forEach((input) => {
       input.getAttribute("type") === "password"
         ? input.setAttribute("type", "text")
         : input.setAttribute("type", "password");
@@ -173,52 +174,46 @@ elements.showConfirmPasswordIcon.forEach((icon) => {
   });
 });
 
-elements.passwordInput.forEach((input) => {
+elements.passwordInputs.forEach((input) => {
   input.addEventListener("focusin", () => {
     input.getAttribute("type") == "password"
-      ? elements.showPasswordIconTrue.forEach((icon) => {
+      ? elements.showPasswordIconsTrue.forEach((icon) => {
           toggleVisibility(icon, true);
         })
-      : elements.showPasswordIconFalse.forEach((icon) => {
+      : elements.showPasswordIconsFalse.forEach((icon) => {
           toggleVisibility(icon, true);
         });
   });
 
-  input.addEventListener("focusout", (event) => {
-    if (event.relatedTarget && event.relatedTarget.classList.contains("show-password-icon")) return;
-    setTimeout(() => {
+  input.addEventListener("blur", (event) => {
       input.getAttribute("type") == "password"
-        ? elements.showPasswordIconTrue.forEach((icon) => {
+        ? elements.showPasswordIconsTrue.forEach((icon) => {
             toggleVisibility(icon, false);
           })
-        : elements.showPasswordIconFalse.forEach((icon) => {
+        : elements.showPasswordIconsFalse.forEach((icon) => {
             toggleVisibility(icon, false);
           });
-    }, 120);
   });
 });
 
-elements.confirmPasswordInput.forEach((input) => {
+elements.confirmPasswordInputs.forEach((input) => {
   input.addEventListener("focusin", () => {
     input.getAttribute("type") == "password"
-      ? elements.showConfirmPasswordIconTrue.forEach((icon) => {
+      ? elements.showConfirmPasswordIconsTrue.forEach((icon) => {
           toggleVisibility(icon, true);
         })
-      : elements.showConfirmPasswordIconFalse.forEach((icon) => {
+      : elements.showConfirmPasswordIconsFalse.forEach((icon) => {
           toggleVisibility(icon, true);
         });
   });
 
-  input.addEventListener("focusout", (event) => {
-    if (event.relatedTarget && event.relatedTarget.classList.contains("show-password-icon")) return;
-    setTimeout(() => {
+  input.addEventListener("blur", (event) => {
       input.getAttribute("type") == "password"
-        ? elements.showConfirmPasswordIconTrue.forEach((icon) => {
+        ? elements.showConfirmPasswordIconsTrue.forEach((icon) => {
             toggleVisibility(icon, false);
           })
-        : elements.showConfirmPasswordIconFalse.forEach((icon) => {
+        : elements.showConfirmPasswordIconsFalse.forEach((icon) => {
             toggleVisibility(icon, false);
           });
-    }, 120);
   });
 });

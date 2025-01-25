@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS meal_categories
 (
-    id      INT             NOT NULL    AUTO_INCREMENT,
-    name    VARCHAR(32)     NOT NULL,
+    name    VARCHAR(32)     NOT NULL    UNIQUE,
 
-    CONSTRAINT primary_key_meal_categories PRIMARY KEY (id)
+    CONSTRAINT primary_key_meal_categories PRIMARY KEY (name)
 );

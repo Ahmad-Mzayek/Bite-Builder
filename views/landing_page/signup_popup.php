@@ -25,7 +25,7 @@
 			minlength="8"
 			maxlength="32">
 		<input type="email"
-			name="email_input"
+			name="email_address_input"
 			placeholder="Email Address"
 			required
 			autocomplete="email"

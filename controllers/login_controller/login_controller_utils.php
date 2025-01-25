@@ -25,7 +25,7 @@ function fetch_input() : array // ----------------------------------------------
 function fetch_user_info(string $login_input) : ?array // ---------------------------------------------------------------------
 {
     $query = filter_var($login_input, FILTER_VALIDATE_EMAIL)
-                ? "SELECT * FROM users WHERE email = ?"
+                ? "SELECT * FROM users WHERE email_address = ?"
                 : "SELECT * FROM users WHERE username = ?";
     $database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
     $statement = $database_connection->prepare($query);

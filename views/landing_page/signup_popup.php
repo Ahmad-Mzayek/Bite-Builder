@@ -26,7 +26,7 @@
 			required
 			maxlength="32">
 		<input type="email"
-			name="email_input"
+			name="email_address_input"
 			id="signup-email-input"
 			placeholder="Email Address"
 			required

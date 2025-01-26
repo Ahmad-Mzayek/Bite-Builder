@@ -8,11 +8,11 @@ function handle_signup() : void // ---------------------------------------------
 {
     global $database_connection;
     $database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-    [$username_input, $email_input, $password_input] = fetch_input();
+    [$username_input, $email_address_input, $password_input] = fetch_input();
     validate_username($username_input);
-    validate_email($email_input);
+    validate_email_address($email_address_input);
     $hashed_password = validate_and_hash_password($password_input);
-    insert_user_info($username_input, $email_input, $hashed_password);
+    insert_user_info($username_input, $email_address_input, $hashed_password);
     $database_connection->close();
 }
 
@@ -20,18 +20,18 @@ function fetch_input() : array // ----------------------------------------------
 {
     if ($_SERVER["REQUEST_METHOD"] !== "POST")
         throw new Exception("Invalid request method.");
-    $email_input = $_POST["email_input"];
+    $email_address_input = $_POST["email_address_input"];
     $username_input = $_POST["username_input"];
     $password_input = $_POST["password_input"];
     $confirm_password_input = $_POST["confirm_password_input"];
-    if (empty($email_input) || empty($username_input) || empty($password_input) || empty($confirm_password_input))
+    if (empty($email_address_input) || empty($username_input) || empty($password_input) || empty($confirm_password_input))
         throw new Exception("Credentials cannot be blank.");
-    $email_pattern = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
-    if (!preg_match($email_pattern, $email_input))
-        throw new Exception("Invalid email format.");
+    $email_address_pattern = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
+    if (!preg_match($email_address_pattern, $email_address_input))
+        throw new Exception("Invalid email_address format.");
     if ($password_input != $confirm_password_input)
         throw new Exception("Passwords do not match.");
-    return array($username_input, $email_input, $password_input);
+    return array($username_input, $email_address_input, $password_input);
 }
 
 function validate_username(string $username_input) : void // ------------------------------------------------------------------
@@ -50,14 +50,14 @@ function validate_username(string $username_input) : void // -------------------
         throw new Exception("Username already exists.");
 }
 
-function validate_email(string $email_input) : void // ------------------------------------------------------------------------
+function validate_email_address(string $email_address_input) : void // --------------------------------------------------------
 {
     global $database_connection;
-    $query = "SELECT * FROM users WHERE email = ?";
+    $query = "SELECT * FROM users WHERE email_address = ?";
     $statement = $database_connection->prepare($query);
     if (!$statement)
         throw new Exception("Database query preparation failed: " . $database_connection->error);
-    $statement->bind_param("s", $email_input);
+    $statement->bind_param("s", $email_address_input);
     execute_statement($statement);
     $is_unique = $statement->num_rows === 0;
     $statement->close();
@@ -80,15 +80,17 @@ function validate_and_hash_password(string $password_input) : string // --------
     return hash("sha256", $password_input);
 }
 
-function insert_user_info(string $username_input, string $email_input, string $hashed_password) : void // ---------------------
+function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // -------------
 {
-    $query = "INSERT INTO users (username, email, hashed_password, username_last_updated, is_male) VALUES (?, ?, ?, ?, 1)";
+    // Should insert a row into "dietary_filters" first, then get the id, then insert user row based on the id.
+    // To be done on Sunday, January 26th, 2025, in the morning.
+    $query = "INSERT INTO users(username, email_address, hashed_password, username_last_updated) VALUES (?, ?, ?, ?)";
     global $database_connection;
     $statement = $database_connection->prepare($query);
     if (!$statement)
         throw new Exception("Database query preparation failed: " . $database_connection->error);
     $current_date_time = date("Y-m-d H:i:s");
-    $statement->bind_param("ssss", $username_input, $email_input, $hashed_password, $current_date_time);
+    $statement->bind_param("ssss", $username_input, $email_address_input, $hashed_password, $current_date_time);
     execute_statement($statement);
     $statement->store_result();
     $statement->close();

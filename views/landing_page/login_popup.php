@@ -24,6 +24,7 @@
         <input
             type="text"
             name="login_input"
+            id="login-input"
             placeholder="Login"
             required
             autocomplete="email"
@@ -33,6 +34,7 @@
             <input type="password"
                 class="password-input"
                 name="password_input"
+                id="login-password-input"
                 placeholder="Password"
                 required
                 autocomplete="current-password"

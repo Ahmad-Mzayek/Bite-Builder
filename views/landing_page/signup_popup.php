@@ -19,13 +19,15 @@
 		</div>
 		<input type="text"
 			name="username_input"
+			id="signup-username-input"
 			placeholder="Username"
-			required
 			autocomplete="username"
 			minlength="8"
+			required
 			maxlength="32">
 		<input type="email"
 			name="email_input"
+			id="signup-email-input"
 			placeholder="Email Address"
 			required
 			autocomplete="email"
@@ -34,6 +36,7 @@
 			<input type="password"
 				class="password-input"
 				name="password_input"
+				id="signup-password-input"
 				placeholder="Password"
 				required
 				minlength="8"
@@ -52,6 +55,7 @@
 			<input type="password"
 				class="confirm-password-input"
 				name="confirm_password_input"
+				id="signup-confirm-password-input"
 				placeholder="Confirm Password"
 				required
 				maxlength="64">

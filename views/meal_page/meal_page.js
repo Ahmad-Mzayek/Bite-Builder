@@ -33,9 +33,9 @@ const switchElements = (popupToShow, popupToHide) => {
 // });
 
 elements.closeFiltersPopupButton.addEventListener("click", () => {
-	toggleVisibility(elements.overlay, false);
-	toggleVisibility(elements.mealFiltersPopup, false);
-})
+  toggleVisibility(elements.overlay, false);
+  toggleVisibility(elements.mealFiltersPopup, false);
+});
 
 elements.filterButton.addEventListener("click", async (event) => {
   event.preventDefault();
@@ -49,12 +49,15 @@ elements.filterButton.addEventListener("click", async (event) => {
   try {
     const response = await fetch("", {
       method: "POST",
-      body: requestBody,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
     });
 
     const categories = await response.json();
 
-    if (categories.status !== "success") throw new Exception("Categories not fetched.");
+    if (categories.status !== "success") throw new Error("Categories not fetched.");
 
     categories.forEach((category) => {
       categoryContainerChild = document.createElement("div");
@@ -96,9 +99,11 @@ elements.filterButton.addEventListener("click", async (event) => {
         "M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
       );
 
-	  categoryContainerChildSpan = document.createElement("span");
-	  categoryContainerChildSpan.classList.add("ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300")
-	  categoryContainerChildSpan.innerHTML = `${category.name}`;
+      categoryContainerChildSpan = document.createElement("span");
+      categoryContainerChildSpan.classList.add(
+        "ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300"
+      );
+      categoryContainerChildSpan.innerHTML = `${category.name}`;
     });
   } catch (error) {
     console.error("Internal server error: " + error.message);

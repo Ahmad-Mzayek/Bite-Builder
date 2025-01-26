@@ -4,25 +4,31 @@ const elements = {
   loginForm: document.querySelector("#login-form"),
   signupForm: document.querySelector("#signup-form"),
   loginPopup: document.querySelector("#login-popup"),
+  loginInput: document.querySelector("#login-input"),
   signupPopup: document.querySelector("#signup-popup"),
+  passwordInputs: document.querySelectorAll(".password-input"),
   showLoginButton: document.querySelector("#show-login-button"),
   closeLoginSvg: document.querySelector("#close-login-popup-svg"),
   showSignupButton: document.querySelector("#show-signup-button"),
+  signupEmailInput: document.querySelector("#signup-email-input"),
   themeSwitchButton: document.querySelector("#theme-switch-button"),
   loginSignupButton: document.querySelector("#login-signup-button"),
   closeSignupSvg: document.querySelector("#close-signup-popup-svg"),
+  loginPasswordInput: document.querySelector("#login-password-input"),
   showPasswordIcons: document.querySelectorAll(".show-password-icon"),
-  passwordInputs: document.querySelectorAll(".password-input"),
   resetPasswordButton: document.querySelector("#reset-password-button"),
   forgotPasswordPopup: document.querySelector("#forgot-password-popup"),
   loginErrorContainer: document.querySelector("#login-error-container"),
+  signupPasswordInput: document.querySelector("#signup-password-input"),
+  signupUsernameInput: document.querySelector("#signup-username-input"),
   signupErrorContainer: document.querySelector("#signup-error-container"),
+  signupSuccessContainer: document.querySelector("#signup-success-container"),
   confirmPasswordInputs: document.querySelectorAll(".confirm-password-input"),
   showPasswordIconsTrue: document.querySelectorAll(".show-password-icon-true"),
-  signupSuccessContainer: document.querySelector("#signup-success-container"),
   showPasswordIconsFalse: document.querySelectorAll(".show-password-icon-false"),
   showConfirmPasswordIcons: document.querySelectorAll(".show-confirm-password-icon"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
+  signupConfirmPasswordInput: document.querySelector("#signup-confirm-password-input"),
   showConfirmPasswordIconsTrue: document.querySelectorAll(".show-confirm-password-icon-true"),
   showConfirmPasswordIconsFalse: document.querySelectorAll(".show-confirm-password-icon-false"),
 };
@@ -58,11 +64,17 @@ elements.loginSignupButton.addEventListener("click", () => {
 elements.closeSignupSvg.addEventListener("click", () => {
   toggleVisibility(elements.overlay, false);
   toggleVisibility(elements.signupPopup, false);
+  elements.signupUsernameInput.value = "";
+  elements.signupEmailInput.value = "";
+  elements.signupPasswordInput.value = "";
+  elements.signupConfirmPasswordInput.value = "";
 });
 
 elements.closeLoginSvg.addEventListener("click", () => {
   toggleVisibility(elements.overlay, false);
   toggleVisibility(elements.loginPopup, false);
+  elements.loginInput.value = "";
+  elements.loginPasswordInput.value = "";
 });
 
 elements.closeForgotPasswordSvg.addEventListener("click", () => {
@@ -73,10 +85,19 @@ elements.closeForgotPasswordSvg.addEventListener("click", () => {
 
 elements.showLoginButton.addEventListener("click", () => {
   switchElements(elements.loginPopup, elements.signupPopup);
+  toggleVisibility(elements.signupSuccessContainer, false);
+  toggleVisibility(elements.signupErrorContainer, false);
+  elements.signupUsernameInput.value = "";
+  elements.signupEmailInput.value = "";
+  elements.signupPasswordInput.value = "";
+  elements.signupConfirmPasswordInput.value = "";
 });
 
 elements.showSignupButton.addEventListener("click", () => {
   switchElements(elements.signupPopup, elements.loginPopup);
+  toggleVisibility(elements.loginErrorContainer, false);
+  elements.loginInput.value = "";
+  elements.loginPasswordInput.value = "";
 });
 
 elements.resetPasswordButton.addEventListener("click", () => {

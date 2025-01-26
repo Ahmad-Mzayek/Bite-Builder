@@ -3,9 +3,18 @@
     .content-auto {
       content-visibility: auto;
     }
+
     body {
       background-color: var(--primary);
     }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     .light {
       --primary: #ffffff;
     }
@@ -34,13 +43,37 @@
     }
 
     svg {
-      fill: blue;
-      opacity: 0.25;
-      transition: all 0.3s ease-in-out;
+      @apply fill-blue-800 opacity-25 transition duration-300 ease-in-out;
+    }
+    svg:hover {
+     @apply opacity-100;
     }
 
-    svg:hover {
-      opacity: 1;
+    .filter-container, #categories_container {
+      @apply flex flex-col items-center justify-center;
+    }
+
+    .filter-container label,
+    #categories_container label {
+      @apply font-semibold text-white text-2xl
+    }
+
+    .filter-container > div,
+    #categories_container > div {
+      @apply w-[70%] flex items-center text-nowrap gap-4;
+    }
+
+    .filter-range-container input {
+      -moz-appearance: textfield;
+      @apply w-20 font-semibold text-xl p-2;
+    }
+
+    #is_favorite_meals_dropdown {
+      @apply font-medium rounded-3xl py-2 px-4;
+    }
+
+    #submit-meal-filters-form-button {
+      @apply px-6 py-4 font-bold bg-green-600 rounded-xl;
     }
   }
 </style>

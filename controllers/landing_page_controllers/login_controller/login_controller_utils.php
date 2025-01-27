@@ -1,6 +1,6 @@
 <?php
-include("../global/controller_utils.php");
-include("../../models/DatabaseConnectionSingleton.php");
+include("../../global/controller_utils.php");
+include("../../../models/DatabaseConnectionSingleton.php");
 
 function handle_login() : string // -------------------------------------------------------------------------------------------
 {

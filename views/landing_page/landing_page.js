@@ -110,7 +110,7 @@ elements.loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const loginFormData = new FormData(event.target);
   try {
-    const response = await fetch("../../controllers/login_controller/login_controller_main.php", {
+    const response = await fetch("../../controllers/landing_page_controllers/login_controller/login_controller_main.php", {
       method: "POST",
       body: loginFormData,
     });
@@ -133,7 +133,7 @@ elements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
   try {
-    const response = await fetch("../../controllers/signup_controller/signup_controller_main.php", {
+    const response = await fetch("../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php", {
       method: "POST",
       body: signupFormData,
     });

@@ -1,6 +1,6 @@
 <?php
-include("../global/controller_utils.php");
-include("../../models/DatabaseConnectionSingleton.php");
+include("../../global/controller_utils.php");
+include("../../../models/DatabaseConnectionSingleton.php");
 
 $database_connection;
 
@@ -82,17 +82,24 @@ function validate_and_hash_password(string $password_input) : string // --------
 
 function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // -------------
 {
-    // Should insert a row into "dietary_filters" first, then get the id, then insert user row based on the id.
-    // To be done on Sunday, January 26th, 2025, in the morning.
-    $query = "INSERT INTO users(username, email_address, hashed_password, username_last_updated) VALUES (?, ?, ?, ?)";
     global $database_connection;
+    $id = insert_user_diet();
+    $query = "INSERT INTO users(id, username, email_address, hashed_password) VALUES (?, ?, ?, ?)";
     $statement = $database_connection->prepare($query);
     if (!$statement)
         throw new Exception("Database query preparation failed: " . $database_connection->error);
-    $current_date_time = date("Y-m-d H:i:s");
-    $statement->bind_param("ssss", $username_input, $email_address_input, $hashed_password, $current_date_time);
+    $statement->bind_param("ssss", $id, $username_input, $email_address_input, $hashed_password);
     execute_statement($statement);
     $statement->store_result();
     $statement->close();
+}
+
+function insert_user_diet() : int // -----------------------------------------------------------------------------------------
+{
+    global $database_connection;
+    $query = "INSERT INTO dietary_filters VALUES ()";
+    if (!$database_connection->query($query))
+        throw new Exception("Database query execution failed: " . $database_connection->error);
+    return $database_connection->insert_id;
 }
 ?>

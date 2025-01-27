@@ -25,9 +25,5 @@ export const idElements = {
 };
 
 export const classElements = {
-  passwordInputs: document.querySelectorAll(".password-input"),
-  showPasswordIcons: document.querySelectorAll(".show-password-icon"),
-  confirmPasswordInputs: document.querySelectorAll(".confirm-password-input"),
-  showPasswordIconsTrue: document.querySelectorAll(".show-password-icon-true"),
-  showPasswordIconsFalse: document.querySelectorAll(".show-password-icon-false"),
+  showPasswordIcons: document.querySelectorAll(".toggle-password-icon"),
 };

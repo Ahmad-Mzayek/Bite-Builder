@@ -1,3 +1,5 @@
+<?php include "../../global_views/php/show_password_icons.php"; ?>
+
 <div id="login-popup"
      class="hidden flex-col w-3/12 min-w-[25rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6 bg-gray-200">
     <h1 class="font-bold pb-4">Log In</h1>
@@ -35,10 +37,9 @@
                    required
                    autocomplete="current-password"
                    maxlength="64">
-            <?php
-            include("../../global_views/php/show_password_true_icon.php");
-            include("../../global_views/php/show_password_false_icon.php");
-            ?>
+            <span class="toggle-password-icon absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                <?php echo $show_password_false_icon; ?>
+            </span>
         </div>
         <input type="submit"
                value="LOGIN">

@@ -7,6 +7,6 @@
                 class="flex-1 text-white font-semibold bg-slate-900 transition p-6 rounded-3xl hover:scale-95">
 			Log In / Sign Up
 		</button>
-		<?php include("../global_views/theme_switch_button.php"); ?>
+		<?php include("../../global_views/php/theme_switch_button.php"); ?>
 	</div>
 </header>

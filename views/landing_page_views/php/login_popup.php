@@ -36,8 +36,8 @@
                    autocomplete="current-password"
                    maxlength="64">
             <?php
-            include("../global_views/show_password_true_icon.php");
-            include("../global_views/show_password_false_icon.php");
+            include("../../global_views/php/show_password_true_icon.php");
+            include("../../global_views/php/show_password_false_icon.php");
             ?>
         </div>
         <input type="submit"

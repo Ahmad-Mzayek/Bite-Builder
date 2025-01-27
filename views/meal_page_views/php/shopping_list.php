@@ -1,5 +1,3 @@
-<!-- Design to be discussed on campus -->
-
 <div>
 	<div id="shopping-list-item-name"></div>
 	<div id="shopping-list-item-quantity"></div>

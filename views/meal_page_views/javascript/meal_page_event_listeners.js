@@ -1,46 +1,16 @@
-// DOM.
-const elements = {
-  overlay: document.querySelector("#overlay"),
-  mealFiltersPopup: document.querySelector("#meal-filters-popup"),
-  //   themeSwitchButton: document.querySelector("#theme-switch-button"),
-  filterButton: document.querySelector("#filter-button"),
-  mealFiltersForm: document.querySelector("#meal-filters-form"),
-  categoriesContainer: document.querySelector("#categories-container"),
-  closeFiltersPopupButton: document.querySelector("#close-filters-popup-button"),
-};
+import { idElements, classElements } from "./meal_page_elements.js";
+import * as MealPageUtils from "./meal_page_utils.js";
+import * as Utils from "../../global_views/javascript/global_utils.js";
 
-// UI Theme Switcher Variable.
-let themeSwitch = true;
-
-// Utility Functions.
-const toggleVisibility = (element, show) => {
-  element.classList.toggle("hidden", !show);
-  element.classList.toggle("flex", show);
-};
-
-const switchElements = (popupToShow, popupToHide) => {
-  toggleVisibility(popupToHide, false);
-  toggleVisibility(popupToShow, true);
-};
-
-// Event Handlers.
-// elements.themeSwitchButton.addEventListener("click", () => {
-//   themeSwitch = !themeSwitch;
-//   if (themeSwitch) {
-//     const isDark = document.body.classList.toggle("dark");
-//     document.body.classList.toggle("light", !isDark);
-//   }
-// });
-
-elements.closeFiltersPopupButton.addEventListener("click", () => {
-  toggleVisibility(elements.overlay, false);
-  toggleVisibility(elements.mealFiltersPopup, false);
+idElements.closeFiltersPopupButton.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.overlay, false);
+  Utils.toggleVisibility(idElements.mealFiltersPopup, false);
 });
 
-elements.filterButton.addEventListener("click", async (event) => {
+idElements.filterButton.addEventListener("click", async (event) => {
   event.preventDefault();
-  toggleVisibility(elements.overlay, true);
-  toggleVisibility(elements.mealFiltersPopup, true);
+  Utils.toggleVisibility(idElements.overlay, true);
+  Utils.toggleVisibility(idElements.mealFiltersPopup, true);
 
   requestBody = {
     getCategories: true,
@@ -110,22 +80,22 @@ elements.filterButton.addEventListener("click", async (event) => {
   }
 });
 
-elements.mealFiltersForm.addEventListener("submit", async (event) => {
+idElements.mealFiltersForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const mealFiltersFormData = new FormData(event.target);
   try {
-    const response = await fetch("../../controllers/", {
+    const response = await fetch("../../../controllers/meal_page_controllers", {
       method: "POST",
       body: mealFiltersFormData,
     });
 
     const result = await response.json();
     if (result.status === "success") {
-      switchElements(elements.signupSuccessContainer, elements.signupErrorContainer);
-      switchElements(elements.loginPopup, elements.signupPopup);
+      Utils.switchElements(idElements.signupSuccessContainer, idElements.signupErrorContainer);
+      Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
     } else {
-      elements.signupErrorContainer.innerHTML = result.message;
-      toggleVisibility(elements.signupErrorContainer, true);
+      idElements.signupErrorContainer.innerHTML = result.message;
+      Utils.toggleVisibility(idElements.signupErrorContainer, true);
     }
   } catch (error) {
     console.error("Internal server error: " + error.message);

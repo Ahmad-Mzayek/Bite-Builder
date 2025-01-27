@@ -1,6 +1,6 @@
 <?php
-include("../../global_controllers/global_controllers_utils.php");
 include("../../../models/DatabaseConnectionSingleton.php");
+include("../../global_controllers/global_controllers_utils.php");
 
 $database_connection;
 

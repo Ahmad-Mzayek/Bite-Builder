@@ -1,1 +1,0 @@
-<!-- Design to be discussed on campus -->

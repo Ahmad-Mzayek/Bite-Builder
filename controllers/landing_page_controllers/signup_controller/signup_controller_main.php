@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 
-include("signup_controller_utils.php");
+include("./signup_controller_utils.php");
 
 try
 {

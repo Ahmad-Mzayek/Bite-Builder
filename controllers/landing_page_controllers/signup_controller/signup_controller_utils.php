@@ -1,5 +1,5 @@
 <?php
-include("../../global/controller_utils.php");
+include("../../global_controllers/global_controllers_utils.php");
 include("../../../models/DatabaseConnectionSingleton.php");
 
 $database_connection;

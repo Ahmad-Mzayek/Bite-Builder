@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="w-full flex items-center justify-between border-2 border-slate-900">
-		<!-- Left Arrow - include(meal_card.php) - Right Arrow -->
+		<!-- Left Arrow - include("meal_card.php") - Right Arrow -->
 		<div class="flex items-center justify-center min-h-[20rem] w-3/4 relative border-2 border-slate-900">
 			<div class=" w-12 h-12">
 				<button id="previous-meal-button" class="relative bg-gray-500 p-6 w-16 h-64 rounded-full">

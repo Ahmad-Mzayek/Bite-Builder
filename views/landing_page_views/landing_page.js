@@ -119,7 +119,7 @@ elements.loginForm.addEventListener("submit", async (event) => {
     if (result.status === "success") {
       toggleVisibility(elements.loginErrorContainer, false);
       alert(result.message);
-      window.location.href = "../meal_page/meal_page.php";
+      window.location.href = "../meal_page_views/meal_page.php";
     } else {
       elements.loginErrorContainer.innerHTML = result.message;
       toggleVisibility(elements.loginErrorContainer, true);

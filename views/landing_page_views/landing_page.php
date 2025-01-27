@@ -6,14 +6,14 @@
 		  content="width=device-width, initial-scale=1.0">
 	<title>Bite Builder | Landing</title>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<?php include("../global/tailwind.php"); ?>
+	<?php include("../global_views/tailwind.php"); ?>
 	<link rel="stylesheet"
 		  type="text/css"
-		  href="../global/theme_switch_button.css">
+		  href="../global_views/theme_switch_button.css">
 </head>
 <body class="dark">
 	<?php // Hidden Popups.
-	include("../global/overlay.php");
+	include("../global_views/overlay.php");
 	include("login_popup.php");
 	include("signup_popup.php");
 	include("forgot_password_popup.php");
@@ -22,7 +22,7 @@
 		<?php // Body.
 		include("landing_page_header.php");
 		include("landing_page_body.php");
-		include("../global/footer.php");
+		include("../global_views/footer.php");
 		?>
 	</div>
 	<script src="landing_page.js"></script>

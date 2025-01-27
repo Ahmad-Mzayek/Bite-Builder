@@ -7,15 +7,15 @@
 		content="width=device-width, initial-scale=1.0">
 	<title>Bite Builder</title>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<?php include("../global/tailwind.php"); ?>
+	<?php include("../global_views/tailwind.php"); ?>
 	<link rel="stylesheet"
 		type="text/css"
-		href="../global/theme_switch_button.css">
+		href="../global_views/theme_switch_button.css">
 </head>
 
 <body class="light">
 	<?php // Overlay.
-	include("../global/overlay.php");
+	include("../global_views/overlay.php");
 	?>
 
 	<?php // Hidden Popups.
@@ -32,7 +32,7 @@
 			?>
 		</div>
 		<?php // Footer.
-		include("../global/footer.php");
+		include("../global_views/footer.php");
 		?>
 	</div>
 	<script src="meal_page.js"></script>

@@ -2,13 +2,13 @@
 include("../../../models/DatabaseConnectionSingleton.php");
 include("../../global_controllers/global_controllers_utils.php");
 
-function handle_login() : string // -------------------------------------------------------------------------------------------
+function handle_login() : int // ----------------------------------------------------------------------------------------------
 {
     [$login_input, $password_input] = fetch_input();
     $user_info = fetch_user_info($login_input);
     if (!$user_info || !validate_password($password_input, $user_info["hashed_password"]))
         throw new Exception("Incorrect username or password.");
-    return $user_info["username"];
+    return $user_info["id"];
 }
 
 function fetch_input() : array // ---------------------------------------------------------------------------------------------

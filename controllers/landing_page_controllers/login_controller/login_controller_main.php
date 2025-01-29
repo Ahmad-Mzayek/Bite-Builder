@@ -5,8 +5,8 @@ include("./login_controller_utils.php");
 
 try
 {
-    $username = handle_login();
-    start_user_session($username);
+    $id = handle_login();
+    start_user_session($id);
     send_response("success", "Login successful!");
 }
 catch (Exception $exception)

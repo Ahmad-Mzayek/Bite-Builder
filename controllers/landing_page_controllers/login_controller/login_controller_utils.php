@@ -8,7 +8,7 @@ function handle_login() : int // -----------------------------------------------
     $user_info = fetch_user_info($login_input);
     if (!$user_info || !validate_password($password_input, $user_info["hashed_password"]))
         throw new Exception("Incorrect username or password.");
-    return $user_info["id"];
+    return $user_info["user_id"];
 }
 
 function fetch_input() : array // ---------------------------------------------------------------------------------------------

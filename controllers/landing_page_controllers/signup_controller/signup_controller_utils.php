@@ -83,12 +83,12 @@ function validate_and_hash_password(string $password_input) : string // --------
 function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // -------------
 {
     global $database_connection;
-    $id = insert_user_diet();
-    $query = "INSERT INTO users(id, username, email_address, hashed_password) VALUES (?, ?, ?, ?)";
+    $user_id = insert_user_diet();
+    $query = "INSERT INTO users(user_id, username, email_address, hashed_password) VALUES (?, ?, ?, ?)";
     $statement = $database_connection->prepare($query);
     if (!$statement)
         throw new Exception("Database query preparation failed: " . $database_connection->error);
-    $statement->bind_param("ssss", $id, $username_input, $email_address_input, $hashed_password);
+    $statement->bind_param("ssss", $user_id, $username_input, $email_address_input, $hashed_password);
     execute_statement($statement);
     $statement->store_result();
     $statement->close();

@@ -1,4 +1,4 @@
-INSERT INTO measurement_units(name_singular, name_plural) VALUES
+INSERT INTO measurement_units(unit_name_singular, unit_name_plural) VALUES
 ("Can", "Cans"),
 ("Cube", "Cubes"),
 ("Gram", "Grams"),

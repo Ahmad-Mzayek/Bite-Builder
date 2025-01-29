@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS ingredient_types
 (
-   name     VARCHAR(32)    NOT NULL    UNIQUE,
+   type_name   VARCHAR(32)    NOT NULL    UNIQUE,
 
-   CONSTRAINT primary_key_ingredient_types PRIMARY KEY (name)
+   CONSTRAINT primary_key_ingredient_types PRIMARY KEY (type_name)
 );

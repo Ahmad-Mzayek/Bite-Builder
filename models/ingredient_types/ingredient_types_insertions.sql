@@ -1,4 +1,4 @@
-INSERT INTO ingredient_types(name) VALUES
+INSERT INTO ingredient_types(type_name) VALUES
 ("Nuts"),
 ("Fats"),
 ("Herbs"),

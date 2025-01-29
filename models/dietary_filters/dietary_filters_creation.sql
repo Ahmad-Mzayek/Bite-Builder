@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS dietary_filters
 (
-    id                  INT         NOT NULL    AUTO_INCREMENT,
+    filters_id          INT         NOT NULL    AUTO_INCREMENT,
     is_halal		    BOOLEAN     NOT NULL    DEFAULT FALSE,
     is_organic			BOOLEAN     NOT NULL    DEFAULT FALSE,
     is_vegan			BOOLEAN     NOT NULL    DEFAULT FALSE,
@@ -13,5 +13,5 @@ CREATE TABLE IF NOT EXISTS dietary_filters
     is_high_protein     BOOLEAN     NOT NULL    DEFAULT FALSE,
     is_keto_friendly	BOOLEAN     NOT NULL    DEFAULT FALSE,
 
-    CONSTRAINT primary_key_dietary_filters PRIMARY KEY (id)
+    CONSTRAINT primary_key_dietary_filters PRIMARY KEY (filters_id)
 );

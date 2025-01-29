@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS recipes
    quantity          INT,
 
    CONSTRAINT primary_key_recipes PRIMARY KEY (meal_id, ingredient_name),
-   CONSTRAINT foreign_key_recipes_meal_id FOREIGN KEY (meal_id) REFERENCES meals(id),
-   CONSTRAINT foreign_key_recipes_ingredient_name FOREIGN KEY (ingredient_name) REFERENCES ingredients(name)
+   CONSTRAINT foreign_key_recipes_meal_id FOREIGN KEY (meal_id) REFERENCES meals(meal_id),
+   CONSTRAINT foreign_key_recipes_ingredient_name FOREIGN KEY (ingredient_name) REFERENCES ingredients(ingredient_name)
 );

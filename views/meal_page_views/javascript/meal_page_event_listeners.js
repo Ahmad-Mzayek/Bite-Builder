@@ -12,7 +12,7 @@ idElements.filterButton.addEventListener("click", async (event) => {
   Utils.toggleVisibility(idElements.overlay, true);
   Utils.toggleVisibility(idElements.mealFiltersPopup, true);
 
-  requestBody = {
+  let requestBody = {
     getCategories: true,
   };
 
@@ -83,8 +83,9 @@ idElements.filterButton.addEventListener("click", async (event) => {
 idElements.mealFiltersForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const mealFiltersFormData = new FormData(event.target);
+
   try {
-    const response = await fetch("../../../controllers/meal_page_controllers", {
+    const response = await fetch("../../../controllers/meal_page_controllers/preferences_controller/preferences_controller_main.php", {
       method: "POST",
       body: mealFiltersFormData,
     });

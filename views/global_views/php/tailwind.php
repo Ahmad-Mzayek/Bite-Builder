@@ -49,31 +49,36 @@
      @apply opacity-100;
     }
 
-    .filter-container, #categories_container {
-      @apply flex flex-col items-center justify-center;
+    #filters-container, #categories-container, #sort-and-order-container {
+      @apply min-h-[28rem] flex flex-col items-center justify-between;
     }
 
-    .filter-container label,
-    #categories_container label {
+    #filters-container label,
+    #categories-container label,
+    #sort-and-order-container label {
       @apply font-semibold text-white text-2xl
     }
 
-    .filter-container > div,
-    #categories_container > div {
-      @apply w-[70%] flex items-center text-nowrap gap-4;
+    #filters-container > div,
+    #categories-container > div {
+      @apply flex w-1/2 items-center text-nowrap gap-4;
+    }
+
+    #sort-and-order-container > div {
+      @apply flex w-3/4 items-center text-nowrap gap-4;
+    }
+
+    .filter-range-container {
+      @apply flex items-center self-start w-1/4;
     }
 
     .filter-range-container input {
-      -moz-appearance: textfield;
       @apply w-20 font-semibold text-xl p-2;
-    }
-
-    #is_favorite_meals_dropdown {
-      @apply font-medium rounded-3xl py-2 px-4;
     }
 
     #submit-meal-filters-form-button {
       @apply px-6 py-4 font-bold bg-green-600 rounded-xl;
     }
+
   }
 </style>

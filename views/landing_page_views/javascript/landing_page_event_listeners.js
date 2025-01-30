@@ -1,4 +1,4 @@
-import {idElements, classElements} from "./landing_page_elements.js";
+import { idElements, classElements } from "./landing_page_elements.js";
 import * as LandingPageUtils from "./landing_page_utils.js";
 import * as Utils from "../../global_views/javascript/global_utils.js";
 
@@ -66,16 +66,18 @@ idElements.loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const loginFormData = new FormData(event.target);
   try {
-    const response = await fetch("../../../controllers/landing_page_controllers/login_controller/login_controller_main.php", {
-      method: "POST",
-      body: loginFormData,
-    });
+    const response = await fetch(
+      "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
+      {
+        method: "POST",
+        body: loginFormData,
+      }
+    );
     const result = await response.json();
     window.location;
     if (result.status === "success") {
       Utils.toggleVisibility(idElements.loginErrorContainer, false);
-      alert(result.message);
-      window.location.href = "../../meal_page_views/php/meal_page.php";
+      window.location.replace("../../meal_page_views/php/meal_page.php");
     } else {
       idElements.loginErrorContainer.innerHTML = result.message;
       Utils.toggleVisibility(idElements.loginErrorContainer, true);
@@ -89,10 +91,13 @@ idElements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
   try {
-    const response = await fetch("../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php", {
-      method: "POST",
-      body: signupFormData,
-    });
+    const response = await fetch(
+      "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
+      {
+        method: "POST",
+        body: signupFormData,
+      }
+    );
     const result = await response.json();
     if (result.status === "success") {
       Utils.switchElements(idElements.signupSuccessContainer, idElements.signupErrorContainer);

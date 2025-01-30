@@ -74,7 +74,6 @@ idElements.loginForm.addEventListener("submit", async (event) => {
     window.location;
     if (result.status === "success") {
       Utils.toggleVisibility(idElements.loginErrorContainer, false);
-      alert(result.message);
       window.location.href = "../../meal_page_views/php/meal_page.php";
     } else {
       idElements.loginErrorContainer.innerHTML = result.message;

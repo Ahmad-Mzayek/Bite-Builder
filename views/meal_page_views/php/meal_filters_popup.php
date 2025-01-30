@@ -1,30 +1,30 @@
 <div id="meal-filters-popup"
-	 class="hidden flex-col w-10/12 min-w-[40rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-3xl pr-24 py-12 bg-amber-400 overflow-hidden">
+	class="hidden flex-col w-11/12 items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-3xl py-12 bg-amber-400 overflow-hidden">
 	<form id="meal-filters-form"
-		  class="grid relative grid-cols-3 gap-2 text-center place-items-center grid-flow-row w-full min-h-[35rem]">
-		<span class="absolute top-0 left-[35%] border-2 border-white h-[30rem]"></span>
-		<span class="absolute top-0 right-[35%] border-2 border-white h-[30rem]"></span>
+		class="grid relative grid-cols-3 gap-10 items-start text-center place-items-center grid-flow-row w-full min-h-[35rem]">
+		<span class="absolute top-1/2 left-[33%] -translate-x-1/2 -translate-y-1/2 border-2 border-white h-[40rem]"></span>
+		<span class="absolute top-1/2 right-[33%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-white h-[40rem]"></span>
 		<h1>Categories</h1>
 		<h1>Filters</h1>
 		<h1>Sort By</h1>
 		<div id="categories-container"
-			 class="space-y-4">
+			class="space-y-4">
 			<div class="flex items-center space-x-3">
 				<label class="group flex items-center cursor-pointer">
 					<input class="hidden peer"
-					       type="checkbox"
-						   name="meal_categories[]"
-						   value="Salads"
-						   id="salads" />
+						type="checkbox"
+						name="meal_categories[]"
+						value="Salads"
+						id="salads" />
 					<span class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
 						<svg fill="currentColor"
-							 viewBox="0 0 20 20"
-							 class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
-							 xmlns="http://www.w3.org/2000/svg">
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
 							<path clip-rule="evenodd"
-								  d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-								  fill-rule="evenodd">
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd">
 							</path>
 						</svg>
 					</span>
@@ -258,7 +258,7 @@
 			</div>
 		</div>
 
-		<div class="filter-container space-y-4">
+		<div id="filters-container" class="space-y-4">
 			<div class="flex items-center space-x-3">
 				<label class="group flex items-center cursor-pointer">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_halal" id="halal" />
@@ -483,7 +483,7 @@
 				</label>
 			</div>
 
-			<div class="filter-range-container flex items-center w-1/4">
+			<div class="filter-range-container">
 				<div>
 					<input type="number" maxlength="4" class="decoration" name="min_nb_calories_per_portion" id="min_nb_calories_per_portion" placeholder="Min">
 				</div>
@@ -498,7 +498,7 @@
 				</div>
 			</div>
 
-			<div class="filter-range-container flex items-center w-1/4">
+			<div class="filter-range-container">
 				<div>
 					<input type="number" maxlength="4" class="decoration" name="min_preparation_duration_minutes" id="min_preparation_duration_minutes" placeholder="Min">
 				</div>
@@ -514,7 +514,7 @@
 			</div>
 		</div>
 
-		<div class="filter-container space-y-4">
+		<div id="sort-and-order-container">
 			<div>
 				<div>
 					<input type="radio" name="sort_by" value="Name" id="name" checked>
@@ -569,16 +569,16 @@
 				<label for="descending">Descending</label>
 			</div>
 		</div>
-		<div class="w-full col-start-2 flex items-center justify-around">
+		<div class="w-full col-start-2 self-center flex items-center justify-around">
 			<button
 				id="close-filters-popup-button"
 				class="px-6 py-4 text-bold bg-zinc-600 rounded-xl">
 				Cancel
 			</button>
 			<input id="submit-meal-filters-form-button"
-				   type="submit"
-				   name="submit_filters_form"
-				   value="Apply">
+				type="submit"
+				name="submit_filters_form"
+				value="Apply">
 		</div>
 	</form>
 </div>

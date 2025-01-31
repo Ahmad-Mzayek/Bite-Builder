@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS users
    username_last_updated   DATETIME       NOT NULL    DEFAULT CURRENT_TIMESTAMP,
 
    CONSTRAINT primary_key_users PRIMARY KEY (user_id),
-   CONSTRAINT foreign_key_users_id FOREIGN KEY (user_id) REFERENCES dietary_filters(filters_id)
+   CONSTRAINT foreign_key_users_user_id FOREIGN KEY (user_id) REFERENCES dietary_filters(filters_id)
 );

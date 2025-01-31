@@ -1,12 +1,15 @@
 <div id="meal-filters-popup"
-	class="hidden flex-col w-11/12 items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-3xl py-12 bg-amber-400 overflow-hidden">
+	class="hidden flex-col w-[97%] min-h-[90%] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-xl rounded-3xl py-12 bg-slate-100   overflow-hidden">
 	<form id="meal-filters-form"
 		class="grid relative grid-cols-3 gap-10 items-start text-center place-items-center grid-flow-row w-full min-h-[35rem]">
-		<span class="absolute top-1/2 left-[33%] -translate-x-1/2 -translate-y-1/2 border-2 border-white h-[40rem]"></span>
-		<span class="absolute top-1/2 right-[33%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-white h-[40rem]"></span>
+		<span class="absolute top-[20rem] left-[33%] -translate-x-1/2 -translate-y-1/2 border-2 border-gray-700 h-[33rem]"></span>
+		<span class="absolute top-[20rem] right-[33%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-gray-700 h-[33rem]"></span>
 		<h1>Categories</h1>
+
 		<h1>Filters</h1>
+
 		<h1>Sort By</h1>
+
 		<div id="categories-container"
 			class="space-y-4">
 			<div class="flex items-center space-x-3">
@@ -16,8 +19,12 @@
 						name="meal_categories[]"
 						value="Salads"
 						id="salads" />
+
 					<span class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
-						<span class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+						<span class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse">
+
+						</span>
+
 						<svg fill="currentColor"
 							viewBox="0 0 20 20"
 							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
@@ -28,11 +35,13 @@
 							</path>
 						</svg>
 					</span>
+
 					<span class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
 						Salads
 					</span>
 				</label>
 			</div>
+
 			<div class="flex items-center space-x-3">
 				<label class="group flex items-center cursor-pointer">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Desserts" id="desserts" />
@@ -483,68 +492,150 @@
 				</label>
 			</div>
 
+
+
 			<div class="filter-range-container">
 				<div>
-					<input type="number" maxlength="4" class="decoration" name="min_nb_calories_per_portion" id="min_nb_calories_per_portion" placeholder="Min">
+					<input type="number" maxlength="4" class="bg-gray-200" name="min_nb_calories_per_portion" id="min_nb_calories_per_portion" placeholder="Min">
 				</div>
 
 				<span
-					class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+					class="ml-3 text-gray-700 text-xl font-bold">
 					Number of Calories Per Portion
 				</span>
 
 				<div>
-					<input type="number" maxlength="4" name="max_nb_calories_per_portion" id="max_nb_calories_per_portion" placeholder="Max">
+					<input type="number" maxlength="4" class="bg-gray-200" name="max_nb_calories_per_portion" id="max_nb_calories_per_portion" placeholder="Max">
 				</div>
 			</div>
 
 			<div class="filter-range-container">
 				<div>
-					<input type="number" maxlength="4" class="decoration" name="min_preparation_duration_minutes" id="min_preparation_duration_minutes" placeholder="Min">
+					<input type="number" maxlength="4" class="bg-gray-200" name="min_preparation_duration_minutes" id="min_preparation_duration_minutes" placeholder="Min">
 				</div>
 
 				<span
-					class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+					class="ml-3 text-gray-700 text-xl font-bold">
 					Preparation Duration (Minutes)
 				</span>
 
 				<div>
-					<input type="number" maxlength="4" name="max_preparation_duration_minutes" id="max_preparation_duration_minutes" placeholder="Max">
+					<input type="number" maxlength="4" class="bg-gray-200" name="max_preparation_duration_minutes" id="max_preparation_duration_minutes" placeholder="Max">
 				</div>
 			</div>
 		</div>
 
 		<div id="sort-and-order-container">
-			<div>
-				<div>
-					<input type="radio" name="sort_by" value="Name" id="name" checked>
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="sort_by" value="Name" id="name" checked />
 
-				<label for="name">Name</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Name
+					</span>
+				</label>
 			</div>
 
-			<div>
-				<div>
-					<input type="radio" name="sort_by" value="Number Of Portions" id="number-of-portions">
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="sort_by" value="Number Of Portions" id="number-of-portions" />
 
-				<label for="number-of-portions">Number of Portions</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Number of Portions
+					</span>
+				</label>
 			</div>
 
-			<div>
-				<div>
-					<input type="radio" name="sort_by" value="Number Of Calories Per Portion" id="number-of-calories-per-portion">
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="sort_by" value="Number Of Calories Per Portion" id="number-of-calories-per-portion" />
 
-				<label for="number-of-calories-per-portion">Number of Calories Per Portion</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Number of Calories Per Portion
+					</span>
+				</label>
 			</div>
 
-			<div>
-				<div>
-					<input type="radio" name="sort_by" value="Preparation Duration" id="preparation-duration">
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="sort_by" value="Preparation Duration" id="preparation-duration" />
 
-				<label for="preparation-duration">Preparation Duration</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Preparation Duration
+					</span>
+				</label>
 			</div>
 
 			<div>
@@ -553,28 +644,70 @@
 				</h1>
 			</div>
 
-			<div>
-				<div>
-					<input type="radio" name="order_by" value="Ascending" id="ascending" checked>
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="order_by" value="Ascending" id="ascending" checked />
 
-				<label for="ascending">Ascending</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Ascending
+					</span>
+				</label>
 			</div>
 
-			<div>
-				<div>
-					<input type="radio" name="order_by" value="Descending" id="descending">
-				</div>
+			<div class="flex items-center space-x-3">
+				<label class="group flex items-center cursor-pointer">
+					<input class="hidden peer" type="radio" name="order_by" value="Descending" id="descending" />
 
-				<label for="descending">Descending</label>
+					<span
+						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						Descending
+					</span>
+				</label>
 			</div>
 		</div>
-		<div class="w-full col-start-2 self-center flex items-center justify-around">
+
+		<div class="flex self-center mt-[3rem] items-center justify-between w-7/12 col-start-2">
 			<button
 				id="close-filters-popup-button"
-				class="px-6 py-4 text-bold bg-zinc-600 rounded-xl">
+				class="px-10 py-8 font-bold tracking-wide text-xl bg-red-600 transition-all hover:bg-red-700 rounded-xl">
 				Cancel
 			</button>
+
 			<input id="submit-meal-filters-form-button"
 				type="submit"
 				name="submit_filters_form"

@@ -68,7 +68,7 @@ idElements.closeLoginSvg.addEventListener("click", () => {
 idElements.closeForgotPasswordSvg.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.forgotPasswordPopup, false);
   idElements.loginPopup.classList.replace("z-9", "z-20");
-  idElements.closeLoginSvg.classList.remove("pointer-events-none");
+  Utils.togglePointerEvents(idElements.closeLoginSvg, false);
 });
 
 idElements.showLoginButton.addEventListener("click", () => {
@@ -92,12 +92,14 @@ idElements.showSignupButton.addEventListener("click", () => {
 idElements.resetPasswordButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.forgotPasswordPopup, true);
   idElements.loginPopup.classList.replace("z-20", "z-9");
-  idElements.closeLoginSvg.classList.add("pointer-events-none");
+  Utils.togglePointerEvents(idElements.closeLoginSvg, true);
 });
 
 idElements.loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const loginFormData = new FormData(event.target);
+  Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+
   try {
     const response = await fetch(
       "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
@@ -117,12 +119,21 @@ idElements.loginForm.addEventListener("submit", async (event) => {
     }
   } catch (error) {
     console.error("Internal server error: " + error.message);
+  } finally {
+    Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+    if (Utils.isAnyPopupVisible(idElements.signupPopup, idElements.loginPopup)) {
+      Utils.toggleVisibility(idElements.overlay, true);
+      idElements.overlay.classList.toggle("z-10", true);
+      idElements.overlay.classList.toggle("z-30", false);
+    }
   }
 });
 
 idElements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const signupFormData = new FormData(event.target);
+  Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+
   try {
     const response = await fetch(
       "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
@@ -141,5 +152,12 @@ idElements.signupForm.addEventListener("submit", async (event) => {
     }
   } catch (error) {
     console.error("Internal server error: " + error.message);
+  } finally {
+    Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+    if (Utils.isAnyPopupVisible(idElements.signupPopup, idElements.loginPopup)) {
+      Utils.toggleVisibility(idElements.overlay, true);
+      idElements.overlay.classList.toggle("z-10", true);
+      idElements.overlay.classList.toggle("z-30", false);
+    }
   }
 });

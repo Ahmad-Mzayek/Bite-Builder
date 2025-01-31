@@ -20,6 +20,7 @@ export const idElements = {
   signupUsernameInput: document.querySelector("#signup-username-input"),
   signupErrorContainer: document.querySelector("#signup-error-container"),
   signupSuccessContainer: document.querySelector("#signup-success-container"),
+  loadingAnimationSpinner: document.querySelector("#loading-animation-spinner"),
   closeForgotPasswordSvg: document.querySelector("#close-forgot-password-popup-svg"),
   signupConfirmPasswordInput: document.querySelector("#signup-confirm-password-input"),
 };

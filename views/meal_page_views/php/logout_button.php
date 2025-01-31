@@ -1,4 +1,3 @@
-<!-- From Uiverse.io by vinodjangid07 -->
 <button id="logout-button">
 	<div class="sign">
 		<svg viewBox="0 0 512 512">

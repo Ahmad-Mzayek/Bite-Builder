@@ -7,3 +7,7 @@ export const switchElements = (elementToShow, elementToHide) => {
   toggleVisibility(elementToHide, false);
   toggleVisibility(elementToShow, true);
 };
+
+export const deleteInputData = (...inputs) => {
+  inputs.forEach((input) => (input.value = ""));
+};

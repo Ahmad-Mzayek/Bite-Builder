@@ -14,11 +14,13 @@
 	<body class="light">
 		<?php
 		include("../../global_views/php/overlay.php");
+		include("./dropdown_menu_overlay.php");
 		include("./meal_filters_popup.php");
+		include("../../global_views/php/loading.php");
 		?>
 		<div class="flex h-screen flex-col items-center justify-between">
 			<?php include("./meal_page_header.php"); ?>
-			<div class="flex w-full p-8 items-center">
+			<div class="flex w-screen min-h-[65rem] p-8 items-center">
 				<?php
 				include("./meal_page_body.php");
 				include("./shopping_list.php");

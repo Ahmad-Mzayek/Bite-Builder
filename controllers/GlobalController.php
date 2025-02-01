@@ -11,7 +11,7 @@ class GlobalController
         }
     }
 
-    public static function start_user_session(int $id): void // -------------------------------------------------------------------------------------
+    public static function start_user_session(int $user_id): void // --------------------------------------------------------------------------------
     {
         if (session_status() === PHP_SESSION_NONE)
         {
@@ -28,7 +28,7 @@ class GlobalController
             if (!session_regenerate_id(true))
                 throw new Exception("Failed to regenerate session ID.");
         }
-        $_SESSION["id"] = $id;
+        $_SESSION["user_id"] = $user_id;
         $_SESSION["user_logged_in"] = true;
     }
 

@@ -12,105 +12,6 @@ idElements.themeSwitchButton.addEventListener("click", () => {
   }
 });
 
-idElements.loginSignupButton.addEventListener("click", () => {
-  Utils.toggleVisibility(idElements.overlay, true);
-  Utils.toggleVisibility(idElements.loginPopup, true);
-});
-
-idElements.closeSignupSvg.addEventListener("click", () => {
-  Utils.toggleVisibility(idElements.overlay, false);
-  Utils.toggleVisibility(idElements.signupPopup, false);
-  idElements.signupUsernameInput.value = "";
-  idElements.signupEmailInput.value = "";
-  idElements.signupPasswordInput.value = "";
-  idElements.signupConfirmPasswordInput.value = "";
-});
-
-idElements.closeLoginSvg.addEventListener("click", () => {
-  Utils.toggleVisibility(idElements.overlay, false);
-  Utils.toggleVisibility(idElements.loginPopup, false);
-  idElements.loginInput.value = "";
-  idElements.loginPasswordInput.value = "";
-});
-
-idElements.closeForgotPasswordSvg.addEventListener("click", () => {
-  Utils.toggleVisibility(idElements.forgotPasswordPopup, false);
-  idElements.loginPopup.classList.replace("z-9", "z-20");
-  idElements.closeLoginSvg.classList.remove("pointer-events-none");
-});
-
-idElements.showLoginButton.addEventListener("click", () => {
-  Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
-  Utils.toggleVisibility(idElements.signupSuccessContainer, false);
-  Utils.toggleVisibility(idElements.signupErrorContainer, false);
-  idElements.signupUsernameInput.value = "";
-  idElements.signupEmailInput.value = "";
-  idElements.signupPasswordInput.value = "";
-  idElements.signupConfirmPasswordInput.value = "";
-});
-
-idElements.showSignupButton.addEventListener("click", () => {
-  Utils.switchElements(idElements.signupPopup, idElements.loginPopup);
-  Utils.toggleVisibility(idElements.loginErrorContainer, false);
-  idElements.loginInput.value = "";
-  idElements.loginPasswordInput.value = "";
-});
-
-idElements.resetPasswordButton.addEventListener("click", () => {
-  Utils.toggleVisibility(idElements.forgotPasswordPopup, true);
-  idElements.loginPopup.classList.replace("z-20", "z-9");
-  idElements.closeLoginSvg.classList.add("pointer-events-none");
-});
-
-idElements.loginForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const loginFormData = new FormData(event.target);
-  try {
-    const response = await fetch(
-      "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
-      {
-        method: "POST",
-        body: loginFormData,
-      }
-    );
-    const result = await response.json();
-    window.location;
-    if (result.status === "success") {
-      Utils.toggleVisibility(idElements.loginErrorContainer, false);
-      window.location.replace("../../meal_page_views/php/meal_page.php");
-    } else {
-      idElements.loginErrorContainer.innerHTML = result.message;
-      Utils.toggleVisibility(idElements.loginErrorContainer, true);
-    }
-  } catch (error) {
-    console.error("Internal server error: " + error.message);
-  }
-});
-
-idElements.signupForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const signupFormData = new FormData(event.target);
-  try {
-    const response = await fetch(
-      "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
-      {
-        method: "POST",
-        body: signupFormData,
-      }
-    );
-    const result = await response.json();
-    if (result.status === "success") {
-      Utils.switchElements(idElements.signupSuccessContainer, idElements.signupErrorContainer);
-      Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
-    } else {
-      idElements.signupErrorContainer.innerHTML = result.message;
-      Utils.toggleVisibility(idElements.signupErrorContainer, true);
-    }
-  } catch (error) {
-    console.error("Internal server error: " + error.message);
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   classElements.showPasswordIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
@@ -140,4 +41,123 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+});
+
+idElements.loginSignupButton.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.overlay, true);
+  Utils.toggleVisibility(idElements.loginPopup, true);
+});
+
+idElements.closeSignupSvg.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.overlay, false);
+  Utils.toggleVisibility(idElements.signupPopup, false);
+  Utils.deleteInputData(
+    idElements.signupUsernameInput,
+    idElements.signupEmailInput,
+    idElements.signupPasswordInput,
+    idElements.signupConfirmPasswordInput
+  );
+});
+
+idElements.closeLoginSvg.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.overlay, false);
+  Utils.toggleVisibility(idElements.loginPopup, false);
+  Utils.deleteInputData(idElements.loginInput, idElements.loginPasswordInput);
+});
+
+idElements.closeForgotPasswordSvg.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.forgotPasswordPopup, false);
+  idElements.loginPopup.classList.replace("z-9", "z-20");
+  Utils.togglePointerEvents(idElements.closeLoginSvg, false);
+});
+
+idElements.showLoginButton.addEventListener("click", () => {
+  Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
+  Utils.toggleVisibility(idElements.signupSuccessContainer, false);
+  Utils.toggleVisibility(idElements.signupErrorContainer, false);
+  Utils.deleteInputData(
+    idElements.signupUsernameInput,
+    idElements.signupEmailInput,
+    idElements.signupPasswordInput,
+    idElements.signupConfirmPasswordInput
+  );
+});
+
+idElements.showSignupButton.addEventListener("click", () => {
+  Utils.switchElements(idElements.signupPopup, idElements.loginPopup);
+  Utils.toggleVisibility(idElements.loginErrorContainer, false);
+  Utils.deleteInputData(idElements.loginInput, idElements.loginPasswordInput);
+});
+
+idElements.resetPasswordButton.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.forgotPasswordPopup, true);
+  idElements.loginPopup.classList.replace("z-20", "z-9");
+  Utils.togglePointerEvents(idElements.closeLoginSvg, true);
+});
+
+idElements.loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const loginFormData = new FormData(event.target);
+  Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+
+  try {
+    const response = await fetch(
+      "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
+      {
+        method: "POST",
+        body: loginFormData,
+      }
+    );
+    const result = await response.json();
+    window.location;
+    if (result.status === "success") {
+      Utils.toggleVisibility(idElements.loginErrorContainer, false);
+      window.location.replace("../../meal_page_views/php/meal_page.php");
+    } else {
+      idElements.loginErrorContainer.innerHTML = result.message;
+      Utils.toggleVisibility(idElements.loginErrorContainer, true);
+    }
+  } catch (error) {
+    console.error("Internal server error: " + error.message);
+  } finally {
+    Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+    if (Utils.isAnyPopupVisible(idElements.signupPopup, idElements.loginPopup)) {
+      Utils.toggleVisibility(idElements.overlay, true);
+      idElements.overlay.classList.toggle("z-10", true);
+      idElements.overlay.classList.toggle("z-30", false);
+    }
+  }
+});
+
+idElements.signupForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const signupFormData = new FormData(event.target);
+  Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+
+  try {
+    const response = await fetch(
+      "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
+      {
+        method: "POST",
+        body: signupFormData,
+      }
+    );
+    const result = await response.json();
+    if (result.status === "success") {
+      Utils.switchElements(idElements.signupSuccessContainer, idElements.signupErrorContainer);
+      Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
+    } else {
+      idElements.signupErrorContainer.innerHTML = result.message;
+      Utils.toggleVisibility(idElements.signupErrorContainer, true);
+    }
+  } catch (error) {
+    console.error("Internal server error: " + error.message);
+  } finally {
+    Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+    if (Utils.isAnyPopupVisible(idElements.signupPopup, idElements.loginPopup)) {
+      Utils.toggleVisibility(idElements.overlay, true);
+      idElements.overlay.classList.toggle("z-10", true);
+      idElements.overlay.classList.toggle("z-30", false);
+    }
+  }
 });

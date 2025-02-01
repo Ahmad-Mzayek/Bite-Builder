@@ -4,6 +4,7 @@ include("../../global_controllers/global_controllers_utils.php");
 
 $id;
 $database_connection;
+$is_favorites_checked;
 $checked_categories;
 $checked_filters;
 $min_nb_portions;
@@ -21,15 +22,16 @@ function handle_preferences() : array // ---------------------------------------
     set_preferences();
     update_user_filters();
     update_user_categories();
-    return [];
+    return array();
 }
 
 function set_preferences() : void // ------------------------------------------------------------------------------------------
 {
     if ($_SERVER["REQUEST_METHOD"] !== "POST")
         throw new Exception("Invalid request method.");
-    global $checked_categories, $checked_filters, $min_nb_portions, $max_nb_portions, $min_nb_calories_per_portion,
-           $max_nb_calories_per_portion, $sort_by, $order;
+    global $is_favorites_checked, $checked_categories, $checked_filters, $min_nb_portions, $max_nb_portions,
+           $min_nb_calories_per_portion, $max_nb_calories_per_portion, $sort_by, $order;
+    $is_favorites_checked = $_POST["is_favorites_checked"];
     $checked_categories = $_POST["checked_categories"];
     $checked_filters = $_POST["checked_filters"];
     $min_nb_portions = $_POST["min_nb_portions"];
@@ -42,7 +44,7 @@ function set_preferences() : void // -------------------------------------------
 
 function update_user_filters() : void // --------------------------------------------------------------------------------------
 {
-    $query = reset_user_filters_query();
+    $query = reset_user_filters_query() . update_user_filters_query();
     global $database_connection;
     $statement = $database_connection->prepare($query);
     if (!$statement)

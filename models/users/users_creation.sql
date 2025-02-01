@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS users
    phone_number            VARCHAR(16)                UNIQUE,
    hashed_password         CHAR(64)       NOT NULL,
    is_male                 BOOLEAN        NOT NULL    DEFAULT TRUE,
-   username_last_updated   DATETIME       NOT NULL    DEFAULT CURRENT_TIMESTAMP,
+   username_last_edited    DATETIME       NOT NULL    DEFAULT CURRENT_TIMESTAMP,
 
    CONSTRAINT primary_key_users PRIMARY KEY (user_id),
-   CONSTRAINT foreign_key_users_id FOREIGN KEY (user_id) REFERENCES dietary_filters(filters_id)
+   CONSTRAINT foreign_key_users_user_id FOREIGN KEY (user_id) REFERENCES dietary_filters(filters_id)
 );

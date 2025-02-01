@@ -1,12 +1,12 @@
 <?php
 header("Content-Type: application/json");
 
-include("./PreferencesController.php");
+include("./MealCardController.php");
 
 try
 {
-    $meal_ids = PreferencesController::handle_preferences();
-    GlobalController::send_response("success", $meal_ids);
+    $meal_card = MealCardController::handle_card();
+    GlobalController::send_response("success", $meal_card);
 }
 catch (Exception $exception)
 {

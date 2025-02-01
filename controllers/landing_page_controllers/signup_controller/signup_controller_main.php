@@ -1,15 +1,15 @@
 <?php
 header("Content-Type: application/json");
 
-include("./signup_controller_utils.php");
+include("./SignupController.php");
 
 try
 {
-    handle_signup();
-    send_response("success", "Signup successful!");
+    SignupController::handle_signup();
+    GlobalController::send_response("success", "Signup successful!");
 }
 catch (Exception $exception)
 {
-    send_response("error", $exception->getMessage());
+    GlobalController::send_response("error", $exception->getMessage());
 }
 ?>

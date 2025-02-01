@@ -1,12 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./LoginController.php");
+include("./EditUsernameRequestController.php");
 
 try
 {
-    $user_id = LoginController::handle_login();
-    GlobalController::start_user_session($user_id);
+    EditUsernameRequestController::handle_edit_username_request();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

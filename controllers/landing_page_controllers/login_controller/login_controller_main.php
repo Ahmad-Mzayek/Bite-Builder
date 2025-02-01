@@ -1,16 +1,16 @@
 <?php
 header("Content-Type: application/json");
 
-include("./login_controller_utils.php");
+include("./LoginController.php");
 
 try
 {
-    $user_id = handle_login();
-    start_user_session($user_id);
-    send_response("success", "Login successful!");
+    $user_id = LoginController::handle_login();
+    GlobalController::start_user_session($user_id);
+    GlobalController::send_response("success", "Login successful!");
 }
 catch (Exception $exception)
 {
-    send_response("error", $exception->getMessage());
+    GlobalController::send_response("error", $exception->getMessage());
 }
 ?>

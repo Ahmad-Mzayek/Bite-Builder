@@ -5,8 +5,8 @@ include("./EditUsernameRequestController.php");
 
 try
 {
-    $minutes_remaining = EditUsernameController::handle_edit_username_request();
-    GlobalController::send_response("success", $minutes_remaining);
+    EditUsernameController::handle_edit_username_request();
+    GlobalController::send_response("success", "");
 }
 catch (Exception $exception)
 {

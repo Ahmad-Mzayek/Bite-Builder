@@ -2,7 +2,7 @@
 include("../../GlobalController.php");
 include("../../../models/DatabaseConnectionSingleton.php");
 
-class EditUsernameController
+class EditUsernameRequestController
 {
     private static mysqli $database_connection;
     private const MAX_TIME_INTERVAL_MINUTES = 43200; // 30 days.

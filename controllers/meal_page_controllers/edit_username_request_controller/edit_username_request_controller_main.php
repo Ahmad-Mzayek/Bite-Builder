@@ -5,7 +5,7 @@ include("./EditUsernameRequestController.php");
 
 try
 {
-    EditUsernameController::handle_edit_username_request();
+    EditUsernameRequestController::handle_edit_username_request();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

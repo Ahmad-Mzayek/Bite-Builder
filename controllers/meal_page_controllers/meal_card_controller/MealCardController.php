@@ -13,6 +13,7 @@ class MealCardController
         self::$meal_id = self::fetch_meal_id();
         $meal_row = self::fetch_meal_row();
         $meal_row["recipe"] = self::fetch_recipe();
+        self::$database_connection->close();
         return $meal_row;
     }
 

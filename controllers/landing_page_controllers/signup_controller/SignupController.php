@@ -37,11 +37,10 @@ class SignupController
 
     private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
     {
-        global $database_connection;
         $query = "SELECT * FROM users WHERE username = ?";
-        $statement = $database_connection->prepare($query);
+        $statement = self::$database_connection->prepare($query);
         if (!$statement)
-            throw new Exception("Database query preparation failed: " . $database_connection->error);
+            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
         $statement->bind_param("s", $username_input);
         GlobalController::execute_statement($statement);
         $statement->store_result();
@@ -53,11 +52,10 @@ class SignupController
 
     private static function validate_email_address(string $email_address_input) : void // -----------------------------------------------------------
     {
-        global $database_connection;
         $query = "SELECT * FROM users WHERE email_address = ?";
-        $statement = $database_connection->prepare($query);
+        $statement = self::$database_connection->prepare($query);
         if (!$statement)
-            throw new Exception("Database query preparation failed: " . $database_connection->error);
+            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
         $statement->bind_param("s", $email_address_input);
         GlobalController::execute_statement($statement);
         $is_unique = $statement->num_rows === 0;
@@ -83,12 +81,11 @@ class SignupController
 
     private static function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // ----------------
     {
-        global $database_connection;
         $user_id = self::insert_user_diet();
         $query = "INSERT INTO users(user_id, username, email_address, hashed_password) VALUES (?, ?, ?, ?)";
-        $statement = $database_connection->prepare($query);
+        $statement = self::$database_connection->prepare($query);
         if (!$statement)
-            throw new Exception("Database query preparation failed: " . $database_connection->error);
+            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
         $statement->bind_param("ssss", $user_id, $username_input, $email_address_input, $hashed_password);
         GlobalController::execute_statement($statement);
         $statement->store_result();
@@ -97,11 +94,10 @@ class SignupController
 
     private static function insert_user_diet() : int // ---------------------------------------------------------------------------------------------
     {
-        global $database_connection;
         $query = "INSERT INTO dietary_filters VALUES ()";
-        if (!$database_connection->query($query))
-            throw new Exception("Database query execution failed: " . $database_connection->error);
-        return $database_connection->insert_id;
+        if (!self::$database_connection->query($query))
+            throw new Exception("Database query execution failed: " . self::$database_connection->error);
+        return self::$database_connection->insert_id;
     }
 }
 ?>

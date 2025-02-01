@@ -9,7 +9,10 @@ class SignupController
     public static function handle_signup() : void // ------------------------------------------------------------------------------------------------
     {
         self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-        [$username_input, $email_address_input, $password_input] = self::fetch_input();
+        $input = self::fetch_input();
+        $username_input = $input["username_input"];
+        $email_address_input = $input["email_address_input"];
+        $password_input = $input["password_input"];
         self::validate_username($username_input);
         self::validate_email_address($email_address_input);
         $hashed_password = self::validate_and_hash_password($password_input);
@@ -29,15 +32,21 @@ class SignupController
             throw new Exception("Credentials cannot be blank.");
         $email_address_pattern = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
         if (!preg_match($email_address_pattern, $email_address_input))
-            throw new Exception("Invalid email_address format.");
+            throw new Exception("Invalid email address format.");
         if ($password_input != $confirm_password_input)
             throw new Exception("Passwords do not match.");
-        return array($username_input, $email_address_input, $password_input);
+        return array("username_input" => $username_input,
+                     "email_address_input" => $email_address_input,
+                     "password_input" => $password_input);
     }
 
     private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
     {
-        $query = "SELECT * FROM users WHERE username = ?";
+        $query = <<<SQL
+            SELECT *
+            FROM users
+            WHERE username = ?;
+        SQL;
         $statement = self::$database_connection->prepare($query);
         if (!$statement)
             throw new Exception("Database query preparation failed: " . self::$database_connection->error);
@@ -52,12 +61,17 @@ class SignupController
 
     private static function validate_email_address(string $email_address_input) : void // -----------------------------------------------------------
     {
-        $query = "SELECT * FROM users WHERE email_address = ?";
+        $query = <<<SQL
+            SELECT *
+            FROM users
+            WHERE email_address = ?;
+        SQL;
         $statement = self::$database_connection->prepare($query);
         if (!$statement)
             throw new Exception("Database query preparation failed: " . self::$database_connection->error);
         $statement->bind_param("s", $email_address_input);
         GlobalController::execute_statement($statement);
+        $statement->store_result();
         $is_unique = $statement->num_rows === 0;
         $statement->close();
         if (!$is_unique)
@@ -82,11 +96,14 @@ class SignupController
     private static function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // ----------------
     {
         $user_id = self::insert_user_diet();
-        $query = "INSERT INTO users(user_id, username, email_address, hashed_password) VALUES (?, ?, ?, ?)";
+        $query = <<<SQL
+            INSERT INTO users(user_id, username, email_address, hashed_password)
+            VALUES (?, ?, ?, ?);
+        SQL;
         $statement = self::$database_connection->prepare($query);
         if (!$statement)
             throw new Exception("Database query preparation failed: " . self::$database_connection->error);
-        $statement->bind_param("ssss", $user_id, $username_input, $email_address_input, $hashed_password);
+        $statement->bind_param("isss", $user_id, $username_input, $email_address_input, $hashed_password);
         GlobalController::execute_statement($statement);
         $statement->store_result();
         $statement->close();
@@ -94,7 +111,10 @@ class SignupController
 
     private static function insert_user_diet() : int // ---------------------------------------------------------------------------------------------
     {
-        $query = "INSERT INTO dietary_filters VALUES ()";
+        $query = <<<SQL
+            INSERT INTO dietary_filters
+            VALUES ();
+        SQL;
         if (!self::$database_connection->query($query))
             throw new Exception("Database query execution failed: " . self::$database_connection->error);
         return self::$database_connection->insert_id;

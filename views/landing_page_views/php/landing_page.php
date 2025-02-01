@@ -21,7 +21,7 @@
 	include("../../global_views/php/reset_password_popup.php");
 	include("../../global_views/php/loading.php");
 	?>
-	<div class="flex h-screen flex-col items-center justify-between">
+	<div class="flex flex-col items-center justify-between h-screen">
 		<?php
 		include("./landing_page_header.php");
 		include("./landing_page_body.php");

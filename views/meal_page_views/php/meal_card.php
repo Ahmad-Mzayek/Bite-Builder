@@ -1,4 +1,4 @@
 <img id="meal-image"
-     class="w-full h-full object-contain aspect-square"
+     class="object-contain w-full h-full aspect-square"
      src="../../../resources/images/default_meal_image.png"
      alt="Meal Image">

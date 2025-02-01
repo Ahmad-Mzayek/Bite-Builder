@@ -2,12 +2,12 @@
    <h1 class="pb-6 lg:text-5xl">
       Developers
    </h1>
-   <div class="flex pt-2 pb-2 items-center justify-around w-full">
+   <div class="flex items-center justify-around w-full pt-2 pb-2">
       <h2>LinkedIn</h2>
       <h2>GitHub</h2>
       <h2>Email</h2>
    </div>
-   <div class="flex items-center pt-4 justify-around w-full">
+   <div class="flex items-center justify-around w-full pt-4">
       <div class="flex flex-col items-center justify-around w-full [&>*]:transition ml-4">
          <a class="hover:underline"
             target="_blank"
@@ -25,7 +25,7 @@
             Amir Bou Ghanem
          </a>
       </div>
-      <div class="flex flex-col border-l-2 border-r-2 items-center justify-around w-full ml-4">
+      <div class="flex flex-col items-center justify-around w-full ml-4 border-l-2 border-r-2">
          <a class="hover:underline"
             target="_blank"
             href="https://www.github.com/Ahmad-Mzayek">

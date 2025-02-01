@@ -13,21 +13,21 @@
 		<div id="categories-container"
 			class="space-y-4">
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer"
 						type="checkbox"
 						name="meal_categories[]"
 						value="Salads"
 						id="salads" />
 
-					<span class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
-						<span class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse">
+					<span class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse">
 
 						</span>
 
 						<svg fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path clip-rule="evenodd"
 								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
@@ -36,25 +36,25 @@
 						</svg>
 					</span>
 
-					<span class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+					<span class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Salads
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Desserts" id="desserts" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -64,25 +64,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Desserts
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Beverages" id="beverages" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -92,25 +92,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Beverages
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Breakfasts" id="breakfasts" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -120,25 +120,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Breakfasts
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Appetizers" id="appetizers" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -148,25 +148,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Appetizers
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="soups_and_stews" id="soups-and-stews" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -176,25 +176,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Soups & Stews
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Main Courses" id="main-courses" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -204,25 +204,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Main Courses
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Bread & Pastries" id="bread-and-pastries" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -232,25 +232,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Bread & Pastries
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_categories[]" value="Sauces & Condiments" id="sauces-and-condiments" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -260,7 +260,7 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Sauces & Condiments
 					</span>
 				</label>
@@ -269,18 +269,18 @@
 
 		<div id="filters-container" class="space-y-4">
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_halal" id="halal" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -290,25 +290,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Halal
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_organic" id="organic" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -318,25 +318,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Organic
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_sugar_free" id="sugar-free" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -346,25 +346,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Sugar-Free
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_low_sodium" id="low-sodium" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -374,25 +374,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Low-Sodium
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_low_calorie" id="low-calorie" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -402,25 +402,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Low-Calorie
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_high_protein" id="high-protein" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -430,25 +430,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						High-Protein
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_keto_friendly" id="keto-friendly" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -458,25 +458,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Keto-Friendly
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="meal_filters[]" value="is_low_carb" id="low-carb" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-md shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -486,7 +486,7 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Low-Carb
 					</span>
 				</label>
@@ -500,7 +500,7 @@
 				</div>
 
 				<span
-					class="ml-3 text-gray-700 text-xl font-bold">
+					class="ml-3 text-xl font-bold text-gray-700">
 					Number of Calories Per Portion
 				</span>
 
@@ -515,7 +515,7 @@
 				</div>
 
 				<span
-					class="ml-3 text-gray-700 text-xl font-bold">
+					class="ml-3 text-xl font-bold text-gray-700">
 					Preparation Duration (Minutes)
 				</span>
 
@@ -527,18 +527,18 @@
 
 		<div id="sort-and-order-container">
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="sort_by" value="Name" id="name" checked />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -548,25 +548,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Name
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="sort_by" value="Number Of Portions" id="number-of-portions" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -576,25 +576,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Number of Portions
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="sort_by" value="Number Of Calories Per Portion" id="number-of-calories-per-portion" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -604,25 +604,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Number of Calories Per Portion
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="sort_by" value="Preparation Duration" id="preparation-duration" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -632,7 +632,7 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Preparation Duration
 					</span>
 				</label>
@@ -645,18 +645,18 @@
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="order_by" value="Ascending" id="ascending" checked />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -666,25 +666,25 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Ascending
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
-				<label class="group flex items-center cursor-pointer">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="radio" name="order_by" value="Descending" id="descending" />
 
 					<span
-						class="relative w-8 h-8 flex justify-center items-center bg-gray-100 border-2 border-gray-400 rounded-full shadow-md transition-all duration-500 peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-full shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
 						<span
-							class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 opacity-0 peer-checked:opacity-100 rounded-md transition-all duration-500 peer-checked:animate-pulse"></span>
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
 
 						<svg
 							fill="currentColor"
 							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white peer-checked:block transition-transform duration-500 transform scale-50 peer-checked:scale-100"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
 							xmlns="http://www.w3.org/2000/svg">
 							<path
 								clip-rule="evenodd"
@@ -694,7 +694,7 @@
 					</span>
 
 					<span
-						class="ml-3 text-gray-700 group-hover:text-blue-500 font-medium transition-colors duration-300">
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
 						Descending
 					</span>
 				</label>
@@ -704,7 +704,7 @@
 		<div class="flex self-center mt-[3rem] items-center justify-between w-7/12 col-start-2">
 			<button
 				id="close-filters-popup-button"
-				class="px-10 py-8 font-bold tracking-wide text-xl bg-red-600 transition-all hover:bg-red-700 rounded-xl">
+				class="px-10 py-8 text-xl font-bold tracking-wide transition-all bg-red-600 hover:bg-red-700 rounded-xl">
 				Cancel
 			</button>
 

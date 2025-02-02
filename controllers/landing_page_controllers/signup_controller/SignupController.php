@@ -33,7 +33,7 @@ class SignupController
         $email_address_pattern = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
         if (!preg_match($email_address_pattern, $email_address_input))
             throw new Exception("Invalid email address format.");
-        if ($password_input != $confirm_password_input)
+        if ($password_input !== $confirm_password_input)
             throw new Exception("Passwords do not match.");
         return array("username_input" => $username_input,
                      "email_address_input" => $email_address_input,

@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./EditUsernameRequestController.php");
+include("./ChangePasswordController.php");
 
 try
 {
-    EditUsernameRequestController::handle_edit_username_request();
+    ChangePasswordController::handle_change_password();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

@@ -2,28 +2,28 @@
 include("../../GlobalController.php");
 include("../../../models/DatabaseConnectionSingleton.php");
 
-class EditUsernameRequestController
+class ChangeUsernameRequestController
 {
     private static mysqli $database_connection;
     private const MAX_TIME_INTERVAL_MINUTES = 43200; // 30 days.
 
-    public static function handle_edit_username_request() : void // ---------------------------------------------------------------------------------
+    public static function handle_change_username_request() : void // -------------------------------------------------------------------------------
     {
         self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-        $username_last_edited = self::fetch_username_last_edited();
+        $username_last_changed = self::fetch_username_last_changed();
         self::$database_connection->close();
         $current_date_time = new DateTime();
-        $elapsed_nb_seconds = $current_date_time->getTimestamp() - $username_last_edited->getTimestamp();
+        $elapsed_nb_seconds = $current_date_time->getTimestamp() - $username_last_changed->getTimestamp();
         $elapsed_nb_minutes = floor($elapsed_nb_seconds / 60);
         $nb_minutes_remaining = self::MAX_TIME_INTERVAL_MINUTES - $elapsed_nb_minutes;
         if ($nb_minutes_remaining > 0)
             throw new Exception(self::build_exception_message($nb_minutes_remaining));
     }
 
-    private static function fetch_username_last_edited() : DateTime // ------------------------------------------------------------------------------
+    private static function fetch_username_last_changed() : DateTime // -----------------------------------------------------------------------------
     {
         $query = <<<SQL
-            SELECT username_last_edited
+            SELECT username_last_changed
             FROM users
             WHERE user_id = ?;
         SQL;
@@ -35,7 +35,7 @@ class EditUsernameRequestController
         $result = $statement->get_result();
         $statement->close();
         $row = $result->fetch_assoc();
-        return new DateTime($row["username_last_edited"]);
+        return new DateTime($row["username_last_changed"]);
     }
 
     private static function build_exception_message(int $nb_minutes_remaining) : string // ----------------------------------------------------------

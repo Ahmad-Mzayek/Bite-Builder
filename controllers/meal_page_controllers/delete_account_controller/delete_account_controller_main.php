@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./SignupController.php");
+include("./DeleteAccountController.php");
 
 try
 {
-    SignupController::handle_signup();
+    DeleteAccountController::handle_delete_account();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

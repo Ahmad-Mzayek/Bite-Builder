@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./SignupController.php");
+include("./LogoutController.php");
 
 try
 {
-    SignupController::handle_signup();
+    LogoutController::handle_logout();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

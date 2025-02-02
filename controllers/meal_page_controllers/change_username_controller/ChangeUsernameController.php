@@ -2,11 +2,11 @@
 include("../../GlobalController.php");
 include("../../../models/DatabaseConnectionSingleton.php");
 
-class EditUsernameController
+class ChangeUsernameController
 {
     private static mysqli $database_connection;
 
-    public static function handle_edit_username() : void // -----------------------------------------------------------------------------------------
+    public static function handle_change_username() : void // ---------------------------------------------------------------------------------------
     {
         self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
         $username_input = self::fetch_username_input();
@@ -14,7 +14,7 @@ class EditUsernameController
         if ($username_input === $current_username)
             return;
         self::validate_username($username_input);
-        self::edit_username($username_input);
+        self::change_username($username_input);
         self::$database_connection->close();
     }
 
@@ -62,7 +62,7 @@ class EditUsernameController
             throw new Exception("Username already exists.");
     }
 
-    private static function edit_username(string $username_input) : void // -------------------------------------------------------------------------
+    private static function change_username(string $username_input) : void // -----------------------------------------------------------------------
     {
         $query = <<<SQL
             UPDATE users

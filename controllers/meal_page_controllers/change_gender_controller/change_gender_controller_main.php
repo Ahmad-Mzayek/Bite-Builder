@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./SignupController.php");
+include("./ChangeGenderController.php");
 
 try
 {
-    SignupController::handle_signup();
+    ChangeGenderController::handle_change_gender();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

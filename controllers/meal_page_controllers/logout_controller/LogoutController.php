@@ -1,18 +1,17 @@
 <?php
 include("../../GlobalController.php");
-include("../../../models/DatabaseConnectionSingleton.php");
 
 class LogoutController
 {
     public static function handle_logout() : void // ------------------------------------------------------------------------------------------------
     {
-        $_SESSION = [];
+        $_SESSION = array();
         if (ini_get("session.use_cookies"))
         {
             $params = session_get_cookie_params();
             setcookie(
                 session_name(),
-                '',
+                "",
                 time() - 42000,
                 $params["path"],
                 $params["domain"],

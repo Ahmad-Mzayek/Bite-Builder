@@ -1,11 +1,11 @@
 <?php
 header("Content-Type: application/json");
 
-include("./EditUsernameRequestController.php");
+include("./ChangeUsernameRequestController.php");
 
 try
 {
-    EditUsernameRequestController::handle_edit_username_request();
+    ChangeUsernameRequestController::handle_change_username_request();
     GlobalController::send_response("success", "");
 }
 catch (Exception $exception)

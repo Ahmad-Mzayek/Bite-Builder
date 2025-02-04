@@ -27,6 +27,7 @@
                placeholder="Login"
                required
                autocomplete="email"
+               minlength="1"
                maxlength="64">
         <div class="relative w-full cursor-pointer">
             <input type="password"
@@ -36,6 +37,7 @@
                    placeholder="Password"
                    required
                    autocomplete="current-password"
+                   minlength="1"
                    maxlength="64">
             <span class="toggle-password-icon absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
                 <?php echo $show_password_false_icon; ?>

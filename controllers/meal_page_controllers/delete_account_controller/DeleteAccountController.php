@@ -37,6 +37,7 @@ class DeleteAccountController
         $query = self::fetch_hashed_password_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("i", self::$user_id);
+        GlobalController::execute_statement($statement);
         $result = $statement->get_result();
         $statement->close();
         $row = $result->fetch_assoc();

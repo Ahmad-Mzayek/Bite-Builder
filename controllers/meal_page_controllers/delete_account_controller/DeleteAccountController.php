@@ -14,6 +14,8 @@ class DeleteAccountController
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
+            [$password_input] = GlobalController::fetch_post_values(array("password_input"));
+            self::validate_password($password_input);
             self::delete_account();
         }
         finally
@@ -21,6 +23,34 @@ class DeleteAccountController
             if (isset(self::$database_connection)) 
                 self::$database_connection->close();
         }
+    }
+
+    private static function validate_password(string $password_input) : void // ---------------------------------------------------------------------
+    {
+        $hashed_password = self::fetch_hashed_password();
+        if (hash("sha256", $password_input) !== $hashed_password)
+            throw new Exception("The password is incorrect.");
+    }
+
+    private static function fetch_hashed_password() : string // -------------------------------------------------------------------------------------
+    {
+        $query = self::fetch_hashed_password_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("i", self::$user_id);
+        $result = $statement->get_result();
+        $statement->close();
+        $row = $result->fetch_assoc();
+        return $row["hashed_password"];
+    }
+
+    private static function fetch_hashed_password_query() : string // -------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            SELECT hashed_password
+            FROM users
+            WHERE user_id = ?;
+        SQL;
+        return $query;
     }
 
     private static function delete_account() : void // ----------------------------------------------------------------------------------------------

@@ -33,6 +33,7 @@
                placeholder="Email Address"
                required
                autocomplete="email"
+               minlength="1"
                maxlength="64">
         <div class="relative w-full cursor-pointer">
             <input type="password"

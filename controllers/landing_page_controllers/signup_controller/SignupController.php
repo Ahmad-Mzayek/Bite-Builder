@@ -4,52 +4,40 @@ include("../../../models/DatabaseConnectionSingleton.php");
 
 class SignupController
 {
-    private static $database_connection;
+    private static mysqli $database_connection;
 
     public static function handle_signup() : void // ------------------------------------------------------------------------------------------------
     {
-        self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-        $input = self::fetch_input();
-        $username_input = $input["username_input"];
-        $email_address_input = $input["email_address_input"];
-        $password_input = $input["password_input"];
-        self::validate_username($username_input);
-        self::validate_email_address($email_address_input);
-        $hashed_password = self::validate_and_hash_password($password_input);
-        self::insert_user_info($username_input, $email_address_input, $hashed_password);
-        self::$database_connection->close();
+        try
+        {
+            self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
+            $inputs = GlobalController::fetch_post_values(array("username_input", "email_address_input",
+                                                                "password_input", "confirm_password_input"));
+            $user_info = self::validate_inputs($inputs);
+            self::insert_user($user_info);
+        }
+        finally
+        {
+            if (isset(self::$database_connection)) 
+                self::$database_connection->close();
+        }
     }
 
-    private static function fetch_input() : array // ------------------------------------------------------------------------------------------------
+    private static function validate_inputs(array $inputs) : array // -------------------------------------------------------------------------------
     {
-        if ($_SERVER["REQUEST_METHOD"] !== "POST")
-            throw new Exception("Invalid request method.");
-        $email_address_input = $_POST["email_address_input"];
-        $username_input = $_POST["username_input"];
-        $password_input = $_POST["password_input"];
-        $confirm_password_input = $_POST["confirm_password_input"];
-        if (empty($email_address_input) || empty($username_input) || empty($password_input) || empty($confirm_password_input))
-            throw new Exception("Credentials cannot be blank.");
-        $email_address_pattern = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
-        if (!preg_match($email_address_pattern, $email_address_input))
-            throw new Exception("Invalid email address format.");
-        if ($password_input !== $confirm_password_input)
-            throw new Exception("Passwords do not match.");
-        return array("username_input" => $username_input,
-                     "email_address_input" => $email_address_input,
-                     "password_input" => $password_input);
+        [$username_input, $email_address_input, $password_input, $confirm_password_input] = $inputs;
+        self::validate_username($username_input);
+        self::validate_email_address($email_address_input);
+        $hashed_password = self::validate_password($password_input, $confirm_password_input);
+        $user_info = array($username_input, $email_address_input, $hashed_password);
+        return $user_info;
     }
 
     private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
     {
-        $query = <<<SQL
-            SELECT *
-            FROM users
-            WHERE username = ?;
-        SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
+        self::validate_username_format($username_input);
+        $query = self::validate_username_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("s", $username_input);
         GlobalController::execute_statement($statement);
         $statement->store_result();
@@ -59,16 +47,28 @@ class SignupController
             throw new Exception("Username already exists.");
     }
 
-    private static function validate_email_address(string $email_address_input) : void // -----------------------------------------------------------
+    private static function validate_username_format(string $username_input) : void // --------------------------------------------------------------
+    {
+        $regex = "/^[a-zA-Z0-9_-]+$/";
+        if (!preg_match($regex, $username_input))
+            throw new Exception("Username can include neither spaces nor special characters except '_' and '-'.");
+    }
+
+    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            SELECT *
+            SELECT 1
             FROM users
-            WHERE email_address = ?;
+            WHERE username = ?;
         SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
+        return $query;
+    }
+
+    private static function validate_email_address(string $email_address_input) : void // -----------------------------------------------------------
+    {
+        self::validate_email_address_format($email_address_input);
+        $query = self::validate_email_address_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("s", $email_address_input);
         GlobalController::execute_statement($statement);
         $statement->store_result();
@@ -78,8 +78,27 @@ class SignupController
             throw new Exception("Email address already exists.");
     }
 
-    private static function validate_and_hash_password(string $password_input) : string // ----------------------------------------------------------
+    private static function validate_email_address_format(string $email_address_input) : void // ----------------------------------------------------
     {
+        $regex = "/^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9])*\@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/";
+        if (!preg_match($regex, $email_address_input))
+            throw new Exception("Invalid email address format.");
+    }
+
+    private static function validate_email_address_query() : string // ------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            SELECT 1
+            FROM users
+            WHERE email_address = ?;
+        SQL;
+        return $query;
+    }
+
+    private static function validate_password(string $password_input, string $confirm_password_input) : string // -----------------------------------
+    {
+        if ($password_input !== $confirm_password_input)
+            throw new Exception("Passwords do not match.");
         if (!preg_match("/[A-Z]/", $password_input))
             throw new Exception("Password must contain at least one uppercase letter.");
         if (!preg_match("/[a-z]/", $password_input))
@@ -93,31 +112,43 @@ class SignupController
         return hash("sha256", $password_input);
     }
 
-    private static function insert_user_info(string $username_input, string $email_address_input, string $hashed_password) : void // ----------------
+    private static function insert_user(array $user_info) : void // ---------------------------------------------------------------------------------
     {
-        $user_id = self::insert_user_diet();
-        $query = <<<SQL
-            INSERT INTO users(user_id, username, email_address, hashed_password)
-            VALUES (?, ?, ?, ?);
-        SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
-        $statement->bind_param("isss", $user_id, $username_input, $email_address_input, $hashed_password);
+        $user_id = self::insert_dietary_filters();
+        [$username, $email_address, $hashed_password] = $user_info;
+        $query = self::insert_user_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("isss", $user_id, $username, $email_address, $hashed_password);
         GlobalController::execute_statement($statement);
-        $statement->store_result();
         $statement->close();
     }
 
-    private static function insert_user_diet() : int // ---------------------------------------------------------------------------------------------
+    private static function insert_dietary_filters() : int // ---------------------------------------------------------------------------------------
+    {
+        $query = self::insert_dietary_filters_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        GlobalController::execute_statement($statement);
+        $user_id = $statement->insert_id;
+        $statement->close();
+        return $user_id;
+    }
+
+    private static function insert_dietary_filters_query() : string // ------------------------------------------------------------------------------
     {
         $query = <<<SQL
             INSERT INTO dietary_filters
             VALUES ();
         SQL;
-        if (!self::$database_connection->query($query))
-            throw new Exception("Database query execution failed: " . self::$database_connection->error);
-        return self::$database_connection->insert_id;
+        return $query;
+    }
+
+    private static function insert_user_query() : string // -----------------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            INSERT INTO users(user_id, username, email_address, hashed_password)
+            VALUES (?, ?, ?, ?);
+        SQL;
+        return $query;
     }
 }
 ?>

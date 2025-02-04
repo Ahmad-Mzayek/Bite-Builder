@@ -5,6 +5,7 @@ class LogoutController
 {
     public static function handle_logout() : void // ------------------------------------------------------------------------------------------------
     {
+        GlobalController::resume_session();
         $_SESSION = array();
         if (ini_get("session.use_cookies"))
         {
@@ -20,7 +21,7 @@ class LogoutController
             );
         }
         if (!session_destroy())
-            throw new Exception("Failed to destroy the session.");
+            throw new Exception("Failed to destroy the session with id = " . session_id() . ".");
     }
 }
 ?>

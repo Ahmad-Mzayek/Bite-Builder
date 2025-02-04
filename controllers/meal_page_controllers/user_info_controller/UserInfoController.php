@@ -2,20 +2,20 @@
 include("../../GlobalController.php");
 include("../../../models/DatabaseConnectionSingleton.php");
 
-class ChangeGenderController
+class UserInfoController
 {
     private static int $user_id;
     private static mysqli $database_connection;
 
-    public static function handle_change_gender() : void // -----------------------------------------------------------------------------------------
+    public static function handle_user_info() : array // --------------------------------------------------------------------------------------------
     {
         try
         {
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-            [$is_male] = GlobalController::fetch_post_values(array("is_male"));
-            self::change_gender($is_male);
+            $user_info = self::fetch_user_info();
+            return $user_info;
         }
         finally
         {
@@ -24,21 +24,23 @@ class ChangeGenderController
         }
     }
 
-    private static function change_gender(bool $is_male) : void // ----------------------------------------------------------------------------------
+    private static function fetch_user_info() : array // --------------------------------------------------------------------------------------------
     {
-        $query = self::change_gender_query();
+        $query = self::fetch_user_info_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("ii", $is_male, self::$user_id);
+        $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
+        $result = $statement->get_result();
         $statement->close();
+        return $result->fetch_assoc();
     }
 
-    private static function change_gender_query() : string // ---------------------------------------------------------------------------------------
+    private static function fetch_user_info_query() : string // -------------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            UPDATE users
-            SET is_male = ?
-            WHERE user_id = ?;
+            SELECT *
+            FROM users
+            WHERE user_id = ?
         SQL;
         return $query;
     }

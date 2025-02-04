@@ -4,38 +4,35 @@ include("../../../models/DatabaseConnectionSingleton.php");
 
 class ChangeUsernameController
 {
+    private static int $user_id;
     private static mysqli $database_connection;
 
     public static function handle_change_username() : void // ---------------------------------------------------------------------------------------
     {
-        self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-        $username_input = self::fetch_username_input();
-        $current_username = self::fetch_current_username();
-        if ($username_input === $current_username)
-            return;
-        self::validate_username($username_input);
-        self::change_username($username_input);
-        self::$database_connection->close();
-    }
-
-    private static function fetch_username_input() : string // --------------------------------------------------------------------------------------
-    {
-        if ($_SERVER["REQUEST_METHOD"] !== "POST")
-            throw new Exception("Invalid request method.");
-        return $_POST["username_input"];
+        try
+        {
+            GlobalController::resume_session();
+            self::$user_id = $_SESSION["user_id"];
+            self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
+            [$username_input] = GlobalController::fetch_post_values(array("username_input"));
+            $current_username = self::fetch_current_username();
+            if ($username_input === $current_username)
+                throw new Exception("New username cannot be the same as the old username.");
+            self::validate_username($username_input);
+            self::change_username($username_input);
+        }
+        finally
+        {
+            if (isset(self::$database_connection)) 
+                self::$database_connection->close();
+        }
     }
 
     private static function fetch_current_username() : string // ------------------------------------------------------------------------------------
     {
-        $query = <<<SQL
-            SELECT username
-            FROM users
-            WHERE user_id = ?;
-        SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
-        $statement->bind_param("i", $_SESSION["user_id"]);
+        $query = self::fetch_current_username_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $result = $statement->get_result();
         $statement->close();
@@ -43,16 +40,20 @@ class ChangeUsernameController
         return $row["username"];
     }
 
-    private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
+    private static function fetch_current_username_query() : string // ------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            SELECT *
+            SELECT username
             FROM users
-            WHERE username = ?;
+            WHERE user_id = ?;
         SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
+        return $query;
+    }
+
+    private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
+    {
+        $query = self::validate_username_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("s", $username_input);
         GlobalController::execute_statement($statement);
         $statement->store_result();
@@ -62,19 +63,34 @@ class ChangeUsernameController
             throw new Exception("Username already exists.");
     }
 
+    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            SELECT 1
+            FROM users
+            WHERE username = ?;
+        SQL;
+        return $query;
+    }
+
     private static function change_username(string $username_input) : void // -----------------------------------------------------------------------
+    {
+        $query = self::change_username_query();
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("si", $username_input, self::$user_id);
+        GlobalController::execute_statement($statement);
+        $statement->close();
+    }
+
+    private static function change_username_query() : string // -------------------------------------------------------------------------------------
     {
         $query = <<<SQL
             UPDATE users
-            SET username = ?, username_last_updated = NOW()
+            SET username = ?,
+                username_last_updated = NOW()
             WHERE user_id = ?;
         SQL;
-        $statement = self::$database_connection->prepare($query);
-        if (!$statement)
-            throw new Exception("Database query preparation failed: " . self::$database_connection->error);
-        $statement->bind_param("si", $username_input, $_SESSION["user_id"]);
-        GlobalController::execute_statement($statement);
-        $statement->close();
+        return $query;
     }
 }
 ?>

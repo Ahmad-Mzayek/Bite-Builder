@@ -1,6 +1,4 @@
 <?php
-header("Content-Type: application/json");
-
 include("./SignupController.php");
 
 try

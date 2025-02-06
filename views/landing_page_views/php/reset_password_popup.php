@@ -1,4 +1,4 @@
-<div id="forgot-password-popup" class="popup fixed z-50 flex-col items-center justify-between hidden p-6 -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-lg shadow-xl top-1/2 left-1/2">
+<div id="forgot-password-popup" class="fixed z-50 flex-col items-center justify-between hidden p-6 -translate-x-1/2 -translate-y-1/2 bg-gray-200 rounded-lg shadow-xl popup top-1/2 left-1/2">
 	<h1 class="pb-4 text-lg font-bold md:text-xl lg:text-3xl">
 		Reset Password
 	</h1>

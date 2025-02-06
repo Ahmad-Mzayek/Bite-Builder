@@ -1,4 +1,4 @@
-<svg class="close-popup-svg absolute transition cursor-pointer right-4 top-3 hover:scale-110"
+<svg class="absolute transition cursor-pointer close-popup-svg right-4 top-3 hover:scale-110"
 		 xmlns="http://www.w3.org/2000/svg"
 		 width="32"
 		 height="32"

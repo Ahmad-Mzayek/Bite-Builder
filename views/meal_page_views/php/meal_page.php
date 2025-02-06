@@ -29,7 +29,7 @@
 		?>
 		<div class="flex flex-col items-center justify-between h-screen">
 			<?php include("./meal_page_header.php"); ?>
-			<div class="flex w-full px-3 py-4 items-center">
+			<div class="flex items-center w-full px-3 py-4">
 				<?php
 				include("./meal_page_body.php");
 				include("./shopping_list.php");

@@ -13,8 +13,8 @@
         Password Changed Successfully!
     </div>
 
-    <form class="flex flex-col gap-10 w-full">
-        <div class="flex flex-col gap-3 w-full">
+    <form class="flex flex-col w-full gap-10">
+        <div class="flex flex-col w-full gap-3">
             <div class="relative w-full">
                 <input type="password"
                        name="current_password_input"
@@ -54,12 +54,12 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-center space-x-12 w-full">
-            <button id="close-change-password-popup-button" class="bg-green-700 text-white font-bold w-36 h-12 rounded-lg hover:bg-green-800">
+        <div class="flex items-center justify-center w-full space-x-12">
+            <button id="close-change-password-popup-button" class="h-12 font-bold text-white bg-green-700 rounded-lg w-36 hover:bg-green-800">
                 Cancel
             </button>
 
-            <button id="confirm-change-password-button" type="submit" class="bg-red-700 text-white font-bold w-36 h-12 rounded-lg hover:bg-red-800">
+            <button id="confirm-change-password-button" type="submit" class="h-12 font-bold text-white bg-red-700 rounded-lg w-36 hover:bg-red-800">
                 Change
             </button>
         </div>

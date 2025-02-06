@@ -56,13 +56,13 @@
 				</button>
 			</div>
 			
-			<div class="flex items-center justify-center p-2 overflow-y-scroll overflow-x-hidden">
-				<h3 id="summarized-meal-description" class="w-full h-1/2 text-lg font-medium text-balance ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, accusantium quia aperiam voluptatum dolorum non id aspernatur quaerat harum maxime, laborum tempora exercitationem similique beatae incidunt, itaque labore. Sunt ipsam doloribus temporibus doloremque numquam nesciunt ullam quidem non quos? Aliquam quae delectus iure at est ipsam neque, praesentium, sint a dolores culpa exercitationem nihil recusandae repellat tenetur voluptatem, alias accusantium eius quis voluptatum. Fugiat error reprehenderit, nulla non eos fugit at iure sapiente accusantium quasi molestiae vitae. In perferendis a sit illum culpa, tenetur sapiente ipsam consectetur facere.
+			<div class="flex items-center justify-center p-2 overflow-x-hidden overflow-y-scroll">
+				<h3 id="summarized-meal-description" class="w-full text-lg font-medium h-1/2 text-balance ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, accusantium quia aperiam voluptatum dolorum non id aspernatur quaerat harum maxime, laborum tempora exercitationem similique beatae incidunt, itaque labore. Sunt ipsam doloribus temporibus doloremque numquam nesciunt ullam quidem non quos? Aliquam quae delectus iure at est ipsam neque, praesentium, sint a dolores culpa exercitationem nihil recusandae repellat tenetur voluptatem, alias accusantium eius quis voluptatum. Fugiat error reprehenderit, nulla non eos fugit at iure sapiente accusantium quasi molestiae vitae. In perferendis a sit illum culpa, tenetur sapiente ipsam consectetur facere.
 				</h3>
 			</div>
 		</div>
 
-		<div class="flex flex-1 grow-0 items-center justify-center basis-1/12 group">
+		<div class="flex items-center justify-center flex-1 grow-0 basis-1/12 group">
 				<button id="next-meal-button" class="relative w-16 h-16 p-6 transition duration-300 rounded-full group-hover:bg-gray-200">
 					<svg class="absolute inset-0 w-10 h-10 m-auto"
 							 xmlns="http://www.w3.org/2000/svg"

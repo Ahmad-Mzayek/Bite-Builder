@@ -1,7 +1,7 @@
 <div id="preferences-popup"
 	class="popup hidden flex-col w-[90%] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-xl rounded-3xl py-6 bg-slate-100 overflow-hidden">
 	<form id="preferences-form"
-				class="grid relative grid-cols-3 gap-10 items-start text-start place-items-center grid-flow-row w-full">
+				class="relative grid items-start w-full grid-flow-row grid-cols-3 gap-10 text-start place-items-center">
 		<span class="absolute top-[20rem] left-[30%] -translate-x-1/2 -translate-y-1/2 border-2 border-gray-700 h-[33rem]"></span>
 		<span class="absolute top-[20rem] right-[30%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-gray-700 h-[33rem]"></span>
 		<h1>Categories</h1>

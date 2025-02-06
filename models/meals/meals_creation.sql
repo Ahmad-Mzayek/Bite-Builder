@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS meals
    CONSTRAINT primary_key_meals
    PRIMARY KEY (meal_id),
 
-   CONSTRAINT foreing_key_meals_meal_id
+   CONSTRAINT foreign_key_meals_meal_id
    FOREIGN KEY (meal_id)
    REFERENCES dietary_filters(filters_id)
    ON DELETE CASCADE,

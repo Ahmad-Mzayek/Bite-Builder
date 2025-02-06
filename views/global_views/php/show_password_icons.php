@@ -1,6 +1,6 @@
 <?php
 $show_password_true_icon = <<<SVG
-    <svg class="show-password-icon show-password-icon-true flex absolute inset-0 m-auto mr-4"
+    <svg class="absolute inset-0 flex m-auto mr-4 show-password-icon show-password-icon-true"
          xmlns="http://www.w3.org/2000/svg"
          width="24"
          height="24"
@@ -10,7 +10,7 @@ $show_password_true_icon = <<<SVG
 SVG;
 
 $show_password_false_icon = <<<SVG
-    <svg class="show-password-icon show-password-icon-false flex absolute inset-0 m-auto mr-4"
+    <svg class="absolute inset-0 flex m-auto mr-4 show-password-icon show-password-icon-false"
          xmlns="http://www.w3.org/2000/svg"
          width="24"
          height="24"

@@ -9,7 +9,7 @@
             <span></span>
         </div>
 
-        <ul id="dropdown-menu-list" class="absolute flex flex-col -right-[50px] -top-[150px] gap-4 w-[13rem] -z-10 bg-slate-700 p-4 opacity-0 transition-all">
+        <ul id="dropdown-menu-list" class="absolute flex flex-col -right-[40px] -top-[150px] gap-4 w-[13rem] -z-10 bg-slate-700 p-4 opacity-0 transition-all">
             <li>
                 <span>
                     Profile

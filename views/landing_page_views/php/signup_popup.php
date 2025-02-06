@@ -6,7 +6,7 @@
         Sign Up
     </h1>
     
-    <?php include("../../global_views/php/close-popup-svg.php"); ?>
+    <?php include("../../global_views/php/close_popup_svg.php"); ?>
     
     <form id="signup-form" class="flex flex-col items-center w-full space-y-2">
         <div id="signup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-500">

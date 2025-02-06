@@ -4,7 +4,7 @@
      class="popup hidden flex-col w-3/12 min-w-[25rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6 bg-gray-200">
     <h1 class="pb-4 font-bold">Log In</h1>
 
-    <?php include("../../global_views/php/close-popup-svg.php"); ?>
+    <?php include("../../global_views/php/close_popup_svg.php"); ?>
 
     <form id="login-form" class="flex flex-col items-center w-full space-y-2">
         <div id="signup-success-container"

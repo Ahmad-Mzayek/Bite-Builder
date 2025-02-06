@@ -6,7 +6,7 @@
         Profile
     </h1>
 	
-    <?php include("../../global_views/php/close-popup-svg.php") ?>
+    <?php include("../../global_views/php/close_popup_svg.php") ?>
 
     <div id="profile-popup-error-container" class="hidden w-full p-2 mb-2 font-bold text-white bg-red-500">
 

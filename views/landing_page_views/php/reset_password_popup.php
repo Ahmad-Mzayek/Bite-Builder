@@ -7,7 +7,7 @@
 		Enter your email to receive a password reset link.
 	</h3>
 
-	<?php include("../../global_views/php/close-popup-svg.php") ?>
+	<?php include("../../global_views/php/close_popup_svg.php") ?>
 
 	<form action=""
 		    method="post"

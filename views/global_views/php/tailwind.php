@@ -1,7 +1,19 @@
 <style type="text/tailwindcss">
   @layer base {
+    .light {
+    --primary: #ffffff;
+  }
+
+  .dark {
+    --primary: #000000;
+  }
+
   .content-auto {
     content-visibility: auto;
+  }
+
+  html {
+    @apply scroll-smooth;
   }
 
   body {
@@ -14,14 +26,6 @@
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-
-  .light {
-    --primary: #ffffff;
-  }
-
-  .dark {
-    --primary: #000000;
   }
 
   h1 {
@@ -43,7 +47,7 @@
   input[type="text"],
   input[type="password"],
   input[type="email"] {
-    @apply p-2 w-full rounded-xl appearance-none border-2 text-lg md:text-xl lg:text-xl
+    @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl
   }
 
   input[type="submit"] {
@@ -159,7 +163,6 @@
     @apply text-lg font-bold text-white;
   }
 
-  /* From Uiverse.io by vinodjangid07 */ 
   #logout-button {
     display: flex;
     align-items: center;
@@ -256,22 +259,26 @@
   }
 
   #filters-container, #categories-container, #sort-and-order-container {
-    @apply min-h-[28rem] flex flex-col items-center justify-between;
+    @apply min-h-[30rem] flex flex-col items-center justify-between;
+  }
+
+  #categories-container {
+    @apply items-start;
   }
 
   #filters-container label,
   #categories-container label,
   #sort-and-order-container label {
-    @apply font-semibold text-white text-2xl
+    @apply font-semibold text-white text-2xl;
   }
 
   #filters-container > div,
   #categories-container > div {
-    @apply flex w-1/2 items-center text-nowrap gap-4;
+    @apply flex w-1/4 items-center text-nowrap gap-4;
   }
 
   #sort-and-order-container > div {
-    @apply flex w-3/4 items-center text-nowrap gap-4;
+    @apply flex w-full items-center text-nowrap gap-4;
   }
 
   .filter-range-container {
@@ -282,101 +289,8 @@
     @apply w-20 font-semibold text-xl p-2;
   }
 
-  #submit-meal-filters-form-button {
-    @apply px-10 py-8 font-bold tracking-wide text-xl bg-green-600 transition-all hover:bg-green-700 rounded-xl;
+  #submit-preferences-form-button {
+    @apply px-10 py-4 font-bold tracking-wide text-xl bg-green-600 transition-all hover:bg-green-700 rounded-xl;
   }
-
-    /* From Uiverse.io by Na3ar-17 */ 
-  /* .radio-input {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .radio-input * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  .radio-input label {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 0px 20px;
-    width: 220px;
-    cursor: pointer;
-    height: 50px;
-    position: relative;
-  }
-
-  .radio-input label::before {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 220px;
-    height: 45px;
-    z-index: -1;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    border-radius: 10px;
-    border: 2px solid transparent;
-  }
-  .radio-input label:hover::before {
-    transition: all 0.2s ease;
-    background-color: #2a2e3c;
-  }
-
-  .radio-input .label:has(input:checked)::before {
-    background-color: #2d3750;
-    border-color: #435dd8;
-    height: 50px;
-  }
-  .radio-input .label .text {
-    color: #fff;
-  }
-
-  .radio-input .label input[type="radio"] {
-    background-color: #202030;
-    appearance: none;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .radio-input .label input[type="radio"]:checked {
-    background-color: #435dd8;
-    -webkit-animation: puls 0.7s forwards;
-    animation: pulse 0.7s forwards;
-  }
-
-  .radio-input .label input[type="radio"]:before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: #fff;
-    transform: scale(0);
-  }
-
-  .radio-input .label input[type="radio"]:checked::before {
-    transform: scale(1);
-  }
-
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-  } */
 }
 </style>

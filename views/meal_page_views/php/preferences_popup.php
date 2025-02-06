@@ -1,9 +1,9 @@
-<div id="meal-filters-popup"
-	class="hidden flex-col w-[97%] min-h-[90%] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-xl rounded-3xl py-12 bg-slate-100   overflow-hidden">
-	<form id="meal-filters-form"
-		class="grid relative grid-cols-3 gap-10 items-start text-center place-items-center grid-flow-row w-full min-h-[35rem]">
-		<span class="absolute top-[20rem] left-[33%] -translate-x-1/2 -translate-y-1/2 border-2 border-gray-700 h-[33rem]"></span>
-		<span class="absolute top-[20rem] right-[33%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-gray-700 h-[33rem]"></span>
+<div id="preferences-popup"
+	class="popup hidden flex-col w-[90%] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-xl rounded-3xl py-6 bg-slate-100 overflow-hidden">
+	<form id="preferences-form"
+				class="grid relative grid-cols-3 gap-10 items-start text-start place-items-center grid-flow-row w-full">
+		<span class="absolute top-[20rem] left-[30%] -translate-x-1/2 -translate-y-1/2 border-2 border-gray-700 h-[33rem]"></span>
+		<span class="absolute top-[20rem] right-[30%] -translate-x-1/2 -translate-y-1/2 ml-10 border-2 border-gray-700 h-[33rem]"></span>
 		<h1>Categories</h1>
 
 		<h1>Filters</h1>
@@ -11,13 +11,13 @@
 		<h1>Sort By</h1>
 
 		<div id="categories-container"
-			class="space-y-4">
+			   class="space-y-4">
 			<div class="flex items-center space-x-3">
 				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer"
-						type="checkbox"
-						name="meal_categories[]"
-						value="Salads"
+								 type="checkbox"
+						     name="meal_categories[]"
+						     value="Salads"
 						id="salads" />
 
 					<span class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
@@ -26,12 +26,12 @@
 						</span>
 
 						<svg fill="currentColor"
-							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
-							xmlns="http://www.w3.org/2000/svg">
+							   viewBox="0 0 20 20"
+							   class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							   xmlns="http://www.w3.org/2000/svg">
 							<path clip-rule="evenodd"
-								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-								fill-rule="evenodd">
+										d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+										fill-rule="evenodd">
 							</path>
 						</svg>
 					</span>
@@ -699,18 +699,52 @@
 					</span>
 				</label>
 			</div>
+
+			<div>
+				<h1 class="w-full text-center">
+					Favorites
+				</h1>
+			</div>
+
+			<div class="flex items-center space-x-3">
+				<label class="flex items-center cursor-pointer group">
+					<input class="hidden peer" type="checkbox" name="is_favorites_selected" value="true" id="is-favorites-selected" />
+
+					<span
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 font-medium text-gray-700 transition-colors duration-300 group-hover:text-blue-500">
+						Show Favorite Meals Only
+					</span>
+				</label>
+			</div>
 		</div>
 
 		<div class="flex self-center mt-[3rem] items-center justify-between w-7/12 col-start-2">
 			<button
-				id="close-filters-popup-button"
-				class="px-10 py-8 text-xl font-bold tracking-wide transition-all bg-red-600 hover:bg-red-700 rounded-xl">
+				id="close-preferences-popup-button"
+				class="px-10 py-4 text-xl font-bold tracking-wide transition-all bg-red-600 hover:bg-red-700 rounded-xl">
 				Cancel
 			</button>
 
-			<input id="submit-meal-filters-form-button"
+			<input id="submit-preferences-form-button"
 				type="submit"
-				name="submit_filters_form"
+				name="submit_preferences_form"
 				value="Apply">
 		</div>
 	</form>

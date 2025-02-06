@@ -87,7 +87,7 @@ class ChangeUsernameController
         $query = <<<SQL
             UPDATE users
             SET username = ?,
-                username_last_updated = NOW()
+                username_last_changed = NOW()
             WHERE user_id = ?;
         SQL;
         return $query;

@@ -46,3 +46,7 @@ export const fetchCategories = (categories) => {
     categoryContainerChildSpan.innerHTML = `${category.name}`;
   });
 };
+
+export const toggleRadioButtonSelection = (radioButton, checked) => {
+  radioButton.checked = checked;
+};

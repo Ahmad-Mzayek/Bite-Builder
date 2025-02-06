@@ -9,7 +9,16 @@ CREATE TABLE IF NOT EXISTS meals
    nb_calories_per_portion		   INT			   NOT NULL,
    preparation_duration_minutes  INT		      NOT NULL,
 
-   CONSTRAINT primary_key_meals PRIMARY KEY (meal_id),
-   CONSTRAINT foreing_key_meals_meal_id FOREIGN KEY (meal_id) REFERENCES dietary_filters(filters_id),
-   CONSTRAINT foreign_key_meals_category_name FOREIGN KEY (category_name) REFERENCES meal_categories(category_name)
+   CONSTRAINT primary_key_meals
+   PRIMARY KEY (meal_id),
+
+   CONSTRAINT foreign_key_meals_meal_id
+   FOREIGN KEY (meal_id)
+   REFERENCES dietary_filters(filters_id)
+   ON DELETE CASCADE,
+
+   CONSTRAINT foreign_key_meals_category_name
+   FOREIGN KEY (category_name)
+   REFERENCES meal_categories(category_name)
+   ON DELETE CASCADE
 );

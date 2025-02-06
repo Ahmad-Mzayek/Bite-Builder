@@ -8,6 +8,11 @@ CREATE TABLE IF NOT EXISTS users
    is_male                 BOOLEAN        NOT NULL    DEFAULT TRUE,
    username_last_changed   DATETIME       NOT NULL    DEFAULT CURRENT_TIMESTAMP,
 
-   CONSTRAINT primary_key_users PRIMARY KEY (user_id),
-   CONSTRAINT foreign_key_users_user_id FOREIGN KEY (user_id) REFERENCES dietary_filters(filters_id)
+   CONSTRAINT primary_key_users
+   PRIMARY KEY (user_id),
+
+   CONSTRAINT foreign_key_users_user_id
+   FOREIGN KEY (user_id)
+   REFERENCES dietary_filters(filters_id)
+   ON DELETE CASCADE
 );

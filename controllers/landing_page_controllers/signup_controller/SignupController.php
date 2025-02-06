@@ -114,41 +114,12 @@ class SignupController
 
     private static function insert_user(array $user_info) : void // ---------------------------------------------------------------------------------
     {
-        $user_id = self::insert_dietary_filters();
+        $query = "CALL insert_user(?, ?, ?);";
         [$username, $email_address, $hashed_password] = $user_info;
-        $query = self::insert_user_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("isss", $user_id, $username, $email_address, $hashed_password);
+        $statement->bind_param("sss", $username, $email_address, $hashed_password);
         GlobalController::execute_statement($statement);
         $statement->close();
-    }
-
-    private static function insert_dietary_filters() : int // ---------------------------------------------------------------------------------------
-    {
-        $query = self::insert_dietary_filters_query();
-        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        GlobalController::execute_statement($statement);
-        $user_id = $statement->insert_id;
-        $statement->close();
-        return $user_id;
-    }
-
-    private static function insert_dietary_filters_query() : string // ------------------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            INSERT INTO dietary_filters
-            VALUES ();
-        SQL;
-        return $query;
-    }
-
-    private static function insert_user_query() : string // -----------------------------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            INSERT INTO users(user_id, username, email_address, hashed_password)
-            VALUES (?, ?, ?, ?);
-        SQL;
-        return $query;
     }
 }
 ?>

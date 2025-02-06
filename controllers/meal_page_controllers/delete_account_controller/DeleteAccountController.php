@@ -16,7 +16,7 @@ class DeleteAccountController
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
             [$password_input] = GlobalController::fetch_post_values(array("password_input"));
             self::validate_password($password_input);
-            self::delete_account();
+            self::delete_dietary_filters();
         }
         finally
         {
@@ -49,33 +49,6 @@ class DeleteAccountController
         $query = <<<SQL
             SELECT hashed_password
             FROM users
-            WHERE user_id = ?;
-        SQL;
-        return $query;
-    }
-
-    private static function delete_account() : void // ----------------------------------------------------------------------------------------------
-    {
-        self::delete_from_table("favorites");
-        self::delete_from_table("shopping_lists");
-        self::delete_from_table("users_meal_categories");
-        self::delete_from_table("users");
-        self::delete_dietary_filters();
-    }
-
-    private static function delete_from_table(string $table_name) : void // -------------------------------------------------------------------------
-    {
-        $query = self::delete_from_table_query($table_name);
-        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("i", self::$user_id);
-        GlobalController::execute_statement($statement);
-        $statement->close();
-    }
-
-    private static function delete_from_table_query(string $table_name) : string // -----------------------------------------------------------------
-    {
-        $query = <<<SQL
-            DELETE FROM $table_name
             WHERE user_id = ?;
         SQL;
         return $query;

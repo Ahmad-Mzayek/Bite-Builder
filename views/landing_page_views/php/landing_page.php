@@ -18,7 +18,7 @@
 	include("../../global_views/php/overlay.php");
 	include("./login_popup.php");
 	include("./signup_popup.php");
-	include("../../global_views/php/reset_password_popup.php");
+	include("./reset_password_popup.php");
 	include("../../global_views/php/loading.php");
 	?>
 	<div class="flex flex-col items-center justify-between h-screen">

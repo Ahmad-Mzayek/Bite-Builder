@@ -14,7 +14,6 @@ export const idElements = {
   categoriesContainer: document.querySelector("#categories-container"),
   changePasswordPopup: document.querySelector("#change-password-popup"),
   dropdownMenuOverlay: document.querySelector("#dropdown-menu-overlay"),
-  closeProfilePopupSvg: document.querySelector("#close-profile-popup-svg"),
   saveEditGenderButton: document.querySelector("#save-edit-gender-button"),
   saveEditUsernameButton: document.querySelector("#save-edit-username-button"),
   cancelEditGenderButton: document.querySelector("#cancel-edit-gender-button"),

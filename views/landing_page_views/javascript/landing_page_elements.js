@@ -26,5 +26,7 @@ export const idElements = {
 };
 
 export const classElements = {
+  pagePopups: document.querySelectorAll(".popup"),
+  closePopupSvgs: document.querySelectorAll(".close-popup-svg"),
   showPasswordIcons: document.querySelectorAll(".toggle-password-icon"),
 };

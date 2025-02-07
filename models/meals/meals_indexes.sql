@@ -9,3 +9,6 @@ ON meals(nb_calories_per_portion);
 
 CREATE INDEX index_preparation_duration_minutes
 ON meals(preparation_duration_minutes);
+
+CREATE INDEX index_category_name
+ON meals(category_name);

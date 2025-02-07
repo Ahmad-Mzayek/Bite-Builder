@@ -1,4 +1,4 @@
-INSERT INTO ingredient_types(type_name) VALUES
+INSERT IGNORE INTO ingredient_types(type_name) VALUES
 ("Nuts"),
 ("Fats"),
 ("Herbs"),
@@ -15,4 +15,5 @@ INSERT INTO ingredient_types(type_name) VALUES
 ("Beverages"),
 ("Vegetables"),
 ("Condiments"),
-("Sweeteners");
+("Sweeteners"),
+("Extracts");

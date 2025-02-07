@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS meals
 (
    meal_id							   INT			   NOT NULL    UNIQUE,
-   category_name                 VARCHAR(32)    NOT NULL    UNIQUE,
+   category_name                 VARCHAR(32)    NOT NULL,
    meal_name							VARCHAR(64)    NOT NULL,
    image_name						   VARCHAR(64)    NOT NULL    DEFAULT "default_meal_image.png",
    description					      TEXT		      NOT NULL,

@@ -109,7 +109,7 @@ VALUES
 (10, "Yellow Onion", 100),
 (10, "Garlic", 3),
 (10, "Tomatillo", 450),
-(10, "Jalapeno Pepper", 50),
+(10, "Jalapeno", 50),
 (10, "Chicken Stock", 800),
 (10, "Hot Sauce", 5),
 (10, "Cayenne Pepper", 1),
@@ -117,3 +117,58 @@ VALUES
 (10, "Sour Cream", 60),
 (10, "Salt", NULL),
 (10, "Ground Black Pepper", NULL);
+
+INSERT IGNORE INTO recipes
+VALUES
+(11, "Jasmine Rice", 500),
+(11, "Coconut Milk", 200),
+(11, "Pandan Leaf", 2),
+(11, "Ginger", 25),
+(11, "Kosher Salt", 3);
+
+INSERT IGNORE INTO recipes
+VALUES
+(12, "Red Onion", 116),
+(12, "Dry White Wine", 15),
+(12, "Kosher Salt", 3),
+(12, "Ground Black Pepper", 3),
+(12, "Olive Oil-Packed Tuna", 2),
+(12, "Garlic", 1),
+(12, "Bean Cooking Liquid", 15),
+(12, "Parsley", 10),
+(12, "Olive Oil", 60);
+
+INSERT IGNORE INTO recipes
+VALUES
+(13, "Olive Oil", 7),
+(13, "Yellow Onion", 150),
+(13, "Garlic", 2),
+(13, "Can Butter Beans", 1),
+(13, "Canned Tomato Purée", 1),
+(13, "Red Wine Vinegar", 7),
+(13, "Dill", 5),
+(13, "Dried Oregano", 1),
+(13, "Ground Black Pepper", 3),
+(13, "Kosher Salt", 3);
+
+INSERT IGNORE INTO recipes
+VALUES
+(14, "Sea Scallops", 340),
+(14, "Olive Oil", 20),
+(14, "Lemon Juice", 5),
+(14, "Lemon Zest", 5),
+(14, "Flaky Salt", 3),
+(14, "Red Pepper Flakes", 3);
+
+INSERT IGNORE INTO recipes
+VALUES
+(15, "Buttermilk", 120),
+(15, "Ginger", 20),
+(15, "Scallions", 45),
+(15, "Soy Sauce", 33),
+(15, "Asian Sesame Oil", 14),
+(15, "Salt", 2),
+(15, "Chicken Thigh", 6),
+(15, "Potato Starch", 552),
+(15, "Peanut Oil", 2000),
+(15, "Brown Sugar", 13);

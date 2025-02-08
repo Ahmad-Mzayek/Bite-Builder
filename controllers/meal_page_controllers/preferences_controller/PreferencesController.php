@@ -68,9 +68,9 @@ class PreferencesController
                 is_low_carb = FALSE,
                 is_low_calorie = FALSE,
                 is_low_sodium = FALSE,
-                is_hight_protein = FALSE,
+                is_high_protein = FALSE,
                 is_keto_friendly = FALSE
-            WHERE user_id = ?;
+            WHERE filters_id = ?;
         SQL;
         return $query;
     }
@@ -89,7 +89,7 @@ class PreferencesController
     private static function add_user_filters_query() : string // ------------------------------------------------------------------------------------
     {
         $conditions = [];
-        foreach (self::$checked_filters as $checked_filter)
+        foreach (self::$checked_filters as $index => $checked_filter)
             $conditions[] = $checked_filter . " = TRUE";
         $query = "";
         if (empty($conditions))
@@ -98,7 +98,7 @@ class PreferencesController
         $query .= <<<SQL
             UPDATE dietary_filters
             SET $set_filters
-            WHERE user_id = ?;
+            WHERE filters_id = ?;
         SQL;
         return $query;
     }
@@ -106,7 +106,7 @@ class PreferencesController
     private static function update_user_categories() : void // --------------------------------------------------------------------------------------
     {
         self::reset_user_categories();
-        foreach (self::$checked_categories as $checked_category)
+        foreach (self::$checked_categories as $index => $checked_category)
             self::add_user_category($checked_category);
     }
 
@@ -297,7 +297,7 @@ class PreferencesController
             SELECT dietary_filters.*
             FROM dietary_filters
             JOIN favorite_meals_view
-              ON favorite_meals_view.meal_id = dietary_filters.filter_id;
+              ON favorite_meals_view.meal_id = dietary_filters.filters_id;
         SQL;
         return $query;
     }

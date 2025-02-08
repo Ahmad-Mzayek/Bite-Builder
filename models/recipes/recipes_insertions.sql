@@ -94,3 +94,10 @@ VALUES
 (8, "Spicy Brown Mustard", 15),
 (8, "Salt", NULL),
 (8, "Ground Black Pepper", NULL);
+
+INSERT IGNORE INTO recipes
+VALUES
+(9, "Cocoa Powder", 20),
+(9, "White Sugar", 10),
+(9, "Full-Fat Milk", 300),
+(9, "Cornstarch", 6);

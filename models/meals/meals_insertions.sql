@@ -67,3 +67,11 @@ CALL insert_meal(
     "blood_orange_vinaigrette.png",
     "Combine olive oil, blood orange juice, red wine vinegar, honey, mustard, salt, and pepper in a blender. Process until well combined and smooth.",
     8, 150, 10, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0);
+
+CALL insert_meal(
+    "Drinks",
+    "Cioccolata Calda",
+    "cioccolata_calda.png",
+    "Mix the cocoa powder and sugar together in a small saucepan. Stir the 1 1/2 cups milk into the saucepan until the sugar has dissolved. Place over low heat; slowly bring the mixture to a low simmer.
+    Whisk 2 tablespoons of milk together with the cornstarch in a small cup; slowly whisk the cornstarch slurry into the cocoa mixture. Continue cooking, whisking continually, until the hot chocolate reaches a pudding-like thickness, 2 to 3 minutes.",
+    2, 170, 20, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0);

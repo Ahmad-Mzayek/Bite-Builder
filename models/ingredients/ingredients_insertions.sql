@@ -20,6 +20,7 @@ VALUES
 ("Unsalted Butter", "Dairy", "Gram"),
 ("Heavy Cream", "Dairy", "Milliliter"),
 ("Colby-Jack Cheese", "Dairy", "Gram"),
+("Full-Fat Milk", "Dairy", "Milliliter"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
 ("Parmigiano-Reggiano Cheese", "Dairy", "Gram");
 
@@ -42,6 +43,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Cornstarch", "Grains", "Gram"),
 ("White Flour", "Grains", "Gram"),
 ("Grains Of Selim", "Grains", "Gram");
 
@@ -100,4 +102,5 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Cocoa Powder", "Extracts", "Gram"),
 ("Vanilla Extract", "Extracts", "Milliliter");

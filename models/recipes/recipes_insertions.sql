@@ -12,7 +12,7 @@ INSERT IGNORE INTO recipes
 VALUES
 (2, "Salted Butter", 14),
 (2, "Breadcrumbs", 15),
-(2, "Minced Anchovy", 2),
+(2, "Anchovy", 2),
 (2, "Garlic Clove", 1),
 (2, "Lemon Zest", 3),
 (2, "Broccoli", 453),
@@ -24,8 +24,8 @@ INSERT IGNORE INTO recipes
 VALUES
 (3, "Full-Fat Cream Cheese", 900),
 (3, "Granulated Sugar", 285),
-(3, "Eggs", 5),
-(3, "Yolks", 2),
+(3, "Egg", 5),
+(3, "Egg Yolk", 2),
 (3, "Heavy Cream", 240),
 (3, "Vanilla Extract", 10),
 (3, "Lemon Zest", 45),
@@ -44,17 +44,17 @@ VALUES
 (4, "Cubeb Pepper", 1),
 (4, "Garlic Clove", 1),
 (4, "Red Onions", 25),
-(4, "Tomatoes", 25),
-(4, "Lime", 1),
+(4, "Tomato", 25),
+(4, "Lime", 150),
 (4, "Crisp Lettuce", 10),
-(4, "Coriander Leaves", 5);
+(4, "Coriander", 5);
 
 INSERT IGNORE INTO recipes
 VALUES
 (5, "Panko Breadcrumbs", 40),
 (5, "Parmigiano-Reggiano Cheese", 55),
-(5, "Parsley Leaves", 15),
-(5, "Pine Nuts", 20),
+(5, "Parsley", 15),
+(5, "Pine Nut", 20),
 (5, "Olive Oil", 60),
 (5, "Garlic Clove", 4),
 (5, "Ground Black Pepper", 2),
@@ -64,12 +64,12 @@ VALUES
 (5, "Proscuitto", 115),
 (5, "Yellow Onion", 115),
 (5, "Dry White Wine", 120),
-(5, "Whole Peeled Tomatoes", 794),
+(5, "Tomato", 794),
 (5, "Water", 240);
 
 INSERT IGNORE INTO recipes
 VALUES
-(6, "Eggs", 3),
+(6, "Egg", 3),
 (6, "Kosher Salt", 2),
 (6, "Ground Black Pepper", 2),
 (6, "Cheddar Cheese", 55),

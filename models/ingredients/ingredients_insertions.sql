@@ -1,54 +1,93 @@
 INSERT IGNORE INTO ingredients
 VALUES
-("Hot Dog", "Meats", "Can"),
-("Round Beef Roast", "Meats", "Gram"),
-("Proscuitto", "Meats", "Gram"),
-("Beef Flank Steak", "Meats", "Gram"),
-("Yellow Mustard", "Condiments", "Milliliter"),
-("Barbecue Sauce", "Condiments", "Milliliter"),
-("Brown Sugar", "Sweeteners", "Gram"),
-("White Sugar", "Sweeteners", "Gram"),
-("Granulated Sugar", "Sweeteners", "Gram"),
-("Cayenne Pepper", "Spices", "Gram"),
-("Onion Powder", "Spices", "Gram"),
-("Ground Black Pepper", "Spices", "Gram"),
-("Ground Ginger", "Spices", "Gram"),
-("Sweet Paprika", "Spices", "Gram"),
-("Onion Powder", "Spices", "Gram"),
-("Garlic Powder", "Spices", "Gram"),
-("Cayenne Pepper", "Spices", "Gram"),
-("Kosher Salt", "Spices", "Gram"),
-("Cubeb Pepper", "Spices", "Gram"),
-("Red Pepper Flakes", "Spices", "Gram"),
-("Water", "Beverages", "Milliliter"),
+("Pine Nut", "Nuts", "Gram"),
+("Peanut Butter Powder", "Nuts", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Olive Oil", "Fats", "Milliliter"),
+("Peanut Oil", "Fats", "Milliliter");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Parsley", "Herbs", "Leaf"),
+("Coriander", "Herbs", "Leaf");
+
+INSERT IGNORE INTO ingredients
+VALUES
 ("Salted Butter", "Dairy", "Gram"),
-("Parmigiano-Reggiano Cheese", "Dairy", "Gram"),
-("Full-Fat Cream Cheese", "Dairy", "Gram"),
-("Eggs", "Dairy", "Piece"),
-("Yolks", "Dairy", "Piece"),
-("Heavy Cream", "Dairy", "Milliliter"),
-("Yolks", "Dairy", "Piece"),
 ("Cheddar Cheese", "Dairy", "Gram"),
 ("Unsalted Butter", "Dairy", "Gram"),
-("Breadcrumbs", "Grains", "Gram"),
+("Heavy Cream", "Dairy", "Milliliter"),
+("Full-Fat Cream Cheese", "Dairy", "Gram"),
+("Parmigiano-Reggiano Cheese", "Dairy", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Hot Dog", "Proteins", "Can"),
+("Egg Yolk", "Proteins", "Piece"),
+("Proscuitto", "Proteins", "Gram"),
+("Whole Egg", "Proteins", "Piece"),
+("Round Beef Roast", "Proteins", "Gram"),
+("Beef Flank Steak", "Proteins", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Breadcrumbs", "Baked", "Gram"),
+("Panko Breadcrumbs", "Baked", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
 ("White Flour", "Grains", "Gram"),
-("Peanut Butter Powder", "Grains", "Gram"),
-("Grains Of Selim", "Grains", "Gram"),
-("Panko Breadcrumbs", "Grains", "Gram"),
-("Minced Anchovy", "Seafood", "Gram"),
-("Garlic Clove", "Vegetables", "Head"),
-("Lemon Zest", "Vegetables", "Gram"),
+("Grains Of Selim", "Grains", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Kosher Salt", "Spices", "Gram"),
+("Onion Powder", "Spices", "Gram"),
+("Cubeb Pepper", "Spices", "Gram"),
+("Onion Powder", "Spices", "Gram"),
+("Ground Ginger", "Spices", "Gram"),
+("Sweet Paprika", "Spices", "Gram"),
+("Garlic Powder", "Spices", "Gram"),
+("Cayenne Pepper", "Spices", "Gram"),
+("Red Pepper Flakes", "Spices", "Gram"),
+("Ground Black Pepper", "Spices", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Lime", "Fruits", "Gram"),
+("Tomato", "Fruits", "Gram"),
+("Lemon Zest", "Fruits", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Anchovy", "Seafood", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Water", "Beverages", "Milliliter"),
+("Dry White Wine", "Beverages", "Milliliter");
+
+INSERT IGNORE INTO ingredients
+VALUES
 ("Broccoli", "Vegetables", "Gram"),
-("Red Onions", "Vegetables", "Gram"),
-("Coriander Leaves", "Vegetables", "Leaf"),
-("Tomatoes", "Vegetables", "Gram"),
-("Lime", "Vegetables", "Piece"),
-("Crisp Lettuce", "Vegetables", "Gram"),
-("Parsley Leaves", "Vegetables", "Leaf"),
+("Red Onion", "Vegetables", "Gram"),
+("Garlic Clove", "Vegetables", "Head"),
 ("Yellow Onion", "Vegetables", "Gram"),
-("Dry White Wine", "Beverages", "Milliliter"),
-("Whole Peeled Tomatoes", "Vegetables", "Gram"),
-("Olive Oil", "Fats", "Milliliter"),
-("Peanut Oil", "Fats", "Milliliter"),
-("Vanilla Extract", "Extracts", "Milliliter"),
-("Pine Nuts", "Nuts", "Gram");
+("Crisp Lettuce", "Vegetables", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Yellow Mustard", "Condiments", "Milliliter"),
+("Barbecue Sauce", "Condiments", "Milliliter");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Brown Sugar", "Sweeteners", "Gram"),
+("White Sugar", "Sweeteners", "Gram"),
+("Granulated Sugar", "Sweeteners", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Vanilla Extract", "Extracts", "Milliliter");

@@ -1,11 +1,11 @@
 INSERT IGNORE INTO meal_categories(category_name)
 VALUES
+("Drinks"),
 ("Salads"),
 ("Desserts"),
+("Appetizers"),
 ("Breakfasts"),
-("Soups & Stews"),
 ("Main Courses"),
+("Soups & Stews"),
 ("Bread & Pastries"),
-("Sauces & Condiments"),
-("Drinks"),
-("Appetizers");
+("Sauces & Condiments");

@@ -42,7 +42,7 @@ CALL insert_meal(
 
 CALL insert_meal(
     "Main Courses",
-    "Soufflé Omelette With Cheese Recipe",
-    "soufflé_omelette_with_cheese_recipe.png", 
+    "Soufflé Omelette With Cheese",
+    "souffle_omelette_with_cheese.png", 
     "The soufflé omelette is the easiest way to practice making any kind of soufflé, given the low barrier to entry. If you have some eggs and a few extra minutes to beat the whites, you can do it. No need to prep a soufflé dish or preheat an oven, and no need to make a béchamel or pastry cream base, nor bake it until puffed and browned.",
     1, 550, 20, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);

@@ -15,21 +15,15 @@ class DeleteAccountController
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
             [$password_input] = GlobalController::fetch_post_values(array("password_input"));
-            self::validate_password($password_input);
-            self::delete_dietary_filters();
+            $hashed_password = self::fetch_hashed_password();
+            GlobalController::validate_password($password_input, $hashed_password);
+            self::delete_account();
         }
         finally
         {
             if (isset(self::$database_connection)) 
                 self::$database_connection->close();
         }
-    }
-
-    private static function validate_password(string $password_input) : void // ---------------------------------------------------------------------
-    {
-        $hashed_password = self::fetch_hashed_password();
-        if (hash("sha256", $password_input) !== $hashed_password)
-            throw new Exception("The password is incorrect.");
     }
 
     private static function fetch_hashed_password() : string // -------------------------------------------------------------------------------------
@@ -54,16 +48,16 @@ class DeleteAccountController
         return $query;
     }
 
-    private static function delete_dietary_filters() : void // --------------------------------------------------------------------------------------
+    private static function delete_account() : void // ----------------------------------------------------------------------------------------------
     {
-        $query = self::delete_dietary_filters_query();
+        $query = self::delete_account_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $statement->close();
     }
 
-    private static function delete_dietary_filters_query() : string // ------------------------------------------------------------------------------
+    private static function delete_account_query() : string // --------------------------------------------------------------------------------------
     {
         $query = <<<SQL
             DELETE FROM dietary_filters

@@ -38,6 +38,62 @@ class GlobalController
         }
     }
 
+    public static function validate_new_password(string $password_input, string $confirm_password_input) : string // --------------------------------
+    {
+        if ($password_input !== $confirm_password_input)
+            throw new Exception("Passwords do not match.");
+        if (!preg_match("/[A-Z]/", $password_input))
+            throw new Exception("Password must contain at least one uppercase letter.");
+        if (!preg_match("/[a-z]/", $password_input))
+            throw new Exception("Password must contain at least one lowercase letter.");
+        if (!preg_match("/[0-9]/", $password_input))
+            throw new Exception("Password must contain at least one digit.");
+        if (!preg_match("/[+\-!@#$%^&*(),.?\"\':{}|<>]/", $password_input))
+            throw new Exception("Password must contain at least one special character.");
+        if (preg_match("/\s/", $password_input))
+            throw new Exception("Password must not contain spaces.");
+        $hashed_password = hash("sha256", $password_input);
+        return $hashed_password;
+    }
+
+    public static function validate_password(string $password_input, string $hashed_password) : void // --------------------------------------------
+    {
+        $hashed_password_input = hash("sha256", $password_input);
+        if ($hashed_password_input !== $hashed_password)
+            throw new Exception("The password is incorrect.");
+    }
+
+    public static function validate_username(mysqli $database_connection, string $username_input) : void // -----------------------------------------
+    {
+        self::validate_username_format($username_input);
+        $query = self::validate_username_query();
+        $statement = GlobalController::prepare_statement($database_connection, $query);
+        $statement->bind_param("s", $username_input);
+        GlobalController::execute_statement($statement);
+        $statement->store_result();
+        $is_unique = $statement->num_rows === 0;
+        $statement->close();
+        if (!$is_unique)
+            throw new Exception("Username already exists.");
+    }
+
+    private static function validate_username_format(string $username_input) : void // --------------------------------------------------------------
+    {
+        $regex = "/^[a-zA-Z0-9_-]+$/";
+        if (!preg_match($regex, $username_input))
+            throw new Exception("Username can include neither spaces nor special characters except '_' and '-'.");
+    }
+
+    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            SELECT 1
+            FROM users
+            WHERE username = ?;
+        SQL;
+        return $query;
+    }
+
     public static function fetch_post_values(array $keys) : array // --------------------------------------------------------------------------------
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST")
@@ -48,29 +104,11 @@ class GlobalController
         return $values;
     }
 
-    public static function fetch_get_values(array $keys) : array // ---------------------------------------------------------------------------------
-    {
-        if ($_SERVER["REQUEST_METHOD"] !== "GET")
-            throw new Exception("Invalid request method.");
-        $values = array();
-        foreach ($keys as $key)
-            $values[] = self::fetch_get($key);
-        return $values;
-    }
-
     private static function fetch_post(string $key) : mixed // --------------------------------------------------------------------------------------
     {
         $value = $_POST[$key];
         if (!isset($value))
             throw new Exception("Required POST parameter \"" . $key . "\" is missing or not set.");
-        return $value;
-    }
-
-    private static function fetch_get(string $key) : mixed // ---------------------------------------------------------------------------------------
-    {
-        $value = $_GET[$key];
-        if (!isset($value))
-            throw new Exception("Required GET parameter \"" . $key . "\" is missing or not set.");
         return $value;
     }
 }

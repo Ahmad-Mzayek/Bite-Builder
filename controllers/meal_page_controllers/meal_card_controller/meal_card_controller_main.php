@@ -3,8 +3,8 @@ include("./MealCardController.php");
 
 try
 {
-    $meal_card = MealCardController::handle_card();
-    GlobalController::send_response("success", $meal_card);
+    $meal_info = MealCardController::handle_card();
+    GlobalController::send_response("success", $meal_info);
 }
 catch (Exception $exception)
 {

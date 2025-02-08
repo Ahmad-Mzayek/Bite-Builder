@@ -28,7 +28,7 @@ BEGIN
     
     SET @filters_id = LAST_INSERT_ID();
     
-    INSERT INTO meals(meal_id, category_name, meal_name, image_name, description, nb_portions, nb_calories_per_portion, preparation_duration_minutes)
+    INSERT INTO meals
     VALUES (@filters_id, category_name, meal_name, image_name, description, nb_portions, nb_calories_per_portion, preparation_duration_minutes);
 END;
 //

@@ -18,7 +18,7 @@ class ChangeUsernameController
             $current_username = self::fetch_current_username();
             if ($username_input === $current_username)
                 throw new Exception("New username cannot be the same as the old username.");
-            self::validate_username($username_input);
+            GlobalController::validate_username(self::$database_connection, $username_input);
             self::change_username($username_input);
         }
         finally
@@ -46,29 +46,6 @@ class ChangeUsernameController
             SELECT username
             FROM users
             WHERE user_id = ?;
-        SQL;
-        return $query;
-    }
-
-    private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
-    {
-        $query = self::validate_username_query();
-        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("s", $username_input);
-        GlobalController::execute_statement($statement);
-        $statement->store_result();
-        $is_unique = $statement->num_rows === 0;
-        $statement->close();
-        if (!$is_unique)
-            throw new Exception("Username already exists.");
-    }
-
-    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            SELECT 1
-            FROM users
-            WHERE username = ?;
         SQL;
         return $query;
     }

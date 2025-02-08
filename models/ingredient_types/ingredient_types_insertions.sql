@@ -1,19 +1,20 @@
-INSERT IGNORE INTO ingredient_types(type_name) VALUES
+INSERT IGNORE INTO ingredient_types
+VALUES
 ("Nuts"),
 ("Fats"),
 ("Herbs"),
 ("Dairy"),
 ("Seeds"),
 ("Baked"),
-("Meats"),
 ("Grains"),
 ("Spices"),
 ("Fruits"),
 ("Legumes"),
 ("Seafood"),
+("Proteins"),
+("Extracts"),
 ("Mushrooms"),
 ("Beverages"),
 ("Vegetables"),
 ("Condiments"),
-("Sweeteners"),
-("Extracts");
+("Sweeteners");

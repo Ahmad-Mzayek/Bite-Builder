@@ -26,42 +26,11 @@ class SignupController
     private static function validate_inputs(array $inputs) : array // -------------------------------------------------------------------------------
     {
         [$username_input, $email_address_input, $password_input, $confirm_password_input] = $inputs;
-        self::validate_username($username_input);
+        GlobalController::validate_username(self::$database_connection, $username_input);
         self::validate_email_address($email_address_input);
         $hashed_password = GlobalController::validate_password($password_input, $confirm_password_input);
         $user_info = array($username_input, $email_address_input, $hashed_password);
         return $user_info;
-    }
-
-    private static function validate_username(string $username_input) : void // ---------------------------------------------------------------------
-    {
-        self::validate_username_format($username_input);
-        $query = self::validate_username_query();
-        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("s", $username_input);
-        GlobalController::execute_statement($statement);
-        $statement->store_result();
-        $is_unique = $statement->num_rows === 0;
-        $statement->close();
-        if (!$is_unique)
-            throw new Exception("Username already exists.");
-    }
-
-    private static function validate_username_format(string $username_input) : void // --------------------------------------------------------------
-    {
-        $regex = "/^[a-zA-Z0-9_-]+$/";
-        if (!preg_match($regex, $username_input))
-            throw new Exception("Username can include neither spaces nor special characters except '_' and '-'.");
-    }
-
-    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            SELECT 1
-            FROM users
-            WHERE username = ?;
-        SQL;
-        return $query;
     }
 
     private static function validate_email_address(string $email_address_input) : void // -----------------------------------------------------------

@@ -55,6 +55,37 @@ class GlobalController
         return hash("sha256", $password_input);
     }
 
+    public static function validate_username(mysqli $database_connection, string $username_input) : void // -----------------------------------------
+    {
+        self::validate_username_format($username_input);
+        $query = self::validate_username_query();
+        $statement = GlobalController::prepare_statement($database_connection, $query);
+        $statement->bind_param("s", $username_input);
+        GlobalController::execute_statement($statement);
+        $statement->store_result();
+        $is_unique = $statement->num_rows === 0;
+        $statement->close();
+        if (!$is_unique)
+            throw new Exception("Username already exists.");
+    }
+
+    private static function validate_username_format(string $username_input) : void // --------------------------------------------------------------
+    {
+        $regex = "/^[a-zA-Z0-9_-]+$/";
+        if (!preg_match($regex, $username_input))
+            throw new Exception("Username can include neither spaces nor special characters except '_' and '-'.");
+    }
+
+    private static function validate_username_query() : string // -----------------------------------------------------------------------------------
+    {
+        $query = <<<SQL
+            SELECT 1
+            FROM users
+            WHERE username = ?;
+        SQL;
+        return $query;
+    }
+
     public static function fetch_post_values(array $keys) : array // --------------------------------------------------------------------------------
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST")

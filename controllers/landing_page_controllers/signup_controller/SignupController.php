@@ -28,7 +28,7 @@ class SignupController
         [$username_input, $email_address_input, $password_input, $confirm_password_input] = $inputs;
         GlobalController::validate_username(self::$database_connection, $username_input);
         self::validate_email_address($email_address_input);
-        $hashed_password = GlobalController::validate_password($password_input, $confirm_password_input);
+        $hashed_password = GlobalController::validate_new_password($password_input, $confirm_password_input);
         $user_info = array($username_input, $email_address_input, $hashed_password);
         return $user_info;
     }

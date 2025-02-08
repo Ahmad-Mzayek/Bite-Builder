@@ -17,7 +17,7 @@ class ChangePasswordController
             [$current_password_input, $new_password_input, $confirm_new_password_input]
                 = GlobalController::fetch_post_values(array("current_password_input", "new_password_input", "confirm_new_password_input"));
             self::validate_current_password($current_password_input);
-            $hashed_password = GlobalController::validate_password($new_password_input, $confirm_new_password_input);
+            $hashed_password = GlobalController::validate_new_password($new_password_input, $confirm_new_password_input);
             if ($current_password_input === $new_password_input)
                 throw new Exception("New password cannot be the same as the old password.");
             self::change_password($hashed_password);

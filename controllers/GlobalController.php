@@ -38,7 +38,7 @@ class GlobalController
         }
     }
 
-    public static function validate_password(string $password_input, string $confirm_password_input) : string // ------------------------------------
+    public static function validate_new_password(string $password_input, string $confirm_password_input) : string // --------------------------------
     {
         if ($password_input !== $confirm_password_input)
             throw new Exception("Passwords do not match.");
@@ -53,6 +53,12 @@ class GlobalController
         if (preg_match("/\s/", $password_input))
             throw new Exception("Password must not contain spaces.");
         return hash("sha256", $password_input);
+    }
+
+    public static function validate_password(string $password_input, string $hashed_password) : void // --------------------------------------------
+    {
+        if (hash("sha256", $password_input) !== $hashed_password)
+            throw new Exception("The password is incorrect.");
     }
 
     public static function validate_username(mysqli $database_connection, string $username_input) : void // -----------------------------------------

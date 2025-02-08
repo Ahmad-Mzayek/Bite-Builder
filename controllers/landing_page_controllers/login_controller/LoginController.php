@@ -13,8 +13,10 @@ class LoginController
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
             [$login_input, $password_input] = GlobalController::fetch_post_values(array("login_input", "password_input"));
             $user_info = self::fetch_user_info($login_input);
-            if (!$user_info || hash("sha256", $password_input) !== $user_info["hashed_password"])
+            if (!$user_info)
                 throw new Exception("Incorrect login or password.");
+            $hashed_password = $user_info["hashed_password"];
+            GlobalController::validate_password($password_input, $hashed_password);
             self::start_session($user_info["user_id"]);
         }
         finally

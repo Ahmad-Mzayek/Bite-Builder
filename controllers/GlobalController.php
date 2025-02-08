@@ -38,6 +38,23 @@ class GlobalController
         }
     }
 
+    public static function validate_password(string $password_input, string $confirm_password_input) : string // ------------------------------------
+    {
+        if ($password_input !== $confirm_password_input)
+            throw new Exception("Passwords do not match.");
+        if (!preg_match("/[A-Z]/", $password_input))
+            throw new Exception("Password must contain at least one uppercase letter.");
+        if (!preg_match("/[a-z]/", $password_input))
+            throw new Exception("Password must contain at least one lowercase letter.");
+        if (!preg_match("/[0-9]/", $password_input))
+            throw new Exception("Password must contain at least one digit.");
+        if (!preg_match("/[+\-!@#$%^&*(),.?\"\':{}|<>]/", $password_input))
+            throw new Exception("Password must contain at least one special character.");
+        if (preg_match("/\s/", $password_input))
+            throw new Exception("Password must not contain spaces.");
+        return hash("sha256", $password_input);
+    }
+
     public static function fetch_post_values(array $keys) : array // --------------------------------------------------------------------------------
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST")

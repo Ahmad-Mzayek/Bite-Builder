@@ -17,7 +17,7 @@ class ChangePasswordController
             [$current_password_input, $new_password_input, $confirm_new_password_input]
                 = GlobalController::fetch_post_values(array("current_password_input", "new_password_input", "confirm_new_password_input"));
             self::validate_current_password($current_password_input);
-            $hashed_password = self::validate_new_password($new_password_input, $confirm_new_password_input);
+            $hashed_password = GlobalController::validate_password($new_password_input, $confirm_new_password_input);
             if ($current_password_input === $new_password_input)
                 throw new Exception("New password cannot be the same as the old password.");
             self::change_password($hashed_password);
@@ -56,29 +56,6 @@ class ChangePasswordController
             WHERE user_id = ?;
         SQL;
         return $query;
-    }
-    
-    private static function validate_new_password(string $new_password_input, string $confirm_new_password_input) : string // -----------------------
-    {
-        $hashed_password = self::validate_password($new_password_input);
-        if ($new_password_input !== $confirm_new_password_input)
-            throw new Exception("Passwords do not match.");
-        return $hashed_password;
-    }
-
-    private static function validate_password(string $password_input) : string // -------------------------------------------------------------------
-    {
-        if (!preg_match("/[A-Z]/", $password_input))
-            throw new Exception("Password must contain at least one uppercase letter.");
-        if (!preg_match("/[a-z]/", $password_input))
-            throw new Exception("Password must contain at least one lowercase letter.");
-        if (!preg_match("/[0-9]/", $password_input))
-            throw new Exception("Password must contain at least one digit.");
-        if (!preg_match("/[+\-!@#$%^&*(),.?\"\':{}|<>]/", $password_input))
-            throw new Exception("Password must contain at least one special character.");
-        if (preg_match("/\s/", $password_input))
-            throw new Exception("Password must not contain spaces.");
-        return hash("sha256", $password_input);
     }
 
     private static function change_password(string $hashed_password) : void // ----------------------------------------------------------------------

@@ -28,7 +28,7 @@ class SignupController
         [$username_input, $email_address_input, $password_input, $confirm_password_input] = $inputs;
         self::validate_username($username_input);
         self::validate_email_address($email_address_input);
-        $hashed_password = self::validate_password($password_input, $confirm_password_input);
+        $hashed_password = GlobalController::validate_password($password_input, $confirm_password_input);
         $user_info = array($username_input, $email_address_input, $hashed_password);
         return $user_info;
     }
@@ -93,23 +93,6 @@ class SignupController
             WHERE email_address = ?;
         SQL;
         return $query;
-    }
-
-    private static function validate_password(string $password_input, string $confirm_password_input) : string // -----------------------------------
-    {
-        if ($password_input !== $confirm_password_input)
-            throw new Exception("Passwords do not match.");
-        if (!preg_match("/[A-Z]/", $password_input))
-            throw new Exception("Password must contain at least one uppercase letter.");
-        if (!preg_match("/[a-z]/", $password_input))
-            throw new Exception("Password must contain at least one lowercase letter.");
-        if (!preg_match("/[0-9]/", $password_input))
-            throw new Exception("Password must contain at least one digit.");
-        if (!preg_match("/[+\-!@#$%^&*(),.?\"\':{}|<>]/", $password_input))
-            throw new Exception("Password must contain at least one special character.");
-        if (preg_match("/\s/", $password_input))
-            throw new Exception("Password must not contain spaces.");
-        return hash("sha256", $password_input);
     }
 
     private static function insert_user(array $user_info) : void // ---------------------------------------------------------------------------------

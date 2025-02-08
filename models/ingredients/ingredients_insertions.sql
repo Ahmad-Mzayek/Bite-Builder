@@ -47,6 +47,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Salt", "Spices", "Gram"),
 ("Kosher Salt", "Spices", "Gram"),
 ("Onion Powder", "Spices", "Gram"),
 ("Cubeb Pepper", "Spices", "Gram"),
@@ -71,7 +72,8 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Water", "Beverages", "Milliliter"),
-("Dry White Wine", "Beverages", "Milliliter");
+("Dry White Wine", "Beverages", "Milliliter"),
+("Blood Orange Juice", "Beverages", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -85,10 +87,13 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Ranch", "Condiments", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
-("Barbecue Sauce", "Condiments", "Milliliter");
+("Barbecue Sauce", "Condiments", "Milliliter"),
+("Red Wine Vinegar", "Condiments", "Milliliter"),
+("Spicy Brown Mustard", "Condiments", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Honey", "Sweeteners", "Gram"),
 ("Brown Sugar", "Sweeteners", "Gram"),
 ("White Sugar", "Sweeteners", "Gram"),
 ("Granulated Sugar", "Sweeteners", "Gram");

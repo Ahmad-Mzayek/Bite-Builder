@@ -60,3 +60,10 @@ CALL insert_meal(
     Using a pastry brush, brush tops of sliders with ranch butter. Cover rolls with foil.
     Bake in the preheated oven for 20 minutes. Remove foil and bake until filling is hot, buns are golden, and cheese is melted, about 10 more minutes. Serve immediately.",
     12, 400, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0);
+
+CALL insert_meal(
+    "Sauces & Condiments",
+    "Blood Orange Vinaigrette",
+    "blood_orange_vinaigrette.png",
+    "Combine olive oil, blood orange juice, red wine vinegar, honey, mustard, salt, and pepper in a blender. Process until well combined and smooth.",
+    8, 150, 10, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0);

@@ -84,3 +84,13 @@ VALUES
 (7, "Colby-Jack Cheese", 225),
 (7, "Salted Butter", 60),
 (7, "Ranch Seasoning", 4);
+
+INSERT IGNORE INTO recipes
+VALUES
+(8, "Olive Oil", 100),
+(8, "Blood Orange Juice", 70),
+(8, "Red Wine Vinegar", 50),
+(8, "Honey", 40),
+(8, "Spicy Brown Mustard", 15),
+(8, "Salt", NULL),
+(8, "Ground Black Pepper", NULL);

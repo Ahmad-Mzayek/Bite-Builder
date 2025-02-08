@@ -1,4 +1,4 @@
-export const fetchCategories = (categories) => {
+export const fetchAndUpdateCategories = (categories) => {
   categories.forEach((category) => {
     categoryContainerChild = document.createElement("div");
     categoryContainerChild.classList.add("flex items-center space-x-3");

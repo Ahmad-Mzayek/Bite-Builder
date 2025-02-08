@@ -35,7 +35,7 @@ class PreferencesController
     {
         [self::$is_favorites_checked, self::$checked_categories, self::$checked_filters, self::$sort_by, self::$order, self::$searched_meal_name,
          self::$min_nb_calories_per_portion, self::$max_nb_calories_per_portion, self::$min_preparation_duration_minutes,
-         self::$max_preparation_duration_minutes] = GlobalController::fetch_get_values(array("is_favorites_checked", "checked_categories",
+         self::$max_preparation_duration_minutes] = GlobalController::fetch_post_values(array("is_favorites_checked", "checked_categories",
          "checked_filters", "sort_by", "order", "searched_meal_name", "min_nb_calories_per_portion", "max_nb_calories_per_portion",
          "min_preparation_duration_minutes", "max_preparation_duration_minutes"));
     }

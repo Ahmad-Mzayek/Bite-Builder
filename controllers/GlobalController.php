@@ -48,29 +48,11 @@ class GlobalController
         return $values;
     }
 
-    public static function fetch_get_values(array $keys) : array // ---------------------------------------------------------------------------------
-    {
-        if ($_SERVER["REQUEST_METHOD"] !== "GET")
-            throw new Exception("Invalid request method.");
-        $values = array();
-        foreach ($keys as $key)
-            $values[] = self::fetch_get($key);
-        return $values;
-    }
-
     private static function fetch_post(string $key) : mixed // --------------------------------------------------------------------------------------
     {
         $value = $_POST[$key];
         if (!isset($value))
             throw new Exception("Required POST parameter \"" . $key . "\" is missing or not set.");
-        return $value;
-    }
-
-    private static function fetch_get(string $key) : mixed // ---------------------------------------------------------------------------------------
-    {
-        $value = $_GET[$key];
-        if (!isset($value))
-            throw new Exception("Required GET parameter \"" . $key . "\" is missing or not set.");
         return $value;
     }
 }

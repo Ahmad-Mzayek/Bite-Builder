@@ -14,7 +14,7 @@ class MealCardController
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-            [self::$meal_id] = GlobalController::fetch_get_values(array("meal_id"));
+            [self::$meal_id] = GlobalController::fetch_post_values(array("meal_id"));
             $meal_row = self::fetch_meal_row();
             $meal_row["recipe"] = self::fetch_recipe();
             $meal_row["is_favorite"] = self::fetch_is_favorite();

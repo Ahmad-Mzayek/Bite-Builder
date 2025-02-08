@@ -140,7 +140,7 @@ class PreferencesController
     private static function add_user_category_query() : string // -----------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            INSERT INTO users_meal_categories(user_id, meal_category_name)
+            INSERT INTO users_meal_categories(user_id, category_name)
             VALUES (?, ?)
         SQL;
         return $query;

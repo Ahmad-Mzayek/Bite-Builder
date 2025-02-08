@@ -19,12 +19,15 @@ VALUES
 ("Cheddar Cheese", "Dairy", "Gram"),
 ("Unsalted Butter", "Dairy", "Gram"),
 ("Heavy Cream", "Dairy", "Milliliter"),
+("Colby-Jack Cheese", "Dairy", "Gram"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
 ("Parmigiano-Reggiano Cheese", "Dairy", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Bacon", "Proteins", "Piece"),
 ("Hot Dog", "Proteins", "Can"),
+("Chicken", "Proteins", "Gram"),
 ("Egg Yolk", "Proteins", "Piece"),
 ("Proscuitto", "Proteins", "Gram"),
 ("Whole Egg", "Proteins", "Piece"),
@@ -34,6 +37,7 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Breadcrumbs", "Baked", "Gram"),
+("Hawaiian Roll", "Baked", "Piece"),
 ("Panko Breadcrumbs", "Baked", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -46,11 +50,11 @@ VALUES
 ("Kosher Salt", "Spices", "Gram"),
 ("Onion Powder", "Spices", "Gram"),
 ("Cubeb Pepper", "Spices", "Gram"),
-("Onion Powder", "Spices", "Gram"),
 ("Ground Ginger", "Spices", "Gram"),
 ("Sweet Paprika", "Spices", "Gram"),
 ("Garlic Powder", "Spices", "Gram"),
 ("Cayenne Pepper", "Spices", "Gram"),
+("Ranch Seasoning", "Spices", "Gram"),
 ("Red Pepper Flakes", "Spices", "Gram"),
 ("Ground Black Pepper", "Spices", "Gram");
 
@@ -79,6 +83,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Ranch", "Condiments", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
 ("Barbecue Sauce", "Condiments", "Milliliter");
 

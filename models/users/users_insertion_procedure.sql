@@ -1,9 +1,9 @@
 DELIMITER //
 CREATE PROCEDURE insert_user
 (
-    IN username         VARCHAR(32),
-    IN email_address    VARCHAR(64),
-    IN hashed_password  CHAR(64)
+    IN username_input           VARCHAR(32),
+    IN email_address_input      VARCHAR(64),
+    IN hashed_password_input    CHAR(64)
 ) 
 BEGIN
     INSERT INTO dietary_filters
@@ -12,7 +12,7 @@ BEGIN
     SET @filters_id = LAST_INSERT_ID();
     
     INSERT INTO users(user_id, username, email_address, hashed_password)
-    VALUES (@filters_id, username, email_address, hashed_password);
+    VALUES (@filters_id, username_input, email_address_input, hashed_password_input);
 END;
 //
 DELIMITER ;

@@ -24,7 +24,7 @@ INSERT IGNORE INTO recipes
 VALUES
 (3, "Full-Fat Cream Cheese", 900),
 (3, "Granulated Sugar", 285),
-(3, "Egg", 5),
+(3, "Whole Egg", 5),
 (3, "Egg Yolk", 2),
 (3, "Heavy Cream", 240),
 (3, "Vanilla Extract", 10),
@@ -43,7 +43,7 @@ VALUES
 (4, "Grains Of Selim", 1),
 (4, "Cubeb Pepper", 1),
 (4, "Garlic Clove", 1),
-(4, "Red Onions", 25),
+(4, "Red Onion", 25),
 (4, "Tomato", 25),
 (4, "Lime", 150),
 (4, "Crisp Lettuce", 10),
@@ -69,8 +69,18 @@ VALUES
 
 INSERT IGNORE INTO recipes
 VALUES
-(6, "Egg", 3),
+(6, "Whole Egg", 3),
 (6, "Kosher Salt", 2),
 (6, "Ground Black Pepper", 2),
 (6, "Cheddar Cheese", 55),
 (6, "Unsalted Butter", 15);
+
+INSERT IGNORE INTO recipes
+VALUES
+(7, "Bacon", 8),
+(7, "Hawaiian Roll", 12),
+(7, "Chicken", 450),
+(7, "Ranch", 100),
+(7, "Colby-Jack Cheese", 225),
+(7, "Salted Butter", 60),
+(7, "Ranch Seasoning", 4);

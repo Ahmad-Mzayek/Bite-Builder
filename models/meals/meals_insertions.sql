@@ -46,3 +46,17 @@ CALL insert_meal(
     "souffle_omelette_with_cheese.png", 
     "The soufflé omelette is the easiest way to practice making any kind of soufflé, given the low barrier to entry. If you have some eggs and a few extra minutes to beat the whites, you can do it. No need to prep a soufflé dish or preheat an oven, and no need to make a béchamel or pastry cream base, nor bake it until puffed and browned.",
     1, 550, 20, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);
+
+CALL insert_meal(
+    "Main Courses",
+    "Chicken Bacon Ranch Sliders",
+    "chicken_bacon_ranch_sliders.png",
+    "Gather all ingredients. Preheat the oven to 350 degrees F (180 degrees C).
+    Place bacon in a large skillet and cook over medium-high heat, turning occasionally, until evenly browned, about 10 minutes. Drain bacon slices on paper towels. Crumble when cool enough to handle.
+    Using a sharp serrated knife, carefully cut slider rolls in half horizontally. Set tops of rolls aside. Place bottom halves of rolls onto a rimmed baking tray.
+    Add chicken and prepared ranch dressing to a bowl; stir to thoroughly coat chicken.
+    Spread chicken onto slider rolls. Top chicken mixture with cheese and crumbled bacon. Place top halves of rolls on top of filling.
+    Melt butter in the microwave in a microwave-safe bowl on High, about 30 seconds. Stir ranch seasoning into butter.
+    Using a pastry brush, brush tops of sliders with ranch butter. Cover rolls with foil.
+    Bake in the preheated oven for 20 minutes. Remove foil and bake until filling is hot, buns are golden, and cheese is melted, about 10 more minutes. Serve immediately.",
+    12, 400, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0);

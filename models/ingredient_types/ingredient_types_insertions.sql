@@ -1,4 +1,5 @@
-INSERT IGNORE INTO ingredient_types(type_name) VALUES
+INSERT IGNORE INTO ingredient_types
+VALUES
 ("Nuts"),
 ("Fats"),
 ("Herbs"),

@@ -48,7 +48,7 @@ class DeleteAccountController
         return $query;
     }
 
-    private static function delete_account() : void // --------------------------------------------------------------------------------------
+    private static function delete_account() : void // ----------------------------------------------------------------------------------------------
     {
         $query = self::delete_account_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
@@ -57,7 +57,7 @@ class DeleteAccountController
         $statement->close();
     }
 
-    private static function delete_account_query() : string // ------------------------------------------------------------------------------
+    private static function delete_account_query() : string // --------------------------------------------------------------------------------------
     {
         $query = <<<SQL
             DELETE FROM dietary_filters

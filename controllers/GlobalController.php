@@ -52,12 +52,14 @@ class GlobalController
             throw new Exception("Password must contain at least one special character.");
         if (preg_match("/\s/", $password_input))
             throw new Exception("Password must not contain spaces.");
-        return hash("sha256", $password_input);
+        $hashed_password = hash("sha256", $password_input);
+        return $hashed_password;
     }
 
     public static function validate_password(string $password_input, string $hashed_password) : void // --------------------------------------------
     {
-        if (hash("sha256", $password_input) !== $hashed_password)
+        $hashed_password_input = hash("sha256", $password_input);
+        if ($hashed_password_input !== $hashed_password)
             throw new Exception("The password is incorrect.");
     }
 

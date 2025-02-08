@@ -13,7 +13,7 @@ class LoginController
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
             [$login_input, $password_input] = GlobalController::fetch_post_values(array("login_input", "password_input"));
             $user_info = self::fetch_user_info($login_input);
-            if (!$user_info || !self::validate_password($password_input, $user_info["hashed_password"]))
+            if (!$user_info || hash("sha256", $password_input) !== $user_info["hashed_password"])
                 throw new Exception("Incorrect login or password.");
             self::start_session($user_info["user_id"]);
         }
@@ -45,11 +45,6 @@ class LoginController
         SQL;
         $query .= filter_var($login_input, FILTER_VALIDATE_EMAIL) ? "email_address = ?" : "username = ?";
         return $query;
-    }
-
-    private static function validate_password(string $password_input, string $hashed_password) : bool // --------------------------------------------
-    {
-        return hash("sha256", $password_input) === $hashed_password;
     }
 
     private static function start_session(int $user_id): void // ------------------------------------------------------------------------------------

@@ -97,7 +97,7 @@ class UserInfoController
         $query = <<<SQL
             SELECT *
             FROM dietary_filters
-            WHERE filter_id = ?;
+            WHERE filters_id = ?;
         SQL;
         return $query;
     }

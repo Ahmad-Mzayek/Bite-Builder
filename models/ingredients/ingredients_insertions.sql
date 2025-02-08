@@ -15,6 +15,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Sour Cream", "Dairy", "Gram"),
 ("Salted Butter", "Dairy", "Gram"),
 ("Cheddar Cheese", "Dairy", "Gram"),
 ("Unsalted Butter", "Dairy", "Gram"),
@@ -32,6 +33,7 @@ VALUES
 ("Egg Yolk", "Proteins", "Piece"),
 ("Proscuitto", "Proteins", "Gram"),
 ("Whole Egg", "Proteins", "Piece"),
+("Chicken Breast", "Proteins", "Piece"),
 ("Round Beef Roast", "Proteins", "Gram"),
 ("Beef Flank Steak", "Proteins", "Gram");
 
@@ -65,6 +67,8 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Lime", "Fruits", "Gram"),
 ("Tomato", "Fruits", "Gram"),
+("Jalapeno", "Fruits", "Gram"),
+("Tomatillo", "Fruits", "Gram"),
 ("Lemon Zest", "Fruits", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -79,15 +83,16 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Garlic", "Vegetables", "Clove"),
 ("Broccoli", "Vegetables", "Gram"),
 ("Red Onion", "Vegetables", "Gram"),
-("Garlic Clove", "Vegetables", "Head"),
 ("Yellow Onion", "Vegetables", "Gram"),
 ("Crisp Lettuce", "Vegetables", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Ranch", "Condiments", "Milliliter"),
+("Hot Sauce", "Condiements", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
 ("Barbecue Sauce", "Condiments", "Milliliter"),
 ("Red Wine Vinegar", "Condiments", "Milliliter"),
@@ -103,4 +108,5 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Cocoa Powder", "Extracts", "Gram"),
+("Chicken Stock", "Extracts", "Milliliter"),
 ("Vanilla Extract", "Extracts", "Milliliter");

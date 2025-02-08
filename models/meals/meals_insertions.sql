@@ -75,3 +75,13 @@ CALL insert_meal(
     "Mix the cocoa powder and sugar together in a small saucepan. Stir the 1 1/2 cups milk into the saucepan until the sugar has dissolved. Place over low heat; slowly bring the mixture to a low simmer.
     Whisk 2 tablespoons of milk together with the cornstarch in a small cup; slowly whisk the cornstarch slurry into the cocoa mixture. Continue cooking, whisking continually, until the hot chocolate reaches a pudding-like thickness, 2 to 3 minutes.",
     2, 170, 20, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0);
+
+CALL insert_meal(
+    "Soups & Stews",
+    "Tomatillo Soup",
+    "tomatillo_soup.png",
+    "Heat oil in a large saucepan or Dutch oven over medium-high heat: add chicken and cook until browned, approximately 2 minutes per side. Remove chicken from the saucepan and set aside.
+    Add onions and garlic to saucepan and sauté over medium-low heat until golden, about 2 to 3 minutes. Stir in tomatillos and jalapeño peppers. Add broth and bring to a boil; reduce heat to low, cover, and simmer for about 15 minutes.
+    Puree soup in batches in a blender or food processor. Return to pot, and reheat. Add hot pepper sauce and cayenne pepper to taste.
+    Shred cooked chicken; stir into soup and season to taste with salt and pepper. Add minced cilantro and ladle into bowls; top with sour cream if you like.",
+    6, 160, 45, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1);

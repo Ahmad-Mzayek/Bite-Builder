@@ -13,7 +13,7 @@ VALUES
 (2, "Salted Butter", 14),
 (2, "Breadcrumbs", 15),
 (2, "Anchovy", 2),
-(2, "Garlic Clove", 1),
+(2, "Garlic", 1),
 (2, "Lemon Zest", 3),
 (2, "Broccoli", 453),
 (2, "Olive Oil", 30),
@@ -42,7 +42,7 @@ VALUES
 (4, "Cayenne Pepper", 2),
 (4, "Grains Of Selim", 1),
 (4, "Cubeb Pepper", 1),
-(4, "Garlic Clove", 1),
+(4, "Garlic", 1),
 (4, "Red Onion", 25),
 (4, "Tomato", 25),
 (4, "Lime", 150),
@@ -56,7 +56,7 @@ VALUES
 (5, "Parsley", 15),
 (5, "Pine Nut", 20),
 (5, "Olive Oil", 60),
-(5, "Garlic Clove", 4),
+(5, "Garlic", 4),
 (5, "Ground Black Pepper", 2),
 (5, "Red Pepper Flakes", 1),
 (5, "Round Beef Roast", 675),
@@ -101,3 +101,19 @@ VALUES
 (9, "White Sugar", 10),
 (9, "Full-Fat Milk", 300),
 (9, "Cornstarch", 6);
+
+INSERT IGNORE INTO recipes
+VALUES
+(10, "Chicken Breast", 1),
+(10, "Olive Oil", 50),
+(10, "Yellow Onion", 100),
+(10, "Garlic", 3),
+(10, "Tomatillo", 450),
+(10, "Jalapeno Pepper", 50),
+(10, "Chicken Stock", 800),
+(10, "Hot Sauce", 5),
+(10, "Cayenne Pepper", 1),
+(10, "Coriander", NULL),
+(10, "Sour Cream", 60),
+(10, "Salt", NULL),
+(10, "Ground Black Pepper", NULL);

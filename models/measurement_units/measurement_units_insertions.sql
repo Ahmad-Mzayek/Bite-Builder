@@ -6,4 +6,5 @@ VALUES
 ("Head", "Heads"),
 ("Leaf", "Leaves"),
 ("Piece", "Pieces"),
+("Clove", "Cloves"),
 ("Milliliter", "Milliliters");

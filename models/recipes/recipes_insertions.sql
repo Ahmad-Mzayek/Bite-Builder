@@ -188,3 +188,16 @@ VALUES
 (16, "Cabbage", 200),
 (16, "White Rice", NULL),
 (16, "Lemon", 100);
+
+INSERT IGNORE INTO recipes
+VALUES
+(17, "Kosher Salt", NULL),
+(17, "Ounces Linguine", 340),
+(17, "Shrimp",  567),
+(17, "Extra-Virgin Olive Oil", 80),
+(17, "Garlic", 5),
+(17, "Red Pepper Flakes", 1),
+(17, "Dry White Wine", 80),
+(17, "Lemon Juice", 20),
+(17, "Unsalted Butter", 24),
+(17, "Parsley", 15);

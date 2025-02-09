@@ -184,3 +184,12 @@ CALL insert_meal(
     Working with 2 cutlets at a time to prevent crowding, cook the chicken until golden brown on both sides, about 3 minutes per side. Transfer to the prepared wire rack or plate, season with salt and let rest for 2 minutes. Meanwhile, repeat with the remaining 2 cutlets. (See Cook’s Note.)
     Slice each cutlet crosswise into 1/2-inch strips, lay on a bed of sliced cabbage and serve with the katsu sauce, rice and a lemon wedge.",
     4, 1140, 20, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0);    
+
+CALL insert_meal(
+  "Main Courses",
+  "Classic Shrimp Scampi",
+  "classic_shrimp_scampi.png",
+  "Bring a large pot of salted water to a boil. Add the linguine and cook as the label directs. Reserve 1 cup cooking water, then drain.
+  Meanwhile, season the shrimp with salt. Heat the olive oil in a large skillet over medium-high heat. Add the garlic and red pepper flakes and cook until the garlic is just golden, 30 seconds to 1 minute. Add the shrimp and cook, stirring occasionally, until pink and just cooked through, 1 to 2 minutes per side. Remove the shrimp to a plate. Add the wine and lemon juice to the skillet and simmer until slightly reduced, 2 minutes. 
+  Return the shrimp and any juices from the plate to the skillet along with the linguine, butter and 1/2 cup of the reserved cooking water. Continue to cook, tossing, until the butter is melted and the shrimp is hot, about 2 minutes, adding more of the reserved cooking water as needed. Season with salt; stir in the parsley. Serve with lemon wedges.",
+  4, 723, 30, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);

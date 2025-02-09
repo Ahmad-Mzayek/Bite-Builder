@@ -8,7 +8,8 @@ VALUES
 ("Olive Oil", "Fats", "Milliliter"),
 ("Asian Sesame Oil", "Fats", "Milliliter"),
 ("Peanut Oil", "Fats", "Milliliter"),
-("Vegetable Oil", "Fats", "Milliliter");
+("Vegetable Oil", "Fats", "Milliliter"),
+("Extra-Virgin Olive Oil", "Fats", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -30,7 +31,8 @@ VALUES
 ("Buttermilk", "Dairy", "Milliliter"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
 ("Parmigiano-Reggiano Cheese", "Dairy", "Gram"),
-("Coconut Milk", "Dairy", "Milliliter");
+("Coconut Milk", "Dairy", "Milliliter"),
+("Unsalted Butter", "Dairy", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -60,7 +62,8 @@ VALUES
 ("Jasmine Rice", "Grains", "Gram"),
 ("White Beans", "Grains", "Gram"),
 ("Can Butter Beans", "Grains", "Can"),
-("White Rice", "Grains", "Gram");
+("White Rice", "Grains", "Gram"),
+("Ounces Linguine", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -90,7 +93,8 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Anchovy", "Seafood", "Gram");
+("Anchovy", "Seafood", "Gram"),
+("Shrimp", "Seafood", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -99,7 +103,8 @@ VALUES
 ("Blood Orange Juice", "Beverages", "Milliliter"),
 ("Lemon Juice", "Beverages", "Milliliter"),
 ("Soy Sauce", "Beverages", "Milliliter"),
-("Bean Cooking Liquid", "Beverages", "Milliliter");
+("Bean Cooking Liquid", "Beverages", "Milliliter"),
+("Dry White Wine", "Beverages", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES

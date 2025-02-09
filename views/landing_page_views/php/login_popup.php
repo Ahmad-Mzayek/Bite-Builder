@@ -1,19 +1,19 @@
 <?php include "../../global_views/php/show_password_icons.php"; ?>
 
 <div id="login-popup"
-     class="popup hidden flex-col w-3/12 min-w-[25rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6 bg-gray-200">
+     class="popup hidden flex-col min-w-[30rem] min-h-[20rem] items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6">
     <h1 class="pb-4 font-bold">Log In</h1>
 
     <?php include("../../global_views/php/close_popup_svg.php"); ?>
 
-    <form id="login-form" class="flex flex-col items-center w-full space-y-2">
+    <form id="login-form" class="flex flex-col items-center w-full space-y-3">
         <div id="signup-success-container"
-             class="hidden w-full p-2 font-bold text-white bg-green-700">
+             class="hidden w-full p-2 font-bold text-white bg-green-500">
             Signup successful! Please Log In.
         </div>
 
         <div id="login-error-container"
-             class="hidden w-full p-2 font-bold text-white bg-red-500">
+             class="hidden w-full p-2 font-bold text-white bg-red-700">
         </div>
 
         <input type="text"
@@ -52,7 +52,7 @@
     </h3>
     
     <button id="reset-password-button"
-            class="pt-4 text-base font-medium text-blue-600 underline transition md:text-lg lg:text-xl hover:text-blue-800">
+            class="pt-2 text-base font-medium text-blue-600 underline transition md:text-lg lg:text-xl hover:text-blue-800">
         Forgot Password?
     </button>
 </div>

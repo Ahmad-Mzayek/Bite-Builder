@@ -172,3 +172,19 @@ VALUES
 (15, "Potato Starch", 552),
 (15, "Peanut Oil", 2000),
 (15, "Brown Sugar", 13);
+
+INSERT IGNORE INTO recipes
+VALUES
+(16, "Ketchup", 100),
+(16, "Worcestershire Sauce", 45),
+(16, "Soy Sauce", 30),
+(16, "White Flour", 30),
+(16, "Whole Egg", 2),
+(16, "Panko Breadcrumbs", 75),
+(16, "Kosher Salt", NULL),
+(16, "Ground Black Pepper", NULL),
+(16, "Chicken Breast", 2),
+(16, "Vegetable Oil", 300),
+(16, "Cabbage", 200),
+(16, "White Rice", NULL),
+(16, "Lemon", 100);

@@ -7,7 +7,8 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Olive Oil", "Fats", "Milliliter"),
 ("Asian Sesame Oil", "Fats", "Milliliter"),
-("Peanut Oil", "Fats", "Milliliter");
+("Peanut Oil", "Fats", "Milliliter"),
+("Vegetable Oil", "Fats", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -58,7 +59,8 @@ VALUES
 ("Grains Of Selim", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("White Beans", "Grains", "Gram"),
-("Can Butter Beans", "Grains", "Can");
+("Can Butter Beans", "Grains", "Can"),
+("White Rice", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -83,7 +85,8 @@ VALUES
 ("Jalapeno", "Fruits", "Gram"),
 ("Tomatillo", "Fruits", "Gram"),
 ("Lemon Zest", "Fruits", "Gram"),
-("Canned Tomato Purée", "Fruits", "Can");
+("Canned Tomato Purée", "Fruits", "Can"),
+("Lemon", "Fruits", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -106,16 +109,19 @@ VALUES
 ("Yellow Onion", "Vegetables", "Gram"),
 ("Scallions", "Vegetables", "Gram"),
 ("Crisp Lettuce", "Vegetables", "Gram"),
-("Ginger", "Vegetables", "Gram");
+("Ginger", "Vegetables", "Gram"),
+("Cabbage", "Vegetables", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Ranch", "Condiments", "Milliliter"),
-("Hot Sauce", "Condiements", "Milliliter"),
+("Hot Sauce", "Condiments", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
 ("Barbecue Sauce", "Condiments", "Milliliter"),
 ("Red Wine Vinegar", "Condiments", "Milliliter"),
-("Spicy Brown Mustard", "Condiments", "Milliliter");
+("Spicy Brown Mustard", "Condiments", "Milliliter"),
+("Ketchup", "Condiments", "Milliliter"),
+("Worcestershire Sauce", "Condiments", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -128,9 +134,11 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Cocoa Powder", "Extracts", "Gram"),
 ("Chicken Stock", "Extracts", "Milliliter"),
-("Vanilla Extract", "Extracts", "Milliliter");
+("Vanilla Extract", "Extracts", "Milliliter"),
+("Soy Sauce", "Extracts", "Milliliters");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Olive Oil-Packed Tuna", "Seafood", "Can"),
 ("Sea Scallops", "Seafood", "Gram");
+

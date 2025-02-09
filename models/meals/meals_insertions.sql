@@ -173,3 +173,14 @@ CALL insert_meal(
     Set a large cast iron skillet on the stovetop and add 1 1/2 inches of oil. Heat over medium-high heat until the oil reaches 375°F (190°C). Once the oil has come to temperature, add 2 or 3 chicken thighs to the skillet, depending on its size (be careful not to crowd the pan), and fry for about 8 minutes, until the bottom sides are golden brown. Flip the thighs and cook for another 8 minutes, or until they are a deep golden brown on the other side. Transfer to the rack set over the baking sheet and slide into the oven to keep warm. Fry the remaining chicken thighs, transferring them to the oven as they are done. If not serving immediately, turn off the oven and prop the oven door open a crack so that the thighs remain warm and crisp.
     Put the fried chicken on a platter and serve family style, with your favorite accompaniments.",
     4, 833, 12, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0);
+
+CALL insert_meal(
+    "Main Courses",
+    "Chicken Katsu", 
+    "chicken_katsu.png",
+    "For the katsu sauce: Stir together the ketchup, Worcestershire and soy sauce in a small bowl. Set aside.
+    For the chicken: Set a wire rack in a baking sheet or line a large plate with a paper towel and set aside. Place the flour, eggs and panko into 3 separate large shallow bowls. Stir together 1 teaspoon salt and 1 teaspoon pepper in a small bowl and then sprinkle the mixture on both sides of the cutlets. Working with 1 cutlet at a time, dredge it in the flour, dip it into the eggs, and then coat it with the panko, gently pressing both sides into the panko to make sure it adheres well. Transfer the cutlet to a plate and repeat with the remaining cutlets.
+    Heat the oil in a large skillet over high heat until it reaches about 350 degrees F on a deep-fry thermometer. (To test for readiness, sprinkle a few pieces of panko into the oil. It should bubble vigorously.) 
+    Working with 2 cutlets at a time to prevent crowding, cook the chicken until golden brown on both sides, about 3 minutes per side. Transfer to the prepared wire rack or plate, season with salt and let rest for 2 minutes. Meanwhile, repeat with the remaining 2 cutlets. (See Cook’s Note.)
+    Slice each cutlet crosswise into 1/2-inch strips, lay on a bed of sliced cabbage and serve with the katsu sauce, rice and a lemon wedge.",
+    4, 1140, 20, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0);    

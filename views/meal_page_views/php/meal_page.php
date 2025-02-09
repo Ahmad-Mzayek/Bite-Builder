@@ -16,8 +16,9 @@
 		<link rel="stylesheet"
 			  type="text/css"
 			  href="../../global_views/css/theme_switch_button.css">
+		<link rel="stylesheet" href="../../global_views/css/theme.css">
 	</head>
-	<body class="light">
+	<body class="p-0 dark">
 		<?php
 		include("../../global_views/php/overlay.php");
 		include("./dropdown_menu_overlay.php");
@@ -27,16 +28,20 @@
 		include("./preferences_popup.php");
 		include("../../global_views/php/loading.php");
 		?>
-		<div class="flex flex-col items-center justify-between h-screen">
+
+		<div class="flex flex-col items-center justify-between">
 			<?php include("./meal_page_header.php"); ?>
-			<div class="flex items-center w-full px-3 py-4">
+
+			<div class="flex flex-wrap items-center w-full px-3 py-4">
 				<?php
 				include("./meal_page_body.php");
 				include("./shopping_list.php");
 				?>
 			</div>
+
 			<?php include("../../global_views/php/footer.php"); ?>
 		</div>
+
 		<?php include("./meal_page_scripts.php"); ?>
 	</body>
 </html>

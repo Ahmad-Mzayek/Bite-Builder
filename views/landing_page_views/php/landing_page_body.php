@@ -1,5 +1,5 @@
 <div class="relative">
-	<video class="w-screen" src="../../../resources/videos/hero-video.mp4" alt="Landing Video" autoplay loop muted>
+	<video class="w-screen" src="../../../resources/videos/hero_video.mp4" alt="Landing Video" autoplay loop muted>
 
 	</video>
 
@@ -8,8 +8,8 @@
 	</h1>
 </div>
 
-<div class="flex pt-8 px-4 max-h-[40rem]">
-	<div class="flex flex-col flex-1 p-4 gap-6">
+<div class="flex pt-8 px-20 max-h-[40rem] gap-8">
+	<div class="flex flex-col flex-1 pt-0 p-4 gap-6">
 		<h1 class="text-6xl">
 			Meals For Everyone.
 		</h1>
@@ -24,12 +24,12 @@
 	</div>
 </div>
 
-<div class="flex pt-12 px-4 max-h-[40rem]">
+<div class="flex pt-12 px-20 max-h-[40rem] gap-8">
 	<div class="flex items-center justify-center min-w-[10rem] max-w-[40rem]">
 		<img class="w-full h-full object-cover aspect-square rounded-3xl" src="../../../resources/images/healthy.jpg" alt="Healthy Salads">
 	</div>
 
-	<div class="flex flex-col flex-1 p-4 gap-6">
+	<div class="flex flex-col flex-1 pt-0 p-4 gap-6">
 		<h1 class="text-6xl">
 			Healthy Salads.
 		</h1>
@@ -40,8 +40,8 @@
 	</div>
 </div>
 
-<div class="flex pt-12 px-4 max-h-[40rem]">
-	<div	div class="flex flex-col flex-1 p-4 gap-6">
+<div class="flex pt-12 px-20 max-h-[40rem] gap-8">
+	<div	div class="flex flex-col flex-1 pt-0 p-4 gap-6">
 		<h1 class="text-6xl">
 			Delicious &amp; Juicy.
 		</h1>
@@ -57,12 +57,12 @@
 	</div>
 </div>
 
-<div class="flex pt-12 px-4 max-h-[40rem]">
+<div class="flex pt-12 px-20 max-h-[40rem] gap-8">
 	<div class="flex items-center justify-center min-w-[10rem] max-w-[40rem]">
 		<img class="w-full h-full object-cover aspect-square rounded-3xl" src="../../../resources/images/high_protein.jpg" alt="High Protein">
 	</div>
 
-	<div class="flex flex-col flex-1 p-4 gap-6">
+	<div class="flex flex-col flex-1 pt-0 p-4 gap-6">
 		<h1 class="text-6xl">
 			High In Protein.
 		</h1>
@@ -73,8 +73,8 @@
 	</div>
 </div>
 
-<div class="flex pt-12 px-4 max-h-[40rem]">
-	<div class="flex flex-col flex-1 p-4 gap-6">
+<div class="flex pt-12 px-20 max-h-[40rem] gap-8">
+	<div class="flex flex-col flex-1 pt-0 p-4 gap-6">
 		<h1 class="text-6xl">
 			Sweet &amp; Hearty.
 		</h1>

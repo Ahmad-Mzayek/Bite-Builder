@@ -1,6 +1,7 @@
 export const idElements = {
   overlay: document.querySelector("#overlay"),
   mealImage: document.querySelector("#meal-image"),
+  logoImage: document.querySelector("#logo-image"),
   profileIcon: document.querySelector("#profile-icon"),
   filterButton: document.querySelector("#filter-button"),
   logoutButton: document.querySelector("#logout-button"),

@@ -88,14 +88,12 @@ class PreferencesController
 
     private static function add_user_filters_query() : string // ------------------------------------------------------------------------------------
     {
-        if (self::$checked_filters[0] === "")
-            return "";
+        $query = "";
+        if (empty(self::$checked_filters[0]))
+            return $query;
         $conditions = [];
         foreach (self::$checked_filters as $index => $checked_filter)
             $conditions[] = $checked_filter . " = TRUE";
-        $query = "";
-        if (empty($conditions))
-            return $query;
         $set_filters = implode(", ", $conditions);
         $query .= <<<SQL
             UPDATE dietary_filters

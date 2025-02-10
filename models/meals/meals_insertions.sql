@@ -193,3 +193,32 @@ CALL insert_meal(
   Meanwhile, season the shrimp with salt. Heat the olive oil in a large skillet over medium-high heat. Add the garlic and red pepper flakes and cook until the garlic is just golden, 30 seconds to 1 minute. Add the shrimp and cook, stirring occasionally, until pink and just cooked through, 1 to 2 minutes per side. Remove the shrimp to a plate. Add the wine and lemon juice to the skillet and simmer until slightly reduced, 2 minutes. 
   Return the shrimp and any juices from the plate to the skillet along with the linguine, butter and 1/2 cup of the reserved cooking water. Continue to cook, tossing, until the butter is melted and the shrimp is hot, about 2 minutes, adding more of the reserved cooking water as needed. Season with salt; stir in the parsley. Serve with lemon wedges.",
   4, 723, 30, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);
+
+CALL insert_meal(
+    "Main Courses",
+    "Marinated Chicken Breasts",
+    "marinated_chicken_breasts.png",
+    "Put the vinegar, herbs, mustard, powders if using and oil in a large re-sealable plastic bag. Close the bag and shake to combine all the ingredients. Open the bag, drop in the chicken breast in the bag. Close and shake the bag to coat evenly. Freeze for up to 2 weeks.
+    Thaw in the refrigerator overnight, under cold, running water, or in the microwave at 30 percent power for 1 minute at a time.
+    Heat a grill or grill pan. When the grill is hot, place the chicken on the grill and cook for about 4 minutes per side, or until cooked through. You can also bake the thawed chicken in a 375 degree F oven for 15 minutes, or until cooked through.",
+    4, 327, 495, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1);
+
+CALL insert_meal(
+    "Main Courses",
+    "Dry Aged Prime Rib Roast",
+    "dry_aged_prime_rib_roast.png",
+    "For the roast:
+    Remove roast from packaging, rinse well. Pat completely dry, wrap with 3 layers cheesecloth. Place on a rack on a sheet pan in back of refrigerator, fat side up. After 24 hours, remove, unwrap, discard cheesecloth and wrap with a fresh piece. Place back in refrigerator for 6 to 9 days undisturbed.
+    Remove roast from refrigerator. Remove cheesecloth, cut away the fat and trim the ends and any discolored parts of roast.
+    Preheat oven to 500 degrees F.
+    Place roast on a rack in a large, heavy roasting pan.
+    Special equipment: Space in back of refrigerator for up to 10 days .
+    Directions
+    For the seasoning mixture:
+    In a medium bowl, combine spices and mix well. Be sure to crush the larger spices well for a uniform rub. (You can use mortar and pestle or large wooden end of a pounding mallet in non-glass bowl.) Rub roast with olive oil, then rub with seasoning. Let rest for 20 to 30 minutes.
+    Prepare vegetables, make a bed in the roasting pan with the vegetables and pour in the water. Be sure to check the liquid level in the pan occasionally and add additional water, if necessary. (You will need this liquid to make the au jus.) Place roast on top of vegetables and place in hot oven. Roast at 450 degrees F for 40 minutes.
+    After 40 minutes, reduce heat to 275 degrees F and continue to roast for approximately 2 hours, or until internal temperature (stay away from the bone while checking temp) reaches 135 degrees F. Remove from oven, remove from roasting pan, loosely tent and allow to rest for 15 minutes while making the au jus.
+    Directions
+    For the Au Jus:
+    Strain drippings from roasting pan, skim fat from drippings. Place roasting pan over 2 burners, heat on medium high and add in drippings, stir to deglaze, add in wine and stock, reduce by 1/3, about 5 minutes on steady boil, stirring occasionally. Turn off heat, add in butter. Season, to taste, with salt and pepper. Strain once more into serving vessel.",
+    6, 100, 14,600, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1);

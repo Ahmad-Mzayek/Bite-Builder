@@ -8,8 +8,7 @@ VALUES
 ("Olive Oil", "Fats", "Milliliter"),
 ("Asian Sesame Oil", "Fats", "Milliliter"),
 ("Peanut Oil", "Fats", "Milliliter"),
-("Vegetable Oil", "Fats", "Milliliter"),
-("Extra-Virgin Olive Oil", "Fats", "Milliliter");
+("Vegetable Oil", "Fats", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -17,7 +16,9 @@ VALUES
 ("Coriander", "Herbs", "Leaf"),
 ("Pandan Leaf", "Herbs", "Leaf"),
 ("Dill", "Herbs", "Leaf"),
-("Dried Oregano", "Herbs", "Gram");
+("Dried Oregano", "Herbs", "Gram"),
+("Oregano", "Herbs", "Gram"),
+("Oregano", "Herbs", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -31,7 +32,6 @@ VALUES
 ("Buttermilk", "Dairy", "Milliliter"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
 ("Parmigiano-Reggiano Cheese", "Dairy", "Gram"),
-("Coconut Milk", "Dairy", "Milliliter"),
 ("Unsalted Butter", "Dairy", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -63,7 +63,7 @@ VALUES
 ("White Beans", "Grains", "Gram"),
 ("Can Butter Beans", "Grains", "Can"),
 ("White Rice", "Grains", "Gram"),
-("Ounces Linguine", "Grains", "Gram");
+("Linguine", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -79,7 +79,8 @@ VALUES
 ("Ranch Seasoning", "Spices", "Gram"),
 ("Red Pepper Flakes", "Spices", "Gram"),
 ("Ground Black Pepper", "Spices", "Gram"),
-("Ground Cinnamon", "Spices", "Gram");
+("Ground Cinnamon", "Spices", "Gram"),
+("Cracked Black Pepper", "Spices", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -103,8 +104,8 @@ VALUES
 ("Blood Orange Juice", "Beverages", "Milliliter"),
 ("Lemon Juice", "Beverages", "Milliliter"),
 ("Soy Sauce", "Beverages", "Milliliter"),
-("Bean Cooking Liquid", "Beverages", "Milliliter"),
-("Dry White Wine", "Beverages", "Milliliter");
+("Dry White Wine", "Beverages", "Milliliter"),
+("Red Wine", "Beverages", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -126,7 +127,8 @@ VALUES
 ("Red Wine Vinegar", "Condiments", "Milliliter"),
 ("Spicy Brown Mustard", "Condiments", "Milliliter"),
 ("Ketchup", "Condiments", "Milliliter"),
-("Worcestershire Sauce", "Condiments", "Milliliter");
+("Worcestershire Sauce", "Condiments", "Milliliter"),
+("Vinegar", "Condiments", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -140,10 +142,15 @@ VALUES
 ("Cocoa Powder", "Extracts", "Gram"),
 ("Chicken Stock", "Extracts", "Milliliter"),
 ("Vanilla Extract", "Extracts", "Milliliter"),
-("Soy Sauce", "Extracts", "Milliliters");
+("Soy Sauce", "Extracts", "Milliliter"),
+("Coconut Milk", "Extracts", "Milliliter"),
+("Beef Stock", "Extracts", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Olive Oil-Packed Tuna", "Seafood", "Can"),
 ("Sea Scallops", "Seafood", "Gram");
 
+INSERT IGNORE INTO ingredients
+VALUES
+("Bean Cooking Liquid", "Legumes", "Milliliter");

@@ -16,9 +16,7 @@ VALUES
 ("Coriander", "Herbs", "Leaf"),
 ("Pandan Leaf", "Herbs", "Leaf"),
 ("Dill", "Herbs", "Leaf"),
-("Dried Oregano", "Herbs", "Gram"),
-("Oregano", "Herbs", "Gram"),
-("Oregano", "Herbs", "Gram");
+("Dried Oregano", "Herbs", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -31,8 +29,7 @@ VALUES
 ("Full-Fat Milk", "Dairy", "Milliliter"),
 ("Buttermilk", "Dairy", "Milliliter"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
-("Parmigiano-Reggiano Cheese", "Dairy", "Gram"),
-("Unsalted Butter", "Dairy", "Gram");
+("Parmigiano-Reggiano Cheese", "Dairy", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -61,7 +58,7 @@ VALUES
 ("Grains Of Selim", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("White Beans", "Grains", "Gram"),
-("Can Butter Beans", "Grains", "Can"),
+("Butter Beans", "Grains", "Can"),
 ("White Rice", "Grains", "Gram"),
 ("Linguine", "Grains", "Gram");
 
@@ -89,7 +86,6 @@ VALUES
 ("Jalapeno", "Fruits", "Gram"),
 ("Tomatillo", "Fruits", "Gram"),
 ("Lemon Zest", "Fruits", "Gram"),
-("Canned Tomato Purée", "Fruits", "Can"),
 ("Lemon", "Fruits", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -144,7 +140,8 @@ VALUES
 ("Vanilla Extract", "Extracts", "Milliliter"),
 ("Soy Sauce", "Extracts", "Milliliter"),
 ("Coconut Milk", "Extracts", "Milliliter"),
-("Beef Stock", "Extracts", "Milliliter");
+("Beef Stock", "Extracts", "Milliliter"),
+("Tomato Puree", "Extracts", "Can");
 
 INSERT IGNORE INTO ingredients
 VALUES

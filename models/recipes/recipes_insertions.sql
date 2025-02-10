@@ -143,8 +143,8 @@ VALUES
 (13, "Olive Oil", 7),
 (13, "Yellow Onion", 150),
 (13, "Garlic", 2),
-(13, "Can Butter Beans", 1),
-(13, "Canned Tomato Purée", 1),
+(13, "Butter Beans", 1),
+(13, "Tomato Puree", 1),
 (13, "Red Wine Vinegar", 7),
 (13, "Dill", 5),
 (13, "Dried Oregano", 1),
@@ -205,7 +205,7 @@ VALUES
 INSERT IGNORE INTO recipes
 VALUES
 (18, "Vinegar", 30),
-(18, "Oregano", 5),
+(18, "Dried Oregano", 5),
 (18, "Yellow Mustard",  30),
 (18, "Garlic Powder", 4),
 (18, "Olive Oil", 50),

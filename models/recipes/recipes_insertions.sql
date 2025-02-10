@@ -220,3 +220,18 @@ VALUES
 (19, "Salt", NULL),
 (19, "Cracked Black Pepper", NULL),
 (19, "Beef Stock", 400);
+
+INSERT IGNORE INTO recipes
+VALUES
+(20, "Dry White Wine", 120),
+(20, "White Wine Vinegar", 60),
+(20, "Shallots", 30),
+(20, "Tarragon", NULL),
+(20, "Black Peppercorn", 2),
+(20, "Egg Yolk", 2),
+(20, "White Miso", 20),
+(20, "Kosher Salt", NULL),
+(20, "Ground Black Pepper", NULL),
+(20, "Asparagus", 450),
+(20, "Vegetable Oil", 15),
+(20, "Unsalted Butter", 168);

@@ -1,14 +1,14 @@
 <?php include "../../global_views/php/show_password_icons.php"; ?>
 
 <div id="profile-popup"
-     class="popup flex flex-col min-w-[40rem] items-center gap-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 bg-gray-200 overflow-hidden">
+     class="popup flex flex-col min-w-[40rem] items-center gap-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-hidden">
     <h1 class="font-bold">
         Profile
     </h1>
 	
     <?php include("../../global_views/php/close_popup_svg.php") ?>
 
-    <div id="profile-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-500">
+    <div id="profile-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-700">
         
     </div>
 
@@ -83,7 +83,7 @@
             </div>
         </div>
         
-        <form id="update-gender-form" class="flex items-center w-full">
+        <form id="update-gender-form" class="flex items-center w-full h-16">
             <h2 class="text-xl font-bold basis-4/12 text-nowrap">
                 Gender:
             </h2>

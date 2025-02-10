@@ -88,6 +88,8 @@ class PreferencesController
 
     private static function add_user_filters_query() : string // ------------------------------------------------------------------------------------
     {
+        if (self::$checked_filters[0] === "")
+            return "";
         $conditions = [];
         foreach (self::$checked_filters as $index => $checked_filter)
             $conditions[] = $checked_filter . " = TRUE";
@@ -106,6 +108,8 @@ class PreferencesController
     private static function update_user_categories() : void // --------------------------------------------------------------------------------------
     {
         self::reset_user_categories();
+        if (self::$checked_categories[0] === "")
+            return;
         foreach (self::$checked_categories as $index => $checked_category)
             self::add_user_category($checked_category);
     }
@@ -181,7 +185,7 @@ class PreferencesController
     private static function user_categories_view_query() : string // --------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW user_categories_view AS
+            CREATE TEMPORARY TABLE user_categories_view AS
             SELECT category_name
             FROM users_meal_categories
             WHERE user_id = ?;
@@ -201,7 +205,7 @@ class PreferencesController
     private static function meals_view_query() : string // ------------------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW meals_view AS
+            CREATE TEMPORARY TABLE meals_view AS
             SELECT *
             FROM meals
             WHERE nb_calories_per_portion BETWEEN ? AND ?
@@ -235,7 +239,7 @@ class PreferencesController
     private static function categorized_meals_view_query() : string // ------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW categorized_meals_view AS
+            CREATE TEMPORARY TABLE categorized_meals_view AS
             SELECT meals_view.*
             FROM meals_view
             JOIN user_categories_view ON meals_view.category_name = user_categories_view.category_name;
@@ -247,6 +251,7 @@ class PreferencesController
     {
         $query = self::favorites_view_query();
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $statement->close();
     }
@@ -254,9 +259,10 @@ class PreferencesController
     private static function favorites_view_query() : string // --------------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW favorites_view AS
+            CREATE TEMPORARY TABLE favorites_view AS
             SELECT meal_id
             FROM favorites
+            WHERE user_id = ?;
         SQL;
         return $query;
     }
@@ -272,12 +278,12 @@ class PreferencesController
     private static function favorite_meals_view_query() : string // ---------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW favorite_meals_view AS
-            SELECT meals_view.*
-            FROM meals_view
+            CREATE TEMPORARY TABLE favorite_meals_view AS
+            SELECT categorized_meals_view.*
+            FROM categorized_meals_view
         SQL;
         if (self::$is_favorites_checked)
-            $query .= "\nJOIN favorites_view ON meals_view.meal_id = favorites_view.meal_id";
+            $query .= "\nJOIN favorites_view ON categorized_meals_view.meal_id = favorites_view.meal_id";
         $query .= ";";
         return $query;
     }
@@ -293,7 +299,7 @@ class PreferencesController
     private static function meal_filters_view_query() : string // -----------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW meal_filters_view AS
+            CREATE TEMPORARY TABLE meal_filters_view AS
             SELECT dietary_filters.*
             FROM dietary_filters
             JOIN favorite_meals_view
@@ -314,7 +320,7 @@ class PreferencesController
     private static function user_filters_view_query() : string // -----------------------------------------------------------------------------------
     {
         $query = <<<SQL
-            CREATE OR REPLACE VIEW user_filters_view AS
+            CREATE TEMPORARY TABLE user_filters_view AS
             SELECT *
             FROM dietary_filters
             WHERE filters_id = ?;
@@ -377,19 +383,24 @@ class PreferencesController
 
     private static function fetch_filtered_meal_ids_query_sort_order() : string // ------------------------------------------------------------------
     {
-        $sort_order = <<<SQL
-            CASE
-                WHEN ? = "meal_name" AND ? = "asc" THEN m.meal_name
-                WHEN ? = "meal_name" AND ? = "desc" THEN m.meal_name DESC
-                WHEN ? = "nb_portions" AND ? = "asc" THEN m.nb_portions
-                WHEN ? = "nb_portions" AND ? = "desc" THEN -m.nb_portions
-                WHEN ? = "nb_calories_per_portion" AND ? = "asc" THEN m.nb_calories_per_portion 
-                WHEN ? = "nb_calories_per_portion" AND ? = "desc" THEN -m.nb_calories_per_portion 
-                WHEN ? = "preparation_duration_minutes" AND ? = "asc" THEN m.preparation_duration_minutes 
-                WHEN ? = "preparation_duration_minutes" AND ? = "desc" THEN -m.preparation_duration_minutes
-            END;
-        SQL;
-        return $sort_order;
+        $sort_by = "meal_name";
+        $sort_order = "ASC";
+
+        $sort = "m.$sort_by COLLATE utf8mb4_unicode_ci " . $sort_order;
+
+        // $sort_order = <<<SQL
+        //     CASE
+        //         WHEN ? = "meal_name" AND ? = "asc" THEN m.meal_name
+        //         WHEN ? = "meal_name" AND ? = "desc" THEN m.meal_name DESC
+        //         WHEN ? = "nb_portions" AND ? = "asc" THEN m.nb_portions
+        //         WHEN ? = "nb_portions" AND ? = "desc" THEN -m.nb_portions
+        //         WHEN ? = "nb_calories_per_portion" AND ? = "asc" THEN m.nb_calories_per_portion 
+        //         WHEN ? = "nb_calories_per_portion" AND ? = "desc" THEN -m.nb_calories_per_portion 
+        //         WHEN ? = "preparation_duration_minutes" AND ? = "asc" THEN m.preparation_duration_minutes 
+        //         WHEN ? = "preparation_duration_minutes" AND ? = "desc" THEN -m.preparation_duration_minutes
+        //     END;
+        // SQL;
+        return $sort;
     }
 
     private static function fetch_filtered_meal_ids_bind_params(mysqli_stmt $statement) : void // ---------------------------------------------------

@@ -1,27 +1,17 @@
 <style type="text/tailwindcss">
   @layer base {
-    .light {
-    --primary: #ffffff;
+  html {
+    @apply scroll-smooth;
   }
-
-  .dark {
-    --primary: #000000;
+  
+  body {
+    @apply overflow-x-hidden;
   }
 
   .content-auto {
     content-visibility: auto;
   }
 
-  html {
-    @apply scroll-smooth;
-  }
-
-  body {
-    background-color: var(--primary);
-    @apply overflow-x-hidden;
-  }
-
-  /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -29,33 +19,33 @@
   }
 
   h1 {
-    @apply font-extrabold text-xl md:text-2xl lg:text-3xl
+    @apply font-extrabold text-xl md:text-2xl lg:text-3xl;
   }
 
   h2 {
-    @apply font-bold text-lg md:text-xl lg:text-2xl
+    @apply font-bold text-lg md:text-xl lg:text-2xl;
   }
 
   h3 {
-    @apply font-medium text-base md:text-lg lg:text-xl
+    @apply font-medium text-base md:text-lg lg:text-xl;
   }
 
   button {
-    @apply text-sm cursor-pointer md:text-base lg:text-lg text-nowrap
+    @apply text-sm cursor-pointer md:text-base lg:text-lg text-nowrap;
   }
 
   input[type="text"],
   input[type="password"],
   input[type="email"] {
-    @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl
+    @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl;
   }
 
   input[type="submit"] {
-    @apply bg-blue-800 text-white px-6 py-4 text-nowrap transition hover:bg-blue-900 cursor-pointer rounded-lg text-lg md:text-xl lg:text-xl tracking-[.1rem]
+    @apply px-6 py-4 text-nowrap transition cursor-pointer rounded-lg text-lg md:text-xl lg:text-xl tracking-[.1rem];
   }
 
   svg {
-    @apply fill-blue-800 opacity-25 transition duration-300 ease-in-out;
+    @apply opacity-40 transition duration-300 ease-in-out;
   }
 
   svg:hover {
@@ -132,15 +122,15 @@
   }
 
   #hamburger-menu span:nth-child(1) {
-    @apply absolute top-[25%] inset-0 w-full h-1 bg-white transition-all duration-300;
+    @apply absolute top-[25%] inset-0 w-full h-1 transition-all duration-300;
   }
 
   #hamburger-menu span:nth-child(2) {
-    @apply absolute top-[50%] inset-0 w-full h-1 bg-white transition-all duration-300;
+    @apply absolute top-[50%] inset-0 w-full h-1 transition-all duration-300;
   }
 
   #hamburger-menu span:nth-child(3) {
-    @apply absolute top-[75%] inset-0 w-full h-1 bg-white transition-all duration-300;
+    @apply absolute top-[75%] inset-0 w-full h-1 transition-all duration-300;
   }
 
   #hamburger-menu.active span:nth-child(1) {

@@ -1,11 +1,11 @@
 <php? #include("../../global_views/php/show_password_icons.php"); ?>
 
-<div id="change-password-popup" class="hidden flex-col w-4/12 min-w-[20rem] min-h-[27rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 shadow-2xl rounded-lg p-6 py-8 bg-gray-200 overflow-hidden">
+<div id="change-password-popup" class="popup-secondary hidden flex-col min-w-[40rem] min-h-[24rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 shadow-2xl rounded-lg p-6 overflow-hidden">
     <h1 class="font-bold text-nowrap">
         Change Your Password
     </h1>
 
-    <div id="change-password-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-500">
+    <div id="change-password-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-700">
 
     </div>
 
@@ -18,7 +18,7 @@
             <div class="relative w-full">
                 <input type="password"
                        name="current_password_input"
-                       placeholder="Enter Your Current Password"
+                       placeholder="Current Password"
                        maxlength="64"
                        required>
 

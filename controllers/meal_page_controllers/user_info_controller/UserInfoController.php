@@ -75,7 +75,7 @@ class UserInfoController
                          "is_low_carb", "is_low_calorie", "is_low_sodium", "is_high_protein", "is_keto_friendly");
         $user_filters = array();
         foreach ($columns as $column)
-            if ($row[$column] === 1)
+            if ($row[$column])
                 $user_filters[] = $column;
         return $user_filters;
     }
@@ -107,29 +107,19 @@ class UserInfoController
         $result = self::fetch_user_meal_categories_result();
         $user_meal_categories = array();
         while ($row = $result->fetch_assoc())
-            $user_meal_categories[] = $row["category_name"];
+            $user_meal_categories[$row["category_name"]] = $row["is_selected"];
         return $user_meal_categories;
     }
 
     private static function fetch_user_meal_categories_result() : mysqli_result // ------------------------------------------------------------------
     {
-        $query = self::fetch_user_meal_categories_result_query();
+        $query = "CALL fetch_user_meal_categories(?);";
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $result = $statement->get_result();
         $statement->close();
         return $result;
-    }
-
-    private static function fetch_user_meal_categories_result_query() : string // -------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            SELECT category_name
-            FROM users_meal_categories
-            WHERE user_id = ?;
-        SQL;
-        return $query;
     }
 }
 ?>

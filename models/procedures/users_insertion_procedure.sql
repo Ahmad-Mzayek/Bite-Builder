@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE insert_user
+CREATE PROCEDURE IF NOT EXISTS insert_user
 (
     IN username_input           VARCHAR(32),
     IN email_address_input      VARCHAR(64),

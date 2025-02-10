@@ -188,3 +188,35 @@ VALUES
 (16, "Cabbage", 200),
 (16, "White Rice", NULL),
 (16, "Lemon", 100);
+
+INSERT IGNORE INTO recipes
+VALUES
+(17, "Kosher Salt", NULL),
+(17, "Linguine", 340),
+(17, "Shrimp",  567),
+(17, "Olive Oil", 80),
+(17, "Garlic", 5),
+(17, "Red Pepper Flakes", 1),
+(17, "Dry White Wine", 80),
+(17, "Lemon Juice", 20),
+(17, "Unsalted Butter", 24),
+(17, "Parsley", 15);
+
+INSERT IGNORE INTO recipes
+VALUES
+(18, "Vinegar", 30),
+(18, "Oregano", 5),
+(18, "Yellow Mustard",  30),
+(18, "Garlic Powder", 4),
+(18, "Olive Oil", 50),
+(18, "Kosher Salt", NULL),
+(18, "Ground Black Pepper", NULL),
+(18, "Chicken Breast", 4);
+
+INSERT IGNORE INTO recipes
+VALUES
+(19, "Red Wine", 150),
+(19, "Unsalted Butter", 18),
+(19, "Salt", NULL),
+(19, "Cracked Black Pepper", NULL),
+(19, "Beef Stock", 400);

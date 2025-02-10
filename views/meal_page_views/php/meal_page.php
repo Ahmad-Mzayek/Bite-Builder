@@ -32,7 +32,7 @@
 		<div class="flex flex-col items-center justify-between">
 			<?php include("./meal_page_header.php"); ?>
 
-			<div class="flex flex-wrap items-center w-full px-3 py-4">
+			<div class="flex items-center w-full">
 				<?php
 				include("./meal_page_body.php");
 				include("./shopping_list.php");

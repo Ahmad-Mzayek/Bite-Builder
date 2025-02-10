@@ -22,13 +22,18 @@
 	include("./reset_password_popup.php");
 	include("../../global_views/php/loading.php");
 	?>
+
+	<?php
+		include("./landing_page_header.php");
+	?>
+
 	<div class="flex flex-col items-center justify-between h-screen">
 		<?php
-		include("./landing_page_header.php");
 		include("./landing_page_body.php");
 		include("../../global_views/php/footer.php");
 		?>
 	</div>
+	
 	<?php include("./landing_page_scripts.php"); ?>
 </body>
 

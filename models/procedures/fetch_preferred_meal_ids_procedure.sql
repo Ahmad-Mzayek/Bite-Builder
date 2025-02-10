@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS fetch_prefered_meal_ids
+CREATE PROCEDURE IF NOT EXISTS fetch_preferred_meal_ids
 (
     IN  user_id_input                           INT,
     IN  min_nb_calories_per_portion_input       INT,
@@ -22,7 +22,8 @@ BEGIN
         FROM meals
         WHERE nb_calories_per_portion BETWEEN min_nb_calories_per_portion_input AND max_nb_calories_per_portion_input
             AND preparation_duration_minutes BETWEEN min_preparation_duration_minutes_input AND max_preparation_duration_minutes_input
-            AND meal_name LIKE CONCAT(searched_meal_name_input, "%");
+            AND meal_name LIKE CONCAT(searched_meal_name_input, "%")
+            COLLATE utf8mb4_general_ci;
 
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_categorized_meals AS
         SELECT tm.*
@@ -89,7 +90,7 @@ BEGIN
     FROM temp_final_meals AS tfm
     JOIN temp_matching_meal_ids AS tmmi
         ON tfm.meal_id = tmmi.filters_id
-    ORDER BY sort_by_input order_input;
+    ORDER BY sort_by_input, order_input;
 
     DROP TEMPORARY TABLE IF EXISTS temp_final_meals;
     DROP TEMPORARY TABLE IF EXISTS temp_matching_meal_ids;

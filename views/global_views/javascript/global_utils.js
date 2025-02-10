@@ -12,6 +12,19 @@ export const switchElements = (elementToShow, elementToHide) => {
   toggleVisibility(elementToShow, true);
 };
 
+export const addThemeSwitchButtonEventListener = (themeSwitchButton, themeSwitch, logoImage) => {
+  themeSwitchButton.addEventListener("click", () => {
+    themeSwitch = !themeSwitch;
+    if (themeSwitch) {
+      const isDark = document.body.classList.toggle("dark");
+      document.body.classList.toggle("light", !isDark);
+      if (logoImage.getAttribute("src") === "../../../resources/images/logo_dark.png")
+        logoImage.setAttribute("src", "../../../resources/images/logo_light.png");
+      else logoImage.setAttribute("src", "../../../resources/images/logo_dark.png");
+    }
+  });
+};
+
 export const deleteInputData = (inputs) => {
   inputs.forEach((input) => (input.value = ""));
 };

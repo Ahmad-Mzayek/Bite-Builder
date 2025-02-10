@@ -11,6 +11,7 @@
 	<link rel="stylesheet"
 		type="text/css"
 		href="../../global_views/css/theme_switch_button.css">
+		<link rel="stylesheet" href="../../global_views/css/theme.css">
 </head>
 
 <body class="dark">

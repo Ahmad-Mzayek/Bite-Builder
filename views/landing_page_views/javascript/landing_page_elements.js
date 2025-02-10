@@ -1,5 +1,6 @@
 export const idElements = {
   overlay: document.querySelector("#overlay"),
+  logoImage: document.querySelector("#logo-image"),
   loginForm: document.querySelector("#login-form"),
   signupForm: document.querySelector("#signup-form"),
   loginPopup: document.querySelector("#login-popup"),

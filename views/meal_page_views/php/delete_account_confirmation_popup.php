@@ -1,13 +1,14 @@
 <div id="delete-account-confirmation-popup"
-     class="hidden flex-col min-w-[20rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-2xl rounded-lg p-6 py-8 bg-gray-200 overflow-hidden">
+     class="popup-secondary hidden flex-col min-w-[20rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 shadow-2xl rounded-lg p-6 overflow-hidden">
     <h1 class="font-bold text-nowrap">
         Delete Account Confirmation
     </h1>
 	
-    <div id="delete-account-confirmation-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-500">
+    <div id="delete-account-confirmation-popup-error-container" class="hidden w-full p-2 font-bold text-white bg-red-700">
+
     </div>
 
-		<p class="text-xl font-bold text-red-600">Are you sure you want to delete your account? This action is irreversible!</p>
+		<p class="text-base font-bold text-red-600">Are you sure you want to delete your account? This action is irreversible!</p>
 
 			<div class="relative w-full">
 				<input type="password"

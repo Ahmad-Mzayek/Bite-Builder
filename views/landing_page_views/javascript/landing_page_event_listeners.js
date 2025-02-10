@@ -4,20 +4,15 @@ import * as Utils from "../../global_views/javascript/global_utils.js";
 
 let themeSwitch = true;
 
+Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
+
 Utils.addClosePopupSvgListeners(
   classElements.closePopupSvgs,
   idElements.overlay,
   classElements.pagePopups,
 );
-Utils.addPasswordIconEventListeners(classElements.showPasswordIcons);
 
-idElements.themeSwitchButton.addEventListener("click", () => {
-  themeSwitch = !themeSwitch;
-  if (themeSwitch) {
-    const isDark = document.body.classList.toggle("dark");
-    document.body.classList.toggle("light", !isDark);
-  }
-});
+Utils.addPasswordIconEventListeners(classElements.showPasswordIcons);
 
 idElements.loginSignupButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.overlay, true);

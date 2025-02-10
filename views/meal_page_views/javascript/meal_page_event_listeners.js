@@ -4,19 +4,22 @@ import * as Utils from "../../global_views/javascript/global_utils.js";
 
 let themeSwitch = true;
 let userInfo;
-let mealIds = [];
+let mealIds = JSON.parse(localStorage.getItem("mealIds"));
 let favoriteMeal = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch(
+    let response = await fetch(
       "../../../controllers/meal_page_controllers/user_info_controller/user_info_controller_main.php",
     );
 
-    const result = await response.json();
+    let result = await response.json();
+
+    console.log(result);
 
     if (result.status === "success") {
       userInfo = result.message;
+      console.log(userInfo);
       idElements.profilePopupUsernameInput.value = userInfo.username;
       if (userInfo.phone_number === null)
         idElements.profilePopupPhoneNumberInput.value = "Not Specified";
@@ -29,11 +32,65 @@ document.addEventListener("DOMContentLoaded", async () => {
         MealPageUtils.toggleRadioButtonSelection(idElements.profilePopupMaleRadioInput, false);
         MealPageUtils.toggleRadioButtonSelection(idElements.profilePopupFemaleRadioInput, true);
       }
-    } else throw new Error(result.message);
+    }
+
+    if (mealIds === null) {
+      let formData = new FormData();
+
+      formData.append("is_favorites_checked", "0");
+      formData.append("sort_by", "meal_name");
+      formData.append("order", "ascending");
+      formData.append("searched_meal_name", "");
+      formData.append("min_nb_calories_per_portion", 0);
+      formData.append("max_nb_calories_per_portion", 9999);
+      formData.append("min_preparation_duration_minutes", 0);
+      formData.append("max_preparation_duration_minutes", 9999);
+
+      [""].forEach((value) => formData.append("checked_categories[]", value));
+
+      [""].forEach((value) => formData.append("checked_filters[]", value)); // UPDATE dietary_filters SET "" = TRUE WHERE
+
+      for (const [key, value] of formData.entries()) console.log(key + " ==> " + value);
+
+      response = await fetch(
+        "../../../controllers/meal_page_controllers/preferences_controller/preferences_controller_main.php",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      result = await response.json();
+
+      console.log(result.message);
+
+      // let mealId = new URLSearchParams({
+      //   meal_id: "15",
+      // });
+
+      // response = await fetch(
+      //   "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
+      //   {
+      //     method: "POST",
+      //     body: mealId,
+      //   },
+      // );
+
+      // result = await response.json();
+
+      // if(result.status === "success")
+      //   idElements.mealImage.setAttribute("src", `../../../resources/images/${result.message.image_name}`)
+
+      // console.log(result);
+    } else {
+      mealIds = JSON.parse(localStorage.getItem("mealIds"));
+    }
   } catch (error) {
     console.log("Internal Server Error " + error.message);
   }
 });
+
+Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
 
 Utils.addClosePopupSvgListeners(
   classElements.closePopupSvgs,
@@ -422,14 +479,6 @@ idElements.saveEditGenderButton.addEventListener("click", async (event) => {
   }
 });
 
-idElements.themeSwitchButton.addEventListener("click", () => {
-  themeSwitch = !themeSwitch;
-  if (themeSwitch) {
-    const isDark = document.body.classList.toggle("dark");
-    document.body.classList.toggle("light", !isDark);
-  }
-});
-
 idElements.logoutButton.addEventListener("click", async () => {
   try {
     const response = await fetch(
@@ -456,6 +505,7 @@ idElements.closePreferencesPopupButton.addEventListener("click", (event) => {
 
 idElements.filterButton.addEventListener("click", async (event) => {
   event.preventDefault();
+
   Utils.toggleVisibility(idElements.overlay, true);
   Utils.toggleVisibility(idElements.preferencesPopup, true);
   document.body.classList.toggle("overflow-y-hidden", true);
@@ -477,9 +527,7 @@ idElements.filterButton.addEventListener("click", async (event) => {
 
     const categories = await response.json();
 
-    if (categories.status !== "success") throw new Error("Categories not fetched.");
-
-    MealPageUtils.fetchCategories(categories);
+    if (categories.status === "success") MealPageUtils.fetchAndUpdateCategories(categories);
   } catch (error) {
     console.error("Internal server error: " + error.message);
   }

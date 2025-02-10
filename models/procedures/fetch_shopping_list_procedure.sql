@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE fetch_shopping_list(IN user_id_input INT)
+CREATE PROCEDURE IF NOT EXISTS fetch_shopping_list(IN user_id_input INT)
 BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_shopping_list AS
         SELECT ingredient_name, quantity
@@ -17,8 +17,8 @@ BEGIN
     JOIN measurement_units AS mu
         ON ti.unit_name_singular = mu.unit_name_singular;
 
-    DROP TEMPORARY TABLE IF EXISTS temp_shopping_list;
     DROP TEMPORARY TABLE IF EXISTS temp_ingredients;
+    DROP TEMPORARY TABLE IF EXISTS temp_shopping_list;
 END;
 //
 DELIMITER ;

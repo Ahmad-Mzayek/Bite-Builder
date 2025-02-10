@@ -113,7 +113,7 @@ class UserInfoController
 
     private static function fetch_user_meal_categories_result() : mysqli_result // ------------------------------------------------------------------
     {
-        $query = "CALL fetch_user_meal_categories_procedure(?);";
+        $query = "CALL fetch_user_meal_categories(?);";
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);

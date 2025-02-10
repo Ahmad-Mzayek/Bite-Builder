@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE fetch_user_meal_categories_procedure(IN user_id_input INT)
+CREATE PROCEDURE IF NOT EXISTS fetch_user_meal_categories(IN user_id_input INT)
 BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_user_categories AS
         SELECT category_name

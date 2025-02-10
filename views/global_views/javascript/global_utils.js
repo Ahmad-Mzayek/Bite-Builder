@@ -1,4 +1,4 @@
-export const themeInitializor = (themeSwitchButton, logoImage, isDarkModeOn) => {
+export const themeInitializer = (themeSwitchButton, logoImage, isDarkModeOn) => {
   if (isDarkModeOn === "true") {
     document.body.classList.toggle("dark", true);
     document.body.classList.toggle("light", false);

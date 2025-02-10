@@ -1,3 +1,17 @@
+export const themeInitializor = (themeSwitchButton, logoImage, isDarkModeOn) => {
+  if (isDarkModeOn === "true") {
+    document.body.classList.toggle("dark", true);
+    document.body.classList.toggle("light", false);
+    themeSwitchButton.querySelector("#theme-switch-input").checked = true;
+    logoImage.setAttribute("src", "../../../resources/images/logo_dark.png");
+  } else {
+    document.body.classList.toggle("dark", false);
+    document.body.classList.toggle("light", true);
+    themeSwitchButton.querySelector("#theme-switch-input").checked = false;
+    logoImage.setAttribute("src", "../../../resources/images/logo_light.png");
+    }
+};
+
 export const toggleVisibility = (element, show) => {
   element.classList.toggle("hidden", !show);
   element.classList.toggle("flex", show);
@@ -18,11 +32,23 @@ export const addThemeSwitchButtonEventListener = (themeSwitchButton, themeSwitch
     if (themeSwitch) {
       const isDark = document.body.classList.toggle("dark");
       document.body.classList.toggle("light", !isDark);
+      localStorage.setItem("isDarkModeOn", isDark);
       if (logoImage.getAttribute("src") === "../../../resources/images/logo_dark.png")
         logoImage.setAttribute("src", "../../../resources/images/logo_light.png");
       else logoImage.setAttribute("src", "../../../resources/images/logo_dark.png");
     }
   });
+};
+
+export const fetchData = async (requestURL, requestBody = null, method = "POST") => {
+  const requestOptions = {
+    method,
+    body: requestBody,
+  };
+
+  const response = await fetch(requestURL, requestOptions);
+
+  return await response.json();
 };
 
 export const deleteInputData = (inputs) => {

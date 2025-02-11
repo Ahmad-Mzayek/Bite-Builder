@@ -16,6 +16,7 @@ VALUES
 ("Coriander", "Herbs", "Leaf"),
 ("Pandan Leaf", "Herbs", "Leaf"),
 ("Dill", "Herbs", "Leaf"),
+("Taragon", "Herbs", "Leaf"),
 ("Dried Oregano", "Herbs", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -73,6 +74,7 @@ VALUES
 ("Sweet Paprika", "Spices", "Gram"),
 ("Garlic Powder", "Spices", "Gram"),
 ("Cayenne Pepper", "Spices", "Gram"),
+("Black Peppercorn", "Spices", "Gram"),
 ("Ranch Seasoning", "Spices", "Gram"),
 ("Red Pepper Flakes", "Spices", "Gram"),
 ("Ground Black Pepper", "Spices", "Gram"),
@@ -110,6 +112,8 @@ VALUES
 ("Red Onion", "Vegetables", "Gram"),
 ("Yellow Onion", "Vegetables", "Gram"),
 ("Scallions", "Vegetables", "Gram"),
+("Asparagus", "Vegetables", "Gram"),
+("Shallots", "Vegetables", "Gram"),
 ("Crisp Lettuce", "Vegetables", "Gram"),
 ("Ginger", "Vegetables", "Gram"),
 ("Cabbage", "Vegetables", "Gram");
@@ -119,8 +123,10 @@ VALUES
 ("Ranch", "Condiments", "Milliliter"),
 ("Hot Sauce", "Condiments", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
+("White Miso", "Condiments", "Milliliter"),
 ("Barbecue Sauce", "Condiments", "Milliliter"),
 ("Red Wine Vinegar", "Condiments", "Milliliter"),
+("White Wine Vinegar", "Condiments", "Milliliter"),
 ("Spicy Brown Mustard", "Condiments", "Milliliter"),
 ("Ketchup", "Condiments", "Milliliter"),
 ("Worcestershire Sauce", "Condiments", "Milliliter"),

@@ -4,7 +4,15 @@ import * as Utils from "../../global_views/javascript/global_utils.js";
 
 let themeSwitch = true;
 
-Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
+let isDarkModeOn = localStorage.getItem("isDarkModeOn") || "true";
+
+Utils.themeInitializer(idElements.themeSwitchButton, idElements.logoImage, isDarkModeOn);
+
+Utils.addThemeSwitchButtonEventListener(
+  idElements.themeSwitchButton,
+  themeSwitch,
+  idElements.logoImage,
+);
 
 Utils.addClosePopupSvgListeners(
   classElements.closePopupSvgs,
@@ -49,14 +57,11 @@ idElements.loginForm.addEventListener("submit", async (event) => {
   Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
   try {
-    const response = await fetch(
+    const result = await Utils.fetchData(
       "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
-      {
-        method: "POST",
-        body: loginFormData,
-      },
+      loginFormData,
     );
-    const result = await response.json();
+
     if (result.status === "success") {
       Utils.toggleVisibility(idElements.loginErrorContainer, false);
       window.location.replace("../../meal_page_views/php/meal_page.php");
@@ -81,14 +86,11 @@ idElements.signupForm.addEventListener("submit", async (event) => {
   Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
   try {
-    const response = await fetch(
+    const result = await Utils.fetchData(
       "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
-      {
-        method: "POST",
-        body: signupFormData,
-      },
+      signupFormData,
     );
-    const result = await response.json();
+
     if (result.status === "success") {
       Utils.switchElements(idElements.signupSuccessContainer, idElements.signupErrorContainer);
       Utils.switchElements(idElements.loginPopup, idElements.signupPopup);

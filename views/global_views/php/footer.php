@@ -21,14 +21,14 @@
       <div class="flex flex-col items-center justify-around w-full [&>*]:transition ml-4">
          <a class="hover:underline"
             target="_blank"
-            href="https://www.linkedin.com/in/ahmad-mzayek-97817330b">
-            Ahmad Mzayek
+            href="https://www.linkedin.com/in/carla-kinaan-4ba434333/">
+            Carla Kinaan
          </a>
 
          <a class="hover:underline"
             target="_blank"
-            href="https://www.linkedin.com/in/carla-kinaan-4ba434333/">
-            Carla Kinaan
+            href="https://www.linkedin.com/in/ahmad-mzayek-97817330b">
+            Ahmad Mzayek
          </a>
 
          <a class="hover:underline"
@@ -38,17 +38,17 @@
          </a>
       </div>
 
-      <div class="flex flex-col items-center justify-around w-full ml-4 border-l-2 border-r-2">
-         <a class="hover:underline"
-            target="_blank"
-            href="https://www.github.com/Ahmad-Mzayek">
-            Ahmad Mzayek
-         </a>
-
+      <div id="footer-middle-container" class="flex flex-col items-center justify-around w-full ml-4 border-l-2 border-r-2">
          <a class="hover:underline"
             target="_blank"
             href="https://github.com/CarlaKinaan">
             Carla Kinaan
+         </a>
+
+         <a class="hover:underline"
+            target="_blank"
+            href="https://www.github.com/Ahmad-Mzayek">
+            Ahmad Mzayek
          </a>
 
          <a class="hover:underline"
@@ -61,14 +61,14 @@
       <div class="flex flex-col items-center justify-around w-full">
          <a class="hover:underline"
             target="_blank"
-            href="mailto:ahmadmzayek.cs@gmail.com">
-            Ahmad Mzayek
-         </a>
-
-         <a class="hover:underline"
-            target="_blank"
             href="mailto:carla.gms209@gmail.com">
             Carla Kinaan
+         </a>
+         
+         <a class="hover:underline"
+            target="_blank"
+            href="mailto:ahmadmzayek.cs@gmail.com">
+            Ahmad Mzayek
          </a>
 
          <a class="hover:underline"

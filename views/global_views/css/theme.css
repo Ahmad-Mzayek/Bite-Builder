@@ -23,7 +23,7 @@
 }
 
 body {
-  padding-top: 7rem;
+  padding-top: 5rem;
   background-color: var(--primary);
 }
 
@@ -42,6 +42,10 @@ header button {
 
 footer {
   background-color: var(--body-popup-primary);
+}
+
+#footer-middle-container {
+  border-color: var(--button-bg-primary);
 }
 
 footer a {

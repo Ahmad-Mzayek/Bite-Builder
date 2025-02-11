@@ -101,8 +101,6 @@ VALUES
 ("Dry White Wine", "Beverages", "Milliliter"),
 ("Blood Orange Juice", "Beverages", "Milliliter"),
 ("Lemon Juice", "Beverages", "Milliliter"),
-("Soy Sauce", "Beverages", "Milliliter"),
-("Dry White Wine", "Beverages", "Milliliter"),
 ("Red Wine", "Beverages", "Milliliter");
 
 INSERT IGNORE INTO ingredients

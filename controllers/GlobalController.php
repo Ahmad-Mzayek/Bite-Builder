@@ -67,9 +67,9 @@ class GlobalController
     {
         self::validate_username_format($username_input);
         $query = self::validate_username_query();
-        $statement = GlobalController::prepare_statement($database_connection, $query);
+        $statement = self::prepare_statement($database_connection, $query);
         $statement->bind_param("s", $username_input);
-        GlobalController::execute_statement($statement);
+        self::execute_statement($statement);
         $statement->store_result();
         $is_unique = $statement->num_rows === 0;
         $statement->close();

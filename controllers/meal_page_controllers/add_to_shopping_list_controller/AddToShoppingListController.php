@@ -27,7 +27,22 @@ class AddToShoppingListController
 
     private static function add_to_shopping_list() : array // ---------------------------------------------------------------------------------------
     {
-        return array();
+        $result = self::add_to_shopping_list_result();
+        $shopping_list = array();
+        while ($row = $result->fetch_assoc())
+            $shopping_list[] = $row;
+        return $shopping_list;
+    }
+
+    private static function add_to_shopping_list_result() : mysqli_result // ------------------------------------------------------------------------
+    {
+        $query = "CALL add_to_shopping_list(?, ?);";
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("ii", self::$user_id, self::$meal_id);
+        GlobalController::execute_statement($statement);
+        $result = $statement->get_result();
+        $statement->close();
+        return $result;
     }
 }
 ?>

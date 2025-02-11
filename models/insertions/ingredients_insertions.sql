@@ -16,7 +16,7 @@ VALUES
 ("Coriander", "Herbs", "Leaf"),
 ("Pandan Leaf", "Herbs", "Leaf"),
 ("Dill", "Herbs", "Leaf"),
-("Taragon", "Herbs", "Leaf"),
+("Tarragon", "Herbs", "Leaf"),
 ("Dried Oregano", "Herbs", "Gram");
 
 INSERT IGNORE INTO ingredients

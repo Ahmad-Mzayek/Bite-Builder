@@ -9,7 +9,7 @@ export const themeInitializer = (themeSwitchButton, logoImage, isDarkModeOn) => 
     document.body.classList.toggle("light", true);
     themeSwitchButton.querySelector("#theme-switch-input").checked = false;
     logoImage.setAttribute("src", "../../../resources/images/logo_light.png");
-    }
+  }
 };
 
 export const toggleVisibility = (element, show) => {
@@ -43,7 +43,7 @@ export const addThemeSwitchButtonEventListener = (themeSwitchButton, themeSwitch
 export const fetchData = async (requestURL, requestBody = null, method = "POST") => {
   const requestOptions = {
     method,
-    body: requestBody,
+    body: requestBody
   };
 
   const response = await fetch(requestURL, requestOptions);
@@ -76,7 +76,7 @@ export const addClosePopupSvgListeners = (svgs, overlay, pagePopups) => {
     svg.addEventListener("click", () => {
       const popup = svg.parentElement;
       const popupInputs = popup.querySelectorAll(
-        'input:is([type = "text"], [type = "password"], [type = "email"])',
+        'input[type="text"], input[type="password"], input[type="email"], input[type="number"]'
       );
       deleteInputData(popupInputs);
       toggleVisibility(popup, false);

@@ -6,14 +6,6 @@ CREATE PROCEDURE IF NOT EXISTS insert_user
     IN hashed_password_input    CHAR(64)
 ) 
 BEGIN
-    INSERT INTO dietary_filters
-    VALUES ();
-    
-    SET @user_id = LAST_INSERT_ID();
-    
-    INSERT INTO users(user_id, username, email_address, hashed_password)
-    VALUES (@user_id, username_input, email_address_input, hashed_password_input);
-
     DECLARE done BOOLEAN DEFAULT FALSE;
 
     DECLARE current_category_name VARCHAR(32);
@@ -25,6 +17,14 @@ BEGIN
     DECLARE CONTINUE HANDLER
     FOR NOT FOUND
     SET done = TRUE;
+
+    INSERT INTO dietary_filters
+    VALUES ();
+    
+    SET @user_id = LAST_INSERT_ID();
+    
+    INSERT INTO users(user_id, username, email_address, hashed_password)
+    VALUES (@user_id, username_input, email_address_input, hashed_password_input);
     
     OPEN meal_categories_cursor;
 

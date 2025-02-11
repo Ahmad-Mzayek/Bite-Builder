@@ -221,8 +221,7 @@ CALL insert_meal(
     Directions
     For the Au Jus:
     Strain drippings from roasting pan, skim fat from drippings. Place roasting pan over 2 burners, heat on medium high and add in drippings, stir to deglaze, add in wine and stock, reduce by 1/3, about 5 minutes on steady boil, stirring occasionally. Turn off heat, add in butter. Season, to taste, with salt and pepper. Strain once more into serving vessel.",
-    6, 100, 14, 600, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
-
+    100, 14, 600, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
 
 CALL insert_meal(
     "Appetizers",

@@ -226,7 +226,7 @@ VALUES
 (20, "Dry White Wine", 120),
 (20, "White Wine Vinegar", 60),
 (20, "Shallots", 30),
-(20, "Taragon", NULL),
+(20, "Tarragon", NULL),
 (20, "Black Peppercorn", 2),
 (20, "Egg Yolk", 2),
 (20, "White Miso", 20),

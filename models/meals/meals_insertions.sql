@@ -149,7 +149,7 @@ CALL insert_meal(
 CALL insert_meal(
     "Salads",
     "Greek Butter Bean Salad With Tomatoes, Dill, and Oregano",
-    "greek_butter_bean_salad_with_tomatoes_dill_and_oregano.png",
+    "greek_butter_bean_salad.png",
     "Heat oil over medium heat in a medium skillet until shimmering. Add onion and garlic and cook, stirring, until tender and nearly translucent, about 6 minutes.
     Add beans, tomato puree, vinegar, dill, parsley, oregano, and cinnamon. Season with salt and pepper, bring to a simmer, and cook until flavors meld, about 3 minutes. Refrigerate until ready to serve or cool to room temperature before serving. This dish is best eaten at room temperature, so remove from the refrigerator 1 hour before serving.",
     4, 102, 60, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0);
@@ -227,7 +227,7 @@ CALL insert_meal(
 CALL insert_meal(
     "Appetizers",
     "Charred Asparagus With Miso Béarnaise Sauce",
-    "charred_asparagus_with_miso_bernaise_sauce.png",
+    "charred_asparagus_with_miso_bearnaise_sauce.png",
     "In a small saucepan, combine wine, vinegar, shallots, tarragon stems, and black peppercorns, and bring to a simmer over medium-high heat. Adjust heat to maintain a gentle simmer and cook until reduced to about 1 1/2 tablespoons of liquid, 10 to 12 minutes. Carefully strain liquid through a fine-mesh strainer into a small bowl, pressing on the solids with the back of a spoon to extract as much liquid as possible. Let mixture cool slightly.
     In a tall-sided cup that barely fits the head of an immersion blender, combine egg yolks, miso, and the wine-vinegar reduction. Using an immersion blender. Blend mixture until well-combined, about 30 seconds.
     Meanwhile, in a small saucepan, melt butter over high heat, swirling constantly, until foaming subsides. Transfer butter to a 1-cup liquid measuring cup. Heat a large cast iron skillet over high heat.

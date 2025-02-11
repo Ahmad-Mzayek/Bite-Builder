@@ -22,8 +22,7 @@ BEGIN
         FROM meals
         WHERE nb_calories_per_portion BETWEEN min_nb_calories_per_portion_input AND max_nb_calories_per_portion_input
             AND preparation_duration_minutes BETWEEN min_preparation_duration_minutes_input AND max_preparation_duration_minutes_input
-            AND meal_name LIKE CONCAT(searched_meal_name_input, "%")
-            COLLATE utf8mb4_general_ci;
+            AND meal_name LIKE CONCAT(searched_meal_name_input, "%") COLLATE utf8mb4_general_ci;
 
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_categorized_meals AS
         SELECT tm.*

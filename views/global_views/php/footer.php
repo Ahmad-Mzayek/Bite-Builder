@@ -17,7 +17,7 @@
       </h2>
    </div>
 
-   <div class="flex items-center justify-around w-full pt-4">
+   <div class="flex items-center justify-around w-full pt-4 pb-2">
       <div class="flex flex-col items-center justify-around w-full [&>*]:transition ml-4">
          <a class="hover:underline"
             target="_blank"

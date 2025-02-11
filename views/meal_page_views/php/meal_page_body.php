@@ -1,10 +1,9 @@
-<div class="flex flex-col items-center gap-5 pr-2 basis-9/12">
+<div id="meal-page-body" class="flex flex-col items-center gap-5 pr-2 basis-9/12">
 	<div class="flex items-center w-full">               
 		<div class="relative p-6 basis-8/12">
-			<input type="text"
-						 name="search_input"
-				     id="search_input">
-			<svg id="search-button"
+			<input type="text" name="search_input">
+
+			<svg id="search-icon"
 					 class="absolute inset-0 m-auto mr-10 cursor-pointer"
 				   width="32"
 				   height="32"
@@ -14,7 +13,7 @@
 			</svg>
 		</div>
 		
-		<button id="filter-button" class="relative p-6 basis-4/12 rounded-xl opacity-95 hover:opacity-100 bg-slate-800">
+		<button id="filter-button" class="relative p-6 basis-4/12 rounded-xl opacity-95 hover:opacity-100">
 			<svg class="absolute inset-0 m-auto opacity-100 fill-white"
 				   xmlns="http://www.w3.org/2000/svg"
 					 width="32"
@@ -25,9 +24,9 @@
 		</button>
 	</div>
 	
-	<div class="flex items-start gap-3">
-		<div class="flex self-center group">
-			<button id="previous-meal-button" class="relative w-16 h-16 p-10 transition duration-300 rounded-full group-hover:bg-gray-200">
+	<div class="flex items-center gap-3">
+		<div class="flex self-center group pl-2">
+			<button id="previous-meal-button" class="relative w-12 h-12 duration-300 rounded-full transition">
 				<svg class="absolute inset-0 w-10 h-10 m-auto"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 320 512">
@@ -37,37 +36,68 @@
 			</button>
 		</div>
 
-		<div class="flex items-center justify-center basis-6/12">
+		<div class="flex items-center justify-center basis-6/12 min-w-[20rem] pr-2 border-r-8">
 			<?php include("./meal_card.php"); ?>
 		</div>
 		
-		<div class="flex flex-col items-center basis-5/12 h-full gap-8">
-			<div class="flex self-end space-x-6">
-				<button id="add-to-shopping-list-button" class="relative p-6 rounded-full bg-slate-800 group">
-					<svg class="w-10 h-10 opacity-100 fill-white group-hover:-translate-y-2"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 448 512">
-						<path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z" />
-					</svg>
-				</button> 
+		<div class="flex flex-col items-center self-start gap-6 basis-5/12 grow">
+			<div class="flex items-center justify-between gap-4 w-full">
+				<h2 id="meal-name" class="text-center">
+					Meal Name Goes Here
+				</h2>
 
-				<button id="add-to-favorites-button" class="relative p-6 rounded-full bg-slate-800 group">
-					<?php include("./add_to_favorites_button_icons.php"); ?>
-				</button>
+				<div class="flex space-x-6">
+						<button id="add-to-shopping-list-button" class="relative p-6 rounded-full group">
+							<?php include("./add_to_shopping_list_button_icons.php"); ?>
+						</button> 
+		
+						<button id="add-to-favorites-button" class="relative p-6 rounded-full group">
+							<?php include("./add_to_favorites_button_icons.php"); ?>
+						</button>
+				</div>
 			</div>
 
-			<h1 id="meal-name" class="text-center">
-				Meal Name Goes Here
-			</h1>
-			
-			<div>
-				<h3 id="summarized-meal-description" class="text-lg font-medium overflow-y-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, accusantium quia aperiam voluptatum dolorum non id aspernatur quaerat harum maxime, laborum tempora exercitationem similique beatae incidunt, itaque labore. Sunt ipsam doloribus temporibus doloremque numquam nesciunt ullam quidem non quos? Aliquam quae delectus iure at est ipsam neque, praesentium, sint a dolores culpa exercitationem nihil recusandae repellat tenetur voluptatem, alias accusantium eius quis voluptatum. Fugiat error reprehenderit, nulla non eos fugit at iure sapiente accusantium quasi molestiae vitae. In perferendis a sit illum culpa, tenetur sapiente ipsam consectetur facere.
-				</h3>
+			<div class="flex h-[35rem] gap-5">
+				<div class="flex flex-col justify-between gap-2 h-full p-2">
+					<h3 id="meal-description" class="overflow-y-auto text-lg font-medium">
+
+					</h3>
+					
+					<button class="p-4 text-base font-medium text-white transition bg-green-500 rounded-sm md:text-lg lg:text-xl">
+						View Details
+					</button>
+				</div>
+
+				<div class="flex flex-col items-center justify-around">
+					<button class="flex flex-col items-center justify-center w-full h-24 px-2 rounded-xl group cursor-default">
+						<?php include("./number_of_calories_icon.php"); ?>
+						
+						<span id="total-calories-span">
+
+						</span>
+					</button> 
+	
+					<button class="flex flex-col items-center justify-center w-full h-24 gap-2 px-2 rounded-xl group cursor-default">
+						<?php include("./preparation_duration_icon.php"); ?>
+
+						<span id="total-minutes-span">
+
+						</span>
+					</button> 
+	
+					<button class="flex flex-col items-center justify-center w-full h-24 gap-2 px-2 rounded-xl group cursor-default">
+						<?php include("./number_of_servings_icon.php"); ?>
+
+						<span id="total-portions-span">
+
+						</span>
+					</button> 
+				</div>
 			</div>
 		</div>
 
 		<div class="flex items-center self-center justify-center group">
-				<button id="next-meal-button" class="relative w-16 h-16 p-6 transition duration-300 rounded-full group-hover:bg-gray-200">
+				<button id="next-meal-button" class="relative w-12 h-12 p-2 transition duration-300 rounded-full">
 					<svg class="absolute inset-0 w-10 h-10 m-auto"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 320 512">
@@ -79,7 +109,7 @@
 
 	<div id="total-nb-meals-container" class="flex items-center justify-center w-full text-2xl font-bold">
 		<span id="total-meals-span">
-			(1 / 30)
+			
 		</span>
 	</div>
 </div>

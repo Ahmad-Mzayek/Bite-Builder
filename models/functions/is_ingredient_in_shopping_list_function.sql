@@ -1,6 +1,7 @@
 DELIMITER //
 CREATE FUNCTION is_ingredient_in_shopping_list(user_id_input INT, ingredient_name_input VARCHAR(32))
 RETURNS BOOLEAN
+READS SQL DATA
 BEGIN
     DECLARE exists_count INT;
     

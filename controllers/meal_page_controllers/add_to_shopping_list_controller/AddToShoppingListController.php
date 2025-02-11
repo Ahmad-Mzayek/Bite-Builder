@@ -20,7 +20,7 @@ class AddToShoppingListController
         }
         finally
         {
-            if (isset(self::$database_connection)) 
+            if (isset(self::$database_connection))
                 self::$database_connection->close();
         }
     }

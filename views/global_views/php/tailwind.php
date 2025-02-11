@@ -45,11 +45,7 @@
   }
 
   svg {
-    @apply opacity-40 transition duration-300 ease-in-out;
-  }
-
-  svg:hover {
-    @apply opacity-100;
+    @apply transition duration-300 ease-in-out;
   }
   
   .leap-frog {
@@ -165,7 +161,7 @@
     position: relative;
     overflow: hidden;
     transition-duration: .3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     background-color: rgb(255, 65, 65);
   }
 
@@ -249,35 +245,26 @@
   }
 
   #filters-container, #categories-container, #sort-and-order-container {
-    @apply min-h-[30rem] flex flex-col items-center justify-between;
+    @apply flex flex-col gap-2 px-4 py-2;
   }
 
-  #categories-container {
-    @apply items-start;
+  #filters-container > div {
+    @apply w-full;
   }
 
   #filters-container label,
   #categories-container label,
   #sort-and-order-container label {
-    @apply font-semibold text-white text-2xl;
-  }
-
-  #filters-container > div,
-  #categories-container > div {
-    @apply flex w-1/4 items-center text-nowrap gap-4;
-  }
-
-  #sort-and-order-container > div {
-    @apply flex w-full items-center text-nowrap gap-4;
+    @apply font-medium text-xl text-nowrap;
   }
 
   .filter-range-container {
-    @apply flex items-center self-start w-1/4;
+    @apply flex items-center justify-between mt-2;
   }
 
   .filter-range-container input {
-    @apply w-20 font-semibold text-xl p-2;
-  }
+    @apply w-16 font-semibold text-xl p-2;
+  } 
 
   #submit-preferences-form-button {
     @apply px-10 py-4 font-bold tracking-wide text-xl bg-green-600 transition-all hover:bg-green-700 rounded-xl;

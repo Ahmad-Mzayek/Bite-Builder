@@ -85,11 +85,17 @@ BEGIN
     DROP TEMPORARY TABLE IF EXISTS temp_meal_filters;
     DROP TEMPORARY TABLE IF EXISTS temp_user_filters;
 
-    SELECT tfm.meal_id
-    FROM temp_final_meals AS tfm
-    JOIN temp_matching_meal_ids AS tmmi
-        ON tfm.meal_id = tmmi.filters_id
-    ORDER BY sort_by_input, order_input;
+    SET @query = CONCAT(
+        "SELECT tfm.meal_id
+        FROM temp_final_meals AS tfm
+        JOIN temp_matching_meal_ids AS tmmi
+            ON tfm.meal_id = tmmi.filters_id
+        ORDER BY ", sort_by_input, " ", order_input, ";"
+    );
+
+    PREPARE stmt FROM @query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
 
     DROP TEMPORARY TABLE IF EXISTS temp_final_meals;
     DROP TEMPORARY TABLE IF EXISTS temp_matching_meal_ids;

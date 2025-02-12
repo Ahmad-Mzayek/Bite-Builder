@@ -221,7 +221,7 @@ CALL insert_meal(
     Directions
     For the Au Jus:
     Strain drippings from roasting pan, skim fat from drippings. Place roasting pan over 2 burners, heat on medium high and add in drippings, stir to deglaze, add in wine and stock, reduce by 1/3, about 5 minutes on steady boil, stirring occasionally. Turn off heat, add in butter. Season, to taste, with salt and pepper. Strain once more into serving vessel.",
-    100, 14, 600, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
+    6, 600, 14500, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
 
 CALL insert_meal(
     "Appetizers",
@@ -234,3 +234,15 @@ CALL insert_meal(
     Add half of the asparagus to the preheated cast iron skillet and arrange in a single layer. Cook, turning occasionally, until spears are lightly charred all over and just cooked through, 4 to 6 minutes for thin spears, 5 to 8 minutes for thick spears. Carefully add half of the vegetable oil to the skillet, toss to coat asparagus with oil, and season with salt and pepper to taste. Transfer asparagus to a warmed serving plate. Repeat with remaining asparagus and vegetable oil. Serve immediately, passing béarnaise sauce at the table.
     This dish is best enjoyed immediately. The béarnaise sauce can be made and kept warm for up to 1 hour before serving.",
     4, 413, 40, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1);
+
+CALL insert_meal(
+    "Main Courses",
+    "Mushroom Steak Diane",
+    "mushroom_steak_diane.png",
+    "Stir together broth, soy sauce, mustard, miso paste, and red pepper in a small bowl.
+    Cut mushrooms in half lengthwise. Score the inside of each mushroom half with shallow diagonal cuts (do not cut all the way through).
+    Heat 2 tablespoons oil in a large cast-iron or nonstick skillet over high heat, swirling to coat bottom. Cook mushrooms, cut sides down, until bottoms are golden brown, 3 to 5 minutes (do not stir). Reduce heat to medium. Pour half of broth mixture (about 1/3 cup) into skillet. Cook, covered, until liquid is mostly absorbed and mushrooms are fork-tender, about 5 minutes. (Add water as needed, 2 tablespoons at a time, if liquid evaporates and mushrooms are not yet tender.) Transfer mushrooms to a bowl.
+    Add remaining 1 teaspoon oil and the shallot to skillet. Cook, stirring constantly, over medium heat 30 seconds. Add sake; bring to a boil over high heat. Cook, stirring frequently, until slightly reduced, about 1 minute. Add coconut milk, remaining broth mixture, and any accumulated juices from mushrooms. Cook over high heat just until sauce starts to thicken, about 2 minutes.
+    Return mushrooms to skillet. Reduce heat to low. Gently simmer until mushrooms are heated through, adding water as needed, 1 tablespoon at a time, until sauce reaches desired consistency, about 2 minutes.
+    Serve mushrooms over lentils and top with sauce and chives.",
+    2, 420, 25, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0);

@@ -61,7 +61,8 @@ VALUES
 ("White Flour", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("Potato Starch", "Grains", "Gram"),
-("Grains Of Selim", "Grains", "Gram");
+("Grains Of Selim", "Grains", "Gram"),
+("Active Dry Yeast", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES

@@ -153,7 +153,7 @@ VALUES
 
 INSERT IGNORE INTO recipes
 VALUES
-(14, "Sea Scallops", 340),
+(14, "Sea Scallop", 340),
 (14, "Olive Oil", 20),
 (14, "Lemon Juice", 5),
 (14, "Lemon Zest", 5),
@@ -164,7 +164,7 @@ INSERT IGNORE INTO recipes
 VALUES
 (15, "Buttermilk", 120),
 (15, "Ginger", 20),
-(15, "Scallions", 45),
+(15, "Scallion", 45),
 (15, "Soy Sauce", 33),
 (15, "Asian Sesame Oil", 14),
 (15, "Salt", 2),
@@ -225,13 +225,28 @@ INSERT IGNORE INTO recipes
 VALUES
 (20, "Dry White Wine", 120),
 (20, "White Wine Vinegar", 60),
-(20, "Shallots", 30),
+(20, "Shallot", 30),
 (20, "Tarragon", NULL),
 (20, "Black Peppercorn", 2),
 (20, "Egg Yolk", 2),
-(20, "White Miso", 20),
+(20, "White Miso Paste", 20),
 (20, "Kosher Salt", NULL),
 (20, "Ground Black Pepper", NULL),
 (20, "Asparagus", 450),
 (20, "Vegetable Oil", 15),
 (20, "Unsalted Butter", 168);
+
+INSERT IGNORE INTO recipes
+VALUES
+(21, "Vegetable Broth", 100),
+(21, "Soy Sauce", 30),
+(21, "Dijon Mustard", 10),
+(21, "White Miso Paste", 10),
+(21, "Red Pepper Flakes", 20),
+(21, "King Trumpet Mushroom", 450),
+(21, "Vegetable Oil", 35),
+(21, "Shallot", 25),
+(21, "Sake", 50),
+(21, "Coconut Milk", 100),
+(21, "Black Lentiles", NULL),
+(21, "Green Onion", 20);

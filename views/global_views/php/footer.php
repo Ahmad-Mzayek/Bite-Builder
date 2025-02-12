@@ -1,14 +1,14 @@
-<footer class="flex flex-col w-screen items-center justify-between p-6 pr-12 mt-16">
-   <h1 class="pb-6 lg:text-5xl">
+<footer class="flex flex-col items-center justify-between w-screen mt-16">
+   <h1 class="pb-6 text-4xl pl-8">
       Developers
    </h1>
 
-   <div class="flex items-center justify-around w-full pt-2 pb-2">
+   <div class="flex justify-around w-full pt-2 pb-2">
       <h2>
          LinkedIn
       </h2>
 
-      <h2>
+      <h2 class="self-center">
          GitHub
       </h2>
 
@@ -17,7 +17,7 @@
       </h2>
    </div>
 
-   <div class="flex items-center justify-around w-full pt-4">
+   <div class="flex items-center justify-around w-full pt-4 pb-2">
       <div class="flex flex-col items-center justify-around w-full [&>*]:transition ml-4">
          <a class="hover:underline"
             target="_blank"

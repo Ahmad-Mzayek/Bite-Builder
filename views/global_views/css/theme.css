@@ -1,25 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-  font-family: "Poppins", sans-serif;
-}
-
 .light {
   --primary: #ffffff;
   --body-popup-primary: rgb(255, 255, 255);
   --button-bg-primary: #000000;
-  --button-hover-primary: #000000;
+  --button-hover-primary: #1a1818;
   --text-primary: black;
   --text-button-primary: white;
+  --scrollbar-track: #dbd4d4;
 }
 
 .dark {
   --primary: rgb(33, 33, 33);
   --body-popup-primary: rgb(33, 33, 33);
   --button-bg-primary: #ffffff;
-  --button-hover-primary: #000000;
+  --button-hover-primary: #c3b7b7;
   --text-primary: #ffffff;
   --text-button-primary: black;
+  --scrollbar-track: #00000055;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-track) var(--primary);
 }
 
 body {
@@ -74,7 +79,67 @@ h1,
 h2,
 h3,
 p,
-span,
 a {
+  color: var(--text-primary);
+}
+
+#meal-page-body button {
+  color: var(--text-button-primary);
+  background-color: var(--button-bg-primary);
+}
+
+#meal-page-body svg {
+  fill: var(--text-button-primary);
+}
+
+#meal-page-body span {
+  color: var(--text-primary);
+}
+
+#meal-page-body button > span {
+  color: var(--text-button-primary);
+}
+
+#meal-page-body #previous-meal-button,
+#meal-page-body #next-meal-button {
+  background-color: transparent;
+}
+
+#meal-page-body #previous-meal-button:hover {
+  background-color: var(--button-hover-primary);
+}
+
+#meal-page-body #next-meal-button:hover {
+  background-color: var(--button-hover-primary);
+}
+
+#meal-page-body #previous-meal-button > svg,
+#meal-page-body #next-meal-button > svg {
+  fill: var(--text-primary);
+}
+
+#preferences-form > span {
+  border-color: var(--button-bg-primary);
+}
+
+#filters-container span,
+#categories-container span,
+#sort-and-order-container span {
+  color: var(--text-primary);
+}
+
+#preferences-popup button,
+#preferences-popup input[type="submit"] {
+  color: var(--text-primary);
+}
+
+#profile-popup-username-input:disabled,
+#profile-popup-phone-number-input:disabled {
+  color: var(--text-primary);
+  background: none;
+  border: none;
+}
+
+#profile-popup label span {
   color: var(--text-primary);
 }

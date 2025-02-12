@@ -8,17 +8,9 @@ let isDarkModeOn = localStorage.getItem("isDarkModeOn") || "true";
 
 Utils.themeInitializer(idElements.themeSwitchButton, idElements.logoImage, isDarkModeOn);
 
-Utils.addThemeSwitchButtonEventListener(
-  idElements.themeSwitchButton,
-  themeSwitch,
-  idElements.logoImage,
-);
+Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
 
-Utils.addClosePopupSvgListeners(
-  classElements.closePopupSvgs,
-  idElements.overlay,
-  classElements.pagePopups,
-);
+Utils.addClosePopupSvgListeners(classElements.closePopupSvgs, idElements.overlay, classElements.pagePopups);
 
 Utils.addPasswordIconEventListeners(classElements.showPasswordIcons);
 
@@ -29,7 +21,7 @@ idElements.loginSignupButton.addEventListener("click", () => {
 
 idElements.showLoginButton.addEventListener("click", () => {
   let signupInputs = idElements.signupPopup.querySelectorAll(
-    'input:is([type = "text"], [type = "email"], [type = "password"])',
+    'input[type="text"], input[type="email"], input[type="password"]'
   );
   Utils.switchElements(idElements.loginPopup, idElements.signupPopup);
   Utils.toggleVisibility(idElements.signupSuccessContainer, false);
@@ -39,7 +31,7 @@ idElements.showLoginButton.addEventListener("click", () => {
 
 idElements.showSignupButton.addEventListener("click", () => {
   let loginInputs = idElements.loginPopup.querySelectorAll(
-    'input:is([type = "text"], [type = "email"], [type = "password"])',
+    'input[type="text"], input[type="email"], input[type="password"]'
   );
   Utils.switchElements(idElements.signupPopup, idElements.loginPopup);
   Utils.toggleVisibility(idElements.loginErrorContainer, false);
@@ -53,13 +45,14 @@ idElements.resetPasswordButton.addEventListener("click", () => {
 
 idElements.loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
   const loginFormData = new FormData(event.target);
   Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
   try {
     const result = await Utils.fetchData(
       "../../../controllers/landing_page_controllers/login_controller/login_controller_main.php",
-      loginFormData,
+      loginFormData
     );
 
     if (result.status === "success") {
@@ -82,13 +75,15 @@ idElements.loginForm.addEventListener("submit", async (event) => {
 
 idElements.signupForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
   const signupFormData = new FormData(event.target);
+
   Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
   try {
     const result = await Utils.fetchData(
       "../../../controllers/landing_page_controllers/signup_controller/signup_controller_main.php",
-      signupFormData,
+      signupFormData
     );
 
     if (result.status === "success") {

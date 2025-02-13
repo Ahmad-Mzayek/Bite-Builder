@@ -40,6 +40,9 @@ header button {
   color: var(--text-button-primary);
   background-color: var(--button-bg-primary);
 }
+#dropdown-menu-list {
+  background-color: rgb(124, 11, 11);
+}
 
 #hamburger-menu span {
   background-color: var(--button-bg-primary);
@@ -116,6 +119,21 @@ a {
 #meal-page-body #previous-meal-button > svg,
 #meal-page-body #next-meal-button > svg {
   fill: var(--text-primary);
+}
+
+#add-to-favorites-button,
+#add-to-shopping-list-button {
+  transition: background-color 0.15s ease-in-out;
+}
+
+#add-to-favorites-button:hover,
+#add-to-shopping-list-button:hover {
+  background-color: rgb(144, 9, 9);
+}
+
+#add-to-favorites-button:hover svg,
+#add-to-shopping-list-button:hover svg {
+  fill: #ffffff;
 }
 
 #preferences-form > span {

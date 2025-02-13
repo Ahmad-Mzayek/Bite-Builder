@@ -6,6 +6,7 @@ let themeSwitch = true;
 let isDarkModeOn = localStorage.getItem("isDarkModeOn") || "true";
 
 let userInfo;
+let userShoppingList;
 let currentMeal;
 let searchedMealName = "";
 let numberInputs;
@@ -35,6 +36,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (result.status === "success") {
       userInfo = result.message;
+      userShoppingList = userInfo.shopping_list;
+
       console.log(userInfo);
 
       idElements.profilePopupUsernameInput.value = userInfo.username;
@@ -59,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters, numberInputs);
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
+      MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
     }
 
     if (mealIds === null) {
@@ -843,15 +847,34 @@ idElements.addToFavoritesButton.addEventListener("click", async () => {
   }
 });
 
+idElements.addToShoppingListButton.addEventListener("click", async () => {
+  const currentMealId = new URLSearchParams({
+    meal_id: currentMeal.meal_id
+  });
+
+  try {
+    const result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/add_to_shopping_list_controller/add_to_shopping_list_controller_main.php",
+      currentMealId
+    );
+
+    if (result.status === "success") {
+      // TODO Render Meal Ingredients In Shopping List.
+      userShoppingList = result.message;
+      console.log(userShoppingList);
+
+      MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
+    }
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
+  }
+});
+
 idElements.openMealDetailsPopupButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.mealDetailsPopup, true);
   Utils.toggleVisibility(idElements.overlay, true);
 
   MealPageUtils.resetMealDetailsPopupIngredientsList(idElements.mealIngredientsListContainer);
-
-  if(currentMeal === null) {
-
-  }
 
   MealPageUtils.refreshMealDetailsPopup(
     currentMeal,

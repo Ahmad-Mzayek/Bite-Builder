@@ -38,6 +38,7 @@ export const idElements = {
   cancelEditUsernameButton: document.querySelector("#cancel-edit-username-button"),
   mealDetailsPopupMealName: document.querySelector("#meal-details-popup-meal-name"),
   profilePopupUsernameInput: document.querySelector("#profile-popup-username-input"),
+  shoppingListGridContainer: document.querySelector("#shopping-list-grid-container"),
   saveEditPhoneNumberButton: document.querySelector("#save-edit-phone-number-button"),
   profilePopupErrorContainer: document.querySelector("#profile-popup-error-container"),
   confirmDeleteAccountButton: document.querySelector("#confirm-delete-account-button"),
@@ -70,4 +71,5 @@ export const classElements = {
   closePopupSvgs: document.querySelectorAll(".close-popup-svg"),
   showPasswordIcons: document.querySelectorAll(".toggle-password-icon"),
   ingredientsListContainers: document.querySelectorAll(".ingredients-list-container"),
+  shoppingListIngredientTypeContainer: document.querySelector("#shopping-list-ingredient-type-container"),
 };

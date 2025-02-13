@@ -26,6 +26,7 @@
 		include("./delete_account_confirmation_popup.php");
 		include("./change_password_popup.php");
 		include("./preferences_popup.php");
+		include("./meal_details_popup.php");
 		include("../../global_views/php/loading.php");
 		?>
 

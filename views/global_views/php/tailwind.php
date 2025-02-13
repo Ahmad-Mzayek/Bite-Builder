@@ -31,13 +31,17 @@
   }
 
   button {
-    @apply text-sm cursor-pointer md:text-base lg:text-lg text-nowrap;
+    @apply text-sm cursor-pointer md:text-base rounded-full lg:text-lg text-nowrap;
   }
-
+  
   input[type="text"],
   input[type="password"],
   input[type="email"] {
     @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl;
+  }
+
+  input[search-input="search"] {
+    @apply p-2 pl-4;
   }
 
   input[type="submit"] {
@@ -153,10 +157,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 70px;
+    width: 100%;
     height: 70px;
     border: none;
-    border-radius: 50%;
+    border-radius: 50px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -194,8 +198,6 @@
   }
   /* hover effect on button width */
   #logout-button:hover {
-    width: 100%;
-    border-radius: 40px;
     transition-duration: .3s;
   }
 
@@ -245,7 +247,7 @@
   }
 
   #filters-container, #categories-container, #sort-and-order-container {
-    @apply flex flex-col gap-2 px-4 py-2;
+    @apply flex flex-col justify-between h-full gap-1 px-4 py-2 mt-4;
   }
 
   #filters-container > div {

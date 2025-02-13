@@ -1,7 +1,7 @@
 <?php include "../../global_views/php/show_password_icons.php"; ?>
 
 <div id="signup-popup"
-     class="popup hidden flex-col min-w-[30rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-xl rounded-lg p-6">
+    class="popup hidden flex-col min-w-[30rem] min-h-[20rem] items-center justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6">
     <h1 class="pb-4 font-bold">
         Sign Up
     </h1>

@@ -6,17 +6,17 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Olive Oil", "Fats", "Milliliter"),
-("Asian Sesame Oil", "Fats", "Milliliter"),
 ("Peanut Oil", "Fats", "Milliliter"),
-("Vegetable Oil", "Fats", "Milliliter");
+("Vegetable Oil", "Fats", "Milliliter"),
+("Asian Sesame Oil", "Fats", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Dill", "Herbs", "Leaf"),
 ("Parsley", "Herbs", "Leaf"),
+("Tarragon", "Herbs", "Leaf"),
 ("Coriander", "Herbs", "Leaf"),
 ("Pandan Leaf", "Herbs", "Leaf"),
-("Dill", "Herbs", "Leaf"),
-("Tarragon", "Herbs", "Leaf"),
 ("Dried Oregano", "Herbs", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -25,10 +25,10 @@ VALUES
 ("Salted Butter", "Dairy", "Gram"),
 ("Cheddar Cheese", "Dairy", "Gram"),
 ("Unsalted Butter", "Dairy", "Gram"),
+("Buttermilk", "Dairy", "Milliliter"),
 ("Heavy Cream", "Dairy", "Milliliter"),
 ("Colby-Jack Cheese", "Dairy", "Gram"),
 ("Full-Fat Milk", "Dairy", "Milliliter"),
-("Buttermilk", "Dairy", "Milliliter"),
 ("Full-Fat Cream Cheese", "Dairy", "Gram"),
 ("Parmigiano-Reggiano Cheese", "Dairy", "Gram");
 
@@ -40,8 +40,8 @@ VALUES
 ("Egg Yolk", "Proteins", "Piece"),
 ("Proscuitto", "Proteins", "Gram"),
 ("Whole Egg", "Proteins", "Piece"),
-("Chicken Breast", "Proteins", "Piece"),
 ("Chicken Thigh", "Proteins", "Piece"),
+("Chicken Breast", "Proteins", "Piece"),
 ("Round Beef Roast", "Proteins", "Gram"),
 ("Beef Flank Steak", "Proteins", "Gram");
 
@@ -53,82 +53,89 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Linguine", "Grains", "Gram"),
+("White Rice", "Grains", "Gram"),
 ("Cornstarch", "Grains", "Gram"),
-("Potato Starch", "Grains", "Gram"),
-("White Flour", "Grains", "Gram"),
-("Grains Of Selim", "Grains", "Gram"),
-("Jasmine Rice", "Grains", "Gram"),
 ("White Beans", "Grains", "Gram"),
 ("Butter Beans", "Grains", "Can"),
-("White Rice", "Grains", "Gram"),
-("Linguine", "Grains", "Gram");
+("White Flour", "Grains", "Gram"),
+("Jasmine Rice", "Grains", "Gram"),
+("Potato Starch", "Grains", "Gram"),
+("Grains Of Selim", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Salt", "Spices", "Gram"),
-("Kosher Salt", "Spices", "Gram"),
 ("Flaky Salt", "Spices", "Gram"),
+("Kosher Salt", "Spices", "Gram"),
 ("Onion Powder", "Spices", "Gram"),
 ("Cubeb Pepper", "Spices", "Gram"),
 ("Ground Ginger", "Spices", "Gram"),
 ("Sweet Paprika", "Spices", "Gram"),
 ("Garlic Powder", "Spices", "Gram"),
 ("Cayenne Pepper", "Spices", "Gram"),
-("Black Peppercorn", "Spices", "Gram"),
+("Ground Cinnamon", "Spices", "Gram"),
 ("Ranch Seasoning", "Spices", "Gram"),
+("Black Peppercorn", "Spices", "Gram"),
 ("Red Pepper Flakes", "Spices", "Gram"),
 ("Ground Black Pepper", "Spices", "Gram"),
-("Ground Cinnamon", "Spices", "Gram"),
 ("Cracked Black Pepper", "Spices", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Lime", "Fruits", "Gram"),
+("Lemon", "Fruits", "Gram"),
 ("Tomato", "Fruits", "Gram"),
 ("Jalapeno", "Fruits", "Gram"),
 ("Tomatillo", "Fruits", "Gram"),
-("Lemon Zest", "Fruits", "Gram"),
-("Lemon", "Fruits", "Gram");
+("Lemon Zest", "Fruits", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Anchovy", "Seafood", "Gram"),
-("Shrimp", "Seafood", "Gram");
+("Shrimp", "Seafood", "Gram"),
+("Anchovy", "Seafood", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
+("King Trumpet Mushroom", "Mushrooms", "Gram");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Sake", "Beverages", "Milliliter"),
 ("Water", "Beverages", "Milliliter"),
-("Dry White Wine", "Beverages", "Milliliter"),
-("Blood Orange Juice", "Beverages", "Milliliter"),
+("Red Wine", "Beverages", "Milliliter"),
 ("Lemon Juice", "Beverages", "Milliliter"),
-("Red Wine", "Beverages", "Milliliter");
+("Dry White Wine", "Beverages", "Milliliter"),
+("Blood Orange Juice", "Beverages", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Garlic", "Vegetables", "Clove"),
-("Broccoli", "Vegetables", "Gram"),
-("Red Onion", "Vegetables", "Gram"),
-("Yellow Onion", "Vegetables", "Gram"),
-("Scallions", "Vegetables", "Gram"),
-("Asparagus", "Vegetables", "Gram"),
-("Shallots", "Vegetables", "Gram"),
-("Crisp Lettuce", "Vegetables", "Gram"),
 ("Ginger", "Vegetables", "Gram"),
-("Cabbage", "Vegetables", "Gram");
+("Garlic", "Vegetables", "Clove"),
+("Shallot", "Vegetables", "Gram"),
+("Cabbage", "Vegetables", "Gram"),
+("Broccoli", "Vegetables", "Gram"),
+("Scallion", "Vegetables", "Gram"),
+("Asparagus", "Vegetables", "Gram"),
+("Red Onion", "Vegetables", "Gram"),
+("Green Onion", "Vegetables", "Gram"),
+("Yellow Onion", "Vegetables", "Gram"),
+("Crisp Lettuce", "Vegetables", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
 ("Ranch", "Condiments", "Milliliter"),
+("Vinegar", "Condiments", "Milliliter"),
+("Ketchup", "Condiments", "Milliliter"),
 ("Hot Sauce", "Condiments", "Milliliter"),
+("Dijon Mustard", "Condiments", "Milliliter"),
 ("Yellow Mustard", "Condiments", "Milliliter"),
-("White Miso", "Condiments", "Milliliter"),
 ("Barbecue Sauce", "Condiments", "Milliliter"),
+("White Miso Paste", "Condiments", "Milliliter"),
 ("Red Wine Vinegar", "Condiments", "Milliliter"),
 ("White Wine Vinegar", "Condiments", "Milliliter"),
 ("Spicy Brown Mustard", "Condiments", "Milliliter"),
-("Ketchup", "Condiments", "Milliliter"),
-("Worcestershire Sauce", "Condiments", "Milliliter"),
-("Vinegar", "Condiments", "Milliliter");
+("Worcestershire Sauce", "Condiments", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -139,19 +146,21 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Tomato Puree", "Extracts", "Can"),
 ("Cocoa Powder", "Extracts", "Gram"),
+("Soy Sauce", "Extracts", "Milliliter"),
+("Beef Stock", "Extracts", "Milliliter"),
+("Coconut Milk", "Extracts", "Milliliter"),
 ("Chicken Stock", "Extracts", "Milliliter"),
 ("Vanilla Extract", "Extracts", "Milliliter"),
-("Soy Sauce", "Extracts", "Milliliter"),
-("Coconut Milk", "Extracts", "Milliliter"),
-("Beef Stock", "Extracts", "Milliliter"),
-("Tomato Puree", "Extracts", "Can");
+("Vegetable Broth", "Extracts", "Milliliter");
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Olive Oil-Packed Tuna", "Seafood", "Can"),
-("Sea Scallops", "Seafood", "Gram");
+("Sea Scallop", "Seafood", "Gram"),
+("Olive Oil-Packed Tuna", "Seafood", "Can");
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Black Lentiles", "Legumes", "Gram"),
 ("Bean Cooking Liquid", "Legumes", "Milliliter");

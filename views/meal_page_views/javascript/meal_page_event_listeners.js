@@ -6,10 +6,13 @@ let themeSwitch = true;
 let isDarkModeOn = localStorage.getItem("isDarkModeOn") || "true";
 
 let userInfo;
+let currentMeal;
+let searchedMealName = "";
+let numberInputs;
 
 // localStorage.clear(); // TODO REMOVE LATER --------------------------------------------------------------------------------
 
-let mealIds = localStorage.getItem("mealIds");
+let mealIds = localStorage.getItem("meal_ids");
 if (mealIds !== null) mealIds = JSON.parse(mealIds);
 
 let currentMealIdsIndex = 0;
@@ -33,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (result.status === "success") {
       userInfo = result.message;
       console.log(userInfo);
+
       idElements.profilePopupUsernameInput.value = userInfo.username;
 
       if (userInfo.phone_number === null) idElements.profilePopupPhoneNumberInput.value = "Not Specified";
@@ -43,9 +47,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (userInfo.is_male === 1) MealPageUtils.toggleInputSelection(idElements.profilePopupMaleRadioInput, true);
       else MealPageUtils.toggleInputSelection(idElements.profilePopupFemaleRadioInput, true);
 
+      numberInputs = [
+        minNbCaloriesPerPortion,
+        maxNbCaloriesPerPortion,
+        minPreparationDurationMinutes,
+        maxPreparationDurationMinutes
+      ];
+
       MealPageUtils.fetchAndUpdateMealCategories(idElements.categoriesContainer, userInfo.meal_categories);
       MealPageUtils.updateIsFavoritesCheckedFilter(idElements.dietaryFiltersContainer, isFavoritesChecked);
-      MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters);
+      MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters, numberInputs);
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
     }
@@ -56,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       formData.append("is_favorites_checked", isFavoritesChecked);
       formData.append("sort_by", sort_by);
       formData.append("order", order);
-      formData.append("searched_meal_name", "");
+      formData.append("searched_meal_name", searchedMealName);
       formData.append("min_nb_calories_per_portion", minNbCaloriesPerPortion);
       formData.append("max_nb_calories_per_portion", maxNbCaloriesPerPortion);
       formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
@@ -74,15 +85,27 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
 
       if (result.status === "success") {
-        localStorage.setItem("mealIds", JSON.stringify(result.message));
+        localStorage.setItem("meal_ids", JSON.stringify(result.message));
 
-        mealIds = JSON.parse(localStorage.getItem("mealIds"));
-
-        if (mealIds.length === 0) idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
+        mealIds = JSON.parse(localStorage.getItem("meal_ids"));
       }
     }
 
-    if (mealIds.length > 0) {
+    if (mealIds.length === 0) {
+      currentMeal = null;
+      MealPageUtils.refreshMealCardAndDetails(
+        null,
+        addToFavoritesButton,
+        idElements.mealImage,
+        idElements.mealName,
+        idElements.mealCategory,
+        idElements.totalCaloriesSpan,
+        idElements.totalMinutesSpan,
+        idElements.totalPortionsSpan
+      );
+      idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
+      idElements.openMealDetailsPopupButton.disabled = true;
+    } else {
       let currentMealId = new URLSearchParams({
         meal_id: mealIds[currentMealIdsIndex]
       });
@@ -93,20 +116,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
 
       if (result.status === "success") {
-        let meal = result.message;
-        console.log(result.message);
-        idElements.mealImage.setAttribute("src", `../../../resources/images/${meal.image_name}`);
-        idElements.mealName.innerHTML = meal.meal_name;
-        idElements.mealDescription.innerHTML = meal.description;
-        idElements.totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
-        idElements.totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
-        idElements.totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
+        currentMeal = result.message;
+        console.log(currentMeal);
+
+        MealPageUtils.refreshMealCardAndDetails(
+          currentMeal,
+          idElements.addToFavoritesButton,
+          idElements.mealImage,
+          idElements.mealName,
+          idElements.mealCategory,
+          idElements.totalCaloriesSpan,
+          idElements.totalMinutesSpan,
+          idElements.totalPortionsSpan
+        );
 
         idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
-      } else alert("Failed fetching meal.");
+        idElements.openMealDetailsPopupButton.disabled = false;
+      } else alert("Failed Fetching Meal.");
     }
   } catch (error) {
-    console.log("Internal Server Error " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -179,7 +208,7 @@ idElements.profilePopupEditUsernameButton.addEventListener("click", async (event
       Utils.toggleVisibility(idElements.profilePopupEditUsernameButton, false);
     }
   } catch (error) {
-    console.log("Internal server error " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -236,7 +265,7 @@ idElements.saveEditUsernameButton.addEventListener("click", async (event) => {
       Utils.toggleVisibility(idElements.profilePopupSuccessContainer, false);
     }
   } catch (error) {
-    console.log("Error: " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -298,7 +327,7 @@ idElements.saveEditPhoneNumberButton.addEventListener("click", async (event) => 
       Utils.toggleVisibility(idElements.profilePopupSuccessContainer, false);
     }
   } catch (error) {
-    console.log("Error: " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -347,7 +376,7 @@ idElements.confirmChangePasswordButton.addEventListener("click", async (event) =
       Utils.toggleVisibility(idElements.changePasswordPopupSuccessContainer, false);
     }
   } catch (error) {
-    console.log("Internal server error " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -391,7 +420,7 @@ idElements.confirmDeleteAccountButton.addEventListener("click", async () => {
       Utils.toggleVisibility(idElements.deleteAccountConfirmationPopupErrorContainer, true);
     }
   } catch (error) {
-    console.log("Internal server error" + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -453,7 +482,7 @@ idElements.saveEditGenderButton.addEventListener("click", async (event) => {
       Utils.toggleVisibility(idElements.profilePopupSuccessContainer, false);
     }
   } catch (error) {
-    console.log("Error: " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -469,30 +498,111 @@ idElements.logoutButton.addEventListener("click", async () => {
       throw new Error(result.message);
     }
   } catch (error) {
-    console.log("Internal server error" + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
-// idElements.searchIcon.addEventListener("click", async () => {}); // TODO ------------------------------------
+idElements.searchIcon.addEventListener("click", async () => {
+  const searchInput = idElements.searchIcon.previousElementSibling;
+  searchedMealName = searchInput.value;
+
+  let formData = new FormData();
+
+  formData.append("is_favorites_checked", isFavoritesChecked);
+  formData.append("sort_by", sort_by);
+  formData.append("order", order);
+  formData.append("searched_meal_name", searchedMealName);
+  formData.append("min_nb_calories_per_portion", minNbCaloriesPerPortion);
+  formData.append("max_nb_calories_per_portion", maxNbCaloriesPerPortion);
+  formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
+  formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
+
+  for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
+    formData.append("checked_categories[]", category);
+
+  if (userInfo.dietary_filters.length === 0) formData.append("checked_filters[]", "");
+  else userInfo.dietary_filters.forEach((filter) => formData.append("checked_filters[]", filter));
+
+  try {
+    let result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/preferences_controller/preferences_controller_main.php",
+      formData
+    );
+
+    if (result.status === "success") {
+      localStorage.setItem("meal_ids", JSON.stringify(result.message));
+
+      mealIds = JSON.parse(localStorage.getItem("meal_ids"));
+
+      currentMealIdsIndex = 0;
+    }
+
+    if (mealIds.length === 0) {
+      currentMeal = null;
+      MealPageUtils.refreshMealCardAndDetails(
+        null,
+        idElements.addToFavoritesButton,
+        idElements.mealImage,
+        idElements.mealName,
+        idElements.mealCategory,
+        idElements.totalCaloriesSpan,
+        idElements.totalMinutesSpan,
+        idElements.totalPortionsSpan
+      );
+      idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
+      idElements.openMealDetailsPopupButton.disabled = true;
+    } else {
+      let currentMealId = new URLSearchParams({
+        meal_id: mealIds[currentMealIdsIndex]
+      });
+
+      result = await Utils.fetchData(
+        "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
+        currentMealId
+      );
+
+      if (result.status === "success") {
+        currentMeal = result.message;
+        console.log(currentMeal);
+
+        MealPageUtils.refreshMealCardAndDetails(
+          currentMeal,
+          idElements.addToFavoritesButton,
+          idElements.mealImage,
+          idElements.mealName,
+          idElements.mealCategory,
+          idElements.totalCaloriesSpan,
+          idElements.totalMinutesSpan,
+          idElements.totalPortionsSpan
+        );
+
+        idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
+        idElements.openMealDetailsPopupButton.disabled = false;
+      } else alert("Failed Fetching Meal.");
+    }
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
+  }
+});
 
 idElements.closePreferencesPopupButton.addEventListener("click", (event) => {
   event.preventDefault();
-
-  const numberInputs = event.target.parentElement.parentElement.querySelectorAll('input[type="number"]');
 
   Utils.toggleVisibility(idElements.overlay, false);
   Utils.toggleVisibility(idElements.preferencesPopup, false);
 
   document.body.classList.toggle("overflow-y-hidden", false);
 
-  Utils.deleteInputData(numberInputs);
-
-  console.log(order);
-  console.log(sort_by);
+  numberInputs = [
+    minNbCaloriesPerPortion,
+    maxNbCaloriesPerPortion,
+    minPreparationDurationMinutes,
+    maxPreparationDurationMinutes
+  ];
 
   MealPageUtils.updateMealCategories(idElements.categoriesContainer, userInfo.meal_categories);
   MealPageUtils.updateIsFavoritesCheckedFilter(idElements.dietaryFiltersContainer, isFavoritesChecked);
-  MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters);
+  MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters, numberInputs);
   MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
   MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
 });
@@ -508,7 +618,7 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
 
   const preferencesFormData = new FormData(event.target);
 
-  preferencesFormData.append("searched_meal_name", "");
+  preferencesFormData.append("searched_meal_name", searchedMealName);
 
   if (!preferencesFormData.has("is_favorites_checked")) preferencesFormData.append("is_favorites_checked", 0);
 
@@ -528,8 +638,6 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
   if (preferencesFormData.get("max_preparation_duration_minutes") === "")
     preferencesFormData.set("max_preparation_duration_minutes", 999999);
 
-  for (const [key, value] of preferencesFormData.entries()) console.log(key + " ==> " + value);
-
   try {
     let result = await Utils.fetchData(
       "../../../controllers/meal_page_controllers/preferences_controller/preferences_controller_main.php",
@@ -537,14 +645,10 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
     );
 
     if (result.status === "success") {
-      localStorage.setItem("mealIds", JSON.stringify(result.message));
-      mealIds = JSON.parse(localStorage.getItem("mealIds"));
-
-      console.log(mealIds);
+      localStorage.setItem("meal_ids", JSON.stringify(result.message));
+      mealIds = JSON.parse(localStorage.getItem("meal_ids"));
 
       currentMealIdsIndex = 0;
-
-      idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
 
       Utils.toggleVisibility(idElements.overlay, false);
       Utils.toggleVisibility(idElements.preferencesPopup, false);
@@ -582,44 +686,76 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
       );
 
       isFavoritesChecked = localStorage.getItem("is_favorites_checked");
+      minNbCaloriesPerPortion = localStorage.getItem("min_nb_calories_per_portion");
+      maxNbCaloriesPerPortion = localStorage.getItem("max_nb_calories_per_portion");
+      minPreparationDurationMinutes = localStorage.getItem("min_preparation_duration_minutes");
+      maxPreparationDurationMinutes = localStorage.getItem("max_preparation_duration_minutes");
       sort_by = localStorage.getItem("sort_by");
       order = localStorage.getItem("order");
 
+      let numberInputs = [
+        minNbCaloriesPerPortion,
+        maxNbCaloriesPerPortion,
+        minPreparationDurationMinutes,
+        maxPreparationDurationMinutes
+      ];
+
       MealPageUtils.updateMealCategories(idElements.categoriesContainer, userInfo.meal_categories);
       MealPageUtils.updateIsFavoritesCheckedFilter(idElements.dietaryFiltersContainer, isFavoritesChecked);
-      MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters);
+      MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters, numberInputs);
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
-    }
 
-    let currentMealId = new URLSearchParams({
-      meal_id: mealIds[currentMealIdsIndex]
-    });
+      if (mealIds.length === 0) {
+        currentMeal = null;
+        MealPageUtils.refreshMealCardAndDetails(
+          null,
+          idElements.addToFavoritesButton,
+          idElements.mealImage,
+          idElements.mealName,
+          idElements.mealCategory,
+          idElements.totalCaloriesSpan,
+          idElements.totalMinutesSpan,
+          idElements.totalPortionsSpan
+        );
+        idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
+        idElements.openMealDetailsPopupButton.disabled = true;
+      } else {
+        let currentMealId = new URLSearchParams({
+          meal_id: mealIds[currentMealIdsIndex]
+        });
 
-    result = await Utils.fetchData(
-      "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
-      currentMealId
-    );
+        result = await Utils.fetchData(
+          "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
+          currentMealId
+        );
 
-    if (result.status === "success") {
-      const meal = result.message;
+        if (result.status === "success") {
+          currentMeal = result.message;
 
-      MealPageUtils.refreshMealCardAndDetails(
-        meal,
-        idElements.mealImage,
-        idElements.mealName,
-        idElements.mealDescription,
-        idElements.totalCaloriesSpan,
-        idElements.totalMinutesSpan,
-        idElements.totalPortionsSpan
-      );
+          MealPageUtils.refreshMealCardAndDetails(
+            currentMeal,
+            idElements.addToFavoritesButton,
+            idElements.mealImage,
+            idElements.mealName,
+            idElements.mealCategory,
+            idElements.totalCaloriesSpan,
+            idElements.totalMinutesSpan,
+            idElements.totalPortionsSpan
+          );
+          idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
+          idElements.openMealDetailsPopupButton.disabled = false;
+        }
+      }
     }
   } catch (error) {
-    console.log("Internal server error " + error.message);
+    console.log("Internal server error: " + error.message);
   }
 });
 
 idElements.previousMealButton.addEventListener("click", async () => {
+  if (mealIds.length === 0) return;
+
   if (currentMealIdsIndex === 0) currentMealIdsIndex = mealIds.length - 1;
   else currentMealIdsIndex--;
 
@@ -635,13 +771,14 @@ idElements.previousMealButton.addEventListener("click", async () => {
   );
 
   if (result.status === "success") {
-    const meal = result.message;
+    currentMeal = result.message;
 
     MealPageUtils.refreshMealCardAndDetails(
-      meal,
+      currentMeal,
+      idElements.addToFavoritesButton,
       idElements.mealImage,
       idElements.mealName,
-      idElements.mealDescription,
+      idElements.mealCategory,
       idElements.totalCaloriesSpan,
       idElements.totalMinutesSpan,
       idElements.totalPortionsSpan
@@ -650,6 +787,8 @@ idElements.previousMealButton.addEventListener("click", async () => {
 });
 
 idElements.nextMealButton.addEventListener("click", async () => {
+  if (mealIds.length === 0) return;
+
   if (currentMealIdsIndex === mealIds.length - 1) currentMealIdsIndex = 0;
   else currentMealIdsIndex++;
 
@@ -665,16 +804,60 @@ idElements.nextMealButton.addEventListener("click", async () => {
   );
 
   if (result.status === "success") {
-    const meal = result.message;
+    currentMeal = result.message;
 
     MealPageUtils.refreshMealCardAndDetails(
-      meal,
+      currentMeal,
+      idElements.addToFavoritesButton,
       idElements.mealImage,
       idElements.mealName,
-      idElements.mealDescription,
+      idElements.mealCategory,
       idElements.totalCaloriesSpan,
       idElements.totalMinutesSpan,
       idElements.totalPortionsSpan
     );
   }
+});
+
+idElements.addToFavoritesButton.addEventListener("click", async () => {
+  const currentMealInformation = new URLSearchParams({
+    meal_id: currentMeal.meal_id,
+    is_favorite: currentMeal.is_favorite === true ? 1 : 0
+  });
+
+  try {
+    const result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/toggle_favorite_controller/toggle_favorite_controller_main.php",
+      currentMealInformation
+    );
+
+    if (result.status === "success") {
+      const isCurrentMealFavorited = result.message;
+
+      currentMeal.is_favorite = isCurrentMealFavorited;
+
+      MealPageUtils.toggleFavoritesIcon(idElements.addToFavoritesButton, isCurrentMealFavorited);
+    }
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
+  }
+});
+
+idElements.openMealDetailsPopupButton.addEventListener("click", () => {
+  Utils.toggleVisibility(idElements.mealDetailsPopup, true);
+  Utils.toggleVisibility(idElements.overlay, true);
+
+  MealPageUtils.resetMealDetailsPopupIngredientsList(idElements.mealIngredientsListContainer);
+
+  if(currentMeal === null) {
+
+  }
+
+  MealPageUtils.refreshMealDetailsPopup(
+    currentMeal,
+    idElements.mealDetailsImage,
+    idElements.mealDetailsPopupMealName,
+    idElements.mealDescription,
+    idElements.mealIngredientsListContainer
+  );
 });

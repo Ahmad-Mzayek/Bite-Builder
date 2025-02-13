@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS fetch_shopping_list;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS fetch_shopping_list(IN user_id_input INT)
+CREATE PROCEDURE fetch_shopping_list(IN user_id_input INT)
 BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_shopping_list AS
         SELECT ingredient_name, quantity
@@ -19,6 +21,5 @@ BEGIN
 
     DROP TEMPORARY TABLE IF EXISTS temp_ingredients;
     DROP TEMPORARY TABLE IF EXISTS temp_shopping_list;
-END;
-//
+END; //
 DELIMITER ;

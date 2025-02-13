@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS fetch_user_meal_categories;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS fetch_user_meal_categories(IN user_id_input INT)
+CREATE PROCEDURE fetch_user_meal_categories(IN user_id_input INT)
 BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_user_categories AS
         SELECT category_name
@@ -16,6 +18,5 @@ BEGIN
     ON mc.category_name = tuc.category_name;
 
     DROP TEMPORARY TABLE IF EXISTS temp_user_categories;
-END;
-//
+END; //
 DELIMITER ;

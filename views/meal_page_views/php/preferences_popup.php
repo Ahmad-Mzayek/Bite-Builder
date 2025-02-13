@@ -1,13 +1,13 @@
-<div id="preferences-popup" class="fixed z-30 hidden p-4 overflow-hidden -translate-x-1/2 -translate-y-1/2 shadow-xl popup top-1/2 left-1/2 rounded-3xl">
+<div id="preferences-popup" class="fixed z-30 hidden p-4 overflow-hidden -translate-x-1/2 -translate-y-1/2 shadow-2xl popup top-1/2 left-1/2 rounded-3xl">
 	<form id="preferences-form"
 				class="grid items-start grid-cols-[1fr_minmax(450px,_2fr)_1fr] text-center w-full">
 		<h1>Categories</h1>
 
-		<h1 class="border-x-4">Filters</h1>
+		<h1>Filters</h1>
 
 		<h1>Sort By</h1>
 
-		<div id="categories-container" class="">
+		<div id="categories-container">
 
 		</div>
 
@@ -101,6 +101,68 @@
 
 			<div class="flex items-center space-x-3">
 				<label class="flex items-center cursor-pointer group">
+					<input class="hidden peer" 
+								 type="checkbox"
+								 name="checked_filters[]" 
+								 value="is_vegan" />
+
+					<span
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
+						Vegan
+					</span>
+				</label>
+			</div>
+
+			<div class="flex items-center space-x-3">
+				<label class="flex items-center cursor-pointer group">
+					<input class="hidden peer" 
+								 type="checkbox" 
+								 name="checked_filters[]"
+								 value="is_vegetarian" />
+
+					<span
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
+						Vegetarian
+					</span>
+				</label>
+			</div>
+
+			<div class="flex items-center space-x-3">
+				<label class="flex items-center cursor-pointer group">
 					<input class="hidden peer" type="checkbox" name="checked_filters[]" value="is_sugar_free" id="sugar-free" />
 
 					<span
@@ -129,7 +191,7 @@
 
 			<div class="flex items-center space-x-3">
 				<label class="flex items-center cursor-pointer group">
-					<input class="hidden peer" type="checkbox" name="checked_filters[]" value="is_low_sodium" id="low-sodium" />
+					<input class="hidden peer" type="checkbox" name="checked_filters[]" value="is_dairy_free" />
 
 					<span
 						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
@@ -150,14 +212,48 @@
 
 					<span
 						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
-						Low-Sodium
+						Dairy-Free
 					</span>
 				</label>
 			</div>
 
 			<div class="flex items-center space-x-3">
 				<label class="flex items-center cursor-pointer group">
-					<input class="hidden peer" type="checkbox" name="checked_filters[]" value="is_low_calorie" id="low-calorie" />
+					<input class="hidden peer" 
+								 type="checkbox"
+								 name="checked_filters[]"
+								 value="is_low_carb" />
+
+					<span
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
+						Low-Carb
+					</span>
+				</label>
+			</div>
+
+			<div class="flex items-center space-x-3">
+				<label class="flex items-center cursor-pointer group">
+					<input class="hidden peer" 
+								 type="checkbox"
+								 name="checked_filters[]" 
+								 value="is_low_calorie" />
 
 					<span
 						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
@@ -179,6 +275,37 @@
 					<span
 						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
 						Low-Calorie
+					</span>
+				</label>
+			</div>
+
+			<div class="flex items-center space-x-3">
+				<label class="flex items-center cursor-pointer group">
+					<input class="hidden peer" 
+							   type="checkbox"
+								 name="checked_filters[]" 
+								 value="is_low_sodium" />
+
+					<span
+						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
+						<span
+							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
+
+						<svg
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								clip-rule="evenodd"
+								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+								fill-rule="evenodd"></path>
+						</svg>
+					</span>
+
+					<span
+						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
+						Low-Sodium
 					</span>
 				</label>
 			</div>
@@ -238,35 +365,6 @@
 					</span>
 				</label>
 			</div>
-
-			<div class="flex items-center space-x-3">
-				<label class="flex items-center cursor-pointer group">
-					<input class="hidden peer" type="checkbox" name="checked_filters[]" value="is_low_carb" id="low-carb" />
-
-					<span
-						class="relative flex items-center justify-center w-8 h-8 transition-all duration-500 bg-gray-100 border-2 border-gray-400 rounded-md shadow-md peer-checked:border-blue-500 peer-checked:bg-blue-500 peer-hover:scale-105">
-						<span
-							class="absolute inset-0 transition-all duration-500 rounded-md opacity-0 bg-gradient-to-br from-white/30 to-white/10 peer-checked:opacity-100 peer-checked:animate-pulse"></span>
-
-						<svg
-							fill="currentColor"
-							viewBox="0 0 20 20"
-							class="hidden w-5 h-5 text-white transition-transform duration-500 transform scale-50 peer-checked:block peer-checked:scale-100"
-							xmlns="http://www.w3.org/2000/svg">
-							<path
-								clip-rule="evenodd"
-								d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
-								fill-rule="evenodd"></path>
-						</svg>
-					</span>
-
-					<span
-						class="ml-3 transition-colors duration-300 group-hover:text-blue-500">
-						Low-Carb
-					</span>
-				</label>
-			</div>
-
 
 
 			<div class="filter-range-container">

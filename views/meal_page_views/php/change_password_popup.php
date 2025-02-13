@@ -1,6 +1,6 @@
 <php? #include("../../global_views/php/show_password_icons.php"); ?>
 
-<div id="change-password-popup" class="popup-secondary hidden flex-col min-w-[40rem] items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 shadow-2xl rounded-lg p-6 overflow-hidden gap-6">
+<div id="change-password-popup" class="popup-secondary hidden flex-col min-w-[35rem] items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 shadow-2xl rounded-lg p-6 overflow-hidden gap-6">
     <h1 class="font-bold text-nowrap">
         Change Your Password
     </h1>

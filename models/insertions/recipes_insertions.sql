@@ -250,3 +250,11 @@ VALUES
 (21, "Coconut Milk", 100),
 (21, "Black Lentiles", NULL),
 (21, "Green Onion", 20);
+
+INSERT IGNORE INTO recipes
+VALUES
+(22, "Active Dry Yeast", 7),
+(22, "Water", 200),
+(22, "White Flour", 350),
+(22, "Olive Oil", 30),
+(22, "Salt", 4);

@@ -1,5 +1,7 @@
+DROP TRIGGER IF EXISTS after_meal_category_insert_trigger;
+
 DELIMITER //
-CREATE TRIGGER IF NOT EXISTS after_meal_category_insert_trigger
+CREATE TRIGGER after_meal_category_insert_trigger
 AFTER INSERT ON meal_categories
 FOR EACH ROW
 BEGIN
@@ -29,6 +31,5 @@ BEGIN
     END LOOP;
 
     CLOSE users_cursor;
-END
-//
+END; //
 DELIMITER ;

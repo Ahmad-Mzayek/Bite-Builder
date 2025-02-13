@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS add_to_shopping_list;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS add_to_shopping_list(IN user_id_input INT, IN meal_id_input INT)
+CREATE PROCEDURE add_to_shopping_list(IN user_id_input INT, IN meal_id_input INT)
 BEGIN
     DECLARE current_ingredient_name VARCHAR(32);
     DECLARE current_quantity INT;
@@ -56,6 +58,5 @@ BEGIN
         ON tusli.unit_name_singular = mu.unit_name_singular;
 
     DROP TEMPORARY TABLE IF EXISTS temp_user_shopping_list_ingredients;
-END;
-//
+END; //
 DELIMITER ;

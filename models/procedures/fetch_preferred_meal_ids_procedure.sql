@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS fetch_preferred_meal_ids;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS fetch_preferred_meal_ids
+CREATE PROCEDURE fetch_preferred_meal_ids
 (
     IN  user_id_input                           INT,
     IN  min_nb_calories_per_portion_input       INT,
@@ -99,6 +101,5 @@ BEGIN
 
     DROP TEMPORARY TABLE IF EXISTS temp_final_meals;
     DROP TEMPORARY TABLE IF EXISTS temp_matching_meal_ids;
-END;
-//
+END; //
 DELIMITER ;

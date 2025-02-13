@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS insert_meal;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS insert_meal
+CREATE PROCEDURE insert_meal
 (
     IN  category_name_input                     VARCHAR(32),
     IN  meal_name_input                         VARCHAR(64),
@@ -31,6 +33,5 @@ BEGIN
     INSERT INTO meals
     VALUES (@filters_id, category_name_input, meal_name_input, image_name_input, description_input,
             nb_portions_input, nb_calories_per_portion_input, preparation_duration_minutes_input);
-END;
-//
+END; //
 DELIMITER ;

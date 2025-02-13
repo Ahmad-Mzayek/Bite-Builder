@@ -1,5 +1,7 @@
+DROP PROCEDURE IF EXISTS fetch_recipe_rows;
+
 DELIMITER //
-CREATE PROCEDURE IF NOT EXISTS fetch_recipe_rows(IN meal_id_input INT)
+CREATE PROCEDURE fetch_recipe_rows(IN meal_id_input INT)
 BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS temp_recipes AS
         SELECT ingredient_name, quantity
@@ -19,6 +21,5 @@ BEGIN
 
     DROP TEMPORARY TABLE IF EXISTS temp_recipes;
     DROP TEMPORARY TABLE IF EXISTS temp_ingredients;
-END;
-//
+END; //
 DELIMITER ;

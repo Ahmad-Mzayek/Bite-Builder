@@ -1,3 +1,10 @@
+import * as Utils from "../../global_views/javascript/global_utils.js";
+
+export const toggleGridVisibility = (element, show) => {
+  element.classList.toggle("grid", show);
+  element.classList.toggle("hidden", !show);
+};
+
 export const toggleDropDownMenu = (hamburgerMenu, overlay, dropdownMenu) => {
   hamburgerMenu.classList.toggle("active");
   overlay.classList.toggle("hidden");
@@ -114,23 +121,146 @@ export const toggleInputSelection = (button, checked) => {
 
 export const refreshMealCardAndDetails = (
   meal,
+  addToFavoritesButton,
   mealImageContainer,
   mealNameContainer,
-  mealDescriptionContainer,
+  mealCategoryContainer,
   totalCaloriesSpan,
   totalMinutesSpan,
   totalPortionsSpan
 ) => {
-  // * Meal Card Rendering -------------------------------------------------------------------------
+  if (meal === null) {
+    mealImageContainer.setAttribute("src", "../../../resources/images/default_meal_image.png");
+    mealCategoryContainer.innerHTML = "No Category To Display";
+    mealNameContainer.innerHTML = "No Meals Found!";
+    totalCaloriesSpan.innerHTML = "0 Calories";
+    totalMinutesSpan.innerHTML = "0 Minutes";
+    totalPortionsSpan.innerHTML = "0 Portions";
+    toggleFavoritesIcon(addToFavoritesButton, false);
+  } else {
+    mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
+    mealCategoryContainer.innerHTML = meal.category_name;
+    mealNameContainer.innerHTML = meal.meal_name;
+    totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
+    totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
+    totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
+    toggleFavoritesIcon(addToFavoritesButton, meal.is_favorite);
+  }
+};
+
+export const resetMealDetailsPopupIngredientsList = (mealIngredientsListContainer) => {
+  mealIngredientsListContainer.textContent = "";
+};
+
+export const refreshMealDetailsPopup = (
+  meal,
+  mealImageContainer,
+  mealNameContainer,
+  mealDescriptionContainer,
+  mealIngredientsListContainer
+) => {
+  console.log(meal.recipe);
 
   mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
   mealNameContainer.innerHTML = meal.meal_name;
   mealDescriptionContainer.innerHTML = meal.description;
-  totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
-  totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
-  totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
 
-  // * ---------------------------------------------------------------------------------------------
+  for (const ingredient of meal.recipe) {
+    let ingredientListContainerByType = mealIngredientsListContainer.querySelector(
+      `div[type-filter=${ingredient.type_name}]`
+    );
+
+    if (ingredientListContainerByType === null) {
+      let ingredientsListContainer = document.createElement("div");
+      ingredientsListContainer.setAttribute("type-filter", ingredient.type_name);
+      ingredientsListContainer.classList.add(
+        "ingredients-list-container",
+        "flex",
+        "items-center",
+        "gap-2",
+        "bg-gray-500",
+        "rounded-md",
+        "w-full",
+        "p-2",
+        "cursor-pointer"
+      );
+
+      ingredientsListContainer.innerHTML = `
+        <svg class="w-4 h-4 fill-white transition-all duration-100 rotate-90"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 320 512">
+          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+        </svg>
+
+        <h3>
+          ${ingredient.type_name}
+        </h3>
+        `;
+
+      mealIngredientsListContainer.appendChild(ingredientsListContainer);
+
+      let ingredientsList = document.createElement("div");
+      ingredientsList.classList.add(
+        "grid",
+        "w-full",
+        "grid-cols-3",
+        "gap-2",
+        "p-4",
+        "border-2",
+        "ingredients-list",
+        "place-items-center"
+      );
+
+      let ingredientName = document.createElement("h3");
+      ingredientName.innerHTML = ingredient.ingredient_name;
+
+      let ingredientQuantity = document.createElement("h3");
+      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
+
+      let ingredientUnit = document.createElement("h3");
+      ingredientUnit.innerHTML =
+        ingredient.quantity > 1 || ingredient.quantity === null
+          ? ingredient.unit_name_plural
+          : ingredient.unit_name_singular;
+
+      ingredientsList.append(ingredientName, ingredientQuantity, ingredientUnit);
+
+      mealIngredientsListContainer.appendChild(ingredientsList);
+    } else {
+      let suitableIngredientList = ingredientListContainerByType.nextElementSibling;
+      console.log(suitableIngredientList);
+
+      let ingredientName = document.createElement("h3");
+      ingredientName.innerHTML = ingredient.ingredient_name;
+
+      let ingredientQuantity = document.createElement("h3");
+      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
+
+      let ingredientUnit = document.createElement("h3");
+      ingredientUnit.innerHTML =
+        ingredient.quantity > 1 || ingredient.quantity === null
+          ? ingredient.unit_name_plural
+          : ingredient.unit_name_singular;
+
+      suitableIngredientList.append(ingredientName, ingredientQuantity, ingredientUnit);
+    }
+  }
+
+  document.querySelectorAll(".ingredients-list-container").forEach((container) => {
+    container.addEventListener("click", () => {
+      let categoryItemsList = container.nextElementSibling;
+      let containerArrowSVG = container.querySelector("svg");
+
+      if (categoryItemsList.classList.contains("grid")) {
+        toggleGridVisibility(categoryItemsList, false);
+        containerArrowSVG.classList.toggle("rotate-90", false);
+      } else {
+        toggleGridVisibility(categoryItemsList, true);
+        containerArrowSVG.classList.toggle("rotate-90", true);
+      }
+      console.log(categoryItemsList);
+    });
+  });
 };
 
 export const updateUserInfoMealCategories = (userInfoMealCategories, checkedMealCategories) => {
@@ -160,16 +290,26 @@ export const updateMealCategories = (categoriesContainer, userMealCategories) =>
 };
 
 export const updateIsFavoritesCheckedFilter = (filtersContainer, userIsFavoritesChecked) => {
-  const isFavoritesCheckedCheckbox = filtersContainer.querySelector('input[type="checkbox"][name="is_favorites_checked"]');
+  const isFavoritesCheckedCheckbox = filtersContainer.querySelector(
+    'input[type="checkbox"][name="is_favorites_checked"]'
+  );
 
-  isFavoritesCheckedCheckbox.checked = (userIsFavoritesChecked == "1") ? true : false;
-}
+  isFavoritesCheckedCheckbox.checked = userIsFavoritesChecked == "1" ? true : false;
+};
 
-export const updateDietaryFilters = (filtersContainer, userDietaryFilters) => {
+export const updateDietaryFilters = (filtersContainer, userDietaryFilters, rangeFilters) => {
   const filtersCheckboxes = filtersContainer.querySelectorAll('input[type="checkbox"][name="checked_filters[]"]');
+  const numberInputs = filtersContainer.querySelectorAll('input[type="number"]');
 
   for (const filterCheckbox of filtersCheckboxes)
     filterCheckbox.checked = userDietaryFilters.includes(filterCheckbox.value) ? true : false;
+
+  for (let i = 0; i < numberInputs.length; i++) numberInputs[i].value = rangeFilters[i];
+
+  if (rangeFilters[0] == 0) numberInputs[0].value = "";
+  if (rangeFilters[1] == 9999) numberInputs[1].value = "";
+  if (rangeFilters[2] == 0) numberInputs[2].value = "";
+  if (rangeFilters[3] == 999999) numberInputs[3].value = "";
 };
 
 export const updateSortBy = (sortAndOrderContainer, userSortPreference) => {
@@ -188,6 +328,14 @@ export const updateOrder = (sortAndOrderContainer, userOrderPreference) => {
   }
 };
 
-// export const renderMealDetails(meal, mealCard, mealDetailsPopup) => {
+export const toggleFavoritesIcon = (addToFavoritesButton, isMealFavorited) => {
+  const addToFavoritesIcons = addToFavoritesButton.querySelectorAll("svg");
 
-// }
+  if (isMealFavorited) {
+    Utils.toggleVisibility(addToFavoritesIcons[0], false);
+    Utils.toggleVisibility(addToFavoritesIcons[1], true);
+  } else {
+    Utils.toggleVisibility(addToFavoritesIcons[0], true);
+    Utils.toggleVisibility(addToFavoritesIcons[1], false);
+  }
+};

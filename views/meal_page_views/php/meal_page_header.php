@@ -1,9 +1,9 @@
-<header class="flex w-screen items-center justify-between px-8 z-[11] h-20">
+<header class="flex w-screen px-8 z-[11] h-20">
     <div class="flex items-center justify-center h-full">
 		<img id="logo-image" class="object-cover w-full h-full" src="../../../resources/images/logo_dark.png" alt="Logo">
 	</div>
     
-    <nav class="relative flex space-x-12">
+    <nav class="relative flex space-x-12 ml-auto">
         <div id="hamburger-menu" class="relative w-8 h-12 cursor-pointer">
             <span></span>
             <span></span>

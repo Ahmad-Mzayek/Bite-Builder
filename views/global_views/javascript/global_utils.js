@@ -13,6 +13,32 @@ window.addEventListener("mousemove", (event) => {
   );
 });
 
+window.addEventListener("mousedown", () => {
+  cursorOutline.animate(
+    {
+      width: "0px",
+      height: "0px"
+    },
+    {
+      duration: 200,
+      fill: "forwards"
+    }
+  );
+});
+
+window.addEventListener("mouseup", () => {
+  cursorOutline.animate(
+    {
+      width: "30px",
+      height: "30px"
+    },
+    {
+      duration: 200,
+      fill: "forwards"
+    }
+  );
+});
+
 function adjustForDPIScaling() {
   const dpiScale = window.devicePixelRatio;
 
@@ -21,7 +47,7 @@ function adjustForDPIScaling() {
   if (dpiScale > 1) {
     document.documentElement.style.fontSize = `${16 / dpiScale}px`;
   } else {
-    document.documentElement.style.fontSize = "16px";
+    document.documentElement.style.fontSize = "14px";
   }
 }
 

@@ -19,6 +19,18 @@ export const toggleDropDownMenu = (hamburgerMenu, overlay, dropdownMenu) => {
   }
 };
 
+export const toggleFavoritesIcon = (addToFavoritesButton, isMealFavorited) => {
+  const addToFavoritesIcons = addToFavoritesButton.querySelectorAll("svg");
+
+  if (isMealFavorited) {
+    Utils.toggleVisibility(addToFavoritesIcons[0], false);
+    Utils.toggleVisibility(addToFavoritesIcons[1], true);
+  } else {
+    Utils.toggleVisibility(addToFavoritesIcons[0], true);
+    Utils.toggleVisibility(addToFavoritesIcons[1], false);
+  }
+};
+
 export const fetchAndUpdateMealCategories = (mealCategoriesContainer, mealCategories) => {
   for (const [categoryName, isCategoryChecked] of Object.entries(mealCategories)) {
     let categoryContainerChild = document.createElement("div");
@@ -229,6 +241,31 @@ export const refreshMealDetailsPopup = (
   mealDescriptionContainer.innerHTML = meal.description;
 
   for (const ingredient of meal.recipe) {
+    let ingredientsList = document.createElement("div");
+    ingredientsList.classList.add(
+      "grid",
+      "w-full",
+      "grid-cols-3",
+      "gap-2",
+      "p-4",
+      "border-2",
+      "ingredients-list",
+      "place-items-center"
+    );
+    ingredientsList.innerHTML = `
+      <h3 class="justify-self-start">
+        ${ingredient.ingredient_name}
+      </h3>
+      
+      <h3>
+        ${ingredient.quantity === null ? "Optional" : ingredient.quantity}
+      </h3>
+  
+      <h3>
+        ${ingredient.quantity === 1 ? ingredient.unit_name_singular : ingredient.quantity === null ? "" : ingredient.unit_name_plural} 
+      </h3>
+    `;
+    
     let ingredientListContainerByType = mealIngredientsListContainer.querySelector(
       `div[type-filter=${ingredient.type_name}]`
     );
@@ -241,6 +278,7 @@ export const refreshMealDetailsPopup = (
         "flex",
         "items-center",
         "gap-2",
+        "p-2",
         "bg-gray-500",
         "rounded-md",
         "w-full",
@@ -261,37 +299,12 @@ export const refreshMealDetailsPopup = (
 
       mealIngredientsListContainer.appendChild(ingredientsListContainer);
 
-      let ingredientsList = document.createElement("div");
-      ingredientsList.classList.add(
-        "grid",
-        "w-full",
-        "grid-cols-3",
-        "gap-2",
-        "p-4",
-        "border-2",
-        "ingredients-list",
-        "place-items-center"
-      );
-
-      let ingredientName = document.createElement("h3");
-      ingredientName.innerHTML = ingredient.ingredient_name;
-
-      let ingredientQuantity = document.createElement("h3");
-      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
-
-      let ingredientUnit = document.createElement("h3");
-      ingredientUnit.innerHTML =
-        ingredient.quantity === 1 || ingredient.quantity === null
-          ? ingredient.unit_name_singular
-          : ingredient.unit_name_plural;
-
-      ingredientsList.append(ingredientName, ingredientQuantity, ingredientUnit);
-
       mealIngredientsListContainer.appendChild(ingredientsList);
     } else {
       let suitableIngredientList = ingredientListContainerByType.nextElementSibling;
 
       let ingredientName = document.createElement("h3");
+      ingredientName.classList.add("justify-self-start");
       ingredientName.innerHTML = ingredient.ingredient_name;
 
       let ingredientQuantity = document.createElement("h3");
@@ -324,6 +337,11 @@ export const refreshMealDetailsPopup = (
 };
 
 export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridContainer) => {
+  if (shoppingList.length === 0) {
+    shoppingListGridContainer.innerHTML = `<h1 class="col-span-4">Shopping List Is Empty</h1>`;
+    return;
+  }
+
   shoppingListGridContainer.innerHTML = `
     <h3 class="mb-4">Ingredient Name</h3>
 
@@ -433,16 +451,4 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
       }
     });
   });
-};
-
-export const toggleFavoritesIcon = (addToFavoritesButton, isMealFavorited) => {
-  const addToFavoritesIcons = addToFavoritesButton.querySelectorAll("svg");
-
-  if (isMealFavorited) {
-    Utils.toggleVisibility(addToFavoritesIcons[0], false);
-    Utils.toggleVisibility(addToFavoritesIcons[1], true);
-  } else {
-    Utils.toggleVisibility(addToFavoritesIcons[0], true);
-    Utils.toggleVisibility(addToFavoritesIcons[1], false);
-  }
 };

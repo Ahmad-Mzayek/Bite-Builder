@@ -8,16 +8,18 @@
   --text-primary: black;
   --text-button-primary: white;
   --scrollbar-track: #dbd4d4;
+  --cursor-outline: #000000ab;
 }
 
 .dark {
   --primary: rgb(33, 33, 33);
   --body-popup-primary: rgb(33, 33, 33);
   --button-bg-primary: #ffffff;
-  --button-hover-primary: #c3b7b7;
+  --button-hover-primary: #f0f0f0;
   --text-primary: #ffffff;
   --text-button-primary: black;
   --scrollbar-track: #00000055;
+  --cursor-outline: #ebe0e0e7;
 }
 
 * {
@@ -39,11 +41,12 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  border-radius: 50%;
+  border-radius: 75%;
   transform: translate(-50%, -50%);
   z-index: 99;
   pointer-events: none;
-  border: 5px solid rgba(0, 0, 0, 0.5);
+  border: 5px solid var(--cursor-outline);
+  transition: all 0.3s ease-in-out;
 }
 
 header {
@@ -106,6 +109,11 @@ a {
   background-color: var(--button-bg-primary);
 }
 
+#open-meal-details-popup-button:hover {
+  background-color: var(--button-hover-primary);
+  color: var(--primary);
+}
+
 #meal-page-body svg {
   fill: var(--text-button-primary);
 }
@@ -127,8 +135,16 @@ a {
   background-color: var(--button-hover-primary);
 }
 
+#meal-page-body #previous-meal-button svg:hover {
+  fill: var(--primary);
+}
+
 #meal-page-body #next-meal-button:hover {
   background-color: var(--button-hover-primary);
+}
+
+#meal-page-body #next-meal-button svg:hover {
+  fill: var(--primary);
 }
 
 #meal-page-body #previous-meal-button > svg,
@@ -167,7 +183,10 @@ a {
 }
 
 #meal-name {
-  font-size: clamp(1rem, 30vw + .1rem, 2rem);
+  font-size: 5ch;
+  max-height: 11ch;
+  overflow-y: auto;
+  text-wrap: wrap;
   line-height: 5.75rem;
 }
 

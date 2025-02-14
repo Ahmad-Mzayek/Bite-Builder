@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	// if(!$_SESSION["user_id"]) 
-	// 	header("Location: ../../landing_page_views/php/landing_page.php");
+	if(!$_SESSION["user_id"]) 
+		header("Location: ../../landing_page_views/php/landing_page.php");
 ?> 
 
 <!DOCTYPE html>

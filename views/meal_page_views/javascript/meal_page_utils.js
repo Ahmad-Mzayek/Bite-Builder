@@ -119,150 +119,6 @@ export const toggleInputSelection = (button, checked) => {
   button.checked = checked;
 };
 
-export const refreshMealCardAndDetails = (
-  meal,
-  addToFavoritesButton,
-  mealImageContainer,
-  mealNameContainer,
-  mealCategoryContainer,
-  totalCaloriesSpan,
-  totalMinutesSpan,
-  totalPortionsSpan
-) => {
-  if (meal === null) {
-    mealImageContainer.setAttribute("src", "../../../resources/images/default_meal_image.png");
-    mealCategoryContainer.innerHTML = "No Category To Display";
-    mealNameContainer.innerHTML = "No Meals Found!";
-    totalCaloriesSpan.innerHTML = "0 Calories";
-    totalMinutesSpan.innerHTML = "0 Minutes";
-    totalPortionsSpan.innerHTML = "0 Portions";
-    toggleFavoritesIcon(addToFavoritesButton, false);
-  } else {
-    mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
-    mealCategoryContainer.innerHTML = meal.category_name;
-    mealNameContainer.innerHTML = meal.meal_name;
-    totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
-    totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
-    totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
-    toggleFavoritesIcon(addToFavoritesButton, meal.is_favorite);
-  }
-};
-
-export const resetMealDetailsPopupIngredientsList = (mealIngredientsListContainer) => {
-  mealIngredientsListContainer.textContent = "";
-};
-
-export const refreshMealDetailsPopup = (
-  meal,
-  mealImageContainer,
-  mealNameContainer,
-  mealDescriptionContainer,
-  mealIngredientsListContainer
-) => {
-  console.log(meal.recipe);
-
-  mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
-  mealNameContainer.innerHTML = meal.meal_name;
-  mealDescriptionContainer.innerHTML = meal.description;
-
-  for (const ingredient of meal.recipe) {
-    let ingredientListContainerByType = mealIngredientsListContainer.querySelector(
-      `div[type-filter=${ingredient.type_name}]`
-    );
-
-    if (ingredientListContainerByType === null) {
-      let ingredientsListContainer = document.createElement("div");
-      ingredientsListContainer.setAttribute("type-filter", ingredient.type_name);
-      ingredientsListContainer.classList.add(
-        "ingredients-list-container",
-        "flex",
-        "items-center",
-        "gap-2",
-        "bg-gray-500",
-        "rounded-md",
-        "w-full",
-        "p-2",
-        "cursor-pointer"
-      );
-
-      ingredientsListContainer.innerHTML = `
-        <svg class="w-4 h-4 fill-white transition-all duration-100 rotate-90"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 320 512">
-          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-        </svg>
-
-        <h3>
-          ${ingredient.type_name}
-        </h3>
-        `;
-
-      mealIngredientsListContainer.appendChild(ingredientsListContainer);
-
-      let ingredientsList = document.createElement("div");
-      ingredientsList.classList.add(
-        "grid",
-        "w-full",
-        "grid-cols-3",
-        "gap-2",
-        "p-4",
-        "border-2",
-        "ingredients-list",
-        "place-items-center"
-      );
-
-      let ingredientName = document.createElement("h3");
-      ingredientName.innerHTML = ingredient.ingredient_name;
-
-      let ingredientQuantity = document.createElement("h3");
-      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
-
-      let ingredientUnit = document.createElement("h3");
-      ingredientUnit.innerHTML =
-        ingredient.quantity > 1 || ingredient.quantity === null
-          ? ingredient.unit_name_plural
-          : ingredient.unit_name_singular;
-
-      ingredientsList.append(ingredientName, ingredientQuantity, ingredientUnit);
-
-      mealIngredientsListContainer.appendChild(ingredientsList);
-    } else {
-      let suitableIngredientList = ingredientListContainerByType.nextElementSibling;
-      console.log(suitableIngredientList);
-
-      let ingredientName = document.createElement("h3");
-      ingredientName.innerHTML = ingredient.ingredient_name;
-
-      let ingredientQuantity = document.createElement("h3");
-      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
-
-      let ingredientUnit = document.createElement("h3");
-      ingredientUnit.innerHTML =
-        ingredient.quantity > 1 || ingredient.quantity === null
-          ? ingredient.unit_name_plural
-          : ingredient.unit_name_singular;
-
-      suitableIngredientList.append(ingredientName, ingredientQuantity, ingredientUnit);
-    }
-  }
-
-  document.querySelectorAll(".ingredients-list-container").forEach((container) => {
-    container.addEventListener("click", () => {
-      let categoryItemsList = container.nextElementSibling;
-      let containerArrowSVG = container.querySelector("svg");
-
-      if (categoryItemsList.classList.contains("grid")) {
-        toggleGridVisibility(categoryItemsList, false);
-        containerArrowSVG.classList.toggle("rotate-90", false);
-      } else {
-        toggleGridVisibility(categoryItemsList, true);
-        containerArrowSVG.classList.toggle("rotate-90", true);
-      }
-      console.log(categoryItemsList);
-    });
-  });
-};
-
 export const updateUserInfoMealCategories = (userInfoMealCategories, checkedMealCategories) => {
   for (const mealCategory of Object.keys(userInfoMealCategories)) {
     userInfoMealCategories[mealCategory] = checkedMealCategories.includes(mealCategory) ? 1 : 0;
@@ -326,6 +182,257 @@ export const updateOrder = (sortAndOrderContainer, userOrderPreference) => {
   for (const orderRadioInput of orderRadioInputs) {
     orderRadioInput.checked = userOrderPreference === orderRadioInput.value ? true : false;
   }
+};
+
+export const refreshMealCardAndDetails = (
+  meal,
+  addToFavoritesButton,
+  mealImageContainer,
+  mealNameContainer,
+  mealCategoryContainer,
+  totalCaloriesSpan,
+  totalMinutesSpan,
+  totalPortionsSpan
+) => {
+  if (meal === null) {
+    mealImageContainer.setAttribute("src", "../../../resources/images/default_meal_image.png");
+    mealCategoryContainer.innerHTML = "No Category To Display";
+    mealNameContainer.innerHTML = "No Meals Found!";
+    totalCaloriesSpan.innerHTML = "0 Calories";
+    totalMinutesSpan.innerHTML = "0 Minutes";
+    totalPortionsSpan.innerHTML = "0 Portions";
+    toggleFavoritesIcon(addToFavoritesButton, false);
+  } else {
+    mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
+    mealCategoryContainer.innerHTML = meal.category_name;
+    mealNameContainer.innerHTML = meal.meal_name;
+    totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
+    totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
+    totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
+    toggleFavoritesIcon(addToFavoritesButton, meal.is_favorite);
+  }
+};
+
+export const resetMealDetailsPopupIngredientsList = (mealIngredientsListContainer) => {
+  mealIngredientsListContainer.textContent = "";
+};
+
+export const refreshMealDetailsPopup = (
+  meal,
+  mealImageContainer,
+  mealNameContainer,
+  mealDescriptionContainer,
+  mealIngredientsListContainer
+) => {
+  mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
+  mealNameContainer.innerHTML = meal.meal_name;
+  mealDescriptionContainer.innerHTML = meal.description;
+
+  for (const ingredient of meal.recipe) {
+    let ingredientListContainerByType = mealIngredientsListContainer.querySelector(
+      `div[type-filter=${ingredient.type_name}]`
+    );
+
+    if (ingredientListContainerByType === null) {
+      let ingredientsListContainer = document.createElement("div");
+      ingredientsListContainer.setAttribute("type-filter", ingredient.type_name);
+      ingredientsListContainer.classList.add(
+        "ingredients-list-container",
+        "flex",
+        "items-center",
+        "gap-2",
+        "bg-gray-500",
+        "rounded-md",
+        "w-full",
+        "cursor-pointer"
+      );
+
+      ingredientsListContainer.innerHTML = `
+        <svg class="w-4 h-4 fill-white transition-all duration-100 rotate-90"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 320 512">
+          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+        </svg>
+
+        <h3>
+          ${ingredient.type_name}
+        </h3>
+        `;
+
+      mealIngredientsListContainer.appendChild(ingredientsListContainer);
+
+      let ingredientsList = document.createElement("div");
+      ingredientsList.classList.add(
+        "grid",
+        "w-full",
+        "grid-cols-3",
+        "gap-2",
+        "p-4",
+        "border-2",
+        "ingredients-list",
+        "place-items-center"
+      );
+
+      let ingredientName = document.createElement("h3");
+      ingredientName.innerHTML = ingredient.ingredient_name;
+
+      let ingredientQuantity = document.createElement("h3");
+      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
+
+      let ingredientUnit = document.createElement("h3");
+      ingredientUnit.innerHTML =
+        ingredient.quantity === 1 || ingredient.quantity === null
+          ? ingredient.unit_name_singular
+          : ingredient.unit_name_plural;
+
+      ingredientsList.append(ingredientName, ingredientQuantity, ingredientUnit);
+
+      mealIngredientsListContainer.appendChild(ingredientsList);
+    } else {
+      let suitableIngredientList = ingredientListContainerByType.nextElementSibling;
+
+      let ingredientName = document.createElement("h3");
+      ingredientName.innerHTML = ingredient.ingredient_name;
+
+      let ingredientQuantity = document.createElement("h3");
+      ingredientQuantity.innerHTML = ingredient.quantity === null ? "User Preference" : ingredient.quantity;
+
+      let ingredientUnit = document.createElement("h3");
+      ingredientUnit.innerHTML =
+        ingredient.quantity === 1 || ingredient.quantity === null
+          ? ingredient.unit_name_singular
+          : ingredient.unit_name_plural;
+
+      suitableIngredientList.append(ingredientName, ingredientQuantity, ingredientUnit);
+    }
+  }
+
+  document.querySelectorAll(".ingredients-list-container").forEach((container) => {
+    container.addEventListener("click", () => {
+      let categoryItemsList = container.nextElementSibling;
+      let containerArrowSVG = container.querySelector("svg");
+
+      if (categoryItemsList.classList.contains("grid")) {
+        toggleGridVisibility(categoryItemsList, false);
+        containerArrowSVG.classList.toggle("rotate-90", false);
+      } else {
+        toggleGridVisibility(categoryItemsList, true);
+        containerArrowSVG.classList.toggle("rotate-90", true);
+      }
+    });
+  });
+};
+
+export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridContainer) => {
+  shoppingListGridContainer.innerHTML = `
+    <h3 class="mb-4">Ingredient Name</h3>
+
+    <h3 class="col-span-2 mb-4">Ingredient Quantity</h3>
+
+    <h3 class="mb-4">Ingredient Unit</h3>  
+  `;
+  for (const ingredient of shoppingList) {
+    let ingredientContainer = document.createElement("div");
+    ingredientContainer.setAttribute("ingredient-filter", ingredient.type_name);
+    ingredientContainer.classList.add("flex", "items-center", "gap-2", "pl-2", "w-full", "col-span-4", "mb-3");
+    ingredientContainer.innerHTML = `
+      <h4 class="text-[1.2rem] basis-3/12 text-wrap">
+        ${ingredient.ingredient_name}
+      </h4>
+
+      <div class="flex items-center gap-3 quantity-container basis-6/12 justify-center flex-grow">
+        <button class="relative w-8 h-8 bg-white rounded-full">
+            <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
+                
+            </span>
+        </button>
+
+        <input type="number"
+               value=${ingredient.quantity}
+               class="w-16 p-2 rounded-sm"
+               name="new_quantity" 
+               required>
+
+        <button class="relative w-8 h-8 bg-white rounded-full">
+          <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
+              
+          </span>
+
+          <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600 rotate-90">
+              
+          </span>
+        </button>
+      </div>
+
+      <h4 class="text-[1.2rem] basis-3/12 text-center">
+        ${ingredient.quantity === 1 || ingredient.quantity === null ? ingredient.unit_name_singular : ingredient.unit_name_plural}
+      </h4>
+    </div>
+        `;
+
+    let shoppingListIngredientTypeContainer = shoppingListGridContainer.querySelector(
+      `div[type-filter=${ingredient.type_name}]`
+    );
+
+    if (shoppingListIngredientTypeContainer === null) {
+      let ingredientsListContainer = document.createElement("div");
+      ingredientsListContainer.setAttribute("type-filter", ingredient.type_name);
+      ingredientsListContainer.classList.add(
+        "shopping-list-ingredient-type-container",
+        "flex",
+        "items-center",
+        "w-full",
+        "col-span-4",
+        "p-2",
+        "gap-2",
+        "mb-4",
+        "bg-gray-500",
+        "cursor-pointer"
+      );
+
+      ingredientsListContainer.innerHTML = `
+        <svg class="w-5 h-5 fill-white transition-all duration-100 rotate-90"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 320 512">
+          <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+        </svg>
+
+        <h3>
+          ${ingredient.type_name}
+        </h3>
+        `;
+
+      shoppingListGridContainer.appendChild(ingredientsListContainer);
+      shoppingListGridContainer.appendChild(ingredientContainer);
+    } else {
+      shoppingListGridContainer.insertBefore(
+        ingredientContainer,
+        shoppingListIngredientTypeContainer.nextElementSibling
+      );
+    }
+  }
+
+  shoppingListGridContainer.querySelectorAll(".shopping-list-ingredient-type-container").forEach((container) => {
+    container.addEventListener("click", () => {
+      let ingredientsOfTheSameType = shoppingListGridContainer.querySelectorAll(
+        `div[ingredient-filter=${container.getAttribute("type-filter")}]`
+      );
+
+      let containerArrowSVG = container.querySelector("svg");
+
+      if (ingredientsOfTheSameType[0].classList.contains("flex")) {
+        ingredientsOfTheSameType.forEach((ingredient) => {
+          Utils.toggleVisibility(ingredient, false);
+        });
+        containerArrowSVG.classList.toggle("rotate-90", false);
+      } else {
+        ingredientsOfTheSameType.forEach((ingredient) => {
+          Utils.toggleVisibility(ingredient, true);
+        });
+        containerArrowSVG.classList.toggle("rotate-90", true);
+      }
+    });
+  });
 };
 
 export const toggleFavoritesIcon = (addToFavoritesButton, isMealFavorited) => {

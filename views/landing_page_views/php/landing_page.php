@@ -14,8 +14,9 @@
 		<link rel="stylesheet" href="../../global_views/css/theme.css">
 </head>
 
-<body class="dark">
+<body class="dark grid grid-rows-[auto_1fr_auto]">
 	<?php
+	include("../../global_views/php/cursor.php");
 	include("../../global_views/php/overlay.php");
 	include("./login_popup.php");
 	include("./signup_popup.php");
@@ -27,12 +28,13 @@
 		include("./landing_page_header.php");
 	?>
 
-	<div class="flex flex-col items-center justify-between h-screen">
-		<?php
+	<?php
 		include("./landing_page_body.php");
-		include("../../global_views/php/footer.php");
-		?>
-	</div>
+	?>
+
+	<?php 
+		include("../../global_views/php/footer.php"); 
+	?>
 	
 	<?php include("./landing_page_scripts.php"); ?>
 </body>

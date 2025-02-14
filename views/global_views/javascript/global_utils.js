@@ -1,3 +1,33 @@
+const cursorOutline = document.querySelector(".cursor-outline");
+
+window.addEventListener("mousemove", (event) => {
+  const positionX = event.clientX;
+  const positionY = event.clientY;
+
+  cursorOutline.animate(
+    {
+      left: `${positionX}px`,
+      top: `${positionY}px`
+    },
+    { duration: 500, fill: "forwards" }
+  );
+});
+
+function adjustForDPIScaling() {
+  const dpiScale = window.devicePixelRatio;
+
+  console.log(dpiScale);
+
+  if (dpiScale > 1) {
+    document.documentElement.style.fontSize = `${16 / dpiScale}px`;
+  } else {
+    document.documentElement.style.fontSize = "16px";
+  }
+}
+
+window.addEventListener("load", adjustForDPIScaling);
+window.addEventListener("resize", adjustForDPIScaling);
+
 export const themeInitializer = (themeSwitchButton, logoImage, isDarkModeOn) => {
   if (isDarkModeOn === "true") {
     document.body.classList.toggle("dark", true);

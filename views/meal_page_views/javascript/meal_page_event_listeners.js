@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       currentMeal = null;
       MealPageUtils.refreshMealCardAndDetails(
         null,
-        addToFavoritesButton,
+        idElements.addToFavoritesButton,
         idElements.mealImage,
         idElements.mealName,
         idElements.mealCategory,
@@ -109,6 +109,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
       idElements.openMealDetailsPopupButton.disabled = true;
+      idElements.addToFavoritesButton.disabled = true;
+      idElements.addToShoppingListButton.disabled = true;
     } else {
       let currentMealId = new URLSearchParams({
         meal_id: mealIds[currentMealIdsIndex]
@@ -136,6 +138,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
         idElements.openMealDetailsPopupButton.disabled = false;
+        idElements.addToFavoritesButton.disabled = false;
+        idElements.addToShoppingListButton.disabled = false;
       } else alert("Failed Fetching Meal.");
     }
   } catch (error) {
@@ -521,8 +525,12 @@ idElements.searchIcon.addEventListener("click", async () => {
   formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
   formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
 
-  for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
-    formData.append("checked_categories[]", category);
+  for (const [category, isChecked] of Object.entries(userInfo.meal_categories)) {
+    console.log(isChecked);
+    if (isChecked == 1) formData.append("checked_categories[]", category);
+  }
+
+  if (!formData.get("checked_categories[]")) formData.append("checked_categories[]", "");
 
   if (userInfo.dietary_filters.length === 0) formData.append("checked_filters[]", "");
   else userInfo.dietary_filters.forEach((filter) => formData.append("checked_filters[]", filter));
@@ -555,6 +563,8 @@ idElements.searchIcon.addEventListener("click", async () => {
       );
       idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
       idElements.openMealDetailsPopupButton.disabled = true;
+      idElements.addToFavoritesButton.disabled = true;
+      idElements.addToShoppingListButton.disabled = true;
     } else {
       let currentMealId = new URLSearchParams({
         meal_id: mealIds[currentMealIdsIndex]
@@ -582,6 +592,8 @@ idElements.searchIcon.addEventListener("click", async () => {
 
         idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
         idElements.openMealDetailsPopupButton.disabled = false;
+        idElements.addToFavoritesButton.disabled = false;
+        idElements.addToShoppingListButton.disabled = false;
       } else alert("Failed Fetching Meal.");
     }
   } catch (error) {
@@ -724,6 +736,8 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
         );
         idElements.totalMealsSpan.innerHTML = `(0 / ${mealIds.length})`;
         idElements.openMealDetailsPopupButton.disabled = true;
+        idElements.addToFavoritesButton.disabled = true;
+        idElements.addToShoppingListButton.disabled = true;
       } else {
         let currentMealId = new URLSearchParams({
           meal_id: mealIds[currentMealIdsIndex]
@@ -749,6 +763,8 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
           );
           idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
           idElements.openMealDetailsPopupButton.disabled = false;
+          idElements.addToFavoritesButton.disabled = false;
+          idElements.addToShoppingListButton.disabled = false;
         }
       }
     }
@@ -861,7 +877,6 @@ idElements.addToShoppingListButton.addEventListener("click", async () => {
     if (result.status === "success") {
       // TODO Render Meal Ingredients In Shopping List.
       userShoppingList = result.message;
-      console.log(userShoppingList);
 
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
     }

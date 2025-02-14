@@ -46,11 +46,11 @@
 				</h3>
 
 				<div class="flex space-x-6">
-						<button id="add-to-shopping-list-button" class="relative rounded-full w-14 h-14 group">
+						<button id="add-to-shopping-list-button" class="relative rounded-full w-14 h-14 group disabled:opacity-15 disabled:pointer-events-none">
 							<?php include("./add_to_shopping_list_button_icons.php"); ?>
 						</button> 
 		
-						<button id="add-to-favorites-button" class="relative rounded-full w-14 h-14 group">
+						<button id="add-to-favorites-button" class="relative rounded-full w-14 h-14 group disabled:opacity-15 disabled:pointer-events-none">
 							<?php include("./add_to_favorites_button_icons.php"); ?>
 						</button>
 				</div>
@@ -58,7 +58,7 @@
 
 			<div class="flex flex-1 justify-between">
 				<div class="flex flex-col w-full gap-4 px-2 pb-0">
-					<h1 id="meal-name" class="overflow-y-auto">
+					<h1 id="meal-name">
 
 					</h1>
 					

@@ -1,5 +1,5 @@
 <?php
-include("./MealCardController.php");
+require_once("./MealCardController.php");
 
 try
 {

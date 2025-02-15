@@ -1,5 +1,5 @@
 <?php
-include("./LoginController.php");
+require_once("./LoginController.php");
 
 try
 {

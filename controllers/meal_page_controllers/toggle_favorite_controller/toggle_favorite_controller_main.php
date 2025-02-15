@@ -1,5 +1,5 @@
 <?php
-include("./ToggleFavoriteController.php");
+require_once("./ToggleFavoriteController.php");
 
 try
 {

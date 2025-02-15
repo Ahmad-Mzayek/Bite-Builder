@@ -1,5 +1,5 @@
 <?php
-include("../../GlobalController.php");
+require_once("../../GlobalController.php");
 
 class LogoutController
 {

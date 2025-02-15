@@ -1,5 +1,5 @@
 <?php
-include("./DeleteAccountController.php");
+require_once("./DeleteAccountController.php");
 
 try
 {

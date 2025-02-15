@@ -1,5 +1,5 @@
 <?php
-include("./SetShoppingListQuantityController.php");
+require_once("./SetShoppingListQuantityController.php");
 
 try
 {

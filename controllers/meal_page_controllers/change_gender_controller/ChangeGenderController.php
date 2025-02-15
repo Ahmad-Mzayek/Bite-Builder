@@ -1,6 +1,6 @@
 <?php
-include("../../GlobalController.php");
-include("../../../models/DatabaseConnectionSingleton.php");
+require_once("../../GlobalController.php");
+require_once("../../../models/DatabaseConnectionSingleton.php");
 
 class ChangeGenderController
 {

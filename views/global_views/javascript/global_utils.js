@@ -29,8 +29,8 @@ window.addEventListener("mousedown", () => {
 window.addEventListener("mouseup", () => {
   cursorOutline.animate(
     {
-      width: "30px",
-      height: "30px"
+      width: "20px",
+      height: "20px"
     },
     {
       duration: 200,

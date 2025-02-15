@@ -38,25 +38,5 @@ BEGIN
     END LOOP;
 
     CLOSE recipes_cursor;
-
-    CREATE TEMPORARY TABLE IF NOT EXISTS temp_user_shopping_list AS
-        SELECT ingredient_name, quantity
-        FROM shopping_lists
-        WHERE user_id = user_id_input;
-
-    CREATE TEMPORARY TABLE IF NOT EXISTS temp_user_shopping_list_ingredients AS
-        SELECT ing.*, tusl.quantity
-        FROM temp_user_shopping_list AS tusl
-        JOIN ingredients AS ing
-            ON tusl.ingredient_name = ing.ingredient_name;
-
-    DROP TEMPORARY TABLE IF EXISTS temp_user_shopping_list;
-
-    SELECT tusli.*, mu.unit_name_plural
-    FROM temp_user_shopping_list_ingredients AS tusli
-    JOIN measurement_units AS mu
-        ON tusli.unit_name_singular = mu.unit_name_singular;
-
-    DROP TEMPORARY TABLE IF EXISTS temp_user_shopping_list_ingredients;
 END; //
 DELIMITER ;

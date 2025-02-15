@@ -36,12 +36,12 @@ body {
 }
 
 .cursor-outline {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   position: fixed;
   top: 0;
   left: 0;
-  border-radius: 75%;
+  border-radius: 15px;
   transform: translate(-50%, -50%);
   z-index: 99;
   pointer-events: none;
@@ -183,7 +183,8 @@ a {
 }
 
 #meal-name {
-  font-size: 5ch;
+  font-size: 6ch;
+  max-width: 15ch;
   max-height: 11ch;
   overflow-y: auto;
   text-wrap: wrap;

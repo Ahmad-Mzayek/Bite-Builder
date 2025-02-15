@@ -1,12 +1,12 @@
 <div id="meal-details-popup"
-     class="popup hidden flex-col items-center max-h-[45rem] gap-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-hidden overflow-y-auto">
+     class="popup hidden flex-col items-center max-h-[45rem] gap-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-x-hidden overflow-y-auto">
 		<h1 class="font-bold">
 				Meal Details
 		</h1>
 	
     <?php include("../../global_views/php/close_popup_svg.php") ?>
 
-		<div id="meal-details-popup-image-container" class="w-[30rem]">
+		<div id="meal-details-popup-image-container" class="flex items-center justify-center w-3/4">
 				<img id="meal-details-image"
 						 src="../../../resources/images/default_meal_image.png"
 						 class="object-cover"

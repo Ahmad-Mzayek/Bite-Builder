@@ -63,6 +63,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
+
+      let deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
+
+      addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
     }
 
     if (mealIds === null) {
@@ -77,9 +81,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
       formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
 
-      for (const [category, isChecked] of Object.entries(userInfo.meal_categories)) {
-        formData.append("checked_categories[]", category);
-      }
+      for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
+        if (isChecked == 1) formData.append("checked_categories[]", category);
 
       [""].forEach((value) => formData.append("checked_filters[]", value));
 
@@ -525,10 +528,8 @@ idElements.searchIcon.addEventListener("click", async () => {
   formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
   formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
 
-  for (const [category, isChecked] of Object.entries(userInfo.meal_categories)) {
-    console.log(isChecked);
+  for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
     if (isChecked == 1) formData.append("checked_categories[]", category);
-  }
 
   if (!formData.get("checked_categories[]")) formData.append("checked_categories[]", "");
 
@@ -869,7 +870,7 @@ idElements.addToShoppingListButton.addEventListener("click", async () => {
   });
 
   try {
-    const result = await Utils.fetchData(
+    let result = await Utils.fetchData(
       "../../../controllers/meal_page_controllers/add_to_shopping_list_controller/add_to_shopping_list_controller_main.php",
       currentMealId
     );
@@ -879,11 +880,47 @@ idElements.addToShoppingListButton.addEventListener("click", async () => {
       userShoppingList = result.message;
 
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
+      const deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
+
+      addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
     }
   } catch (error) {
     console.log("Internal server error: " + error.message);
   }
 });
+
+const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons) => {
+  deleteIngredientIcons.forEach((icon) => {
+    icon.addEventListener("click", async function () {
+      let shoppingListIngredientTypeContainer = icon.parentElement.parentElement.previousElementSibling;
+
+      let ingredientName = icon.parentElement.parentElement.getAttribute("ingredient-name");
+      let ingredientToDeleteRequestData = new URLSearchParams({
+        ingredient_name: ingredientName,
+        new_quantity: 0
+      });
+
+      const result = await Utils.fetchData(
+        "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+        ingredientToDeleteRequestData
+      );
+
+      if (result.status === "success") {
+        icon.parentElement.parentElement.remove();
+        if (shoppingListIngredientTypeContainer.getAttribute("type-filter") !== null) {
+          if (
+            shoppingListIngredientTypeContainer.nextElementSibling === null ||
+            shoppingListIngredientTypeContainer.nextElementSibling.getAttribute("type-filter") !== null
+          )
+            shoppingListIngredientTypeContainer.remove();
+        }
+
+        if (idElements.shoppingListGridContainer.querySelector("div") === null)
+          idElements.shoppingListGridContainer.innerHTML = `<h1 class="place-self-center col-span-4">Shopping List Is Empty</h1>`;
+      } else alert("Failed to remove ingredient from shopping list.");
+    });
+  });
+};
 
 idElements.openMealDetailsPopupButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.mealDetailsPopup, true);

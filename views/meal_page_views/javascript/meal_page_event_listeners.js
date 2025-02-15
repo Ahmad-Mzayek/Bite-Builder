@@ -81,9 +81,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
       formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
 
-      for (const [category, isChecked] of Object.entries(userInfo.meal_categories)) {
-        formData.append("checked_categories[]", category);
-      }
+      for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
+        if (isChecked == 1) formData.append("checked_categories[]", category);
 
       [""].forEach((value) => formData.append("checked_filters[]", value));
 
@@ -529,10 +528,8 @@ idElements.searchIcon.addEventListener("click", async () => {
   formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
   formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
 
-  for (const [category, isChecked] of Object.entries(userInfo.meal_categories)) {
-    console.log(isChecked);
+  for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
     if (isChecked == 1) formData.append("checked_categories[]", category);
-  }
 
   if (!formData.get("checked_categories[]")) formData.append("checked_categories[]", "");
 

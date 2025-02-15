@@ -1,5 +1,5 @@
 <?php
-include("./ClearShoppingListController.php");
+require_once("./ClearShoppingListController.php");
 
 try
 {

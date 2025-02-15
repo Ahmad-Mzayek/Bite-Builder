@@ -1,5 +1,5 @@
 <?php
-include("./ChangeGenderController.php");
+require_once("./ChangeGenderController.php");
 
 try
 {

@@ -1,5 +1,5 @@
 <?php
-include("./LogoutController.php");
+require_once("./LogoutController.php");
 
 try
 {

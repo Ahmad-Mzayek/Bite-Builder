@@ -1,10 +1,10 @@
 <?php
-include("../../GlobalController.php");
-include("../../../models/DatabaseConnectionSingleton.php");
+require_once("../../GlobalController.php");
+require_once("../../../models/DatabaseConnectionSingleton.php");
 
 class AddToShoppingListController
 {
-    private static int $user_id, $meal_id;
+    private static int $user_id;
     private static mysqli $database_connection;
 
     public static function handle_add_to_shopping_list() : array // ---------------------------------------------------------------------------------
@@ -13,9 +13,10 @@ class AddToShoppingListController
         {
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
-            [self::$meal_id] = GlobalController::fetch_post_values(array("meal_id"));
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
-            $shopping_list = self::add_to_shopping_list();
+            [$meal_id] = GlobalController::fetch_post_values(array("meal_id"));
+            self::add_to_shopping_list($meal_id);
+            $shopping_list = self::fetch_shopping_list();
             return $shopping_list;
         }
         finally
@@ -25,20 +26,29 @@ class AddToShoppingListController
         }
     }
 
-    private static function add_to_shopping_list() : array // ---------------------------------------------------------------------------------------
+    private static function add_to_shopping_list(int $meal_id) : void // ----------------------------------------------------------------------------
     {
-        $result = self::add_to_shopping_list_result();
+        $query = "CALL add_to_shopping_list(?, ?);";
+        $statement = GlobalController::prepare_statement(self::$database_connection, $query);
+        $statement->bind_param("ii", self::$user_id, $meal_id);
+        GlobalController::execute_statement($statement);
+        $statement->close();
+    }
+
+    private static function fetch_shopping_list() : array // ---------------------------------------------------------------------------------------
+    {
+        $result = self::fetch_shopping_list_result();
         $shopping_list = array();
         while ($row = $result->fetch_assoc())
             $shopping_list[] = $row;
         return $shopping_list;
     }
 
-    private static function add_to_shopping_list_result() : mysqli_result // ------------------------------------------------------------------------
+    private static function fetch_shopping_list_result() : mysqli_result // ------------------------------------------------------------------------
     {
-        $query = "CALL add_to_shopping_list(?, ?);";
+        $query = "CALL fetch_shopping_list(?);";
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
-        $statement->bind_param("ii", self::$user_id, self::$meal_id);
+        $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $result = $statement->get_result();
         $statement->close();

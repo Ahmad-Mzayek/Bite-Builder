@@ -1,5 +1,5 @@
 <?php
-include("./UserInfoController.php");
+require_once("./UserInfoController.php");
 
 try
 {

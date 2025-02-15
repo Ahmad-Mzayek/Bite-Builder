@@ -14,12 +14,13 @@ BEGIN
         JOIN ingredients AS ing
             ON tsl.ingredient_name = ing.ingredient_name;
 
+    DROP TEMPORARY TABLE IF EXISTS temp_shopping_list;
+
     SELECT ti.*, mu.unit_name_plural
     FROM temp_ingredients AS ti
     JOIN measurement_units AS mu
         ON ti.unit_name_singular = mu.unit_name_singular;
 
     DROP TEMPORARY TABLE IF EXISTS temp_ingredients;
-    DROP TEMPORARY TABLE IF EXISTS temp_shopping_list;
 END; //
 DELIMITER ;

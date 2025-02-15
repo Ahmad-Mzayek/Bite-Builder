@@ -1,5 +1,5 @@
 <?php
-include("./PreferencesController.php");
+require_once("./PreferencesController.php");
 
 try
 {

@@ -1,5 +1,5 @@
 <?php
-include("./ChangePhoneNumberController.php");
+require_once("./ChangePhoneNumberController.php");
 
 try
 {

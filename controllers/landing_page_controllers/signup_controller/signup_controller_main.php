@@ -1,5 +1,5 @@
 <?php
-include("./SignupController.php");
+require_once("./SignupController.php");
 
 try
 {

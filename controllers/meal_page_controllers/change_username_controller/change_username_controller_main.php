@@ -1,5 +1,5 @@
 <?php
-include("./ChangeUsernameController.php");
+require_once("./ChangeUsernameController.php");
 
 try
 {

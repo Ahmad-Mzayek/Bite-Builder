@@ -1,5 +1,5 @@
 <?php
-include("./ChangePasswordController.php");
+require_once("./ChangePasswordController.php");
 
 try
 {

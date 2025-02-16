@@ -993,6 +993,7 @@ const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInpu
         console.log("Internal server error: " + error.message);
       } finally {
         Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+        idElements.overlay.classList.replace("z-30", "z-20");
       }
     });
   });

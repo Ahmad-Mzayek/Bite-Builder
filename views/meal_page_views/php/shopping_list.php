@@ -7,7 +7,7 @@
 			</h1>
 		</div>
 
-		<div id="shopping-list-grid-container" class="grid grid-cols-4 p-0 border-2 place-items-start justify-items-center h-full grow border-white-950 text-nowrap overflow-y-auto">
+		<div id="shopping-list-grid-container" class="grid grid-cols-4 p-0 place-items-start justify-items-center h-full grow text-nowrap">
 			<h3>Ingredient Name</h3>
 
 			<h3 class="col-span-2">Ingredient Quantity</h3>

@@ -36,8 +36,9 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Bacon", "Proteins", "Piece"),
 ("Hot Dog", "Proteins", "Can"),
+("Bacon", "Proteins", "Piece"),
+("Banger", "Proteins", "Piece"),
 ("Chicken", "Proteins", "Gram"),
 ("Egg Yolk", "Proteins", "Piece"),
 ("Proscuitto", "Proteins", "Gram"),
@@ -58,6 +59,7 @@ VALUES
 ("Linguine", "Grains", "Gram"),
 ("White Rice", "Grains", "Gram"),
 ("Cornstarch", "Grains", "Gram"),
+("Baked Beans", "Grains", "Can"),
 ("White Beans", "Grains", "Gram"),
 ("Butter Beans", "Grains", "Can"),
 ("Bread Flour", "Grains", "Gram"),
@@ -92,7 +94,8 @@ VALUES
 ("Tomato", "Fruits", "Gram"),
 ("Jalapeno", "Fruits", "Gram"),
 ("Tomatillo", "Fruits", "Gram"),
-("Lemon Zest", "Fruits", "Gram");
+("Lemon Zest", "Fruits", "Gram"),
+("Vine Cherry Tomato", "Fruits", "Piece");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -101,6 +104,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Cremini Mushroom", "Mushrooms", "Gram"),
 ("King Trumpet Mushroom", "Mushrooms", "Gram");
 
 INSERT IGNORE INTO ingredients

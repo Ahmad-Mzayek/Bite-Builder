@@ -279,3 +279,14 @@ VALUES
 (24, "Baking Soda", 3),
 (24, "Ground Cinnamon", 3),
 (24, "Walnut", 30);
+
+INSERT IGNORE INTO recipes
+VALUES
+(25, "Baked Beans", 1),
+(25, "Ketchup", 50),
+(25, "Hot Sauce", 20),
+(25, "Bacon", 3),
+(25, "Banger", 2),
+(25, "Vine Cherry Tomato", 1),
+(25, "Cremini Mushroom", 100),
+(25, "Whole Egg", 2);

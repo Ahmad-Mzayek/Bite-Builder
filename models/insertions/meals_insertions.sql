@@ -554,3 +554,17 @@ CALL insert_meal(
         <br>- Check with a toothpick.
     ",
     8, 320, 180, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0);
+
+CALL insert_meal(
+    "Breakfasts", "Full English Breakfast", "full_english_breakfast.png",
+    "
+        <br>- Place beans in a small saucepan over medium-low heat.
+        <br>- Add ketchup and HP sauce, and heat until warmed through, about 5 minutes.
+        <br>- Heat a large skillet over medium heat, and add bacon and sausages.
+        <br>- Cook until sausage is browned and bacon is cooked to your taste, about 10 minutes.
+        <br>- Remove from the pan and set aside.
+        <br>- Add tomatoes and mushrooms to the skillet, and sear in bacon fat for 2 minutes; remove from the pan.
+        <br>- Add 1 cup water to the pan, crack in eggs, and simmer until whites are opaque and yolks are still runny.
+        <br>- Spoon beans onto a plate, and arrange eggs, bacon, bangers, tomatoes, and mushrooms around them.
+    ",
+    1, 1200, 30, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0);

@@ -10,8 +10,7 @@ let userShoppingList;
 let currentMeal;
 let numberInputs;
 let searchedMealName = localStorage.getItem("searched_meal_name") || "";
-
-// localStorage.clear(); // TODO REMOVE LATER --------------------------------------------------------------------------------
+console.log();
 
 let mealIds = localStorage.getItem("meal_ids");
 if (mealIds !== null) mealIds = JSON.parse(mealIds);
@@ -60,13 +59,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         maxPreparationDurationMinutes
       ];
 
+      if (searchedMealName !== "") Utils.toggleVisibility(idElements.clearSearchInputIcon, true);
+
       MealPageUtils.fetchAndUpdateMealCategories(idElements.categoriesContainer, userInfo.meal_categories);
       MealPageUtils.updateIsFavoritesCheckedFilter(idElements.dietaryFiltersContainer, isFavoritesChecked);
       MealPageUtils.updateDietaryFilters(idElements.dietaryFiltersContainer, userInfo.dietary_filters, numberInputs);
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
-      idElements.searchIcon.previousElementSibling.value = searchedMealName;
+      idElements.mealSearchInput.value = searchedMealName;
 
       let deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
       addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
@@ -76,6 +77,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const incrementIngredientButtons = document.querySelectorAll(".increment-ingredient-button");
       addShoppingListIncrementIngredientButtonEventListeners(incrementIngredientButtons);
+
+      const ingredientQuantityInputs = document.querySelectorAll(".ingredient-quantity-input");
+      addShoppingListQuantityInputEventListeners(ingredientQuantityInputs);
     }
 
     if (mealIds === null) {
@@ -516,9 +520,14 @@ idElements.logoutButton.addEventListener("click", async () => {
   }
 });
 
+idElements.mealSearchInput.addEventListener("input", () => {
+  if (idElements.mealSearchInput.value === "") Utils.toggleVisibility(idElements.clearSearchInputIcon, false);
+  else if (!idElements.clearSearchInputIcon.classList.contains("flex"))
+    Utils.toggleVisibility(idElements.clearSearchInputIcon, true);
+});
+
 idElements.searchIcon.addEventListener("click", async () => {
-  const searchInput = idElements.searchIcon.previousElementSibling;
-  searchedMealName = searchInput.value;
+  searchedMealName = idElements.mealSearchInput.value;
 
   let formData = new FormData();
 
@@ -604,6 +613,11 @@ idElements.searchIcon.addEventListener("click", async () => {
   } catch (error) {
     console.log("Internal server error: " + error.message);
   }
+});
+
+idElements.clearSearchInputIcon.addEventListener("click", () => {
+  idElements.mealSearchInput.value = "";
+  Utils.toggleVisibility(idElements.clearSearchInputIcon, false);
 });
 
 idElements.closePreferencesPopupButton.addEventListener("click", (event) => {
@@ -778,36 +792,27 @@ idElements.preferencesForm.addEventListener("submit", async (event) => {
   }
 });
 
-idElements.previousMealButton.addEventListener("click", async () => {
-  if (mealIds.length === 0) return;
-
-  if (currentMealIdsIndex === 0) currentMealIdsIndex = mealIds.length - 1;
-  else currentMealIdsIndex--;
-
-  idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
-
-  let currentMealId = new URLSearchParams({
-    meal_id: mealIds[currentMealIdsIndex]
+idElements.addToFavoritesButton.addEventListener("click", async () => {
+  const currentMealInformation = new URLSearchParams({
+    meal_id: currentMeal.meal_id,
+    is_favorite: currentMeal.is_favorite === true ? 1 : 0
   });
 
-  const result = await Utils.fetchData(
-    "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
-    currentMealId
-  );
-
-  if (result.status === "success") {
-    currentMeal = result.message;
-
-    MealPageUtils.refreshMealCardAndDetails(
-      currentMeal,
-      idElements.addToFavoritesButton,
-      idElements.mealImage,
-      idElements.mealName,
-      idElements.mealCategory,
-      idElements.totalCaloriesSpan,
-      idElements.totalMinutesSpan,
-      idElements.totalPortionsSpan
+  try {
+    const result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/toggle_favorite_controller/toggle_favorite_controller_main.php",
+      currentMealInformation
     );
+
+    if (result.status === "success") {
+      const isCurrentMealFavorited = result.message;
+
+      currentMeal.is_favorite = isCurrentMealFavorited;
+
+      MealPageUtils.toggleFavoritesIcon(idElements.addToFavoritesButton, isCurrentMealFavorited);
+    } else alert("Failed to favorite meal.");
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -844,27 +849,36 @@ idElements.nextMealButton.addEventListener("click", async () => {
   }
 });
 
-idElements.addToFavoritesButton.addEventListener("click", async () => {
-  const currentMealInformation = new URLSearchParams({
-    meal_id: currentMeal.meal_id,
-    is_favorite: currentMeal.is_favorite === true ? 1 : 0
+idElements.previousMealButton.addEventListener("click", async () => {
+  if (mealIds.length === 0) return;
+
+  if (currentMealIdsIndex === 0) currentMealIdsIndex = mealIds.length - 1;
+  else currentMealIdsIndex--;
+
+  idElements.totalMealsSpan.innerHTML = `(${currentMealIdsIndex + 1} / ${mealIds.length})`;
+
+  let currentMealId = new URLSearchParams({
+    meal_id: mealIds[currentMealIdsIndex]
   });
 
-  try {
-    const result = await Utils.fetchData(
-      "../../../controllers/meal_page_controllers/toggle_favorite_controller/toggle_favorite_controller_main.php",
-      currentMealInformation
+  const result = await Utils.fetchData(
+    "../../../controllers/meal_page_controllers/meal_card_controller/meal_card_controller_main.php",
+    currentMealId
+  );
+
+  if (result.status === "success") {
+    currentMeal = result.message;
+
+    MealPageUtils.refreshMealCardAndDetails(
+      currentMeal,
+      idElements.addToFavoritesButton,
+      idElements.mealImage,
+      idElements.mealName,
+      idElements.mealCategory,
+      idElements.totalCaloriesSpan,
+      idElements.totalMinutesSpan,
+      idElements.totalPortionsSpan
     );
-
-    if (result.status === "success") {
-      const isCurrentMealFavorited = result.message;
-
-      currentMeal.is_favorite = isCurrentMealFavorited;
-
-      MealPageUtils.toggleFavoritesIcon(idElements.addToFavoritesButton, isCurrentMealFavorited);
-    }
-  } catch (error) {
-    console.log("Internal server error: " + error.message);
   }
 });
 
@@ -879,24 +893,28 @@ const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons
         new_quantity: 0
       });
 
-      const result = await Utils.fetchData(
-        "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
-        ingredientToDeleteRequestData
-      );
+      try {
+        const result = await Utils.fetchData(
+          "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+          ingredientToDeleteRequestData
+        );
 
-      if (result.status === "success") {
-        icon.parentElement.parentElement.remove();
-        if (shoppingListIngredientTypeContainer.getAttribute("type-filter") !== null) {
-          if (
-            shoppingListIngredientTypeContainer.nextElementSibling === null ||
-            shoppingListIngredientTypeContainer.nextElementSibling.getAttribute("type-filter") !== null
-          )
-            shoppingListIngredientTypeContainer.remove();
-        }
+        if (result.status === "success") {
+          icon.parentElement.parentElement.remove();
+          if (shoppingListIngredientTypeContainer.getAttribute("type-filter") !== null) {
+            if (
+              shoppingListIngredientTypeContainer.nextElementSibling === null ||
+              shoppingListIngredientTypeContainer.nextElementSibling.getAttribute("type-filter") !== null
+            )
+              shoppingListIngredientTypeContainer.remove();
+          }
 
-        if (idElements.shoppingListGridContainer.querySelector("div") === null)
-          idElements.shoppingListGridContainer.innerHTML = `<h1 class="place-self-center col-span-4">Shopping List Is Empty</h1>`;
-      } else alert("Failed to remove ingredient from shopping list.");
+          if (idElements.shoppingListGridContainer.querySelector("div") === null)
+            idElements.shoppingListGridContainer.innerHTML = `<h1 class="place-self-center col-span-4">Shopping List Is Empty</h1>`;
+        } else alert("Failed to remove ingredient from shopping list.");
+      } catch (error) {
+        console.log("Internal server error: " + error.message);
+      }
     });
   });
 };
@@ -915,18 +933,67 @@ const addShoppingListDecrementIngredientButtonEventListeners = (decrementIngredi
         new_quantity: parseInt(currentIngredientQuantity) - 1
       });
 
-      const result = await Utils.fetchData(
-        "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
-        ingredientToDecrementRequestData
-      );
+      try {
+        const result = await Utils.fetchData(
+          "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+          ingredientToDecrementRequestData
+        );
 
-      if (result.status === "success") {
-        ingredientQuantityInput.value = parseInt(currentIngredientQuantity) - 1;
+        if (result.status === "success") {
+          ingredientQuantityInput.value = parseInt(currentIngredientQuantity) - 1;
 
-        if (ingredientQuantityInput.value == "1") button.disabled = true;
+          if (ingredientQuantityInput.value == "1") button.disabled = true;
 
-        if (incrementIngredientButton.disabled === true) incrementIngredientButton.disabled = false;
-      } else alert("Failed to decrement ingredient quantity in shopping list.");
+          if (incrementIngredientButton.disabled === true) incrementIngredientButton.disabled = false;
+        } else alert("Failed to decrement ingredient quantity in shopping list.");
+      } catch (error) {
+        console.log("Internal server error: " + error.message);
+      }
+    });
+  });
+};
+
+const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInputs) => {
+  ingredientQuantityInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      let inputValue = parseInt(input.value);
+
+      if (inputValue > 9999) input.value = "9999";
+      if (inputValue < 1 || input.value === "") input.value = "1";
+    });
+
+    input.addEventListener("keydown", async (event) => {
+      if (event.key !== "Enter" || event.target !== input) return;
+
+      let ingredientName = input.parentElement.parentElement.getAttribute("ingredient-name");
+      let inputValue = parseInt(input.value);
+      let decrementButton = input.parentElement.querySelector(".decrement-ingredient-button");
+      let incrementButton = input.parentElement.querySelector(".increment-ingredient-button");
+
+      let newIngredientQuantityData = new URLSearchParams({
+        ingredient_name: ingredientName,
+        new_quantity: inputValue
+      });
+
+      Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+
+      try {
+        const result = await Utils.fetchData(
+          "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+          newIngredientQuantityData
+        );
+
+        if (result.status === "success") {
+          if (inputValue === 1) decrementButton.disabled = true;
+          if (inputValue === 9999) incrementButton.disabled = true;
+          if (inputValue > 1 && decrementButton.disabled === true) decrementButton.disabled = false;
+          if (inputValue < 9999 && incrementButton.disabled === true) incrementButton.disabled = false;
+        } else alert("Failed updating ingredient quantity" + result.message);
+      } catch (error) {
+        console.log("Internal server error: " + error.message);
+      } finally {
+        Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+      }
     });
   });
 };
@@ -974,7 +1041,6 @@ idElements.addToShoppingListButton.addEventListener("click", async () => {
 
     if (result.status === "success") {
       userShoppingList = result.message;
-      console.log(userShoppingList);
 
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
 
@@ -986,6 +1052,9 @@ idElements.addToShoppingListButton.addEventListener("click", async () => {
 
       const incrementIngredientButtons = document.querySelectorAll(".increment-ingredient-button");
       addShoppingListIncrementIngredientButtonEventListeners(incrementIngredientButtons);
+
+      const ingredientQuantityInputs = document.querySelectorAll(".ingredient-quantity-input");
+      addShoppingListQuantityInputEventListeners(ingredientQuantityInputs);
     }
   } catch (error) {
     console.log("Internal server error: " + error.message);
@@ -1005,4 +1074,20 @@ idElements.openMealDetailsPopupButton.addEventListener("click", () => {
     idElements.mealDescription,
     idElements.mealIngredientsListContainer
   );
+});
+
+idElements.clearShoppingListIcon.addEventListener("click", async () => {
+  if (userShoppingList.length === 0) return;
+
+  try {
+    const result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/clear_shopping_list_controller/clear_shopping_list_controller_main.php"
+    );
+
+    if (result.status === "success") {
+      idElements.shoppingListGridContainer.innerHTML = `<h1 class="place-self-center col-span-4">Shopping List Is Empty</h1>`;
+    } else alert("Failed to clear shopping list." + result.message);
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
+  }
 });

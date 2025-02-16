@@ -33,7 +33,7 @@
 
 			<?php include("./meal_page_header.php"); ?>
 
-			<div class="flex gap-2 flex-wrap">
+			<div id="meal-page-body-wrapper" class="flex gap-2 flex-wrap min-h-fit">
 				<?php
 				include("./meal_page_body.php");
 				include("./shopping_list.php");

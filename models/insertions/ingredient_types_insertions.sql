@@ -17,4 +17,5 @@ VALUES
 ("Beverages"),
 ("Vegetables"),
 ("Condiments"),
-("Sweeteners");
+("Sweeteners"),
+("Leavening Agents");

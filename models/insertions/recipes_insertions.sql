@@ -258,3 +258,35 @@ VALUES
 (22, "White Flour", 350),
 (22, "Olive Oil", 30),
 (22, "Salt", 4);
+
+INSERT IGNORE INTO recipes
+VALUES
+(23, "Active Dry Yeast", 10),
+(23, "Water", 400),
+(23, "Bread Flour", 750),
+(23, "Salt", 10),
+(23, "Zaatar", 100),
+(23, "Olive Oil", 100);
+
+INSERT IGNORE INTO recipes
+VALUES
+(24, "Full-Fat Milk", 150),
+(24, "Date", 200),
+(24, "Brown Sugar", 100),
+(24, "Vegetable Oil", 100),
+(24, "Vanilla Extract", 5),
+(24, "White Flour", 120),
+(24, "Baking Soda", 3),
+(24, "Ground Cinnamon", 3),
+(24, "Walnut", 30);
+
+INSERT IGNORE INTO recipes
+VALUES
+(25, "Baked Beans", 1),
+(25, "Ketchup", 50),
+(25, "Hot Sauce", 20),
+(25, "Bacon", 3),
+(25, "Banger", 2),
+(25, "Vine Cherry Tomato", 1),
+(25, "Cremini Mushroom", 100),
+(25, "Whole Egg", 2);

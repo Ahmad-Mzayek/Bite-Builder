@@ -510,3 +510,61 @@ CALL insert_meal(
         <br>- Stack cooked breads on a plate; when cool enough to handle, slice breads in half and open the pocket inside for stuffing.
     ",
     8, 190, 155, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0);
+
+CALL insert_meal(
+    "Bread & Pastries", "Lebanese Manakish Zaatar", "lebanese_manakish_zaatar.png",
+    "
+        <br>- Dissolve yeast in warm water in a large bowl.
+        <br>- Mix in 3 cups flour and salt.
+        <br>- Stir in remaining flour, 1/2 cup at a time, beating well after each addition.
+        <br>- Turn dough out onto a lightly floured work surface.
+        <br>- Knead until smooth, about 10 minutes.
+        <br>- Place dough in a greased bowl; turn to coat with oil.
+        <br>- Cover and let rise in a warm place until doubled, about 1 hour.
+        <br>- Preheat the oven to 500 degrees F (260 degrees C).
+        <br>- Divide dough into 16 equal pieces and form into rounds.
+        <br>- Roll into 1/4-inch-thick circles.
+        <br>- Poke rounds with your fingers to create small indentations.
+        <br>- Mix zaatar and olive oil together in a small bowl.
+        <br>- Spread over circles.
+        <br>- Place on ungreased baking sheets.
+        <br>- Bake in the preheated oven until dough is golden brown, 5 to 6 minutes.
+    ",
+    16, 200, 95, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0);
+
+CALL insert_meal(
+    "Desserts", "Date Cake", "date_cake.png",
+    "
+        <br>- Heat milk in a saucepan until almost boiling and stir in dates; let soak for several hours, refrigerated.
+        <br>- For best flavor, refrigerate dates and milk overnight.
+        <br>- Preheat oven to 350 degrees F (175 degrees C).
+        <br>- Grease a medium loaf pan.
+        <br>- Transfer milk and dates to food processor, add brown sugar, and process into a smooth paste.
+        <br>- Mix in vegetable oil and vanilla extract with a few pulses.
+        <br>- Whisk flour, baking soda, and cinnamon in a bowl until thoroughly combined.
+        <br>- Pulse flour mixture, about 1/4 cup at a time, into the date paste until batter is smooth; do not overmix.
+        <br>- Stir walnuts into batter with a fork and transfer to the prepared loaf pan.
+        <br>- Bake in the preheated oven until a toothpick inserted into the middle of the cake comes out clean, about 40 minutes.
+        <br><br><h2>Cook's Note:</h2>
+        <br>- If you're really short on time, microwave the milk and dates together in a microwave-safe bowl until milk is almost boiling and let the mixture cool.
+        <br>- The recipe above works well in an 8-inch cake pan as well if you'd rather serve it that way.
+        <br>- You could pipe buttercream or cream cheese frosting to decorate.
+        <br>- If you want to make 2 loaves, I suggest increasing the temperature to 375 degrees F (190 degrees C), and giving the cakes an aluminum foil tent once the top of the loaves start getting dark.
+        <br>- Two loaves will require about an hour in the oven.
+        <br>- Check with a toothpick.
+    ",
+    8, 320, 180, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0);
+
+CALL insert_meal(
+    "Breakfasts", "Full English Breakfast", "full_english_breakfast.png",
+    "
+        <br>- Place beans in a small saucepan over medium-low heat.
+        <br>- Add ketchup and HP sauce, and heat until warmed through, about 5 minutes.
+        <br>- Heat a large skillet over medium heat, and add bacon and sausages.
+        <br>- Cook until sausage is browned and bacon is cooked to your taste, about 10 minutes.
+        <br>- Remove from the pan and set aside.
+        <br>- Add tomatoes and mushrooms to the skillet, and sear in bacon fat for 2 minutes; remove from the pan.
+        <br>- Add 1 cup water to the pan, crack in eggs, and simmer until whites are opaque and yolks are still runny.
+        <br>- Spoon beans onto a plate, and arrange eggs, bacon, bangers, tomatoes, and mushrooms around them.
+    ",
+    1, 1200, 30, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0);

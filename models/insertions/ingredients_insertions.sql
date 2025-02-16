@@ -1,5 +1,6 @@
 INSERT IGNORE INTO ingredients
 VALUES
+("Walnut", "Nuts", "Gram"),
 ("Pine Nut", "Nuts", "Gram"),
 ("Peanut Butter Powder", "Nuts", "Gram");
 
@@ -13,6 +14,7 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Dill", "Herbs", "Leaf"),
+("Zaatar", "Herbs", "Gram"),
 ("Parsley", "Herbs", "Leaf"),
 ("Tarragon", "Herbs", "Leaf"),
 ("Coriander", "Herbs", "Leaf"),
@@ -34,8 +36,9 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
-("Bacon", "Proteins", "Piece"),
 ("Hot Dog", "Proteins", "Can"),
+("Bacon", "Proteins", "Piece"),
+("Banger", "Proteins", "Piece"),
 ("Chicken", "Proteins", "Gram"),
 ("Egg Yolk", "Proteins", "Piece"),
 ("Proscuitto", "Proteins", "Gram"),
@@ -56,13 +59,14 @@ VALUES
 ("Linguine", "Grains", "Gram"),
 ("White Rice", "Grains", "Gram"),
 ("Cornstarch", "Grains", "Gram"),
+("Baked Beans", "Grains", "Can"),
 ("White Beans", "Grains", "Gram"),
 ("Butter Beans", "Grains", "Can"),
+("Bread Flour", "Grains", "Gram"),
 ("White Flour", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("Potato Starch", "Grains", "Gram"),
-("Grains Of Selim", "Grains", "Gram"),
-("Active Dry Yeast", "Grains", "Gram");
+("Grains Of Selim", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -84,12 +88,14 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Date", "Fruits", "Gram"),
 ("Lime", "Fruits", "Gram"),
 ("Lemon", "Fruits", "Gram"),
 ("Tomato", "Fruits", "Gram"),
 ("Jalapeno", "Fruits", "Gram"),
 ("Tomatillo", "Fruits", "Gram"),
-("Lemon Zest", "Fruits", "Gram");
+("Lemon Zest", "Fruits", "Gram"),
+("Vine Cherry Tomato", "Fruits", "Piece");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -98,6 +104,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Cremini Mushroom", "Mushrooms", "Gram"),
 ("King Trumpet Mushroom", "Mushrooms", "Gram");
 
 INSERT IGNORE INTO ingredients
@@ -165,3 +172,8 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Black Lentiles", "Legumes", "Gram"),
 ("Bean Cooking Liquid", "Legumes", "Milliliter");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Baking Soda", "Leavening Agents", "Gram"),
+("Active Dry Yeast", "Leavening Agents", "Gram");

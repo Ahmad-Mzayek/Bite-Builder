@@ -13,6 +13,7 @@ VALUES
 INSERT IGNORE INTO ingredients
 VALUES
 ("Dill", "Herbs", "Leaf"),
+("Zaatar", "Herbs", "Gram"),
 ("Parsley", "Herbs", "Leaf"),
 ("Tarragon", "Herbs", "Leaf"),
 ("Coriander", "Herbs", "Leaf"),
@@ -58,6 +59,7 @@ VALUES
 ("Cornstarch", "Grains", "Gram"),
 ("White Beans", "Grains", "Gram"),
 ("Butter Beans", "Grains", "Can"),
+("Bread Flour", "Grains", "Gram"),
 ("White Flour", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("Potato Starch", "Grains", "Gram"),

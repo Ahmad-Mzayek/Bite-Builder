@@ -258,3 +258,12 @@ VALUES
 (22, "White Flour", 350),
 (22, "Olive Oil", 30),
 (22, "Salt", 4);
+
+INSERT IGNORE INTO recipes
+VALUES
+(23, "Active Dry Yeast", 10),
+(23, "Water", 400),
+(23, "Bread Flour", 750),
+(23, "Salt", 10),
+(23, "Zaatar", 100),
+(23, "Olive Oil", 100);

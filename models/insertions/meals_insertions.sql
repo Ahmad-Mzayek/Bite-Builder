@@ -510,3 +510,24 @@ CALL insert_meal(
         <br>- Stack cooked breads on a plate; when cool enough to handle, slice breads in half and open the pocket inside for stuffing.
     ",
     8, 190, 155, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0);
+
+CALL insert_meal(
+    "Bread & Pastries", "Lebanese Manakish Zaatar", "lebanese_manakish_zaatar.png",
+    "
+        <br>- Dissolve yeast in warm water in a large bowl.
+        <br>- Mix in 3 cups flour and salt.
+        <br>- Stir in remaining flour, 1/2 cup at a time, beating well after each addition.
+        <br>- Turn dough out onto a lightly floured work surface.
+        <br>- Knead until smooth, about 10 minutes.
+        <br>- Place dough in a greased bowl; turn to coat with oil.
+        <br>- Cover and let rise in a warm place until doubled, about 1 hour.
+        <br>- Preheat the oven to 500 degrees F (260 degrees C).
+        <br>- Divide dough into 16 equal pieces and form into rounds.
+        <br>- Roll into 1/4-inch-thick circles.
+        <br>- Poke rounds with your fingers to create small indentations.
+        <br>- Mix zaatar and olive oil together in a small bowl.
+        <br>- Spread over circles.
+        <br>- Place on ungreased baking sheets.
+        <br>- Bake in the preheated oven until dough is golden brown, 5 to 6 minutes.
+    ",
+    16, 200, 95, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0);

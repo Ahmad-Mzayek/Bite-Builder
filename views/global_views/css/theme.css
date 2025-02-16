@@ -45,7 +45,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 99;
   pointer-events: none;
-  border: 3ppx solid var(--cursor-outline);
+  border: 3px solid var(--cursor-outline);
   transition: all 0.3s ease-in-out;
 }
 
@@ -184,10 +184,10 @@ a {
 
 #meal-name {
   font-size: 5ch;
-  max-width: 15ch;
-  overflow-y: auto;
+  padding-top: 5px;
+  flex: 1 1;
   text-wrap: wrap;
-  line-height: 5.75rem;
+  line-height: 60px;
 }
 
 #profile-popup-username-input:disabled,
@@ -205,24 +205,16 @@ a {
   background-color: var(--button-bg-primary);
 }
 
+#shopping-list svg {
+  fill: var(--button-bg-primary);
+}
+
 #shopping-list button span {
   background-color: var(--text-button-primary);
 }
 
 #shopping-list h3 {
   color: var(--primary);
-}
-
-#shopping-list h3:nth-child(1) {
-  color: var(--text-primary);
-}
-
-#shopping-list h3:nth-child(2) {
-  color: var(--text-primary);
-}
-
-#shopping-list h3:nth-child(3) {
-  color: var(--text-primary);
 }
 
 #shopping-list input[type="number"] {
@@ -232,4 +224,21 @@ a {
 .decrement-ingredient-button:disabled,
 .increment-ingredient-button:disabled {
   opacity: 0.2;
+}
+
+@media (width < 1180px) {
+  #meal-page-body-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (width < 500px) {
+  #meal-name {
+    font-size: 3ch;
+    line-height: 30px;
+  }
+
+  #meal-page-body-wrapper {
+    flex-direction: column;
+  }
 }

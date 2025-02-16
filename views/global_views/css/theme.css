@@ -36,16 +36,16 @@ body {
 }
 
 .cursor-outline {
-  width: 20px;
-  height: 20px;
+  width: 48px;
+  height: 48px;
   position: fixed;
   top: 0;
   left: 0;
-  border-radius: 15px;
+  border-radius: 36px;
   transform: translate(-50%, -50%);
   z-index: 99;
   pointer-events: none;
-  border: 5px solid var(--cursor-outline);
+  border: 3ppx solid var(--cursor-outline);
   transition: all 0.3s ease-in-out;
 }
 
@@ -183,9 +183,8 @@ a {
 }
 
 #meal-name {
-  font-size: 6ch;
+  font-size: 5ch;
   max-width: 15ch;
-  max-height: 11ch;
   overflow-y: auto;
   text-wrap: wrap;
   line-height: 5.75rem;
@@ -228,4 +227,9 @@ a {
 
 #shopping-list input[type="number"] {
   background-color: #d0d0d0;
+}
+
+.decrement-ingredient-button:disabled,
+.increment-ingredient-button:disabled {
+  opacity: 0.2;
 }

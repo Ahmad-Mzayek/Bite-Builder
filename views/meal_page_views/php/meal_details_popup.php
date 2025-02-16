@@ -17,7 +17,7 @@
 				Meal Name Goes Here
 		</h1>
 
-		<p id="meal-description" class="text-lg">
+		<p id="meal-description" class="text-lg w-full">
 
 		</p>
 

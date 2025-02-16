@@ -270,7 +270,7 @@ export const refreshMealDetailsPopup = (
     `;
 
     let ingredientListContainerByType = mealIngredientsListContainer.querySelector(
-      `div[type-filter=${ingredient.type_name}]`
+      `div[type-filter="${ingredient.type_name}"]`
     );
 
     if (ingredientListContainerByType === null) {
@@ -347,58 +347,56 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
     return;
   }
 
-  shoppingListGridContainer.innerHTML = `
-    <h3 class="mb-4">Ingredient Name</h3>
+  shoppingListGridContainer.innerHTML = "";
 
-    <h3 class="col-span-2 mb-4">Ingredient Quantity</h3>
-
-    <h3 class="mb-4">Ingredient Unit</h3>  
-  `;
   for (const ingredient of shoppingList) {
     let ingredientContainer = document.createElement("div");
     ingredientContainer.setAttribute("ingredient-filter", ingredient.type_name);
     ingredientContainer.setAttribute("ingredient-name", ingredient.ingredient_name);
-    ingredientContainer.classList.add("flex", "items-center", "gap-2", "pl-2", "w-full", "col-span-4", "mb-3");
+    ingredientContainer.classList.add("flex", "items-center", "gap-2", "p-2", "w-full", "col-span-4");
     ingredientContainer.innerHTML = `
-      <h4 class="flex items-center justify-start gap-4 text-[1.2rem] basis-3/12 text-wrap">
-        <svg class="delete-ingredient-icon w-7 h-7 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <h4 class="flex items-center justify-start gap-3 text-[1rem] basis-2/12 text-wrap">
+        <svg class="delete-ingredient-icon w-7 h-7 cursor-pointer basis-1/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path d="M170.5 51.6L151.5 80l145 0-19-28.4c-1.5-2.2-4-3.6-6.7-3.6l-93.7 0c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80 368 80l48 0 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-8 0 0 304c0 44.2-35.8 80-80 80l-224 0c-44.2 0-80-35.8-80-80l0-304-8 0c-13.3 0-24-10.7-24-24S10.7 80 24 80l8 0 48 0 13.8 0 36.7-55.1C140.9 9.4 158.4 0 177.1 0l93.7 0c18.7 0 36.2 9.4 46.6 24.9zM80 128l0 304c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-304L80 128zm80 64l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16z"/>
         </svg>
-        ${ingredient.ingredient_name}
+
+        <span class="basis-3/4">
+          ${ingredient.ingredient_name}
+        </span>
       </h4>
 
-      <div class="flex items-center gap-3 quantity-container basis-6/12 justify-center flex-grow">
-        <button class="decrement-ingredient-button relative w-8 h-8 bg-white rounded-full">
+      <div class="flex items-center gap-4 quantity-container basis-8/12 justify-center">
+        <button class="decrement-ingredient-button relative w-8 h-8 bg-white rounded-full" ${ingredient.quantity === null || ingredient.quantity === 1 ? "disabled" : ""}>
             <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
                 
             </span>
         </button>
 
         <input type="number"
-               value=${ingredient.quantity}
-               class="w-16 p-2 rounded-sm"
+               value="${ingredient.quantity === null ? 1 : ingredient.quantity}"
+               class="ingredient-quantity-input w-16 p-2 rounded-sm"
                name="new_quantity" 
                required>
 
-        <button class="relative w-8 h-8 bg-white rounded-full">
-          <span class="increment-ingredient-button absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
-              
-          </span>
+        <button class="increment-ingredient-button relative w-8 h-8 bg-white rounded-full">
+            <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
+                
+            </span>
 
-          <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600 rotate-90">
+            <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600 rotate-90">
               
-          </span>
-        </button>
+            </span>
+        </button>       
       </div>
 
-      <h4 class="text-[1.2rem] basis-3/12 text-center">
+      <h4 class="text-[1.2rem] basis-2/12 text-center">
         ${ingredient.quantity === 1 || ingredient.quantity === null ? ingredient.unit_name_singular : ingredient.unit_name_plural}
       </h4>
     </div>
         `;
 
     let shoppingListIngredientTypeContainer = shoppingListGridContainer.querySelector(
-      `div[type-filter=${ingredient.type_name}]`
+      `div[type-filter="${ingredient.type_name}"]`
     );
 
     if (shoppingListIngredientTypeContainer === null) {
@@ -412,7 +410,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
         "col-span-4",
         "p-2",
         "gap-2",
-        "mb-4",
+        "my-2",
         "bg-gray-500",
         "cursor-pointer"
       );
@@ -442,7 +440,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
   shoppingListGridContainer.querySelectorAll(".shopping-list-ingredient-type-container").forEach((container) => {
     container.addEventListener("click", () => {
       let ingredientsOfTheSameType = shoppingListGridContainer.querySelectorAll(
-        `div[ingredient-filter=${container.getAttribute("type-filter")}]`
+        `div[ingredient-filter="${container.getAttribute("type-filter")}"]`
       );
 
       let containerArrowSVG = container.querySelector("svg");

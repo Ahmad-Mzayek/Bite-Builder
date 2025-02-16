@@ -8,8 +8,8 @@ let isDarkModeOn = localStorage.getItem("isDarkModeOn") || "true";
 let userInfo;
 let userShoppingList;
 let currentMeal;
-let searchedMealName = "";
 let numberInputs;
+let searchedMealName = localStorage.getItem("searched_meal_name") || "";
 
 // localStorage.clear(); // TODO REMOVE LATER --------------------------------------------------------------------------------
 
@@ -27,6 +27,9 @@ let sort_by = localStorage.getItem("sort_by") || "meal_name";
 let order = localStorage.getItem("order") || "ASC";
 
 Utils.themeInitializer(idElements.themeSwitchButton, idElements.logoImage, isDarkModeOn);
+Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
+Utils.addClosePopupSvgListeners(classElements.closePopupSvgs, idElements.overlay, classElements.pagePopups);
+Utils.addPasswordIconEventListeners(classElements.showPasswordIcons);
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -63,10 +66,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       MealPageUtils.updateOrder(idElements.sortAndOrderContainer, order);
       MealPageUtils.updateSortBy(idElements.sortAndOrderContainer, sort_by);
       MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
+      idElements.searchIcon.previousElementSibling.value = searchedMealName;
 
       let deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
-
       addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
+
+      const decrementIngredientButtons = document.querySelectorAll(".decrement-ingredient-button");
+      addShoppingListDecrementIngredientButtonEventListeners(decrementIngredientButtons);
+
+      const incrementIngredientButtons = document.querySelectorAll(".increment-ingredient-button");
+      addShoppingListIncrementIngredientButtonEventListeners(incrementIngredientButtons);
     }
 
     if (mealIds === null) {
@@ -149,12 +158,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Internal server error: " + error.message);
   }
 });
-
-Utils.addThemeSwitchButtonEventListener(idElements.themeSwitchButton, themeSwitch, idElements.logoImage);
-
-Utils.addClosePopupSvgListeners(classElements.closePopupSvgs, idElements.overlay, classElements.pagePopups);
-
-Utils.addPasswordIconEventListeners(classElements.showPasswordIcons);
 
 idElements.hamburgerMenu.addEventListener("click", () => {
   MealPageUtils.toggleDropDownMenu(
@@ -544,6 +547,7 @@ idElements.searchIcon.addEventListener("click", async () => {
 
     if (result.status === "success") {
       localStorage.setItem("meal_ids", JSON.stringify(result.message));
+      localStorage.setItem("searched_meal_name", searchedMealName);
 
       mealIds = JSON.parse(localStorage.getItem("meal_ids"));
 
@@ -864,31 +868,6 @@ idElements.addToFavoritesButton.addEventListener("click", async () => {
   }
 });
 
-idElements.addToShoppingListButton.addEventListener("click", async () => {
-  const currentMealId = new URLSearchParams({
-    meal_id: currentMeal.meal_id
-  });
-
-  try {
-    let result = await Utils.fetchData(
-      "../../../controllers/meal_page_controllers/add_to_shopping_list_controller/add_to_shopping_list_controller_main.php",
-      currentMealId
-    );
-
-    if (result.status === "success") {
-      // TODO Render Meal Ingredients In Shopping List.
-      userShoppingList = result.message;
-
-      MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
-      const deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
-
-      addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
-    }
-  } catch (error) {
-    console.log("Internal server error: " + error.message);
-  }
-});
-
 const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons) => {
   deleteIngredientIcons.forEach((icon) => {
     icon.addEventListener("click", async function () {
@@ -921,6 +900,97 @@ const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons
     });
   });
 };
+
+const addShoppingListDecrementIngredientButtonEventListeners = (decrementIngredientButtons) => {
+  decrementIngredientButtons.forEach((button) => {
+    button.addEventListener("click", async function () {
+      let incrementIngredientButton = button.nextElementSibling.nextElementSibling;
+      let ingredientQuantityInput = button.nextElementSibling;
+      let currentIngredientQuantity = ingredientQuantityInput.value;
+
+      let ingredientName = button.parentElement.parentElement.getAttribute("ingredient-name");
+
+      let ingredientToDecrementRequestData = new URLSearchParams({
+        ingredient_name: ingredientName,
+        new_quantity: parseInt(currentIngredientQuantity) - 1
+      });
+
+      const result = await Utils.fetchData(
+        "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+        ingredientToDecrementRequestData
+      );
+
+      if (result.status === "success") {
+        ingredientQuantityInput.value = parseInt(currentIngredientQuantity) - 1;
+
+        if (ingredientQuantityInput.value == "1") button.disabled = true;
+
+        if (incrementIngredientButton.disabled === true) incrementIngredientButton.disabled = false;
+      } else alert("Failed to decrement ingredient quantity in shopping list.");
+    });
+  });
+};
+
+const addShoppingListIncrementIngredientButtonEventListeners = (incrementIngredientButtons) => {
+  incrementIngredientButtons.forEach((button) => {
+    button.addEventListener("click", async function () {
+      let decrementIngredientButton = button.previousElementSibling.previousElementSibling;
+      let ingredientQuantityInput = button.previousElementSibling;
+      let currentIngredientQuantity = ingredientQuantityInput.value;
+
+      let ingredientName = button.parentElement.parentElement.getAttribute("ingredient-name");
+
+      let ingredientToIncrementRequestData = new URLSearchParams({
+        ingredient_name: ingredientName,
+        new_quantity: parseInt(currentIngredientQuantity) + 1
+      });
+
+      const result = await Utils.fetchData(
+        "../../../controllers/meal_page_controllers/set_shopping_list_quantity_controller/set_shopping_list_quantity_controller_main.php",
+        ingredientToIncrementRequestData
+      );
+
+      if (result.status === "success") {
+        ingredientQuantityInput.value = parseInt(currentIngredientQuantity) + 1;
+
+        if (ingredientQuantityInput.value == "9999") button.disabled = true;
+
+        if (decrementIngredientButton.disabled === true) decrementIngredientButton.disabled = false;
+      } else alert("Failed to increment ingredient quantity in shopping list.");
+    });
+  });
+};
+
+idElements.addToShoppingListButton.addEventListener("click", async () => {
+  const currentMealId = new URLSearchParams({
+    meal_id: currentMeal.meal_id
+  });
+
+  try {
+    let result = await Utils.fetchData(
+      "../../../controllers/meal_page_controllers/add_to_shopping_list_controller/add_to_shopping_list_controller_main.php",
+      currentMealId
+    );
+
+    if (result.status === "success") {
+      userShoppingList = result.message;
+      console.log(userShoppingList);
+
+      MealPageUtils.addMealIngredientsToShoppingList(userShoppingList, idElements.shoppingListGridContainer);
+
+      const deleteIngredientIcons = document.querySelectorAll(".delete-ingredient-icon");
+      addShoppingListDeleteIngredientIconEventListeners(deleteIngredientIcons);
+
+      const decrementIngredientButtons = document.querySelectorAll(".decrement-ingredient-button");
+      addShoppingListDecrementIngredientButtonEventListeners(decrementIngredientButtons);
+
+      const incrementIngredientButtons = document.querySelectorAll(".increment-ingredient-button");
+      addShoppingListIncrementIngredientButtonEventListeners(incrementIngredientButtons);
+    }
+  } catch (error) {
+    console.log("Internal server error: " + error.message);
+  }
+});
 
 idElements.openMealDetailsPopupButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.mealDetailsPopup, true);

@@ -1,5 +1,6 @@
 INSERT IGNORE INTO ingredients
 VALUES
+("Walnut", "Nuts", "Gram"),
 ("Pine Nut", "Nuts", "Gram"),
 ("Peanut Butter Powder", "Nuts", "Gram");
 
@@ -63,8 +64,7 @@ VALUES
 ("White Flour", "Grains", "Gram"),
 ("Jasmine Rice", "Grains", "Gram"),
 ("Potato Starch", "Grains", "Gram"),
-("Grains Of Selim", "Grains", "Gram"),
-("Active Dry Yeast", "Grains", "Gram");
+("Grains Of Selim", "Grains", "Gram");
 
 INSERT IGNORE INTO ingredients
 VALUES
@@ -86,6 +86,7 @@ VALUES
 
 INSERT IGNORE INTO ingredients
 VALUES
+("Date", "Fruits", "Gram"),
 ("Lime", "Fruits", "Gram"),
 ("Lemon", "Fruits", "Gram"),
 ("Tomato", "Fruits", "Gram"),
@@ -167,3 +168,8 @@ INSERT IGNORE INTO ingredients
 VALUES
 ("Black Lentiles", "Legumes", "Gram"),
 ("Bean Cooking Liquid", "Legumes", "Milliliter");
+
+INSERT IGNORE INTO ingredients
+VALUES
+("Baking Soda", "Leavening Agents", "Gram"),
+("Active Dry Yeast", "Leavening Agents", "Gram");

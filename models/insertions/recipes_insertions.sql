@@ -267,3 +267,15 @@ VALUES
 (23, "Salt", 10),
 (23, "Zaatar", 100),
 (23, "Olive Oil", 100);
+
+INSERT IGNORE INTO recipes
+VALUES
+(24, "Full-Fat Milk", 150),
+(24, "Date", 200),
+(24, "Brown Sugar", 100),
+(24, "Vegetable Oil", 100),
+(24, "Vanilla Extract", 5),
+(24, "White Flour", 120),
+(24, "Baking Soda", 3),
+(24, "Ground Cinnamon", 3),
+(24, "Walnut", 30);

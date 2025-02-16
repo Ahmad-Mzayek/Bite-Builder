@@ -531,3 +531,26 @@ CALL insert_meal(
         <br>- Bake in the preheated oven until dough is golden brown, 5 to 6 minutes.
     ",
     16, 200, 95, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0);
+
+CALL insert_meal(
+    "Desserts", "Date Cake", "date_cake.png",
+    "
+        <br>- Heat milk in a saucepan until almost boiling and stir in dates; let soak for several hours, refrigerated.
+        <br>- For best flavor, refrigerate dates and milk overnight.
+        <br>- Preheat oven to 350 degrees F (175 degrees C).
+        <br>- Grease a medium loaf pan.
+        <br>- Transfer milk and dates to food processor, add brown sugar, and process into a smooth paste.
+        <br>- Mix in vegetable oil and vanilla extract with a few pulses.
+        <br>- Whisk flour, baking soda, and cinnamon in a bowl until thoroughly combined.
+        <br>- Pulse flour mixture, about 1/4 cup at a time, into the date paste until batter is smooth; do not overmix.
+        <br>- Stir walnuts into batter with a fork and transfer to the prepared loaf pan.
+        <br>- Bake in the preheated oven until a toothpick inserted into the middle of the cake comes out clean, about 40 minutes.
+        <br><br><h2>Cook's Note:</h2>
+        <br>- If you're really short on time, microwave the milk and dates together in a microwave-safe bowl until milk is almost boiling and let the mixture cool.
+        <br>- The recipe above works well in an 8-inch cake pan as well if you'd rather serve it that way.
+        <br>- You could pipe buttercream or cream cheese frosting to decorate.
+        <br>- If you want to make 2 loaves, I suggest increasing the temperature to 375 degrees F (190 degrees C), and giving the cakes an aluminum foil tent once the top of the loaves start getting dark.
+        <br>- Two loaves will require about an hour in the oven.
+        <br>- Check with a toothpick.
+    ",
+    8, 320, 180, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0);

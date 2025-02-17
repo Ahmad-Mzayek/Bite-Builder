@@ -40,8 +40,8 @@
     @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl;
   }
 
-  input[search-input="search"] {
-    @apply p-2 pl-4;
+  #meal-search-input {
+    @apply pl-10;
   }
 
   input[type="submit"] {

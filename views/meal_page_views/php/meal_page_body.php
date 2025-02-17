@@ -1,20 +1,23 @@
-<div id="meal-page-body" class="flex flex-1 flex-col items-center gap-5 pr-4 basis-7/12">
+<div id="meal-page-body" class="flex flex-col items-center flex-1 max-h-[80vh] gap-5 pr-4 basis-7/12">
 	<div class="flex items-center w-full">               
-		<div class="relative p-4 basis-8/12 grow">
+		<div class="relative px-4 basis-9/12">
 			<input type="text"
+						 id="meal-search-input"
 						 name="search_input" 
 						 class="pl-1 rounded-full"
 						 placeholder="Search" >
 
+			<?php include("./clear_search_input_icon.php"); ?>			 
+
 			<svg id="search-icon"
-					 class="absolute inset-0 m-auto mr-10 cursor-pointer fill-black w-8 h-8"
+					 class="absolute inset-0 w-8 h-8 m-auto mr-10 cursor-pointer fill-black"
 				   xmlns="http://www.w3.org/2000/svg"
 				   viewBox="0 0 512 512" >
 				<path class="fill-black" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
 			</svg>
 		</div>
 		
-		<button id="filter-button" class="relative p-6 basis-2/12 rounded-xl opacity-95 hover:opacity-100">
+		<button id="filter-button" class="ml-auto relative p-6 h-full w-[100px] rounded-xl opacity-95 hover:opacity-100">
 			<svg class="absolute inset-0 m-auto opacity-100 fill-white w-7"
 				   xmlns="http://www.w3.org/2000/svg"
 					 viewBox="0 0 512 512">
@@ -35,7 +38,7 @@
 			</button>
 		</div>
 
-		<div class="flex items-center flex-grow justify-center basis-full min-w-[20rem]">
+		<div class="flex items-center flex-1 h-full justify-center basis-full">
 			<?php include("./meal_card.php"); ?>
 		</div>
 		
@@ -56,13 +59,16 @@
 				</div>
 			</div>
 
-			<div class="flex flex-1 justify-between">
-				<div class="flex flex-col w-full gap-4 px-2 pb-0">
-					<h1 id="meal-name">
+			<div class="flex h-full">
+				<div class="flex flex-col h-full w-full gap-4 px-2 pb-0">
+					<div class="flex-1 overflow-auto">
+						<h1 id="meal-name">
 
-					</h1>
+						</h1>
+					</div>
+
 					
-					<button id="open-meal-details-popup-button" class="w-full p-4 mt-auto text-base font-medium transition rounded-sm md:text-lg lg:text-xl disabled:opacity-10">
+					<button id="open-meal-details-popup-button" class="w-full p-4 text-base font-medium transition rounded-sm md:text-lg lg:text-xl disabled:opacity-10">
 						View Details
 					</button>
 				</div>
@@ -106,7 +112,7 @@
 		</div>
 	</div>
 
-	<div id="total-nb-meals-container" class="flex items-center justify-center w-full text-2xl mt-auto font-bold">
+	<div id="total-nb-meals-container" class="flex items-center justify-center w-full text-2xl font-bold">
 		<span id="total-meals-span">
 			
 		</span>

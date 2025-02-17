@@ -47,7 +47,7 @@ function adjustForDPIScaling() {
   if (dpiScale > 1) {
     document.documentElement.style.fontSize = `${16 / dpiScale}px`;
   } else {
-    document.documentElement.style.fontSize = "14px";
+    document.documentElement.style.fontSize = "16px";
   }
 }
 

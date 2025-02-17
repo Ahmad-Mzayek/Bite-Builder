@@ -1,3 +1,3 @@
 <img id="meal-image"
-     class="object-cover aspect-square"
+     class="object-cover w-full h-auto"
      alt="Meal Image">

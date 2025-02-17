@@ -222,8 +222,8 @@ export const refreshMealCardAndDetails = (
     mealCategoryContainer.innerHTML = meal.category_name;
     mealNameContainer.innerHTML = meal.meal_name;
     totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
-    totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} Minutes`;
-    totalPortionsSpan.innerHTML = `${meal.nb_portions} Portions`;
+    totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} ${meal.preparation_duration_minutes === 1 ? "Minute" : "Minutes"}`;
+    totalPortionsSpan.innerHTML = `${meal.nb_portions} ${meal.nb_portions === 1 ? "Portion" : "Portions"}`;
     toggleFavoritesIcon(addToFavoritesButton, meal.is_favorite);
   }
 };
@@ -355,17 +355,17 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
     ingredientContainer.setAttribute("ingredient-name", ingredient.ingredient_name);
     ingredientContainer.classList.add("flex", "items-center", "gap-2", "p-2", "w-full", "col-span-4");
     ingredientContainer.innerHTML = `
-      <h4 class="flex items-center justify-start gap-3 text-[1rem] basis-2/12 text-wrap">
-        <svg class="delete-ingredient-icon w-7 h-7 cursor-pointer basis-1/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <h4 class="flex items-center justify-start gap-3 text-[1rem] basis-full text-wrap">
+        <svg class="delete-ingredient-icon w-7 h-7 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path d="M170.5 51.6L151.5 80l145 0-19-28.4c-1.5-2.2-4-3.6-6.7-3.6l-93.7 0c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80 368 80l48 0 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-8 0 0 304c0 44.2-35.8 80-80 80l-224 0c-44.2 0-80-35.8-80-80l0-304-8 0c-13.3 0-24-10.7-24-24S10.7 80 24 80l8 0 48 0 13.8 0 36.7-55.1C140.9 9.4 158.4 0 177.1 0l93.7 0c18.7 0 36.2 9.4 46.6 24.9zM80 128l0 304c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-304L80 128zm80 64l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16z"/>
         </svg>
 
-        <span class="basis-3/4">
+        <span>
           ${ingredient.ingredient_name}
         </span>
       </h4>
 
-      <div class="flex items-center gap-4 quantity-container basis-8/12 justify-center">
+      <div class="flex items-center gap-4 quantity-container basis-full justify-start">
         <button class="decrement-ingredient-button relative w-8 h-8 bg-white rounded-full" ${ingredient.quantity === null || ingredient.quantity === 1 ? "disabled" : ""}>
             <span class="absolute w-3 h-[2px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-600">
                 
@@ -374,7 +374,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
 
         <input type="number"
                value="${ingredient.quantity === null ? 1 : ingredient.quantity}"
-               class="ingredient-quantity-input w-16 p-2 rounded-sm"
+               class="ingredient-quantity-input w-24 p-2 rounded-sm"
                name="new_quantity" 
                required>
 
@@ -389,7 +389,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
         </button>       
       </div>
 
-      <h4 class="text-[1.2rem] basis-2/12 text-center">
+      <h4 class="text-[1.2rem] basis-1/2 text-end">
         ${ingredient.quantity === 1 || ingredient.quantity === null ? ingredient.unit_name_singular : ingredient.unit_name_plural}
       </h4>
     </div>
@@ -410,7 +410,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
         "col-span-4",
         "p-2",
         "gap-2",
-        "my-2",
+        "mb-2",
         "bg-gray-500",
         "cursor-pointer"
       );

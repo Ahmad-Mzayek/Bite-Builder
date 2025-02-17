@@ -1,4 +1,4 @@
-<svg class="absolute w-12 h-12 top-1/2 left-[5%] -translate-x-1/2 -translate-y-1/2 cursor-pointer" 
+<svg class="absolute w-12 h-12 inset-0 m-auto mr-2  cursor-pointer" 
      id="clear-shopping-list-icon"
 		 version="1.0" 
 		 xmlns="http://www.w3.org/2000/svg"

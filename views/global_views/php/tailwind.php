@@ -37,15 +37,15 @@
   input[type="text"],
   input[type="password"],
   input[type="email"] {
-    @apply p-2 w-full appearance-none border-2 text-lg md:text-xl lg:text-xl;
-  }
-
-  #meal-search-input {
-    @apply pl-10;
+    @apply p-2 px-4 w-full appearance-none rounded-full border-2 text-lg md:text-xl lg:text-xl;
   }
 
   input[type="submit"] {
-    @apply px-6 py-4 text-nowrap transition cursor-pointer rounded-lg text-lg md:text-xl lg:text-xl tracking-[.1rem];
+    @apply text-lg cursor-pointer;
+  }
+
+  #meal-search-input {
+    @apply pl-11;
   }
 
   svg {
@@ -265,7 +265,7 @@
   }
 
   .filter-range-container input {
-    @apply w-16 font-semibold text-xl p-2;
+    @apply w-24 font-semibold text-xl p-2 px-6 rounded-full;
   } 
 
   #submit-preferences-form-button {

@@ -15,6 +15,7 @@ export const idElements = {
   preferencesForm: document.querySelector("#preferences-form"),
   mealDescription: document.querySelector("#meal-description"),
   mealSearchInput: document.querySelector("#meal-search-input"),
+  searchInputForm: document.querySelector("#search-input-form"),
   preferencesPopup: document.querySelector("#preferences-popup"),
   dropdownMenuList: document.querySelector("#dropdown-menu-list"),
   newPasswordInput: document.querySelector("#new-password-input"),
@@ -25,7 +26,9 @@ export const idElements = {
   profilePopupEmail: document.querySelector("#profile-popup-email"),
   totalCaloriesSpan: document.querySelector("#total-calories-span"),
   totalPortionsSpan: document.querySelector("#total-portions-span"),
+  deleteAccountForm: document.querySelector("#delete-account-form"),
   previousMealButton: document.querySelector("#previous-meal-button"),
+  changePasswordForm: document.querySelector("#change-password-form"),
   categoriesContainer: document.querySelector("#categories-container"),
   changePasswordPopup: document.querySelector("#change-password-popup"),
   dropdownMenuOverlay: document.querySelector("#dropdown-menu-overlay"),
@@ -45,10 +48,8 @@ export const idElements = {
   shoppingListGridContainer: document.querySelector("#shopping-list-grid-container"),
   saveEditPhoneNumberButton: document.querySelector("#save-edit-phone-number-button"),
   profilePopupErrorContainer: document.querySelector("#profile-popup-error-container"),
-  confirmDeleteAccountButton: document.querySelector("#confirm-delete-account-button"),
   profilePopupMaleRadioInput: document.querySelector("#profile-popup-male-radio-input"),
   openMealDetailsPopupButton: document.querySelector("#open-meal-details-popup-button"),
-  confirmChangePasswordButton: document.querySelector("#confirm-change-password-button"),
   closePreferencesPopupButton: document.querySelector("#close-preferences-popup-button"),
   cancelEditPhoneNumberButton: document.querySelector("#cancel-edit-phone-number-button"),
   profilePopupSuccessContainer: document.querySelector("#profile-popup-success-container"),
@@ -66,13 +67,17 @@ export const idElements = {
   profilePopupEditUsernameButtonContainer: document.querySelector("#profile-popup-edit-username-button-container"),
   openDeleteAccountConfirmationPopupButton: document.querySelector("#open-delete-account-confirmation-popup-button"),
   closeDeleteAccountConfirmationPopupButton: document.querySelector("#close-delete-account-confirmation-popup-button"),
-  profilePopupEditPhoneNumberButtonContainer: document.querySelector("#profile-popup-edit-phone-number-button-container"),
-  deleteAccountConfirmationPopupErrorContainer: document.querySelector("#delete-account-confirmation-popup-error-container"),
+  profilePopupEditPhoneNumberButtonContainer: document.querySelector(
+    "#profile-popup-edit-phone-number-button-container"
+  ),
+  deleteAccountConfirmationPopupErrorContainer: document.querySelector(
+    "#delete-account-confirmation-popup-error-container"
+  )
 };
 
 export const classElements = {
   pagePopups: document.querySelectorAll(".popup"),
   closePopupSvgs: document.querySelectorAll(".close-popup-svg"),
   showPasswordIcons: document.querySelectorAll(".toggle-password-icon"),
-  ingredientsListContainers: document.querySelectorAll(".ingredients-list-container"),
+  ingredientsListContainers: document.querySelectorAll(".ingredients-list-container")
 };

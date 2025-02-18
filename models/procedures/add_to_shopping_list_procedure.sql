@@ -16,6 +16,13 @@ BEGIN
     FOR NOT FOUND
     SET done = TRUE;
 
+    DECLARE exit handler for sqlexception 
+    BEGIN
+        ROLLBACK;
+    END;
+
+    START TRANSACTION;
+
     OPEN recipes_cursor;
 
     for_each_recipe_loop : LOOP
@@ -38,5 +45,7 @@ BEGIN
     END LOOP;
 
     CLOSE recipes_cursor;
+
+    COMMIT;
 END; //
 DELIMITER ;

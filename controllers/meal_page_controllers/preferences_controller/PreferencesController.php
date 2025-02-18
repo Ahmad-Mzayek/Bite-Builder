@@ -18,11 +18,21 @@ class PreferencesController
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
+            if (!self::$database_connection->begin_transaction())
+                throw new Exception("Failed to begin transaction.");
             self::set_preferences();
             self::update_user_filters();
             self::update_user_categories();
             $meal_ids = self::fetch_meal_ids();
+            if (!self::$database_connection->commit())
+                throw new Exception("Failed to commit transaction.");
             return $meal_ids;
+        }
+        catch (Exception $exception)
+        {
+            if (isset(self::$database_connection))
+                self::$database_connection->rollback();
+            throw $exception;
         }
         finally
         {
@@ -59,17 +69,17 @@ class PreferencesController
     {
         $query = <<<SQL
             UPDATE dietary_filters
-            SET is_halal = FALSE,
-                is_organic = FALSE,
-                is_vegan = FALSE,
-                is_vegetarian = FALSE,
-                is_sugar_free = FALSE,
-                is_dairy_free = FALSE,
-                is_low_carb = FALSE,
-                is_low_calorie = FALSE,
-                is_low_sodium = FALSE,
-                is_high_protein = FALSE,
-                is_keto_friendly = FALSE
+            SET is_halal = DEFAULT,
+                is_organic = DEFAULT,
+                is_vegan = DEFAULT,
+                is_vegetarian = DEFAULT,
+                is_sugar_free = DEFAULT,
+                is_dairy_free = DEFAULT,
+                is_low_carb = DEFAULT,
+                is_low_calorie = DEFAULT,
+                is_low_sodium = DEFAULT,
+                is_high_protein = DEFAULT,
+                is_keto_friendly = DEFAULT
             WHERE filters_id = ?;
         SQL;
         return $query;

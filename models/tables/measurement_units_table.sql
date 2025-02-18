@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS measurement_units
+DROP TABLE IF EXISTS measurement_units;
+
+CREATE TABLE measurement_units
 (
     unit_name_singular   VARCHAR(32)     NOT NULL    UNIQUE,
     unit_name_plural     VARCHAR(32)     NOT NULL    UNIQUE,

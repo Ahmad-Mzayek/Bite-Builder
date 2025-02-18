@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS meals
+DROP TABLE IF EXISTS meals;
+
+CREATE TABLE meals
 (
    meal_id							   INT			   NOT NULL    UNIQUE,
    category_name                 VARCHAR(32)    NOT NULL,

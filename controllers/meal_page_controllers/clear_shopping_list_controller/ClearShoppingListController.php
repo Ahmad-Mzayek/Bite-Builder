@@ -25,20 +25,11 @@ class ClearShoppingListController
 
     private static function clear_shopping_list() : void // -----------------------------------------------------------------------------------------
     {
-        $query = self::clear_shopping_list_query();
+        $query = "CALL clear_shopping_list(?);";
         $statement = GlobalController::prepare_statement(self::$database_connection, $query);
         $statement->bind_param("i", self::$user_id);
         GlobalController::execute_statement($statement);
         $statement->close();
-    }
-
-    private static function clear_shopping_list_query() : string // ---------------------------------------------------------------------------------
-    {
-        $query = <<<SQL
-            DELETE FROM shopping_lists
-            WHERE user_id = ?;
-        SQL;
-        return $query;
     }
 }
 ?>

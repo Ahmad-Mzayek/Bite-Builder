@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS users
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
 (
    user_id                 INT            NOT NULL    UNIQUE,
    username                VARCHAR(32)    NOT NULL    UNIQUE,

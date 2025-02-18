@@ -183,9 +183,9 @@ a {
 }
 
 #meal-name {
-  font-size: 5ch;
+  font-size: clamp(1ch, 5vw, 3ch);
   padding-top: 5px;
-  flex: 1 1;
+  flex-grow: 1;
   text-wrap: wrap;
   line-height: 60px;
 }
@@ -230,11 +230,14 @@ a {
   #meal-page-body-wrapper {
     flex-direction: column;
   }
+
+  #meal-name {
+    font-size: 2ch;
+  }
 }
 
 @media (width < 500px) {
   #meal-name {
-    font-size: 3ch;
     line-height: 30px;
   }
 

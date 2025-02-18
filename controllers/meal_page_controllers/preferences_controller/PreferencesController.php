@@ -69,17 +69,17 @@ class PreferencesController
     {
         $query = <<<SQL
             UPDATE dietary_filters
-            SET is_halal = FALSE,
-                is_organic = FALSE,
-                is_vegan = FALSE,
-                is_vegetarian = FALSE,
-                is_sugar_free = FALSE,
-                is_dairy_free = FALSE,
-                is_low_carb = FALSE,
-                is_low_calorie = FALSE,
-                is_low_sodium = FALSE,
-                is_high_protein = FALSE,
-                is_keto_friendly = FALSE
+            SET is_halal = DEFAULT,
+                is_organic = DEFAULT,
+                is_vegan = DEFAULT,
+                is_vegetarian = DEFAULT,
+                is_sugar_free = DEFAULT,
+                is_dairy_free = DEFAULT,
+                is_low_carb = DEFAULT,
+                is_low_calorie = DEFAULT,
+                is_low_sodium = DEFAULT,
+                is_high_protein = DEFAULT,
+                is_keto_friendly = DEFAULT
             WHERE filters_id = ?;
         SQL;
         return $query;

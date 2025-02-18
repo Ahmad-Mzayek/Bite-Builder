@@ -356,28 +356,18 @@ idElements.openChangePasswordPopupButton.addEventListener("click", () => {
   idElements.overlay.classList.replace("z-20", "z-30");
 });
 
-idElements.closeChangePasswordPopupButton.addEventListener("click", (event) => {
-  event.preventDefault();
+idElements.closeChangePasswordPopupButton.addEventListener("click", () => {
+  const changePasswordPopupInputs = idElements.changePasswordPopup.querySelectorAll('input[type="password"]');
+  Utils.deleteInputData(changePasswordPopupInputs);
   Utils.toggleVisibility(idElements.changePasswordPopup, false);
   Utils.toggleVisibility(idElements.changePasswordPopupErrorContainer, false);
   idElements.overlay.classList.replace("z-30", "z-20");
 });
 
-idElements.confirmChangePasswordButton.addEventListener("click", async (event) => {
+idElements.changePasswordForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  let newPasswordInput = idElements.newPasswordInput;
-
-  if (newPasswordInput.value.length < 8) {
-    idElements.changePasswordPopupErrorContainer.innerHTML =
-      "Your password is less than 8 characters. Please make it longer.";
-    Utils.toggleVisibility(idElements.changePasswordPopupErrorContainer, true);
-    Utils.toggleVisibility(idElements.changePasswordPopupSuccessContainer, false);
-    return;
-  }
-
-  const changePasswordForm = event.target.closest("form");
-  const formData = new FormData(changePasswordForm);
+  const formData = new FormData(event.target);
 
   try {
     const result = await Utils.fetchData(
@@ -405,16 +395,18 @@ idElements.openDeleteAccountConfirmationPopupButton.addEventListener("click", ()
 });
 
 idElements.closeDeleteAccountConfirmationPopupButton.addEventListener("click", () => {
+  const confirmPasswordInput = idElements.deleteAccountConfirmationPopup.querySelectorAll('input[type="password"]');
+  Utils.deleteInputData(confirmPasswordInput);
   Utils.toggleVisibility(idElements.deleteAccountConfirmationPopup, false);
   idElements.overlay.classList.replace("z-30", "z-20");
 });
 
-idElements.confirmDeleteAccountButton.addEventListener("click", async () => {
-  let password =
-    idElements.confirmDeleteAccountButton.parentElement.previousElementSibling.firstChild.nextElementSibling.value;
+idElements.deleteAccountForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-  let formData = new FormData();
-  formData.append("password_input", password);
+  let formData = new FormData(event.target);
+
+  console.log(formData);
 
   try {
     const result = await Utils.fetchData(
@@ -526,40 +518,8 @@ idElements.mealSearchInput.addEventListener("input", () => {
     Utils.toggleVisibility(idElements.clearSearchInputIcon, true);
 });
 
-// idElements.mealSearchInput.addEventListener("keydown", async (event) => {
-//   if (event.key !== "Enter" || event.target !== idElements.mealSearchInput) return;
-//   const searchInputValue = event.target.value;
-
-//   let formData = new FormData();
-
-//   formData.append("is_favorites_checked", isFavoritesChecked);
-//   formData.append("sort_by", sort_by);
-//   formData.append("order", order);
-//   formData.append("searched_meal_name", idElements.mealSearchInput.value);
-//   formData.append("min_nb_calories_per_portion", minNbCaloriesPerPortion);
-//   formData.append("max_nb_calories_per_portion", maxNbCaloriesPerPortion);
-//   formData.append("min_preparation_duration_minutes", minPreparationDurationMinutes);
-//   formData.append("max_preparation_duration_minutes", maxPreparationDurationMinutes);
-
-//   for (const [category, isChecked] of Object.entries(userInfo.meal_categories))
-//     if (isChecked == 1) formData.append("checked_categories[]", category);
-
-//   if (!formData.get("checked_categories[]")) formData.append("checked_categories[]", "");
-
-//   if (userInfo.dietary_filters.length === 0) formData.append("checked_filters[]", "");
-//   else userInfo.dietary_filters.forEach((filter) => formData.append("checked_filters[]", filter));
-
-//   try {
-//     const result = await Utils.fetchData(
-//       "../../../controllers/meal_page_controllers/preferences_controller/preferences_controller_main.php",
-//       formData
-//     );
-//   } catch (error) {
-//     console.log("Internal server error: " + error.message);
-//   }
-// });
-
-idElements.searchIcon.addEventListener("click", async () => {
+idElements.searchInputForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
   let formData = new FormData();
 
   formData.append("is_favorites_checked", isFavoritesChecked);
@@ -926,7 +886,7 @@ const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons
         new_quantity: 0
       });
 
-      Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+      // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
       try {
         const result = await Utils.fetchData(
@@ -950,8 +910,8 @@ const addShoppingListDeleteIngredientIconEventListeners = (deleteIngredientIcons
       } catch (error) {
         console.log("Internal server error: " + error.message);
       } finally {
-        Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
-        idElements.overlay.classList.replace("z-30", "z-20");
+        // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+        // idElements.overlay.classList.replace("z-30", "z-20");
       }
     });
   });
@@ -971,7 +931,7 @@ const addShoppingListDecrementIngredientButtonEventListeners = (decrementIngredi
         new_quantity: parseInt(currentIngredientQuantity) - 1
       });
 
-      Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+      // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
       try {
         const result = await Utils.fetchData(
@@ -989,8 +949,8 @@ const addShoppingListDecrementIngredientButtonEventListeners = (decrementIngredi
       } catch (error) {
         console.log("Internal server error: " + error.message);
       } finally {
-        Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
-        idElements.overlay.classList.replace("z-30", "z-20");
+        // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+        // idElements.overlay.classList.replace("z-30", "z-20");
       }
     });
   });
@@ -1001,7 +961,7 @@ const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInpu
     input.addEventListener("input", () => {
       let inputValue = parseInt(input.value);
 
-      if (inputValue > 9999) input.value = "9999";
+      if (inputValue > 999999) input.value = "999999";
       if (inputValue < 1 || input.value === "") input.value = "1";
     });
 
@@ -1018,7 +978,7 @@ const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInpu
         new_quantity: inputValue
       });
 
-      Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+      // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
       try {
         const result = await Utils.fetchData(
@@ -1028,15 +988,15 @@ const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInpu
 
         if (result.status === "success") {
           if (inputValue === 1) decrementButton.disabled = true;
-          if (inputValue === 9999) incrementButton.disabled = true;
+          if (inputValue === 999999) incrementButton.disabled = true;
           if (inputValue > 1 && decrementButton.disabled === true) decrementButton.disabled = false;
-          if (inputValue < 9999 && incrementButton.disabled === true) incrementButton.disabled = false;
+          if (inputValue < 999999 && incrementButton.disabled === true) incrementButton.disabled = false;
         } else alert("Failed updating ingredient quantity" + result.message);
       } catch (error) {
         console.log("Internal server error: " + error.message);
       } finally {
-        Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
-        idElements.overlay.classList.replace("z-30", "z-20");
+        // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+        // idElements.overlay.classList.replace("z-30", "z-20");
       }
     });
   });
@@ -1056,7 +1016,7 @@ const addShoppingListIncrementIngredientButtonEventListeners = (incrementIngredi
         new_quantity: parseInt(currentIngredientQuantity) + 1
       });
 
-      Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+      // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
       try {
         const result = await Utils.fetchData(
@@ -1067,15 +1027,15 @@ const addShoppingListIncrementIngredientButtonEventListeners = (incrementIngredi
         if (result.status === "success") {
           ingredientQuantityInput.value = parseInt(currentIngredientQuantity) + 1;
 
-          if (ingredientQuantityInput.value == "9999") button.disabled = true;
+          if (ingredientQuantityInput.value == "999999") button.disabled = true;
 
           if (decrementIngredientButton.disabled === true) decrementIngredientButton.disabled = false;
         } else alert("Failed to increment ingredient quantity in shopping list.");
       } catch (error) {
         console.log("Internal server error: " + error.message);
       } finally {
-        Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
-        idElements.overlay.classList.replace("z-30", "z-20");
+        // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+        // idElements.overlay.classList.replace("z-30", "z-20");
       }
     });
   });
@@ -1134,7 +1094,7 @@ idElements.clearShoppingListIcon.addEventListener("click", async () => {
 
   console.log(userShoppingList);
 
-  Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
+  // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, true);
 
   try {
     const result = await Utils.fetchData(
@@ -1149,7 +1109,7 @@ idElements.clearShoppingListIcon.addEventListener("click", async () => {
   } catch (error) {
     console.log("Internal server error: " + error.message);
   } finally {
-    Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
-    idElements.overlay.classList.replace("z-30", "z-20");
+    // Utils.toggleLoadingAnimation(idElements.overlay, idElements.loadingAnimationSpinner, false);
+    // idElements.overlay.classList.replace("z-30", "z-20");
   }
 });

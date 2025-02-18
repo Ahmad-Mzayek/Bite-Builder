@@ -18,11 +18,21 @@ class PreferencesController
             GlobalController::resume_session();
             self::$user_id = $_SESSION["user_id"];
             self::$database_connection = DatabaseConnectionSingleton::get_instance()->get_connection();
+            if (!self::$database_connection->begin_transaction())
+                throw new Exception("Failed to begin transaction.");
             self::set_preferences();
             self::update_user_filters();
             self::update_user_categories();
             $meal_ids = self::fetch_meal_ids();
+            if (!self::$database_connection->commit())
+                throw new Exception("Failed to commit transaction.");
             return $meal_ids;
+        }
+        catch (Exception $exception)
+        {
+            if (isset(self::$database_connection))
+                self::$database_connection->rollback();
+            throw $exception;
         }
         finally
         {

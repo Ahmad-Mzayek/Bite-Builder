@@ -1,4 +1,4 @@
-<div id="preferences-popup" class="fixed z-30 hidden p-4 py-3 -translate-x-1/2 -translate-y-1/2 shadow-2xl popup top-1/2 left-1/2 rounded-3xl min-h-[50%] max-h-[80vh]">
+<div id="preferences-popup" class="fixed z-30 hidden p-4 py-3 -translate-x-1/2 -translate-y-1/2 shadow-2xl popup top-1/2 left-1/2 rounded-3xl min-h-[50%] h-[98vh]">
 	<form id="preferences-form"
 				class="grid overflow-y-auto items-start grid-cols-[1fr_minmax(450px,_2fr)_1fr] text-center w-full">
 		<h1>Categories</h1>

@@ -109,6 +109,10 @@ a {
   background-color: var(--button-bg-primary);
 }
 
+#meal-page-body #search-button-submit {
+  background-color: transparent;
+}
+
 #open-meal-details-popup-button:hover {
   background-color: var(--button-hover-primary);
   color: var(--primary);
@@ -159,12 +163,12 @@ a {
 
 #add-to-favorites-button:hover,
 #add-to-shopping-list-button:hover {
-  background-color: rgb(144, 9, 9);
+  background-color: var(--primary);
 }
 
 #add-to-favorites-button:hover svg,
 #add-to-shopping-list-button:hover svg {
-  fill: #ffffff;
+  fill: var(--button-bg-primary);
 }
 
 #preferences-form > span {
@@ -185,8 +189,8 @@ a {
 #meal-name {
   font-size: clamp(1ch, 5vw, 3ch);
   padding-top: 5px;
-  flex-grow: 1;
   text-wrap: wrap;
+  text-align: center;
   line-height: 60px;
 }
 

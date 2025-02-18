@@ -1,5 +1,5 @@
 <div id="meal-details-popup"
-     class="popup hidden flex-col items-center max-h-[80vh] gap-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-x-hidden overflow-y-auto">
+     class="popup hidden flex-col items-center max-h-[98vh] gap-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-x-hidden overflow-y-auto">
 		<h1 class="font-bold">
 				Meal Details
 		</h1>
@@ -13,7 +13,7 @@
 					   alt="Meal Image">
 		</div>
 
-		<h1 id="meal-details-popup-meal-name" class="font-bold">
+		<h1 id="meal-details-popup-meal-name" class="text-center font-bold">
 				Meal Name Goes Here
 		</h1>
 

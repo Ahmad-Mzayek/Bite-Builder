@@ -1,6 +1,6 @@
 <div id="meal-page-body" class="flex flex-col items-center flex-1 gap-5 pr-4 basis-7/12">
 	<div class="flex items-center w-full">               
-		<div class="relative px-4 basis-10/12">
+		<form id="search-input-form" class="relative px-4 basis-10/12">
 			<input type="text"
 						 id="meal-search-input"
 						 name="search_input" 
@@ -9,13 +9,16 @@
 
 			<?php include("./clear_search_input_icon.php"); ?>			 
 
-			<svg id="search-icon"
-					 class="absolute inset-0 w-8 h-8 m-auto mr-10 cursor-pointer fill-black"
-				   xmlns="http://www.w3.org/2000/svg"
-				   viewBox="0 0 512 512" >
-				<path class="fill-black" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-			</svg>
-		</div>
+			<button type="submit" id="search-button-submit" class="w-8 h-8 absolute inset-0 m-auto mr-10 cursor-pointer">
+				<svg id="w-8 h-8 search-icon"
+						class="fill-white"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512" >
+					<path class="fill-black" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+				</svg>
+			</button>
+
+		</form>
 		
 		<button id="filter-button" class="relative p-6 ml-auto basis-2/12 rounded-xl opacity-95 hover:opacity-100">
 			<svg class="absolute inset-0 m-auto opacity-100 fill-white w-7"
@@ -63,14 +66,17 @@
 				<div class="flex justify-between w-full h-full gap-2 pt-1">
 					<div class="flex flex-col justify-between h-full gap-2 px-2 pb-0 grow">
 						<div class="overflow-y-auto">
-							<h1 id="meal-name" class="max-h-[250px]">
+							<h1 id="meal-name" class="max-h-[230px]">
 
 							</h1>
 						</div>
 
-						<button id="open-meal-details-popup-button" class="w-full p-2 text-base font-medium transition rounded-sm md:text-lg lg:text-xl disabled:opacity-10">
-							View Details
-						</button>
+						<div class="flex items-end grow">
+							<button id="open-meal-details-popup-button" class="w-full p-2 text-base font-medium transition rounded-sm md:text-lg lg:text-xl disabled:opacity-10">
+								View Details
+							</button>
+						</div>
+
 					</div>
 
 					<div class="flex flex-col items-center justify-around h-full gap-1 pl-2 border-l-4">

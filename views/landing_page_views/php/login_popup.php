@@ -40,6 +40,7 @@
         </div>
 
         <input type="submit"
+               class="p-2 px-8 font-semibold rounded-md"
                value="LOGIN">
     </form>
 

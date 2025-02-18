@@ -19,7 +19,7 @@
 			     maxlength="64"
 			     required>
 
-		<input class="self-end p-2 mt-8"
+		<input class="self-end p-4 px-8 mt-8 font-semibold rounded-md"
 			     type="submit"
 			     value="SUBMIT">
 	</form>

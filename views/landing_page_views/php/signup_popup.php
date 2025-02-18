@@ -44,6 +44,7 @@
                 <?php echo $show_password_false_icon; ?>
             </span>
         </div>
+
         <div class="relative w-full cursor-pointer">
             <input type="password"
                    id="signup-confirm-password-input"
@@ -57,7 +58,9 @@
             </span>
         </div>
 
-        <input type="submit" value="SIGNUP">
+        <input type="submit" 
+               class="p-2 px-8 font-semibold rounded-md"            
+               value="SIGNUP">
     </form>
     
     <h3>

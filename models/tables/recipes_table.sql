@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS recipes
+DROP TABLE IF EXISTS recipes;
+
+CREATE TABLE recipes
 (
    meal_id           INT           NOT NULL,
    ingredient_name   VARCHAR(32)   NOT NULL,

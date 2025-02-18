@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS dietary_filters
+DROP TABLE IF EXISTS dietary_filters;
+
+CREATE TABLE dietary_filters
 (
     filters_id          INT         NOT NULL    AUTO_INCREMENT,
     is_halal		    BOOLEAN     NOT NULL    DEFAULT FALSE,

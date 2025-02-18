@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS ingredients
+DROP TABLE IF EXISTS ingredients;
+
+CREATE TABLE ingredients
 (
    ingredient_name         VARCHAR(32)    NOT NULL    UNIQUE,
    type_name               VARCHAR(32)    NOT NULL,

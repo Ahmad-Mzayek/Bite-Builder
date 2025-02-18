@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS favorites
+DROP TABLE IF EXISTS favorites;
+
+CREATE TABLE favorites
 (
    user_id  INT   NOT NULL,
    meal_id  INT   NOT NULL,

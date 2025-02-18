@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS shopping_lists
+DROP TABLE IF EXISTS shopping_lists;
+
+CREATE TABLE shopping_lists
 (
    user_id           INT            NOT NULL,
    ingredient_name   VARCHAR(32)    NOT NULL,

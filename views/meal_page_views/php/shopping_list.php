@@ -1,4 +1,4 @@
-	<div id="shopping-list" class="flex flex-col flex-1 max-h-[65vh] lg:w-3/4 basis-4/12 overflow-y-scroll">
+	<div id="shopping-list" class="flex flex-col flex-1 max-h-[80vh] lg:w-3/4 basis-4/12 overflow-y-scroll">
 		<div class="p-1 relative">
 			<h1 class="pb-3 text-center">
 				Shopping List

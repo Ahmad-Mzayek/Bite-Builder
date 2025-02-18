@@ -215,7 +215,7 @@ export const refreshMealCardAndDetails = (
     mealNameContainer.innerHTML = "No Meals Found!";
     totalCaloriesSpan.innerHTML = "0 Calories";
     totalMinutesSpan.innerHTML = "0 Minutes";
-    totalPortionsSpan.innerHTML = "0 Portions";
+    totalPortionsSpan.innerHTML = "0 Servings";
     toggleFavoritesIcon(addToFavoritesButton, false);
   } else {
     mealImageContainer.setAttribute("src", `../../../resources/images/${meal.image_name}`);
@@ -223,7 +223,7 @@ export const refreshMealCardAndDetails = (
     mealNameContainer.innerHTML = meal.meal_name;
     totalCaloriesSpan.innerHTML = `${meal.nb_calories_per_portion} Calories`;
     totalMinutesSpan.innerHTML = `${meal.preparation_duration_minutes} ${meal.preparation_duration_minutes === 1 ? "Minute" : "Minutes"}`;
-    totalPortionsSpan.innerHTML = `${meal.nb_portions} ${meal.nb_portions === 1 ? "Portion" : "Portions"}`;
+    totalPortionsSpan.innerHTML = `${meal.nb_portions} ${meal.nb_portions === 1 ? "Serving" : "Servings"}`;
     toggleFavoritesIcon(addToFavoritesButton, meal.is_favorite);
   }
 };
@@ -374,7 +374,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
 
         <input type="number"
                value="${ingredient.quantity === null ? 1 : ingredient.quantity}"
-               class="ingredient-quantity-input w-24 p-2 rounded-sm"
+               class="ingredient-quantity-input w-20 p-2 rounded-sm"
                name="new_quantity" 
                required>
 

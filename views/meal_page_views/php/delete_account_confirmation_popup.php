@@ -25,11 +25,11 @@
 				</div>
 
 				<div class="flex flex-wrap items-center justify-center gap-6">
-					<button type="button" id="close-delete-account-confirmation-popup-button" class="h-12 font-bold text-white bg-green-700 rounded-lg w-36 hover:bg-green-800">
+					<button type="button" id="close-delete-account-confirmation-popup-button" class="h-12 font-bold text-white bg-red-700 rounded-lg w-36 hover:bg-red-800">
 						No
 					</button>
 
-					<input type="submit" value="Yes" class="h-12 font-bold text-white bg-red-700 rounded-lg w-36 hover:bg-red-800">
+					<input type="submit" value="Yes" class="h-12 font-bold text-white bg-green-700 rounded-lg w-36 hover:bg-green-800">
 						
 				</div>
 			</form>

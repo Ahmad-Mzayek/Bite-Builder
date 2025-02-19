@@ -603,9 +603,9 @@
 		</div>
 
 		<div class="flex self-center mt-[2rem] items-center justify-between col-start-2">
-			<button
-				id="close-preferences-popup-button"
-				class="px-10 py-4 text-xl font-bold tracking-wide transition-all bg-red-600 hover:bg-red-700 rounded-xl">
+			<button type="button" 
+						  id="close-preferences-popup-button"
+				      class="px-10 py-4 text-xl font-bold tracking-wide transition-all bg-red-600 hover:bg-red-700 rounded-xl">
 				Cancel
 			</button>
 

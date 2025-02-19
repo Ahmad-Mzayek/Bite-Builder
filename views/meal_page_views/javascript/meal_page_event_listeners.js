@@ -352,7 +352,6 @@ idElements.saveEditPhoneNumberButton.addEventListener("click", async (event) => 
 idElements.openChangePasswordPopupButton.addEventListener("click", () => {
   Utils.toggleVisibility(idElements.changePasswordPopup, true);
   Utils.toggleVisibility(idElements.changePasswordPopupErrorContainer, false);
-  Utils.toggleVisibility(idElements.changePasswordPopupSuccessContainer, false);
   idElements.overlay.classList.replace("z-20", "z-30");
 });
 
@@ -376,12 +375,14 @@ idElements.changePasswordForm.addEventListener("submit", async (event) => {
     );
 
     if (result.status === "success") {
-      Utils.toggleVisibility(idElements.changePasswordPopupSuccessContainer, true);
+      Utils.toggleVisibility(idElements.changePasswordPopup, false);
       Utils.toggleVisibility(idElements.changePasswordPopupErrorContainer, false);
+      idElements.profilePopupSuccessContainer.innerHTML = `Password Changed Successfully!`;
+      Utils.toggleVisibility(idElements.profilePopupSuccessContainer, true);
+      idElements.overlay.classList.replace("z-30", "z-20");
     } else {
       idElements.changePasswordPopupErrorContainer.innerHTML = result.message;
       Utils.toggleVisibility(idElements.changePasswordPopupErrorContainer, true);
-      Utils.toggleVisibility(idElements.changePasswordPopupSuccessContainer, false);
     }
   } catch (error) {
     console.log("Internal server error: " + error.message);
@@ -959,10 +960,20 @@ const addShoppingListDecrementIngredientButtonEventListeners = (decrementIngredi
 const addShoppingListQuantityInputEventListeners = async (ingredientQuantityInputs) => {
   ingredientQuantityInputs.forEach((input) => {
     input.addEventListener("input", () => {
-      let inputValue = parseInt(input.value);
+      let decrementButton = input.parentElement.querySelector(".decrement-ingredient-button");
+      let incrementButton = input.parentElement.querySelector(".increment-ingredient-button");
+      let inputLength = input.value.length;
+      let inputValue = input.value;
 
-      if (inputValue > 999999) input.value = "999999";
-      if (inputValue < 1 || input.value === "") input.value = "1";
+      if (inputLength > 6) input.value = inputValue.substring(0, inputLength - 1);
+
+      if (inputValue < 1 || inputValue === "") input.value = "1";
+
+      if (input.value === "1") decrementButton.disabled = true;
+      else decrementButton.disabled = false;
+
+      if (input.value === "999999") incrementButton.disabled = true;
+      else incrementButton.disabled = false;
     });
 
     input.addEventListener("keydown", async (event) => {

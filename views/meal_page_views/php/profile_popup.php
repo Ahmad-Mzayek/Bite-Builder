@@ -1,7 +1,7 @@
 <?php include "../../global_views/php/show_password_icons.php"; ?>
 
 <div id="profile-popup"
-     class="popup hidden flex-col w-[50vw] min-h-[40vh] items-center gap-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-hidden">
+     class="popup hidden flex-col w-[50vw] min-h-[400px] items-center gap-5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 shadow-2xl rounded-lg p-6 py-6 overflow-hidden">
     <h1 class="font-bold">
         Profile
     </h1>
@@ -51,7 +51,7 @@
                 Email:
             </h2>
 
-            <h3 id="profile-popup-email" class="p-2 ml-0 mr-auto font-normal basis-5/12">
+            <h3 id="profile-popup-email" class="p-2 px-6 ml-0 mr-auto font-normal basis-5/12">
                 Email Goes Here
             </h3>
         </div>

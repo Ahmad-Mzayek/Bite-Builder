@@ -9,10 +9,6 @@
 
     </div>
 
-    <div id="change-password-popup-success-container" class="hidden w-full p-2 font-bold text-white bg-green-500">
-        Password Changed Successfully!
-    </div>
-
     <form id="change-password-form" class="flex flex-col w-full gap-8">
         <div class="flex flex-col w-full gap-3">
             <div class="relative w-full">

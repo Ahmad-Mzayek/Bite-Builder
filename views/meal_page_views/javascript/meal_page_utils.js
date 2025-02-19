@@ -374,7 +374,7 @@ export const addMealIngredientsToShoppingList = (shoppingList, shoppingListGridC
 
         <input type="number"
                value="${ingredient.quantity === null ? 1 : ingredient.quantity}"
-               class="ingredient-quantity-input w-20 p-2 rounded-sm"
+               class="ingredient-quantity-input w-[90px] text-center p-2 rounded-full"
                name="new_quantity" 
                required>
 

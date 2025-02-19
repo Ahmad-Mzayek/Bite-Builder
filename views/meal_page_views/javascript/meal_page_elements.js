@@ -62,7 +62,6 @@ export const idElements = {
   profilePopupEditUsernameButton: document.querySelector("#profile-popup-edit-username-button"),
   changePasswordPopupErrorContainer: document.querySelector("#change-password-popup-error-container"),
   profilePopupEditPhoneNumberButton: document.querySelector("#profile-popup-edit-phone-number-button"),
-  changePasswordPopupSuccessContainer: document.querySelector("#change-password-popup-success-container"),
   profilePopupEditGenderButtonContainer: document.querySelector("#profile-popup-edit-gender-button-container"),
   profilePopupEditUsernameButtonContainer: document.querySelector("#profile-popup-edit-username-button-container"),
   openDeleteAccountConfirmationPopupButton: document.querySelector("#open-delete-account-confirmation-popup-button"),

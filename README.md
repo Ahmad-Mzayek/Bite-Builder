@@ -2,6 +2,8 @@
 	<img src="./resources/images/logo_dark.png" width="50%">
 </p>
 
+![GitHub Commits](https://img.shields.io/github/commit-activity/y/Ahmad-Mzayek/Bite-Builder?style=for-the-badge) ![GitHub Closed PRs](https://img.shields.io/github/issues-pr-closed/Ahmad-Mzayek/Bite-Builder?style=for-the-badge) ![GitHub forks](https://img.shields.io/github/forks/Ahmad-Mzayek/Bite-Builder?style=for-the-badge) ![GitHub issues](https://img.shields.io/github/issues/Ahmad-Mzayek/Bite-Builder?style=for-the-badge)
+
 ---
 
 ## Description

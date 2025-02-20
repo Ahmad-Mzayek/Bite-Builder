@@ -3,14 +3,24 @@
 
 <head>
 	<meta charset="UTF-8">
+
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0">
+
 	<title>Bite Builder | Landing</title>
+
 	<script src="https://cdn.tailwindcss.com"></script>
+
 	<?php include("../../global_views/php/tailwind.php"); ?>
+
+	<link rel="shortcut icon" 
+					type="image/x-icon"
+					href="../../../resources/images/bite_builder_favicon.png">
+
 	<link rel="stylesheet"
-		type="text/css"
-		href="../../global_views/css/theme_switch_button.css">
+				type="text/css"
+				href="../../global_views/css/theme_switch_button.css">
+				
 		<link rel="stylesheet" href="../../global_views/css/theme.css">
 </head>
 
